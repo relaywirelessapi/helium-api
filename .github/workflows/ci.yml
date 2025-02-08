@@ -3,40 +3,32 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+      - name: Copy environment file
+        run: cp .env.ci .env
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+      - name: Run Brakeman
+        run: docker compose run --rm --no-deps web bin/brakeman --no-pager
 
   scan_js:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+      - name: Copy environment file
+        run: cp .env.ci .env
 
-      - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
+      - name: Audit JS dependencies
+        run: docker compose run --rm --no-deps web bin/importmap audit
 
   lint:
     runs-on: ubuntu-latest
@@ -44,12 +36,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+      - name: Copy environment file
+        run: cp .env.ci .env
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
+      - name: Run Rubocop
+        run: docker compose run --rm --no-deps web bin/rubocop -f github
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp .env.ci .env
+
+      - name: Run RSpec
+        run: docker compose run --rm web bundle exec rspec
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/app_test
+          REDIS_URL: redis://localhost:6379/1

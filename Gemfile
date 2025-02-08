@@ -30,11 +30,16 @@ gem "tapioca", require: false, group: :development # For generating RBI files
 
 # Development and testing
 group :development, :test do
+  # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+
+  # Static analysis
   gem "brakeman", require: false
   gem "rubocop"
   gem "rubocop-sorbet", require: false
   gem "rubocop-rails-omakase", require: false
+
+  # Tesing
   gem "rspec-rails"
   gem "capybara"
   gem "factory_bot_rails"
