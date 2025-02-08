@@ -20,6 +20,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
+gem "view_component"
 
 # Type checking
 gem "sorbet", group: :development
@@ -42,6 +43,7 @@ group :development, :test do
   # Tesing
   gem "rspec-rails"
   gem "capybara"
+  gem "selenium-webdriver"
   gem "factory_bot_rails"
   gem "faker"
 end

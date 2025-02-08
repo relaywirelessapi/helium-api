@@ -22,6 +22,7 @@ WORKDIR /app
 # Install gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --jobs "$(nproc)" --retry 3
+RUN gem install foreman
 
 # Copy application code
 COPY . .
@@ -33,4 +34,4 @@ ENV RAILS_ENV=development \
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["./bin/dev"]

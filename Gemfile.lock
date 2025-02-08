@@ -245,6 +245,7 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
+    rexml (3.4.0)
     rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -293,8 +294,15 @@ GEM
     rubocop-sorbet (0.8.7)
       rubocop (>= 1)
     ruby-progressbar (1.13.0)
+    rubyzip (2.4.1)
     safe_type (1.1.1)
     securerandom (0.4.1)
+    selenium-webdriver (4.28.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     sidekiq (7.3.8)
       base64
       connection_pool (>= 2.3.0)
@@ -366,6 +374,11 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.2)
     useragent (0.16.11)
+    view_component (3.21.0)
+      activesupport (>= 5.2.0, < 8.1)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
+    websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -406,6 +419,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails-omakase
   rubocop-sorbet
+  selenium-webdriver
   sidekiq
   sorbet
   sorbet-rails
@@ -416,6 +430,7 @@ DEPENDENCIES
   tapioca
   thruster
   turbo-rails
+  view_component
 
 BUNDLED WITH
    2.6.3
