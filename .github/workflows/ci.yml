@@ -44,6 +44,10 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/app_test
+      REDIS_URL: redis://localhost:6379/1
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,9 +55,8 @@ jobs:
       - name: Copy environment file
         run: cp .env.ci .env
 
+      - name: Prepare the database
+        run: docker compose run --rm web bundle exec rails db:prepare
+
       - name: Run RSpec
         run: docker compose run --rm web bundle exec rspec
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/app_test
-          REDIS_URL: redis://localhost:6379/1
