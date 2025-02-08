@@ -21,8 +21,7 @@ WORKDIR /app
 
 # Install gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local without 'development test' && \
-  bundle install --jobs "$(nproc)" --retry 3
+RUN bundle install --jobs "$(nproc)" --retry 3
 
 # Copy application code
 COPY . .
