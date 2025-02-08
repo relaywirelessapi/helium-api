@@ -13,8 +13,8 @@
                 link[:name],
                 link[:path],
                 class: class_names(
-                  "inline-flex items-center border-b-2",
-                  { "border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900" => current_page?(link[:path]) },
+                  "inline-flex items-center border-b-2 px-1 pt-1 text-sm",
+                  { "border-indigo-500 font-medium text-gray-900" => current_page?(link[:path]) },
                   { "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" => !current_page?(link[:path]) }
                 )
               ) %>
