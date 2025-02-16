@@ -8,7 +8,7 @@
 # The top-level namespace for Minitest. Also the location of the main
 # runtime. See +Minitest.run+ for more information.
 #
-# source://minitest//lib/minitest/parallel.rb#1
+# source://minitest//lib/minitest/assertions.rb#5
 module Minitest
   class << self
     # Internal run method. Responsible for telling all Runnable

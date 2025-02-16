@@ -1,0 +1,30 @@
+<% content_for :title, "Sign Up" %>
+
+<%= render(FormContainerComponent.new(title: "Create an account")) do %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="space-y-6">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+
+  <p class="mt-10 text-center text-sm/6 text-gray-500">
+    Already have an account?
+    <%= link_to "Sign in", new_session_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+  </p>
+<% end %>

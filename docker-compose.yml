@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:15
+    image: postgres:17
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -74,7 +74,7 @@ services:
     volumes:
       - .:/app
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/app_development
+      DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
       - .env
@@ -88,6 +88,17 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+
+  mailcatcher:
+    platform: linux/x86_64
+    image: dockage/mailcatcher:0.9.0
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+    healthcheck:
+      interval: 10s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://mailcatcher:1080 || exit 1
 
 volumes:
   postgres_data:

@@ -2053,7 +2053,6 @@ class ViewComponentsSystemTestController < ::ActionController::Base
   # source://actionview/8.0.1/lib/action_view/layouts.rb#328
   def _layout(lookup_context, formats); end
 
-  def _layout_from_proc; end
   def validate_file_path; end
   def validate_test_env; end
 

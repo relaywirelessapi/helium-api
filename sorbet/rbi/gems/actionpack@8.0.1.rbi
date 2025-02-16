@@ -1260,7 +1260,11 @@ class ActionController::API < ::ActionController::Metal
   include ::ActionController::Rescue
   include ::ActionController::Instrumentation
   include ::ActionController::ParamsWrapper
-  include ::Turbo::RequestIdTracking
+  include ::ActionController::RespondWith
+  include ::Devise::Controllers::SignInOut
+  include ::Devise::Controllers::StoreLocation
+  include ::Devise::Controllers::Helpers
+  include ::Devise::Controllers::UrlHelpers
   extend ::ActionView::ViewPaths::ClassMethods
   extend ::AbstractController::UrlFor::ClassMethods
   extend ::ActionController::Rendering::ClassMethods
@@ -1277,6 +1281,8 @@ class ActionController::API < ::ActionController::Metal
   extend ::ActiveSupport::Rescuable::ClassMethods
   extend ::ActionController::Instrumentation::ClassMethods
   extend ::ActionController::ParamsWrapper::ClassMethods
+  extend ::ActionController::RespondWith::ClassMethods
+  extend ::Devise::Controllers::Helpers::ClassMethods
 
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
   def __callbacks; end
@@ -1359,6 +1365,15 @@ class ActionController::API < ::ActionController::Metal
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
   def logger=(value); end
 
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to?; end
+
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
   def perform_caching; end
 
@@ -1385,6 +1400,15 @@ class ActionController::API < ::ActionController::Metal
 
   # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
   def rescue_handlers?; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder?; end
 
   class << self
     # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
@@ -1471,6 +1495,15 @@ class ActionController::API < ::ActionController::Metal
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
     def logger=(value); end
 
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to?; end
+
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
     def perform_caching; end
 
@@ -1497,6 +1530,15 @@ class ActionController::API < ::ActionController::Metal
 
     # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
     def rescue_handlers?; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder?; end
 
     # Shortcut helper that returns all the ActionController::API modules except the
     # ones passed as arguments:
@@ -1565,10 +1607,22 @@ class ActionController::API < ::ActionController::Metal
     def __class_attr_middleware_stack=(new_value); end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_mimes_for_respond_to; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_mimes_for_respond_to=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
     def __class_attr_rescue_handlers; end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
     def __class_attr_rescue_handlers=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_responder; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_responder=(new_value); end
   end
 end
 
@@ -1981,10 +2035,9 @@ class ActionController::Base < ::ActionController::Metal
   include ::ActionController::Rescue
   include ::ActionController::Instrumentation
   include ::ActionController::ParamsWrapper
-  include ::Turbo::Native::Navigation
-  include ::Turbo::Frames::FrameRequest
-  include ::Turbo::Streams::TurboStreamsTagBuilder
-  include ::Turbo::RequestIdTracking
+  include ::ActionController::RespondWith
+  include ::Devise::Controllers::SignInOut
+  include ::Devise::Controllers::StoreLocation
   extend ::ActionView::ViewPaths::ClassMethods
   extend ::AbstractController::Helpers::Resolution
   extend ::AbstractController::Helpers::ClassMethods
@@ -2014,7 +2067,8 @@ class ActionController::Base < ::ActionController::Metal
   extend ::ActiveSupport::Rescuable::ClassMethods
   extend ::ActionController::Instrumentation::ClassMethods
   extend ::ActionController::ParamsWrapper::ClassMethods
-  extend ::Importmap::Freshness
+  extend ::Responders::ControllerMethod
+  extend ::ActionController::RespondWith::ClassMethods
 
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
   def __callbacks; end
@@ -2199,6 +2253,15 @@ class ActionController::Base < ::ActionController::Metal
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
   def logger=(value); end
 
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to?; end
+
   # source://actionpack//lib/action_controller/metal/flash.rb#38
   def notice; end
 
@@ -2247,6 +2310,15 @@ class ActionController::Base < ::ActionController::Metal
   # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
   def rescue_handlers?; end
 
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder?; end
+
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
   def stylesheets_dir; end
 
@@ -2257,8 +2329,6 @@ class ActionController::Base < ::ActionController::Metal
 
   # source://actionview/8.0.1/lib/action_view/layouts.rb#328
   def _layout(lookup_context, formats); end
-
-  def _layout_from_proc; end
 
   # source://actionpack//lib/action_controller/base.rb#324
   def _protected_ivars; end
@@ -2477,6 +2547,15 @@ class ActionController::Base < ::ActionController::Metal
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
     def logger=(value); end
 
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to?; end
+
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
     def per_form_csrf_tokens; end
 
@@ -2521,6 +2600,15 @@ class ActionController::Base < ::ActionController::Metal
 
     # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
     def rescue_handlers?; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder?; end
 
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
     def stylesheets_dir; end
@@ -2643,25 +2731,27 @@ class ActionController::Base < ::ActionController::Metal
     def __class_attr_middleware_stack=(new_value); end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_mimes_for_respond_to; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_mimes_for_respond_to=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
     def __class_attr_rescue_handlers; end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
     def __class_attr_rescue_handlers=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_responder; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_responder=(new_value); end
   end
 end
 
 # source://actionpack//lib/action_controller/base.rb#0
 module ActionController::Base::HelperMethods
-  include ::Importmap::ImportmapTagsHelper
-  include ::Turbo::DriveHelper
-  include ::Turbo::FramesHelper
-  include ::Turbo::IncludesHelper
-  include ::Turbo::StreamsHelper
-  include ::ActionView::Helpers::CaptureHelper
-  include ::ActionView::Helpers::OutputSafetyHelper
-  include ::ActionView::Helpers::TagHelper
-  include ::Turbo::Streams::ActionHelper
-
   # source://actionpack//lib/action_controller/metal/flash.rb#41
   def alert(*_arg0, **_arg1, &_arg2); end
 
@@ -2677,10 +2767,11 @@ module ActionController::Base::HelperMethods
   # source://actionpack//lib/action_controller/metal/cookies.rb#10
   def cookies(*_arg0, **_arg1, &_arg2); end
 
+  # source://devise/4.9.4/lib/devise/controllers/helpers.rb#13
+  def devise_controller?(*_arg0, **_arg1, &_arg2); end
+
   # source://actionpack//lib/action_controller/metal/request_forgery_protection.rb#102
   def form_authenticity_token(*_arg0, **_arg1, &_arg2); end
-
-  def hotwire_native_app?(*_arg0, **_arg1, &_arg2); end
 
   # source://actionpack//lib/action_controller/metal/flash.rb#41
   def notice(*_arg0, **_arg1, &_arg2); end
@@ -2688,12 +2779,14 @@ module ActionController::Base::HelperMethods
   # source://actionpack//lib/action_controller/metal/request_forgery_protection.rb#103
   def protect_against_forgery?(*_arg0, **_arg1, &_arg2); end
 
-  def turbo_frame_request?(*_arg0, **_arg1, &_arg2); end
-  def turbo_frame_request_id(*_arg0, **_arg1, &_arg2); end
-  def turbo_native_app?(*_arg0, **_arg1, &_arg2); end
+  # source://devise/4.9.4/lib/devise/controllers/helpers.rb#13
+  def signed_in?(*_arg0, **_arg1, &_arg2); end
 
   # source://actionpack//lib/abstract_controller/caching.rb#45
   def view_cache_dependencies(*_arg0, **_arg1, &_arg2); end
+
+  # source://devise/4.9.4/lib/devise/controllers/helpers.rb#13
+  def warden(*_arg0, **_arg1, &_arg2); end
 end
 
 # source://actionpack//lib/action_controller/base.rb#230
@@ -12882,7 +12975,6 @@ class ActionDispatch::IntegrationTest < ::ActiveSupport::TestCase
   include ::ActionDispatch::Routing::UrlFor
   include ::ActionDispatch::IntegrationTest::UrlOptions
   include ::ActionDispatch::Assertions::RoutingAssertions::WithIntegrationRouting
-  include ::Turbo::TestAssertions::IntegrationTestAssertions
   extend ::ActionDispatch::IntegrationTest::Behavior::ClassMethods
   extend ::ActionDispatch::Assertions::RoutingAssertions::WithIntegrationRouting::ClassMethods
 end
@@ -16167,12 +16259,6 @@ class ActionDispatch::RequestEncoder::IdentityEncoder
   def response_parser; end
 end
 
-# source://actionpack//lib/action_dispatch/testing/integration.rb#0
-class ActionDispatch::RequestEncoder::TurboStreamEncoder < ::ActionDispatch::RequestEncoder::IdentityEncoder
-  # source://turbo-rails/2.0.11/lib/turbo/engine.rb#148
-  def accept_header; end
-end
-
 # # Action Dispatch RequestId
 #
 # Makes a unique request id available to the `action_dispatch.request_id` env
@@ -17124,6 +17210,59 @@ class ActionDispatch::Routing::Mapper
   #
   # source://actionpack//lib/action_dispatch/routing/mapper.rb#2377
   def initialize(set); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#363
+  def as(scope); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#290
+  def authenticate(scope = T.unsafe(nil), block = T.unsafe(nil)); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#314
+  def authenticated(scope = T.unsafe(nil), block = T.unsafe(nil)); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#226
+  def devise_for(*resources); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#363
+  def devise_scope(scope); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#331
+  def unauthenticated(scope = T.unsafe(nil)); end
+
+  protected
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#477
+  def constraints_for(method_to_apply, scope = T.unsafe(nil), block = T.unsafe(nil)); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#390
+  def devise_confirmation(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#421
+  def devise_omniauth_callback(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#385
+  def devise_password(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#402
+  def devise_registration(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#377
+  def devise_session(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#395
+  def devise_unlock(mapping, controllers); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#509
+  def raise_no_devise_method_error!(klass); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#499
+  def raise_no_secret_key; end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#488
+  def set_omniauth_path_prefix!(path_prefix); end
+
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#461
+  def with_devise_exclusive_scope(new_path, new_as, options); end
 
   class << self
     # source://actionpack//lib/action_dispatch/routing/mapper.rb#27
@@ -19231,7 +19370,7 @@ class ActionDispatch::Routing::RouteSet
   # source://actionpack//lib/action_dispatch/routing/route_set.rb#820
   def extra_keys(options, recall = T.unsafe(nil)); end
 
-  # source://actionpack//lib/action_dispatch/routing/route_set.rb#484
+  # source://devise/4.9.4/lib/devise/rails/routes.rb#8
   def finalize!; end
 
   # source://actionpack//lib/action_dispatch/routing/route_set.rb#848
@@ -20705,6 +20844,7 @@ end
 # source://actionpack//lib/action_dispatch/system_test_case.rb#114
 class ActionDispatch::SystemTestCase < ::ActiveSupport::TestCase
   include ::Capybara::DSL
+  include ::Capybara::DSLRSpecProxyInstaller
   include ::Capybara::Minitest::Assertions
   include ::ActionDispatch::SystemTesting::TestHelpers::SetupAndTeardown
   include ::ActionDispatch::SystemTesting::TestHelpers::ScreenshotHelper
@@ -21257,11 +21397,6 @@ ActionPack::VERSION::STRING = T.let(T.unsafe(nil), String)
 
 # source://actionpack//lib/action_pack/gem_version.rb#14
 ActionPack::VERSION::TINY = T.let(T.unsafe(nil), Integer)
-
-module ActionView::RoutingUrlFor
-  include ::ActionDispatch::Routing::PolymorphicRoutes
-  include ::ActionDispatch::Routing::UrlFor
-end
 
 # source://actionpack//lib/action_dispatch/http/mime_type.rb#7
 module Mime

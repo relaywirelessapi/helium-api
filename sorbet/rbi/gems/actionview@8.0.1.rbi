@@ -10,6 +10,8 @@ class ActionController::Base < ::ActionController::Metal
   include ::ActionController::Head
   include ::AbstractController::Caching::ConfigMethods
   include ::ActionController::BasicImplicitRender
+  include ::Devise::Controllers::SignInOut
+  include ::Devise::Controllers::StoreLocation
   extend ::AbstractController::Helpers::Resolution
 
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
@@ -195,6 +197,15 @@ class ActionController::Base < ::ActionController::Metal
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
   def logger=(value); end
 
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def mimes_for_respond_to?; end
+
   # source://actionpack/8.0.1/lib/action_controller/metal/flash.rb#38
   def notice; end
 
@@ -243,6 +254,15 @@ class ActionController::Base < ::ActionController::Metal
   # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
   def rescue_handlers?; end
 
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder; end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder=(_arg0); end
+
+  # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+  def responder?; end
+
   # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
   def stylesheets_dir; end
 
@@ -253,8 +273,6 @@ class ActionController::Base < ::ActionController::Metal
 
   # source://actionview//lib/action_view/layouts.rb#328
   def _layout(lookup_context, formats); end
-
-  def _layout_from_proc; end
 
   # source://actionpack/8.0.1/lib/action_controller/base.rb#324
   def _protected_ivars; end
@@ -473,6 +491,15 @@ class ActionController::Base < ::ActionController::Metal
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#116
     def logger=(value); end
 
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def mimes_for_respond_to?; end
+
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
     def per_form_csrf_tokens; end
 
@@ -517,6 +544,15 @@ class ActionController::Base < ::ActionController::Metal
 
     # source://activesupport/8.0.1/lib/active_support/rescuable.rb#15
     def rescue_handlers?; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder; end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder=(value); end
+
+    # source://responders/3.1.1/lib/action_controller/respond_with.rb#11
+    def responder?; end
 
     # source://activesupport/8.0.1/lib/active_support/configurable.rb#115
     def stylesheets_dir; end
@@ -626,10 +662,22 @@ class ActionController::Base < ::ActionController::Metal
     def __class_attr_middleware_stack=(new_value); end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_mimes_for_respond_to; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_mimes_for_respond_to=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
     def __class_attr_rescue_handlers; end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
     def __class_attr_rescue_handlers=(new_value); end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr_responder; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr_responder=(new_value); end
   end
 end
 
@@ -1006,6 +1054,7 @@ class ActionView::Base
   include ::ActionView::Helpers::NumberHelper
   include ::ActionView::Helpers::RenderingHelper
   include ::ActionView::Helpers
+  include ::SimpleForm::ActionViewExtensions::FormHelper
   extend ::ActionView::Helpers::UrlHelper::ClassMethods
   extend ::ActionView::Helpers::SanitizeHelper::ClassMethods
 
@@ -1836,6 +1885,33 @@ class ActionView::FileSystemResolver < ::ActionView::Resolver
 
   # source://actionview//lib/action_view/template/resolver.rb#163
   def unbound_templates_from_path(path); end
+end
+
+# Use FixtureResolver in your tests to simulate the presence of files on the
+# file system. This is used internally by Rails' own test suite, and is
+# useful for testing extensions that have no way of knowing what the file
+# system will look like at runtime.
+#
+# source://actionview//lib/action_view/testing/resolvers.rb#10
+class ActionView::FixtureResolver < ::ActionView::FileSystemResolver
+  # @return [FixtureResolver] a new instance of FixtureResolver
+  #
+  # source://actionview//lib/action_view/testing/resolvers.rb#11
+  def initialize(hash = T.unsafe(nil)); end
+
+  # source://actionview//lib/action_view/testing/resolvers.rb#17
+  def data; end
+
+  # source://actionview//lib/action_view/testing/resolvers.rb#21
+  def to_s; end
+
+  private
+
+  # source://actionview//lib/action_view/testing/resolvers.rb#32
+  def source_for_template(template); end
+
+  # source://actionview//lib/action_view/testing/resolvers.rb#26
+  def template_glob(glob); end
 end
 
 # source://actionview//lib/action_view/helpers/capture_helper.rb#6
@@ -13479,6 +13555,12 @@ module ActionView::ModelNaming
   def model_name_from_record_or_class(record_or_class); end
 end
 
+# source://actionview//lib/action_view/testing/resolvers.rb#37
+class ActionView::NullResolver < ::ActionView::Resolver
+  # source://actionview//lib/action_view/testing/resolvers.rb#38
+  def find_templates(name, prefix, partial, details, locals = T.unsafe(nil)); end
+end
+
 # source://actionview//lib/action_view/renderer/object_renderer.rb#4
 class ActionView::ObjectRenderer < ::ActionView::PartialRenderer
   include ::ActionView::AbstractRenderer::ObjectRendering
@@ -14466,6 +14548,7 @@ end
 # source://actionview//lib/action_view/routing_url_for.rb#6
 module ActionView::RoutingUrlFor
   include ::ActionDispatch::Routing::PolymorphicRoutes
+  include ::ActionDispatch::Routing::UrlFor
 
   # source://actionpack/8.0.1/lib/action_dispatch/routing/url_for.rb#102
   def default_url_options=(val); end
@@ -16210,8 +16293,6 @@ class ActionView::TestCase::TestController < ::ActionController::Base
   # source://actionview//lib/action_view/layouts.rb#328
   def _layout(lookup_context, formats); end
 
-  def _layout_from_proc; end
-
   class << self
     # source://actionview//lib/action_view/test_case.rb#30
     def controller_name; end
@@ -16227,6 +16308,12 @@ class ActionView::TestCase::TestController < ::ActionController::Base
     def controller_path=(_arg0); end
 
     private
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
+    def __class_attr___callbacks; end
+
+    # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#17
+    def __class_attr___callbacks=(new_value); end
 
     # source://activesupport/8.0.1/lib/active_support/class_attribute.rb#15
     def __class_attr_middleware_stack; end

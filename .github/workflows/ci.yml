@@ -42,6 +42,18 @@ jobs:
       - name: Run Rubocop
         run: docker compose run --rm --no-deps web bin/rubocop -f github
 
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp .env.ci .env
+
+      - name: Run Sorbet
+        run: docker compose run --rm --no-deps web bundle exec spoom srb tc
+
   test:
     runs-on: ubuntu-latest
     env:

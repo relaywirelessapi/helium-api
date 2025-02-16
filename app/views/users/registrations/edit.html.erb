@@ -1,0 +1,42 @@
+<% content_for :title, "Account Settings" %>
+
+<%= render(FormContainerComponent.new(title: "Edit #{resource_name.to_s.humanize}")) do %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="space-y-6">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p class="text-sm/6 text-gray-500">Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :password,
+                  hint: "Leave it blank if you don't want to change it.",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :current_password,
+                  hint: "We need your current password to confirm your changes.",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+
+      <%= f.button :submit, "Update" %>
+    </div>
+  <% end %>
+
+  <div class="mt-10 space-y-4">
+    <p class="text-center text-sm/6 text-gray-500">
+      Unhappy?
+      <%= link_to "Cancel my account", registration_path(resource_name), 
+                  data: { turbo_confirm: "Are you sure?" },
+                  turbo_method: :delete,
+                  class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+    </p>
+  </div>
+<% end %>

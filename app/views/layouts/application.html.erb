@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full">
   <head>
-    <title><%= content_for(:title) || "Helium Api" %></title>
+    <title><%= content_for(:title) ? "#{content_for(:title)} | Helium API" : "Helium API" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,13 +24,12 @@
       <%= render NavbarComponent.new %>
 
       <div class="py-10">
-        <header>
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-          </div>
-        </header>
         <main>
           <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <% flash.each do |type, message| %>
+              <%= render FlashMessageComponent.new(type: type, message: message) %>
+            <% end %>
+
             <%= yield %>
           </div>
         </main>
