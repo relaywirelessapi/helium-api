@@ -2,8 +2,6 @@
 
 <%= render(FormContainerComponent.new(title: "Forgot your password?")) do %>
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= f.error_notification %>
-
     <div class="space-y-6">
       <%= f.input :email,
                   required: true,

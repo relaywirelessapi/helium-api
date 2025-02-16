@@ -2,8 +2,6 @@
 
 <%= render(FormContainerComponent.new(title: "Edit #{resource_name.to_s.humanize}")) do %>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
-
     <div class="space-y-6">
       <%= f.input :email,
                   required: true,
@@ -36,7 +34,7 @@
     </div>
   <% end %>
 
-  <div class="mt-4 space-y-4">
+  <div class="mt-6 space-y-4">
     <p class="text-center text-sm/6 text-gray-500">
       Unhappy?
       <%= link_to "Cancel my account", registration_path(resource_name), 
