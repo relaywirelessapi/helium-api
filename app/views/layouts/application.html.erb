@@ -19,15 +19,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-full">
+  <body class="h-full bg-gray-50">
     <div class="min-h-full">
       <%= render NavbarComponent.new %>
 
-      <div class="py-10">
+      <div class="py-6">
         <main>
-          <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-            <% flash.each do |type, message| %>
-              <%= render FlashMessageComponent.new(type: type, message: message) %>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <% if flash.any? %>
+              <div class="mb-6">
+                <% flash.each do |type, message| %>
+                  <%= render FlashMessageComponent.new(type: type, message: message) %>
+                <% end %>
+              </div>
             <% end %>
 
             <%= yield %>
