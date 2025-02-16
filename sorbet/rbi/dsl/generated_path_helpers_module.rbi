@@ -16,9 +16,6 @@ module GeneratedPathHelpersModule
   def preview_view_components_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def rails_health_check_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
   def rails_info_notes_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -32,9 +29,6 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def rails_mailers_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def root_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end

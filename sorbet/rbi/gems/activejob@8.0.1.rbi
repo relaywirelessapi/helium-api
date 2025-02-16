@@ -189,7 +189,6 @@ class ActiveJob::Base
   include ::ActiveJob::Logging
   include ::ActiveJob::Timezones
   include ::ActiveJob::Translation
-  include ::Sidekiq::Job::Options
   include ::ActiveJob::TestHelper::TestQueueAdapter
   extend ::ActiveJob::Core::ClassMethods
   extend ::ActiveJob::QueueAdapter::ClassMethods
@@ -202,7 +201,6 @@ class ActiveJob::Base
   extend ::ActiveSupport::DescendantsTracker
   extend ::ActiveJob::Callbacks::ClassMethods
   extend ::ActiveJob::Exceptions::ClassMethods
-  extend ::Sidekiq::Job::Options::ClassMethods
   extend ::ActiveJob::TestHelper::TestQueueAdapter::ClassMethods
 
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69

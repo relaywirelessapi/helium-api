@@ -21,6 +21,10 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "view_component"
+gem "simple_form"
+
+# Authentication
+gem "devise"
 
 # Type checking
 gem "sorbet", group: :development
@@ -29,7 +33,6 @@ gem "sorbet-rails"
 gem "spoom", group: :development
 gem "tapioca", require: false, group: :development # For generating RBI files
 
-# Development and testing
 group :development, :test do
   # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"

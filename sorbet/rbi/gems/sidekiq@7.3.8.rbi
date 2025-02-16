@@ -37,6 +37,9 @@ module ActiveJob
 end
 
 class ActiveJob::Base
+  include ::Sidekiq::Job::Options
+  extend ::Sidekiq::Job::Options::ClassMethods
+
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
   def __callbacks; end
 

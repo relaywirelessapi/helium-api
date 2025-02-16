@@ -24,6 +24,7 @@ class Rails::ApplicationController
     include ::Importmap::ImportmapTagsHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
+    include ::DeviseHelper
     include ::PreviewHelper
   end
 

@@ -1,0 +1,19 @@
+<%= render(FormContainerComponent.new(title: "Forgot your password?")) do %>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="space-y-6">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+
+      <%= f.button :submit, "Send me reset password instructions" %>
+    </div>
+  <% end %>
+
+  <p class="mt-10 text-center text-sm/6 text-gray-500">
+    Remember your password?
+    <%= link_to "Sign in", new_session_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+  </p>
+<% end %>

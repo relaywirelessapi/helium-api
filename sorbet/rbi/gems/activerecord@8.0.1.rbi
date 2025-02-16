@@ -8331,6 +8331,8 @@ class ActiveRecord::Base
   extend ::ActiveRecord::SignedId::ClassMethods
   extend ::ActiveRecord::Suppressor::ClassMethods
   extend ::ActiveRecord::Normalization::ClassMethods
+  extend ::OrmAdapter::ToAdapter
+  extend ::Devise::Models
   extend ::Turbo::Broadcastable::ClassMethods
 
   # source://activesupport/8.0.1/lib/active_support/callbacks.rb#69
