@@ -26,6 +26,12 @@
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
 
+      <%= f.input :api_key,
+                  label: "API Key",
+                  disabled: true,
+                  hint: "This is your API key for accessing the GraphQL API.",
+                  input_html: { readonly: true } %>
+
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>

@@ -33,6 +33,9 @@ gem "sorbet-rails"
 gem "spoom", group: :development
 gem "tapioca", require: false, group: :development # For generating RBI files
 
+# GraphQL
+gem "graphql"
+
 group :development, :test do
   # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
@@ -50,3 +53,4 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
 end
+gem "graphiql-rails", group: :development

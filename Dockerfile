@@ -27,11 +27,6 @@ RUN gem install foreman
 # Copy application code
 COPY . .
 
-# Set production environment
-ENV RAILS_ENV=development \
-  RAILS_LOG_TO_STDOUT=true \
-  RAILS_SERVE_STATIC_FILES=true
-
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/dev"]
