@@ -18,7 +18,7 @@ class User < ApplicationRecord
     save!
   end
 
-  sig { params(notification: T.untyped, args: T::Array[T.untyped]).void }
+  sig { params(notification: T.untyped, args: T.untyped).void }
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
