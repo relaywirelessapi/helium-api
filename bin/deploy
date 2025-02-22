@@ -1,0 +1,56 @@
+#!/bin/sh
+
+set -e
+
+# Get ECR repo URL and Git SHA
+ECR_REPO=$(terraform -chdir=terraform output -raw ecr_repository_url)
+GIT_SHA=$(git rev-parse --short HEAD)
+
+# Check if image with Git SHA already exists in ECR
+if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2) --image-ids imageTag=${GIT_SHA} >/dev/null 2>&1; then
+  # Login to ECR only if we need to push
+  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com
+
+  # Build and push only if image doesn't exist
+  echo "Building and pushing new image ${ECR_REPO}:${GIT_SHA}"
+  docker build --platform linux/amd64 -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest .
+  docker push ${ECR_REPO}:${GIT_SHA}
+  docker push ${ECR_REPO}:latest
+else
+  echo "Image ${ECR_REPO}:${GIT_SHA} already exists, skipping build and push"
+fi
+
+# Get current image tag from ECS service
+CURRENT_TAG=$(aws ecs describe-services --cluster rails-app-cluster --services rails-app --query 'services[0].taskDefinition' --output text | rev | cut -d':' -f1 | rev)
+
+# Only deploy if the image tag has changed
+if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
+  echo "Deploying new image tag ${GIT_SHA}"
+  terraform -chdir=terraform apply -var="image_tag=${GIT_SHA}" -auto-approve
+
+  # Wait for deployment to stabilize
+  echo "Waiting for deployment to stabilize..."
+  aws ecs wait services-stable --cluster rails-app-cluster --services rails-app
+
+  # Run database migrations
+  echo "Running database migrations..."
+  TASK_ARN=$(aws ecs run-task \
+    --cluster rails-app-cluster \
+    --task-definition rails-app \
+    --network-configuration "awsvpcConfiguration={subnets=[subnet-01a4d566682afd809,subnet-0bf0f821b717607e1],securityGroups=[sg-0580e3b042a1384e1],assignPublicIp=DISABLED}" \
+    --launch-type FARGATE \
+    --overrides '{"containerOverrides": [{"name": "rails-app", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
+    --query 'tasks[0].taskArn' \
+    --output text)
+
+  # Wait for migration task to complete and show logs
+  echo "Waiting for migration task to complete..."
+  aws ecs wait tasks-stopped --cluster rails-app-cluster --tasks $TASK_ARN
+
+  # Print the task ARN
+  echo "Migration task ARN: $TASK_ARN"
+
+  echo "Deployment and migrations complete"
+else
+  echo "Current deployment already using image tag ${GIT_SHA}, skipping deploy"
+fi

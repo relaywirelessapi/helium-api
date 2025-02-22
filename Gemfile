@@ -13,6 +13,7 @@ gem "pg", "~> 1.1"
 
 # ActiveJob
 gem "sidekiq"
+gem "redis", group: :production
 
 # Frontend
 gem "propshaft"
@@ -35,6 +36,7 @@ gem "tapioca", require: false, group: :development # For generating RBI files
 
 # GraphQL
 gem "graphql"
+gem "graphiql-rails", group: :development
 
 group :development, :test do
   # Debugging
@@ -53,4 +55,3 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
 end
-gem "graphiql-rails", group: :development
