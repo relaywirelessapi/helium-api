@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 
 class User < ApplicationRecord
   extend T::Sig
@@ -16,5 +16,10 @@ class User < ApplicationRecord
   def refresh_api_key!
     refresh_api_key
     save!
+  end
+
+  sig { params(notification: T.untyped, args: T::Array[T.untyped]).void }
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

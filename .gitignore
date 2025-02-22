@@ -35,7 +35,17 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+.terraform.lock.hcl
+crash.log
+
+# Assets
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
+# RSpec
 /spec/examples.txt
