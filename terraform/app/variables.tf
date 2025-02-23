@@ -8,6 +8,11 @@ variable "app_name" {
   default     = "relay-helium-api"
 }
 
+output "app_name" {
+  description = "Application name"
+  value       = var.app_name
+}
+
 variable "environment" {
   description = "Environment (staging/production)"
   default     = "production"

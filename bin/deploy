@@ -6,9 +6,10 @@ set -e
 terraform -chdir=terraform/app init
 terraform -chdir=terraform/meta init
 
-# Get ECR repo URL and Git SHA
+# Get ECR repo URL, Git SHA, and app name
 ECR_REPO=$(terraform -chdir=terraform/app output -raw ecr_repository_url)
 GIT_SHA=$(git rev-parse --short HEAD)
+APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
 
 # Set AWS credentials if not already set
 if [ -z "$AWS_ACCESS_KEY_ID" ]; then
@@ -34,7 +35,7 @@ else
 fi
 
 # Get current image tag from ECS service
-CURRENT_TAG=$(aws ecs describe-services --cluster rails-app-cluster --services rails-app --query 'services[0].taskDefinition' --output text | rev | cut -d':' -f1 | rev)
+CURRENT_TAG=$(aws ecs describe-services --cluster ${APP_NAME}-cluster --services ${APP_NAME} --query 'services[0].taskDefinition' --output text | rev | cut -d':' -f1 | rev)
 
 # Only deploy if the image tag has changed
 if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
@@ -43,28 +44,28 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
 
   # Wait for deployment to stabilize
   echo "Waiting for deployment to stabilize..."
-  aws ecs wait services-stable --cluster rails-app-cluster --services rails-app
+  aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}
 
   # Run database migrations
   echo "Running database migrations..."
   TASK_ARN=$(aws ecs run-task \
-    --cluster rails-app-cluster \
-    --task-definition rails-app \
+    --cluster ${APP_NAME}-cluster \
+    --task-definition ${APP_NAME} \
     --network-configuration "awsvpcConfiguration={subnets=[subnet-01a4d566682afd809,subnet-0bf0f821b717607e1],securityGroups=[sg-0580e3b042a1384e1],assignPublicIp=DISABLED}" \
     --launch-type FARGATE \
-    --overrides '{"containerOverrides": [{"name": "rails-app", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
+    --overrides '{"containerOverrides": [{"name": "'${APP_NAME}'", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
     --query 'tasks[0].taskArn' \
     --output text)
 
   # Wait for migration task to complete and show logs
   echo "Waiting for migration task to complete..."
-  aws ecs wait tasks-stopped --cluster rails-app-cluster --tasks $TASK_ARN
+  aws ecs wait tasks-stopped --cluster ${APP_NAME}-cluster --tasks $TASK_ARN
 
   # Print the task ARN
   echo "Migration task ARN: $TASK_ARN"
 
   # Check if the migration task failed
-  TASK_STATUS=$(aws ecs describe-tasks --cluster rails-app-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
+  TASK_STATUS=$(aws ecs describe-tasks --cluster ${APP_NAME}-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
   if [ "$TASK_STATUS" != "0" ]; then
     echo "Migration task failed with exit code $TASK_STATUS"
     echo "Rolling back to previous image tag ${CURRENT_TAG}"
@@ -74,7 +75,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
     
     # Wait for rollback to stabilize
     echo "Waiting for rollback to stabilize..."
-    aws ecs wait services-stable --cluster rails-app-cluster --services rails-app
+    aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}
     
     echo "Rollback complete"
     exit 1
