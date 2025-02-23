@@ -23,3 +23,15 @@ variable "image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "domain_name" {
+  description = "The main domain name for the application"
+  type        = string
+  default     = "relay-helium-api.alessandro.codes"
+}
+
+variable "from_address" {
+  description = "The email address to send emails from"
+  type        = string
+  default     = "noreply@relay-helium-api.alessandro.codes"
+}

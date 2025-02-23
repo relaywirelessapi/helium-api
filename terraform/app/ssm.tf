@@ -23,14 +23,14 @@ resource "aws_ssm_parameter" "domain_name" {
   name        = "/${var.app_name}/${var.environment}/domain_name"
   description = "The main domain name for the application"
   type        = "String"
-  value       = "relay-helium-api.alessandro.codes"
+  value       = var.domain_name
 }
 
 resource "aws_ssm_parameter" "from_address" {
   name        = "/${var.app_name}/${var.environment}/from_address"
   description = "The email address to send emails from"
   type        = "String"
-  value       = "noreply@relay-helium-api.alessandro.codes"
+  value       = var.from_address
 }
 
 # Generate random passwords for the parameters
