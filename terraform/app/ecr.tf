@@ -24,4 +24,8 @@ resource "aws_ecr_lifecycle_policy" "app" {
       }
     }]
   })
-} 
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.app.repository_url
+}

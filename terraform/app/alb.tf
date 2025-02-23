@@ -73,3 +73,7 @@ resource "aws_cloudwatch_log_group" "app" {
     Environment = var.environment
   }
 }
+
+output "alb_dns_name" {
+  value = aws_lb.app.dns_name
+}
