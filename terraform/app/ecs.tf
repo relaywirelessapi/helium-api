@@ -61,8 +61,8 @@ locals {
   ]
 }
 
-resource "aws_ecs_task_definition" "app" {
-  family                   = var.app_name
+resource "aws_ecs_task_definition" "web" {
+  family                   = "${var.app_name}-web"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = 256
@@ -77,7 +77,7 @@ resource "aws_ecs_task_definition" "app" {
 
   container_definitions = jsonencode([
     {
-      name  = var.app_name
+      name  = "${var.app_name}-web"
       image = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
 
       environment = local.container_environment
@@ -95,7 +95,7 @@ resource "aws_ecs_task_definition" "app" {
         options = {
           awslogs-group         = aws_cloudwatch_log_group.app.name
           awslogs-region        = var.aws_region
-          awslogs-stream-prefix = var.app_name
+          awslogs-stream-prefix = "${var.app_name}-sidekiq"
         }
       }
 
@@ -110,7 +110,7 @@ resource "aws_ecs_task_definition" "app" {
   ])
 
   tags = {
-    Name        = "${var.app_name}-task-definition"
+    Name        = "${var.app_name}-web-task-definition"
     Environment = var.environment
   }
 }
@@ -162,10 +162,10 @@ resource "aws_ecs_task_definition" "sidekiq" {
   }
 }
 
-resource "aws_ecs_service" "app" {
-  name                   = var.app_name
+resource "aws_ecs_service" "web" {
+  name                   = "${var.app_name}-web"
   cluster                = aws_ecs_cluster.main.id
-  task_definition        = aws_ecs_task_definition.app.arn
+  task_definition        = aws_ecs_task_definition.web.arn
   desired_count          = 1
   launch_type            = "FARGATE"
   force_new_deployment   = true
@@ -184,14 +184,14 @@ resource "aws_ecs_service" "app" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.app.arn
-    container_name   = var.app_name
+    container_name   = "${var.app_name}-web"
     container_port   = 3000
   }
 
   depends_on = [aws_lb_listener.app_http, aws_lb_listener.app_https, aws_route_table_association.private]
 
   tags = {
-    Name        = "${var.app_name}-service"
+    Name        = "${var.app_name}-web-service"
     Environment = var.environment
   }
 }
