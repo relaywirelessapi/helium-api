@@ -44,9 +44,11 @@ variable "devise_pepper" {
 variable "domain_name" {
   description = "The main domain name for the application (e.g., example.com)"
   type        = string
+  default     = "relay-helium-api.alessandro.codes"
 }
 
 variable "from_address" {
   description = "The email address to send emails from"
   type        = string
+  default     = "noreply@relay-helium-api.alessandro.codes"
 }
