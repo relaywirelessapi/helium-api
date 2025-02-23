@@ -2,6 +2,10 @@
 
 set -e
 
+# Initialize Terraform
+terraform -chdir=terraform/app init
+terraform -chdir=terraform/meta init
+
 # Get ECR repo URL and Git SHA
 ECR_REPO=$(terraform -chdir=terraform/app output -raw ecr_repository_url)
 GIT_SHA=$(git rev-parse --short HEAD)
