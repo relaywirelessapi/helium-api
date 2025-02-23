@@ -1,5 +1,5 @@
 resource "aws_ses_domain_identity" "main" {
-  domain = var.domain_name
+  domain = data.aws_ssm_parameter.domain_name.value
 }
 
 resource "aws_ses_domain_dkim" "main" {

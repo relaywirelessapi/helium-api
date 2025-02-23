@@ -22,6 +22,17 @@ data "aws_iam_policy_document" "deployment_policy" {
       "dynamodb:PutItem",
       "dynamodb:DeleteItem",
 
+      # SSM Parameter Store permissions
+      "ssm:GetParameter",
+      "ssm:GetParameters",
+      "ssm:PutParameter",
+      "ssm:DeleteParameter",
+      "ssm:DeleteParameters",
+      "ssm:DescribeParameters",
+      "ssm:GetParameterHistory",
+      "ssm:GetParametersByPath",
+      "ssm:LabelParameterVersion",
+
       # Infrastructure management
       "ecr:*",
       "ecs:*",
