@@ -7,9 +7,9 @@ terraform -chdir=terraform/app init
 terraform -chdir=terraform/meta init
 
 # Get ECR repo URL, Git SHA, and app name
+APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
 ECR_REPO=$(terraform -chdir=terraform/app output -raw ecr_repository_url)
 GIT_SHA=$(git rev-parse --short HEAD)
-APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
 
 # Set AWS credentials if not already set
 if [ -z "$AWS_ACCESS_KEY_ID" ]; then
@@ -46,12 +46,16 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   echo "Waiting for deployment to stabilize..."
   aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}
 
+  # Get VPC configuration
+  PRIVATE_SUBNET_IDS=$(terraform -chdir=terraform/app output -json private_subnet_ids | jq -c .)
+  APP_SECURITY_GROUP_ID=$(terraform -chdir=terraform/app output -raw app_security_group_id)
+
   # Run database migrations
   echo "Running database migrations..."
   TASK_ARN=$(aws ecs run-task \
     --cluster ${APP_NAME}-cluster \
     --task-definition ${APP_NAME} \
-    --network-configuration "awsvpcConfiguration={subnets=[subnet-01a4d566682afd809,subnet-0bf0f821b717607e1],securityGroups=[sg-0580e3b042a1384e1],assignPublicIp=DISABLED}" \
+    --network-configuration "awsvpcConfiguration={subnets=${PRIVATE_SUBNET_IDS},securityGroups=[\"${APP_SECURITY_GROUP_ID}\"],assignPublicIp=DISABLED}" \
     --launch-type FARGATE \
     --overrides '{"containerOverrides": [{"name": "'${APP_NAME}'", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
     --query 'tasks[0].taskArn' \
