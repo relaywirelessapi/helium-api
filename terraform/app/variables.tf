@@ -27,11 +27,17 @@ variable "image_tag" {
 variable "domain_name" {
   description = "The main domain name for the application"
   type        = string
-  default     = "relay-helium-api.alessandro.codes"
+  default     = "helium-api.relaywireless.com"
+}
+
+variable "email_domain" {
+  description = "The domain name to send emails from"
+  type        = string
+  default     = "relaywireless.com"
 }
 
 variable "from_address" {
   description = "The email address to send emails from"
   type        = string
-  default     = "noreply@relay-helium-api.alessandro.codes"
+  default     = "noreply@relaywireless.com"
 }
