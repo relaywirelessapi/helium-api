@@ -1,9 +1,5 @@
-data "aws_ssm_parameter" "domain_name" {
-  name = "/${var.app_name}/${var.environment}/domain_name"
-}
-
 resource "aws_acm_certificate" "main" {
-  domain_name       = data.aws_ssm_parameter.domain_name.value
+  domain_name       = aws_ssm_parameter.domain_name.value
   validation_method = "DNS"
 
   lifecycle {
