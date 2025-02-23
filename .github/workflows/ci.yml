@@ -73,8 +73,23 @@ jobs:
       - name: Run RSpec
         run: docker compose run --rm web bundle exec rspec
 
+  scan_terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Validate Meta Terraform
+        run: terraform -chdir=terraform/meta validate
+
+      - name: Validate App Terraform
+        run: terraform -chdir=terraform/app validate
+
   deploy:
-    needs: [scan_ruby, scan_js, lint, typecheck, test]
+    needs: [scan_ruby, scan_js, lint, typecheck, test, scan_terraform]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
