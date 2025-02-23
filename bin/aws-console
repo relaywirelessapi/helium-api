@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# Get app name from Terraform
+APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
+
 # Configuration
-CLUSTER_NAME="rails-app-cluster"
-SERVICE_NAME="rails-app"
-CONTAINER_NAME="rails-app"  # Assuming container name matches service name
+CLUSTER_NAME="${APP_NAME}-cluster"
+SERVICE_NAME="${APP_NAME}-web"
+CONTAINER_NAME="${APP_NAME}-web"
 
 # Colors for output
 GREEN='\033[0;32m'
