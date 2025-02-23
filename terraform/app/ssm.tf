@@ -36,15 +36,15 @@ resource "aws_ssm_parameter" "from_address" {
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32
-  special = true
+  special = false
 }
 
 resource "random_password" "secret_key_base" {
   length  = 64
-  special = true
+  special = false
 }
 
 resource "random_password" "devise_pepper" {
   length  = 32
-  special = true
+  special = false
 }
