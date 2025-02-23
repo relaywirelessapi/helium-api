@@ -72,3 +72,33 @@ jobs:
 
       - name: Run RSpec
         run: docker compose run --rm web bundle exec rspec
+
+  deploy:
+    needs: [scan_ruby, scan_js, lint, typecheck, test]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_aws_region: us-east-1
+      TF_VAR_app_name: rails-app
+      TF_VAR_environment: production
+      TF_VAR_domain_name: relay-helium-api.alessandro.codes
+      TF_VAR_from_address: noreply@relay-helium-api.alessandro.codes
+      TF_VAR_db_password: ${{ secrets.TF_VAR_DB_PASSWORD }}
+      TF_VAR_secret_key_base: ${{ secrets.TF_VAR_SECRET_KEY_BASE }}
+      TF_VAR_devise_pepper: ${{ secrets.TF_VAR_DEVISE_PEPPER }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Deploy to ECS
+        run: bin/deploy
