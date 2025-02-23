@@ -17,7 +17,7 @@ resource "aws_db_instance" "postgres" {
 
   db_name  = "rails_production"
   username = "postgres"
-  password = var.db_password
+  password = aws_ssm_parameter.db_password.value
 
   vpc_security_group_ids = [aws_security_group.db.id]
   db_subnet_group_name   = aws_db_subnet_group.main.name

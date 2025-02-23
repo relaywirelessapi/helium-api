@@ -20,7 +20,7 @@ locals {
     },
     {
       name  = "DATABASE_URL"
-      value = "postgres://${aws_db_instance.postgres.username}:${aws_db_instance.postgres.password}@${aws_db_instance.postgres.endpoint}/${aws_db_instance.postgres.db_name}"
+      value = "postgres://postgres:${aws_ssm_parameter.db_password.value}@${aws_db_instance.postgres.endpoint}/${aws_db_instance.postgres.db_name}"
     },
     {
       name  = "REDIS_URL"
@@ -28,15 +28,15 @@ locals {
     },
     {
       name  = "SECRET_KEY_BASE"
-      value = var.secret_key_base
+      value = aws_ssm_parameter.secret_key_base.value
     },
     {
       name  = "DEVISE_PEPPER"
-      value = var.devise_pepper
+      value = aws_ssm_parameter.devise_pepper.value
     },
     {
       name  = "DOMAIN_NAME"
-      value = var.domain_name
+      value = aws_ssm_parameter.domain_name.value
     },
     {
       name  = "SMTP_USERNAME"
@@ -56,7 +56,7 @@ locals {
     },
     {
       name  = "FROM_ADDRESS"
-      value = var.from_address
+      value = aws_ssm_parameter.from_address.value
     }
   ]
 }

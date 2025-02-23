@@ -13,42 +13,8 @@ variable "environment" {
   default     = "production"
 }
 
-variable "vpc_cidr" {
-  description = "VPC CIDR block"
-  default     = "10.0.0.0/16"
-}
-
-variable "db_password" {
-  description = "RDS master password"
-  sensitive   = true
-}
-
 variable "image_tag" {
   description = "Docker image tag to deploy"
   type        = string
   default     = "latest"
-}
-
-variable "secret_key_base" {
-  description = "Secret key base"
-  type        = string
-  sensitive   = true
-}
-
-variable "devise_pepper" {
-  description = "Devise pepper"
-  type        = string
-  sensitive   = true
-}
-
-variable "domain_name" {
-  description = "The main domain name for the application (e.g., example.com)"
-  type        = string
-  default     = "relay-helium-api.alessandro.codes"
-}
-
-variable "from_address" {
-  description = "The email address to send emails from"
-  type        = string
-  default     = "noreply@relay-helium-api.alessandro.codes"
 }
