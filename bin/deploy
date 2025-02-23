@@ -44,7 +44,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
 
   # Wait for deployment to stabilize
   echo "Waiting for deployment to stabilize..."
-  aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}
+  aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}-web
 
   # Get VPC configuration
   PRIVATE_SUBNET_IDS=$(terraform -chdir=terraform/app output -json private_subnet_ids | jq -c .)
