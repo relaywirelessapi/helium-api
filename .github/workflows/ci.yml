@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  scan_ruby:
+  lint-ruby:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,7 +18,13 @@ jobs:
       - name: Run Brakeman
         run: docker compose run --rm --no-deps web bin/brakeman --no-pager
 
-  scan_js:
+      - name: Run Rubocop
+        run: docker compose run --rm --no-deps web bin/rubocop -f github
+
+      - name: Run Sorbet
+        run: docker compose run --rm --no-deps web bundle exec spoom srb tc
+
+  lint-js:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -30,31 +36,7 @@ jobs:
       - name: Audit JS dependencies
         run: docker compose run --rm --no-deps web bin/importmap audit
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Copy environment file
-        run: cp .env.ci .env
-
-      - name: Run Rubocop
-        run: docker compose run --rm --no-deps web bin/rubocop -f github
-
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Copy environment file
-        run: cp .env.ci .env
-
-      - name: Run Sorbet
-        run: docker compose run --rm --no-deps web bundle exec spoom srb tc
-
-  test:
+  test-ruby:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -73,7 +55,7 @@ jobs:
       - name: Run RSpec
         run: docker compose run --rm web bundle exec rspec
 
-  scan_terraform:
+  lint-terraform:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -93,7 +75,7 @@ jobs:
           terraform -chdir=terraform/app validate
 
   deploy:
-    needs: [scan_ruby, scan_js, lint, typecheck, test, scan_terraform]
+    needs: [lint-ruby, lint-js, lint-terraform, test-ruby]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
