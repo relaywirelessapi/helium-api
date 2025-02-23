@@ -47,7 +47,24 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   echo "Waiting for migration task to complete..."
   aws ecs wait tasks-stopped --cluster rails-app-cluster --tasks $TASK_ARN
 
-  # Print the task ARN
+  # Get the task ID from the ARN
+  TASK_ID=$(echo $TASK_ARN | cut -d'/' -f3)
+
+  # Fetch and display the CloudWatch logs
+  echo "Migration logs:"
+  aws logs get-log-events \
+    --log-group-name "/ecs/rails-app" \
+    --log-stream-name "rails-app/${TASK_ID}" \
+    --query 'events[*].message' \
+    --output text
+
+  # Check if the migration task failed
+  TASK_STATUS=$(aws ecs describe-tasks --cluster rails-app-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
+  if [ "$TASK_STATUS" != "0" ]; then
+    echo "Migration task failed with exit code $TASK_STATUS"
+    exit 1
+  fi
+
   echo "Migration task ARN: $TASK_ARN"
 
   echo "Deployment and migrations complete"
