@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "app_name" {
   description = "Application name"
-  default     = "rails-app"
+  default     = "relay-helium-api"
 }
 
 variable "environment" {

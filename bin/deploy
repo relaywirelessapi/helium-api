@@ -3,8 +3,17 @@
 set -e
 
 # Get ECR repo URL and Git SHA
-ECR_REPO=$(terraform -chdir=terraform output -raw ecr_repository_url)
+ECR_REPO=$(terraform -chdir=terraform/app output -raw ecr_repository_url)
 GIT_SHA=$(git rev-parse --short HEAD)
+
+# Set AWS credentials if not already set
+if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+  export AWS_ACCESS_KEY_ID=$(terraform -chdir=terraform/meta output -raw deployer_access_key_id)
+fi
+
+if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+  export AWS_SECRET_ACCESS_KEY=$(terraform -chdir=terraform/meta output -raw deployer_secret_access_key) 
+fi
 
 # Check if image with Git SHA already exists in ECR
 if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2) --image-ids imageTag=${GIT_SHA} >/dev/null 2>&1; then
@@ -26,7 +35,7 @@ CURRENT_TAG=$(aws ecs describe-services --cluster rails-app-cluster --services r
 # Only deploy if the image tag has changed
 if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   echo "Deploying new image tag ${GIT_SHA}"
-  terraform -chdir=terraform apply -var="image_tag=${GIT_SHA}" -auto-approve
+  terraform -chdir=terraform/app apply -var="image_tag=${GIT_SHA}" -auto-approve
 
   # Wait for deployment to stabilize
   echo "Waiting for deployment to stabilize..."
@@ -47,16 +56,8 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   echo "Waiting for migration task to complete..."
   aws ecs wait tasks-stopped --cluster rails-app-cluster --tasks $TASK_ARN
 
-  # Get the task ID from the ARN
-  TASK_ID=$(echo $TASK_ARN | cut -d'/' -f3)
-
-  # Fetch and display the CloudWatch logs
-  echo "Migration logs:"
-  aws logs get-log-events \
-    --log-group-name "/ecs/rails-app" \
-    --log-stream-name "rails-app/${TASK_ID}" \
-    --query 'events[*].message' \
-    --output text
+  # Print the task ARN
+  echo "Migration task ARN: $TASK_ARN"
 
   # Check if the migration task failed
   TASK_STATUS=$(aws ecs describe-tasks --cluster rails-app-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
