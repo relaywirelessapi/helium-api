@@ -67,12 +67,20 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   TASK_STATUS=$(aws ecs describe-tasks --cluster rails-app-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
   if [ "$TASK_STATUS" != "0" ]; then
     echo "Migration task failed with exit code $TASK_STATUS"
+    echo "Rolling back to previous image tag ${CURRENT_TAG}"
+    
+    # Roll back to previous image tag
+    terraform -chdir=terraform/app apply -var="image_tag=${CURRENT_TAG}" -auto-approve
+    
+    # Wait for rollback to stabilize
+    echo "Waiting for rollback to stabilize..."
+    aws ecs wait services-stable --cluster rails-app-cluster --services rails-app
+    
+    echo "Rollback complete"
     exit 1
   fi
 
-  echo "Migration task ARN: $TASK_ARN"
-
-  echo "Deployment and migrations complete"
+  echo "Deployment and migrations complete!"
 else
   echo "Current deployment already using image tag ${GIT_SHA}, skipping deploy"
 fi
