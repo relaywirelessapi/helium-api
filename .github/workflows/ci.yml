@@ -55,7 +55,7 @@ jobs:
       - name: Run RSpec
         run: docker compose run --rm web bundle exec rspec
 
-  lint-terraform:
+  lint-tf:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -75,7 +75,7 @@ jobs:
           terraform -chdir=terraform/app validate
 
   deploy:
-    needs: [lint-ruby, lint-js, lint-terraform, test-ruby]
+    needs: [lint-ruby, lint-js, lint-tf, test-ruby]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     concurrency:
