@@ -57,6 +57,18 @@ locals {
     {
       name  = "FROM_ADDRESS"
       value = aws_ssm_parameter.from_address.value
+    },
+    {
+      name  = "HELIUM_ORACLES_AWS_REGION"
+      value = aws_ssm_parameter.helium_oracles_aws_region.value
+    },
+    {
+      name  = "HELIUM_ORACLES_AWS_ACCESS_KEY_ID"
+      value = aws_ssm_parameter.helium_oracles_aws_access_key_id.value
+    },
+    {
+      name  = "HELIUM_ORACLES_AWS_SECRET_ACCESS_KEY"
+      value = aws_ssm_parameter.helium_oracles_aws_secret_access_key.value
     }
   ]
 }

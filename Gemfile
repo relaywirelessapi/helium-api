@@ -10,6 +10,7 @@ gem "thruster", require: false
 
 # ActiveRecord
 gem "pg", "~> 1.1"
+gem "activerecord-import"
 
 # ActiveJob
 gem "sidekiq"
@@ -39,6 +40,16 @@ gem "tapioca", require: false, group: :development # For generating RBI files
 gem "graphql"
 gem "graphiql-rails", group: :development
 
+# AWS
+gem "aws-sdk-s3"
+
+# OpenStruct
+gem "ostruct"
+
+# L2 Helium data
+gem "google-protobuf"
+gem "zlib"
+
 group :development, :test do
   # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
@@ -49,10 +60,11 @@ group :development, :test do
   gem "rubocop-sorbet", require: false
   gem "rubocop-rails-omakase", require: false
 
-  # Tesing
+  # Testing
   gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
   gem "factory_bot_rails"
   gem "faker"
+  gem "rspec-sorbet"
 end

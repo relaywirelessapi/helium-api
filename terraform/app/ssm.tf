@@ -33,6 +33,38 @@ resource "aws_ssm_parameter" "from_address" {
   value       = var.from_address
 }
 
+resource "aws_ssm_parameter" "helium_oracles_aws_access_key_id" {
+  name        = "/${var.app_name}/${var.environment}/helium-oracles-aws-access-key-id"
+  description = "Helium Oracle AWS Access Key ID"
+  type        = "SecureString"
+  value       = aws_iam_access_key.helium_oracles.id
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
+resource "aws_ssm_parameter" "helium_oracles_aws_secret_access_key" {
+  name        = "/${var.app_name}/${var.environment}/helium-oracles-aws-secret-access-key"
+  description = "Helium Oracle AWS Secret Access Key"
+  type        = "SecureString"
+  value       = aws_iam_access_key.helium_oracles.secret
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
+resource "aws_ssm_parameter" "helium_oracles_aws_region" {
+  name        = "/${var.app_name}/${var.environment}/helium-oracles-aws-region"
+  description = "Helium Oracles AWS Region"
+  type        = "String"
+  value       = var.helium_oracles_aws_region
+
+  tags = {
+    Environment = var.environment
+  }
+}
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32

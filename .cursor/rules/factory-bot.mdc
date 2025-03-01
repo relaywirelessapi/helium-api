@@ -1,0 +1,36 @@
+---
+description: Guidelines for using Factory Bot in RSpec tests
+globs: *.rb
+alwaysApply: false
+---
+
+# Factory Bot Usage Pattern
+
+When using Factory Bot in RSpec tests, follow these guidelines:
+
+## Guidelines
+
+1. Use `build_stubbed` when possible to avoid database hits and speed up tests
+2. Use `create` only when you need to persist the object to the database
+3. Use `build` when you need an unpersisted instance that might be saved later
+4. Use traits to create variations of your factories
+5. Use factory attributes directly in tests when needed (e.g., `user.api_key`)
+6. Use `let` to define factory objects that are used in multiple tests within a context
+
+## Examples
+
+```ruby
+# Using build_stubbed for faster tests
+user = build_stubbed(:user)
+expect(user).to be_valid
+
+# Using let for shared factory objects
+let(:user) { create(:user) }
+
+# Using create when persistence is needed
+user = create(:user)
+expect(user.reload.api_key).to be_present
+
+# Using factories with traits
+admin_user = create(:user, :admin)
+```

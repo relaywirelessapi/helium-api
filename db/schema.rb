@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_16_111958) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_180750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "helium_l2_files", force: :cascade do |t|
+    t.string "definition_id", null: false
+    t.string "s3_key", null: false
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.bigint "position", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["s3_key"], name: "index_helium_l2_files_on_s3_key", unique: true
+  end
+
+  create_table "helium_l2_iot_reward_shares", id: false, force: :cascade do |t|
+    t.string "reward_type"
+    t.datetime "start_period"
+    t.datetime "end_period"
+    t.string "hotspot_key"
+    t.bigint "beacon_amount"
+    t.bigint "witness_amount"
+    t.bigint "dc_transfer_amount"
+    t.bigint "amount"
+    t.string "unallocated_reward_type"
+    t.string "deduplication_key", null: false
+    t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

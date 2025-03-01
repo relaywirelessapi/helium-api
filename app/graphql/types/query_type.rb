@@ -41,5 +41,12 @@ module Types
     def status
       "ok"
     end
+
+    field :iot_reward_shares, Types::IotRewardShareType.connection_type, null: false
+
+    sig { returns(ActiveRecord::Relation) }
+    def iot_reward_shares
+      Relay::Helium::L2::IotRewardShare.all.order(start_period: :desc)
+    end
   end
 end

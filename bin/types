@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "Generating type definitions..."
+bundle exec tapioca gem
+bundle exec tapioca annotation
+bundle exec tapioca dsl
+
+echo "Running type checker..."
+bundle exec spoom srb tc

@@ -1,0 +1,56 @@
+---
+description: Guidelines for creating and using private helper methods in RSpec tests
+globs: *.rb
+alwaysApply: false
+---
+
+# Test Helper Methods Pattern
+
+When writing complex RSpec tests, use private helper methods to improve readability and reusability:
+
+## Guidelines
+
+1. Define helper methods in the `private` section of your test file
+2. Create specific helper methods for building test objects, stubs, and doubles
+3. Use descriptive method names that clearly indicate what the helper does
+4. Use keyword arguments for better readability and flexibility
+5. Provide default values for arguments when appropriate
+6. Chain helper methods to build complex test scenarios
+
+## Examples
+
+```ruby
+RSpec.describe MyClass do
+  describe "#some_method" do
+    it "does something" do
+      definition = stub_definition(id: "custom-id")
+      client = stub_client(definition: definition)
+
+      instance = build_instance(client: client)
+      result = instance.some_method(definition)
+
+      expect(result).to be_success
+    end
+  end
+
+  private
+
+  def build_instance(client:)
+    described_class.new(client: client)
+  end
+
+  def stub_client(definition: nil, options: [])
+    client = instance_double(Client)
+
+    if definition
+      allow(client).to receive(:process).with(definition).and_return(options)
+    end
+
+    client
+  end
+
+  def stub_definition(id: "default-id", name: "default-name")
+    instance_double(Definition, id: id, name: name)
+  end
+end
+```
