@@ -78,10 +78,9 @@ jobs:
     needs: [lint-ruby, lint-js, lint-terraform, test-ruby]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    env:
-      TF_VAR_db_password: ${{ secrets.TF_VAR_DB_PASSWORD }}
-      TF_VAR_secret_key_base: ${{ secrets.TF_VAR_SECRET_KEY_BASE }}
-      TF_VAR_devise_pepper: ${{ secrets.TF_VAR_DEVISE_PEPPER }}
+    concurrency:
+      group: production_deploy
+      cancel-in-progress: false
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
