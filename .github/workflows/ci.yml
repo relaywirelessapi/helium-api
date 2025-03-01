@@ -5,9 +5,17 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint-ruby:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        linter: [brakeman, rubocop, sorbet]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,14 +23,15 @@ jobs:
       - name: Copy environment file
         run: cp .env.ci .env
 
-      - name: Run Brakeman
-        run: docker compose run --rm --no-deps web bin/brakeman --no-pager
-
-      - name: Run Rubocop
-        run: docker compose run --rm --no-deps web bin/rubocop -f github
-
-      - name: Run Sorbet
-        run: docker compose run --rm --no-deps web bundle exec spoom srb tc
+      - name: Run ${{ matrix.linter }}
+        run: |
+          if [ "${{ matrix.linter }}" = "brakeman" ]; then
+            docker compose run --rm --no-deps web bin/brakeman --no-pager
+          elif [ "${{ matrix.linter }}" = "rubocop" ]; then
+            docker compose run --rm --no-deps web bin/rubocop -f github
+          elif [ "${{ matrix.linter }}" = "sorbet" ]; then
+            docker compose run --rm --no-deps web bundle exec spoom srb tc
+          fi
 
   lint-js:
     runs-on: ubuntu-latest
@@ -64,6 +73,16 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Cache Terraform
+        uses: actions/cache@v3
+        with:
+          path: |
+            terraform/meta/.terraform
+            terraform/app/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
+
       - name: Validate Meta Terraform
         run: |
           terraform -chdir=terraform/meta init -backend=false
@@ -94,6 +113,16 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: Cache Terraform
+        uses: actions/cache@v3
+        with:
+          path: |
+            terraform/meta/.terraform
+            terraform/app/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
 
       - name: Deploy to ECS
         run: bin/deploy
