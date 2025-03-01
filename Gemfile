@@ -14,6 +14,7 @@ gem "pg", "~> 1.1"
 # ActiveJob
 gem "sidekiq"
 gem "redis", group: :production
+gem "clockwork", require: false
 
 # Frontend
 gem "propshaft"

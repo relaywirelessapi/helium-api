@@ -2,9 +2,10 @@
 
 set -e
 
-# Initialize Terraform
-terraform -chdir=terraform/app init
-terraform -chdir=terraform/meta init
+# Initialize Terraform in parallel
+(terraform -chdir=terraform/app init) &
+(terraform -chdir=terraform/meta init) &
+wait
 
 # Get ECR repo URL, Git SHA, and app name
 APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
@@ -27,9 +28,8 @@ if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2)
 
   # Build and push only if image doesn't exist
   echo "Building and pushing new image ${ECR_REPO}:${GIT_SHA}"
-  docker build --platform linux/amd64 -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest .
-  docker push ${ECR_REPO}:${GIT_SHA}
-  docker push ${ECR_REPO}:latest
+  # Use buildx for faster multi-platform builds
+  docker buildx build --platform linux/amd64 --push -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest .
 else
   echo "Image ${ECR_REPO}:${GIT_SHA} already exists, skipping build and push"
 fi

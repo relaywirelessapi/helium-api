@@ -162,6 +162,53 @@ resource "aws_ecs_task_definition" "sidekiq" {
   }
 }
 
+resource "aws_ecs_task_definition" "clockwork" {
+  family                   = "${var.app_name}-clockwork"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = 256
+  memory                   = 512
+  execution_role_arn       = aws_iam_role.ecs_execution.arn
+  task_role_arn            = aws_iam_role.ecs_task.arn
+
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+
+  container_definitions = jsonencode([
+    {
+      name    = "${var.app_name}-clockwork"
+      image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
+      command = ["bundle", "exec", "clockwork", "clock.rb"]
+
+      environment = local.container_environment
+
+      healthCheck = {
+        command     = ["CMD-SHELL", "ps aux | grep '[c]lockwork' || exit 1"]
+        interval    = 30
+        timeout     = 5
+        retries     = 3
+        startPeriod = 60
+      }
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.app.name
+          awslogs-region        = var.aws_region
+          awslogs-stream-prefix = "${var.app_name}-clockwork"
+        }
+      }
+    }
+  ])
+
+  tags = {
+    Name        = "${var.app_name}-clockwork-task-definition"
+    Environment = var.environment
+  }
+}
+
 resource "aws_ecs_service" "web" {
   name                   = "${var.app_name}-web"
   cluster                = aws_ecs_cluster.main.id
@@ -215,6 +262,29 @@ resource "aws_ecs_service" "sidekiq" {
 
   tags = {
     Name        = "${var.app_name}-sidekiq-service"
+    Environment = var.environment
+  }
+}
+
+resource "aws_ecs_service" "clockwork" {
+  name                   = "${var.app_name}-clockwork"
+  cluster                = aws_ecs_cluster.main.id
+  task_definition        = aws_ecs_task_definition.clockwork.arn
+  desired_count          = 1
+  launch_type            = "FARGATE"
+  force_new_deployment   = true
+  enable_execute_command = true
+
+  network_configuration {
+    subnets          = aws_subnet.private[*].id
+    security_groups  = [aws_security_group.app.id]
+    assign_public_ip = false
+  }
+
+  depends_on = [aws_route_table_association.private]
+
+  tags = {
+    Name        = "${var.app_name}-clockwork-service"
     Environment = var.environment
   }
 }
