@@ -3,37 +3,9 @@ data "aws_iam_policy_document" "deployment_policy" {
   statement {
     effect = "Allow"
     actions = [
-      # IAM permissions for task execution
-      "iam:PassRole",
-      "iam:GetRole",
-      "iam:GetUser",
-      "iam:ListRolePolicies",
-      "iam:GetUserPolicy",
-      "iam:ListAccessKeys",
-      "iam:GetRolePolicy",
-      "iam:PutRolePolicy",
-      "iam:DeleteRolePolicy",
-      "iam:ListAttachedRolePolicies",
-      "iam:AttachRolePolicy",
-      "iam:DetachRolePolicy",
-
-      # DynamoDB permissions for Terraform state locking
-      "dynamodb:GetItem",
-      "dynamodb:PutItem",
-      "dynamodb:DeleteItem",
-
-      # SSM Parameter Store permissions
-      "ssm:GetParameter",
-      "ssm:GetParameters",
-      "ssm:PutParameter",
-      "ssm:DeleteParameter",
-      "ssm:DeleteParameters",
-      "ssm:DescribeParameters",
-      "ssm:GetParameterHistory",
-      "ssm:GetParametersByPath",
-      "ssm:LabelParameterVersion",
-
-      # Infrastructure management
+      "dynamodb:*",
+      "iam:*",
+      "ssm:*",
       "ecr:*",
       "ecs:*",
       "ec2:*",
