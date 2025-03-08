@@ -57,7 +57,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
     --task-definition ${APP_NAME}-web \
     --network-configuration "awsvpcConfiguration={subnets=${PRIVATE_SUBNET_IDS},securityGroups=[\"${APP_SECURITY_GROUP_ID}\"],assignPublicIp=DISABLED}" \
     --launch-type FARGATE \
-    --overrides '{"containerOverrides": [{"name": "'${APP_NAME}'", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
+    --overrides '{"containerOverrides": [{"name": "'${APP_NAME}-web'", "command": ["bundle", "exec", "rails", "db:migrate"]}]}' \
     --query 'tasks[0].taskArn' \
     --output text)
 
