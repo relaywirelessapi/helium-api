@@ -59,7 +59,10 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
     end
 
     instance_double(Relay::Helium::L2::FileDecoder).tap do |decoder|
-      allow(decoder).to receive(:messages_in).and_return(decoder_results)
+      allow(decoder).to receive(:messages_in).with(
+        an_instance_of(Pathname),
+        start_position: 0
+      ).and_return(decoder_results)
     end
   end
 
@@ -72,9 +75,7 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
   end
 
   def stub_file(definition:)
-    instance_spy(Relay::Helium::L2::File).tap do |f|
-      allow(f).to receive(:definition).and_return(definition)
-    end
+    instance_spy(Relay::Helium::L2::File, definition: definition, position: 0)
   end
 
   def stub_file_definition(deserializer:)

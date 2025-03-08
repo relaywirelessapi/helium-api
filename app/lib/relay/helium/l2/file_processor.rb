@@ -22,31 +22,31 @@ module Relay
           @batch_size = T.let(batch_size, Integer)
         end
 
-        sig { params(oracle_file: File).void }
-        def process(oracle_file)
-          oracle_file.update!(started_at: Time.current)
+        sig { params(file: File).void }
+        def process(file)
+          file.update!(started_at: Time.current)
 
           file_path = Rails.root.join("tmp/helium-l2-file-#{SecureRandom.uuid}.gz")
 
           file_client.get_object(
-            bucket: T.must(oracle_file.definition).bucket,
-            key: oracle_file.s3_key,
+            bucket: T.must(file.definition).bucket,
+            key: file.s3_key,
             response_target: file_path
           )
 
-          deserializer = T.must(oracle_file.definition).deserializer
+          deserializer = T.must(file.definition).deserializer
 
-          file_decoder.messages_in(file_path).each_slice(batch_size) do |decoder_results|
+          file_decoder.messages_in(file_path, start_position: file.position).each_slice(batch_size) do |decoder_results|
             records = decoder_results.map do |decoder_result|
               deserializer.deserialize(decoder_result.message)
             end
             deserializer.import(records)
 
             new_position = T.must(decoder_results.last).position
-            oracle_file.update!(position: new_position)
+            file.update!(position: new_position)
           end
 
-          oracle_file.update!(completed_at: Time.current)
+          file.update!(completed_at: Time.current)
         end
       end
     end
