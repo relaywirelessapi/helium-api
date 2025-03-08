@@ -1,0 +1,42 @@
+---
+description: Guidelines for testing GraphQL endpoints
+globs: *.rb
+alwaysApply: false
+---
+
+# GraphQL Testing Pattern
+
+When writing tests for GraphQL endpoints, follow these guidelines:
+
+## Guidelines
+
+1. Use heredoc syntax (`<<~GRAPHQL`) for query definitions to improve readability
+2. Test authentication scenarios (valid API key, invalid API key, no API key)
+3. Test variable handling in GraphQL queries
+4. Use helper methods like `execute_graphql_query` to standardize query execution
+5. Use `parsed_response` to access the JSON response data
+6. Check both data and error responses as appropriate
+
+## Examples
+
+```ruby
+# Define GraphQL query using heredoc
+query = <<~GRAPHQL
+  query {
+    status
+  }
+GRAPHQL
+
+# Execute query with authentication
+execute_graphql_query(query, api_key: user.api_key)
+
+# Check successful response
+expect(parsed_response["data"]["status"]).to eq("ok")
+
+# Check error response
+expect(parsed_response["errors"]).to include(hash_including("message" => "Not authenticated"))
+expect(response).to have_http_status(:unauthorized)
+
+# Test with variables
+execute_graphql_query(query, api_key: user.api_key, variables: { message: "Hello!" })
+```

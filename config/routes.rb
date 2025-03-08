@@ -1,5 +1,7 @@
 # typed: strict
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
@@ -17,7 +19,9 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, class_name: "Relay::User", controllers: { registrations: "users/registrations" }
+
+  mount Sidekiq::Web => "/sidekiq"
 
   # Defines the root path route ("/")
   root "dashboard#show"

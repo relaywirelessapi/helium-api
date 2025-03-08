@@ -1,0 +1,56 @@
+---
+description: Guidelines for using dependency injection in Ruby classes and testing them
+globs: *.rb
+alwaysApply: false
+---
+
+# Dependency Injection Pattern
+
+When designing classes and testing them, use dependency injection to improve testability:
+
+## Guidelines
+
+1. Design classes to accept their dependencies as constructor parameters
+2. Use keyword arguments for dependencies to make them explicit and self-documenting
+3. In tests, inject mock objects or test doubles as dependencies
+4. Create helper methods to build instances with common test dependencies
+5. Use default parameter values in production code for common dependencies
+6. Avoid global state and direct instantiation of collaborators within methods
+
+## Examples
+
+```ruby
+# Class with dependency injection
+class MyService
+  def initialize(client:, logger: Rails.logger)
+    @client = client
+    @logger = logger
+  end
+
+  def process(item)
+    @logger.info("Processing item: #{item.id}")
+    @client.send(item)
+  end
+end
+
+# In tests
+RSpec.describe MyService do
+  describe "#process" do
+    it "sends the item using the client" do
+      client = instance_double(Client)
+      logger = instance_double(Logger, info: nil)
+
+      service = described_class.new(client: client, logger: logger)
+
+      expect(client).to receive(:send).with(item)
+      service.process(item)
+    end
+  end
+
+  private
+
+  def build_service(client: stub_client, logger: stub_logger)
+    described_class.new(client: client, logger: logger)
+  end
+end
+```

@@ -41,3 +41,13 @@ variable "from_address" {
   type        = string
   default     = "noreply@relaywireless.com"
 }
+
+variable "helium_oracles_aws_region" {
+  description = "AWS region"
+  default     = "us-east-1"
+}
+
+variable "helium_oracles_aws_access_key_id" {
+  description = "AWS access key id"
+  default     = "us-east-1"
+}

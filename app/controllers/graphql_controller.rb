@@ -30,7 +30,7 @@ class GraphqlController < ApplicationController
     @current_api_user ||= begin
       api_key = request.headers["Authorization"]&.split(" ")&.last
       return nil if api_key.blank?
-      User.find_by(api_key: api_key)
+      Relay::User.find_by(api_key: api_key)
     end
   end
 

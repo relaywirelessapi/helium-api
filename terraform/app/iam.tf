@@ -38,7 +38,10 @@ resource "aws_iam_role_policy" "ecs_execution_ssm" {
           aws_ssm_parameter.secret_key_base.arn,
           aws_ssm_parameter.devise_pepper.arn,
           aws_ssm_parameter.domain_name.arn,
-          aws_ssm_parameter.from_address.arn
+          aws_ssm_parameter.from_address.arn,
+          aws_ssm_parameter.helium_oracles_aws_access_key_id.arn,
+          aws_ssm_parameter.helium_oracles_aws_secret_access_key.arn,
+          aws_ssm_parameter.helium_oracles_aws_region.arn
         ]
       }
     ]
@@ -102,4 +105,47 @@ resource "aws_iam_role_policy" "ecs_task_exec" {
       }
     ]
   })
+}
+
+# IAM user for Helium Oracles S3 access
+resource "aws_iam_user" "helium_oracles" {
+  name = "${var.app_name}-helium-oracles-user"
+
+  tags = {
+    Name        = "${var.app_name}-helium-oracles-user"
+    Environment = var.environment
+  }
+}
+
+# Access key for the Helium Oracle IAM user
+resource "aws_iam_access_key" "helium_oracles" {
+  user = aws_iam_user.helium_oracles.name
+}
+
+# IAM policy for Helium Oracle S3 access
+resource "aws_iam_policy" "helium_oracles_s3" {
+  name        = "${var.app_name}-helium-oracles-s3-policy"
+  description = "Policy for accessing Helium Oracles S3 bucket"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:*",
+        ]
+        Resource = [
+          "arn:aws:s3:::foundation-poc-data-requester-pays",
+          "arn:aws:s3:::foundation-poc-data-requester-pays/*"
+        ]
+      }
+    ]
+  })
+}
+
+# Attach the policy to the user
+resource "aws_iam_user_policy_attachment" "helium_oracles_s3" {
+  user       = aws_iam_user.helium_oracles.name
+  policy_arn = aws_iam_policy.helium_oracles_s3.arn
 }

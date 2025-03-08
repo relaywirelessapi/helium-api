@@ -6,4 +6,5 @@
 
 module Sidekiq::Process; end
 module Sidekiq::SortedEntry; end
+module Sidekiq::Web; end
 module T::Private::Methods::Signature; end

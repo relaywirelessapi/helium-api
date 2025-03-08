@@ -41,14 +41,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: bash -c "rm -f tmp/pids/server.pid && ./bin/dev"
+    command: bin/rails server -b 0.0.0.0
     volumes:
       - .:/app
     ports:
       - "3000:3000"
-      - "3010:3010"
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/app_development
+      DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
       - .env
@@ -59,8 +58,29 @@ services:
         condition: service_healthy
       chrome:
         condition: service_healthy
+      css:
+        condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:3000/" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    tty: true
+
+  css:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bin/rails tailwindcss:watch
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432
+      REDIS_URL: redis://redis:6379/1
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "ps aux | grep '[t]ailwindcss:watch' || exit 1" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -97,7 +117,7 @@ services:
     volumes:
       - .:/app
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/app_development
+      DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
       - .env
