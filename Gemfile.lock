@@ -209,10 +209,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.2-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.2-arm-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.2-arm-linux-musl)
-      racc (~> 1.4)
     nokogiri (1.18.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.2-x86_64-darwin)
@@ -373,8 +369,8 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    sorbet (0.5.11812)
-      sorbet-static (= 0.5.11812)
+    sorbet (0.5.11930)
+      sorbet-static (= 0.5.11930)
     sorbet-coerce (0.7.0)
       polyfill (~> 1.8)
       safe_type (~> 1.1, >= 1.1.1)
@@ -385,14 +381,14 @@ GEM
       parser (>= 2.7)
       sorbet-coerce (>= 0.2.6)
       sorbet-runtime (>= 0.5.9892)
-    sorbet-runtime (0.5.11812)
-    sorbet-static (0.5.11812-aarch64-linux)
-    sorbet-static (0.5.11812-universal-darwin)
-    sorbet-static (0.5.11812-x86_64-linux)
-    sorbet-static-and-runtime (0.5.11812)
-      sorbet (= 0.5.11812)
-      sorbet-runtime (= 0.5.11812)
-    spoom (1.5.3)
+    sorbet-runtime (0.5.11930)
+    sorbet-static (0.5.11930-aarch64-linux)
+    sorbet-static (0.5.11930-universal-darwin)
+    sorbet-static (0.5.11930-x86_64-linux)
+    sorbet-static-and-runtime (0.5.11930)
+      sorbet (= 0.5.11930)
+      sorbet-runtime (= 0.5.11930)
+    spoom (1.6.0)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
       rbi (>= 0.2.3)
@@ -462,8 +458,6 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
   arm64-darwin
   x86_64-darwin
   x86_64-linux
