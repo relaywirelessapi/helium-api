@@ -98,23 +98,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
       - name: Cache Terraform
         uses: actions/cache@v3
         with:
-          path: |
-            api/terraform/meta/.terraform
-            api/terraform/app/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('api/terraform/**/*.tf') }}
+          path: api/tf/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 
