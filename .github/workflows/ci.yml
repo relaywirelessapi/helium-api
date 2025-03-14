@@ -89,7 +89,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Cache Terraform
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             api/tf/.terraform
@@ -117,7 +117,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Cache Terraform
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: api/tf/.terraform
           key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
