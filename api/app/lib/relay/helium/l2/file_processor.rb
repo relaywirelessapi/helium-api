@@ -40,7 +40,7 @@ module Relay
             records = decoder_results.map do |decoder_result|
               deserializer.deserialize(decoder_result.message)
             end
-            deserializer.import(records)
+            deserializer.import(records) unless Rails.env.development?
 
             new_position = T.must(decoder_results.last).position
             file.update!(position: new_position)
