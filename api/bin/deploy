@@ -4,27 +4,15 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 API_ROOT="$(cd "$SCRIPT_DIR/../" && pwd)"
-TERRAFORM_ROOT="$(cd "$API_ROOT/terraform" && pwd)"
+TF_ROOT="$(cd "$API_ROOT/tf/" && pwd)"
 
-# Initialize Terraform in parallel
-(terraform -chdir=$TERRAFORM_ROOT/app init) &
-(terraform -chdir=$TERRAFORM_ROOT/meta init) &
-wait
+# Initialize Terraform
+(terraform -chdir=$TF_ROOT init)
 
 # Get ECR repo URL, Git SHA, and app name
-
-APP_NAME=$(terraform -chdir=$TERRAFORM_ROOT/app output -raw app_name)
-ECR_REPO=$(terraform -chdir=$TERRAFORM_ROOT/app output -raw ecr_repository_url)
+APP_NAME=$(terraform -chdir=$TF_ROOT output -raw app_name)
+ECR_REPO=$(terraform -chdir=$TF_ROOT output -raw ecr_repository_url)
 GIT_SHA=$(git rev-parse --short HEAD)
-
-# Set AWS credentials if not already set
-if [ -z "$AWS_ACCESS_KEY_ID" ]; then
-  export AWS_ACCESS_KEY_ID=$(terraform -chdir=$TERRAFORM_ROOT/meta output -raw deployer_access_key_id)
-fi
-
-if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-  export AWS_SECRET_ACCESS_KEY=$(terraform -chdir=$TERRAFORM_ROOT/meta output -raw deployer_secret_access_key) 
-fi
 
 # Check if image with Git SHA already exists in ECR
 if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2) --image-ids imageTag=${GIT_SHA} >/dev/null 2>&1; then
@@ -45,15 +33,15 @@ CURRENT_TAG=$(aws ecs describe-services --cluster ${APP_NAME}-cluster --services
 # Only deploy if the image tag has changed
 if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
   echo "Deploying new image tag ${GIT_SHA}"
-  terraform -chdir=$TERRAFORM_ROOT/app apply -var="image_tag=${GIT_SHA}" -auto-approve
+  terraform -chdir=$TF_ROOT apply -var="image_tag=${GIT_SHA}" -auto-approve
 
   # Wait for deployment to stabilize
   echo "Waiting for deployment to stabilize..."
   aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}-web
 
   # Get VPC configuration
-  PRIVATE_SUBNET_IDS=$(terraform -chdir=$TERRAFORM_ROOT/app output -json private_subnet_ids | jq -c .)
-  APP_SECURITY_GROUP_ID=$(terraform -chdir=$TERRAFORM_ROOT/app output -raw app_security_group_id)
+  PRIVATE_SUBNET_IDS=$(terraform -chdir=$TF_ROOT output -json private_subnet_ids | jq -c .)
+  APP_SECURITY_GROUP_ID=$(terraform -chdir=$TF_ROOT output -raw app_security_group_id)
 
   # Run database migrations
   echo "Running database migrations..."
@@ -80,7 +68,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
     echo "Rolling back to previous image tag ${CURRENT_TAG}"
     
     # Roll back to previous image tag
-    terraform -chdir=$TERRAFORM_ROOT/app apply -var="image_tag=${CURRENT_TAG}" -auto-approve
+    terraform -chdir=$TF_ROOT apply -var="image_tag=${CURRENT_TAG}" -auto-approve
     
     # Wait for rollback to stabilize
     echo "Waiting for rollback to stabilize..."

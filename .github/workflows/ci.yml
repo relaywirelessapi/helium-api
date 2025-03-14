@@ -77,21 +77,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            api/terraform/meta/.terraform
-            api/terraform/app/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('api/terraform/**/*.tf') }}
+            api/tf/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 
-      - name: Validate Meta Terraform
+      - name: Validate Terraform
         run: |
-          terraform -chdir=api/terraform/meta init -backend=false
-          terraform -chdir=api/terraform/meta validate
-
-      - name: Validate App Terraform
-        run: |
-          terraform -chdir=api/terraform/app init -backend=false
-          terraform -chdir=api/terraform/app validate
+          terraform -chdir=api/tf init -backend=false
+          terraform -chdir=api/tf validate
 
   deploy:
     needs: [lint-ruby, lint-js, lint-tf, test-ruby]
