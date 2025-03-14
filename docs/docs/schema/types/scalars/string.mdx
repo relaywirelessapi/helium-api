@@ -1,0 +1,63 @@
+---
+id: string
+title: String
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+
+
+```graphql
+scalar String
+```
+
+
+
+
+
+
+
+
+### Returned By
+
+[`echo`](/schema/operations/queries/echo.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`status`](/schema/operations/queries/status.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`testField`](/schema/operations/mutations/test-field.mdx)  <Badge class="badge badge--secondary" text="mutation"/>
+
+### Member Of
+
+[`deprecated`](/schema/types/directives/deprecated.mdx)  <Badge class="badge badge--secondary" text="directive"/><Bullet />[`echo`](/schema/operations/queries/echo.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotRewardShareEdge`](/schema/types/objects/iot-reward-share-edge.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`iotRewardShares`](/schema/operations/queries/iot-reward-shares.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`PageInfo`](/schema/types/objects/page-info.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`specifiedBy`](/schema/types/directives/specified-by.mdx)  <Badge class="badge badge--secondary" text="directive"/>
+
