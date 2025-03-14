@@ -143,6 +143,20 @@ services:
       retries: 10
       test: wget --no-verbose --tries=1 --spider http://mailcatcher:1080 || exit 1
 
+  docs:
+    build:
+      context: ./docs
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./docs:/app
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
 volumes:
   postgres_data:
   redis_data:
