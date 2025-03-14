@@ -3,7 +3,8 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-TERRAFORM_ROOT="$(cd "$SCRIPT_DIR/../terraform" && pwd)"
+API_ROOT="$(cd "$SCRIPT_DIR/../" && pwd)"
+TERRAFORM_ROOT="$(cd "$API_ROOT/terraform" && pwd)"
 
 # Initialize Terraform in parallel
 (terraform -chdir=$TERRAFORM_ROOT/app init) &
@@ -33,7 +34,7 @@ if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2)
   # Build and push only if image doesn't exist
   echo "Building and pushing new image ${ECR_REPO}:${GIT_SHA}"
   # Use buildx for faster multi-platform builds
-  docker buildx build --platform linux/amd64 --push -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest .
+  docker buildx build --platform linux/amd64 --push -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest $API_ROOT
 else
   echo "Image ${ECR_REPO}:${GIT_SHA} already exists, skipping build and push"
 fi
