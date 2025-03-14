@@ -7,7 +7,7 @@ API_ROOT="$(cd "$SCRIPT_DIR/../" && pwd)"
 TF_ROOT="$(cd "$API_ROOT/tf/" && pwd)"
 
 # Initialize Terraform
-(terraform -chdir=$TF_ROOT init)
+terraform -chdir=$TF_ROOT init
 
 # Get ECR repo URL, Git SHA, and app name
 APP_NAME=$(terraform -chdir=$TF_ROOT output -raw app_name)
