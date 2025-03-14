@@ -39,18 +39,18 @@ services:
 
   web:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile.dev
     command: bin/rails server -b 0.0.0.0
     volumes:
-      - .:/app
+      - ./api:/app
     ports:
       - "3000:3000"
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
-      - .env
+      - ./api/.env
     depends_on:
       db:
         condition: service_healthy
@@ -69,16 +69,16 @@ services:
 
   css:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile.dev
     command: bin/rails tailwindcss:watch
     volumes:
-      - .:/app
+      - ./api:/app
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
-      - .env
+      - ./api/.env
     healthcheck:
       test: [ "CMD-SHELL", "ps aux | grep '[t]ailwindcss:watch' || exit 1" ]
       interval: 10s
@@ -88,16 +88,16 @@ services:
 
   sidekiq:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile.dev
     command: bundle exec sidekiq
     volumes:
-      - .:/app
+      - ./api:/app
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
-      - .env
+      - ./api/.env
     depends_on:
       db:
         condition: service_healthy
@@ -111,16 +111,16 @@ services:
 
   clockwork:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile.dev
     command: bundle exec clockwork clock.rb
     volumes:
-      - .:/app
+      - ./api:/app
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432
       REDIS_URL: redis://redis:6379/1
     env_file:
-      - .env
+      - ./api/.env
     depends_on:
       db:
         condition: service_healthy

@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp .env.ci .env
+        run: cp api/.env.ci api/.env
 
       - name: Run ${{ matrix.linter }}
         run: |
@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp .env.ci .env
+        run: cp api/.env.ci api/.env
 
       - name: Audit JS dependencies
         run: docker compose run --rm --no-deps web bin/importmap audit
@@ -56,7 +56,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp .env.ci .env
+        run: cp api/.env.ci api/.env
 
       - name: Prepare the database
         run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
@@ -77,21 +77,21 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            terraform/meta/.terraform
-            terraform/app/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+            api/terraform/meta/.terraform
+            api/terraform/app/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('api/terraform/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 
       - name: Validate Meta Terraform
         run: |
-          terraform -chdir=terraform/meta init -backend=false
-          terraform -chdir=terraform/meta validate
+          terraform -chdir=api/terraform/meta init -backend=false
+          terraform -chdir=api/terraform/meta validate
 
       - name: Validate App Terraform
         run: |
-          terraform -chdir=terraform/app init -backend=false
-          terraform -chdir=terraform/app validate
+          terraform -chdir=api/terraform/app init -backend=false
+          terraform -chdir=api/terraform/app validate
 
   deploy:
     needs: [lint-ruby, lint-js, lint-tf, test-ruby]
@@ -118,11 +118,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            terraform/meta/.terraform
-            terraform/app/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+            api/terraform/meta/.terraform
+            api/terraform/app/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('api/terraform/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 
       - name: Deploy to ECS
-        run: bin/deploy
+        run: api/bin/deploy
