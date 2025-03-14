@@ -209,10 +209,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.2-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.2-arm-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.2-arm-linux-musl)
-      racc (~> 1.4)
     nokogiri (1.18.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.2-x86_64-darwin)
@@ -289,9 +285,12 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    rbi (0.2.4)
+    rbi (0.3.1)
       prism (~> 1.0)
+      rbs (>= 3.4.4)
       sorbet-runtime (>= 0.5.9204)
+    rbs (3.8.1)
+      logger
     rdoc (6.12.0)
       psych (>= 4.0.0)
     redis (5.4.0)
@@ -392,7 +391,7 @@ GEM
     sorbet-static-and-runtime (0.5.11812)
       sorbet (= 0.5.11812)
       sorbet-runtime (= 0.5.11812)
-    spoom (1.5.3)
+    spoom (1.6.1)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
       rbi (>= 0.2.3)
@@ -462,8 +461,6 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
   arm64-darwin
   x86_64-darwin
   x86_64-linux
