@@ -8,15 +8,13 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket         = "relay-helium-api-terraform-state"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "relay-helium-api-terraform-locks"
-    encrypt        = true
+  cloud {
+    organization = "relaywireless"
+    workspaces {
+      name = "relay-api"
+    }
   }
 }
-
 
 provider "aws" {
   region = var.aws_region
