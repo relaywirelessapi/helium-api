@@ -45,6 +45,21 @@ jobs:
       - name: Audit JS dependencies
         run: docker compose run --rm --no-deps web bin/importmap audit
 
+  verify-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp api/.env.ci api/.env
+
+      - name: Generate current schema
+        run: docker compose run --rm --no-deps web bundle exec rails graphql:schema:idl
+
+      - name: Compare schemas
+        run: diff api/schema.graphql docs/graphql/schema.graphql
+
   test-ruby:
     runs-on: ubuntu-latest
     env:
@@ -88,7 +103,7 @@ jobs:
           terraform -chdir=api/tf validate
 
   deploy:
-    needs: [lint-ruby, lint-js, lint-tf, test-ruby]
+    needs: [lint-ruby, lint-js, lint-tf, test-ruby, verify-schema]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     concurrency:
