@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_22_095354) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_112700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_22_095354) do
     t.index ["s3_key"], name: "index_helium_l2_files_on_s3_key", unique: true
   end
 
+  create_table "helium_l2_iot_beacon_ingest_reports", id: false, force: :cascade do |t|
+    t.datetime "received_at"
+    t.string "hotspot_key"
+    t.string "data"
+    t.datetime "reported_at"
+    t.bigint "tmst"
+    t.bigint "frequency"
+    t.string "data_rate"
+    t.bigint "tx_power"
+    t.binary "local_entropy"
+    t.binary "remote_entropy"
+    t.string "signature"
+    t.string "deduplication_key", null: false
+    t.index ["deduplication_key"], name: "index_helium_l2_iot_beacon_ingest_reports_on_deduplication_key", unique: true
+  end
+
   create_table "helium_l2_iot_reward_shares", id: false, force: :cascade do |t|
     t.string "reward_type"
     t.datetime "start_period"
@@ -37,6 +53,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_22_095354) do
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
+  end
+
+  create_table "helium_l2_iot_witness_ingest_reports", id: false, force: :cascade do |t|
+    t.datetime "received_at"
+    t.string "hotspot_key"
+    t.string "data"
+    t.datetime "reported_at"
+    t.bigint "tmst"
+    t.bigint "signal"
+    t.bigint "snr"
+    t.bigint "frequency"
+    t.string "data_rate"
+    t.string "signature"
+    t.string "deduplication_key", null: false
+    t.index ["deduplication_key"], name: "idx_on_deduplication_key_ba179087f7", unique: true
   end
 
   create_table "helium_l2_mobile_reward_shares", id: false, force: :cascade do |t|

@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "Generating GraphQL schema..."
+docker-compose run --rm --no-deps web rails graphql:schema:idl
+
+echo "Moving schema to docs directory..."
+mkdir -p docs/graphql
+mv api/schema.graphql docs/graphql/schema.graphql
+
+echo "Generating GraphQL documentation..."
+docker-compose run --rm --no-deps docs npm run docusaurus graphql-to-doc
+
+echo "GraphQL schema updated successfully!"
