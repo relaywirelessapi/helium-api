@@ -34,7 +34,6 @@ resource "aws_db_instance" "postgres" {
 
   storage_encrypted = true
   storage_type      = "gp3"
-  iops              = 3000
 
   auto_minor_version_upgrade = true
   maintenance_window         = "Mon:03:00-Mon:04:00"
