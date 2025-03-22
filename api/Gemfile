@@ -50,6 +50,10 @@ gem "ostruct"
 gem "google-protobuf"
 gem "zlib"
 
+# Sentry
+gem "sentry-ruby"
+gem "sentry-rails"
+
 group :development, :test do
   # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"

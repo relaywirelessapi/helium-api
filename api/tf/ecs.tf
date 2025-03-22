@@ -69,6 +69,10 @@ locals {
     {
       name  = "HELIUM_ORACLES_AWS_SECRET_ACCESS_KEY"
       value = aws_ssm_parameter.helium_oracles_aws_secret_access_key.value
+    },
+    {
+      name  = "SENTRY_DSN"
+      value = aws_ssm_parameter.sentry_dsn.value
     }
   ]
 }
