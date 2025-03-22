@@ -1,5 +1,10 @@
 ---
+:concurrency: 10
+:max_retries: 10
+:timeout: 25
+
 :queues:
-  - high
-  - default
-  - low
+  - [critical, 3]
+  - [high, 2]
+  - [default, 1]
+  - [low, 1]

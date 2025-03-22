@@ -26,15 +26,77 @@
 # Any libraries that use a connection pool or another resource pool should
 # be configured to provide at least as many connections as the number of
 # threads. This includes Active Record's `pool` parameter in `database.yml`.
-threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
-threads threads_count, threads_count
+
+# Puma can serve each request in a thread from an internal thread pool.
+# The `threads` method setting takes two numbers: a minimum and maximum.
+# Any libraries that use thread pools should be configured to match
+# the maximum value specified for Puma. Default is set to 5 threads for minimum
+# and maximum; this matches the default thread size of Active Record.
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS", 5)
+min_threads_count = ENV.fetch("RAILS_MIN_THREADS", max_threads_count)
+threads min_threads_count, max_threads_count
+
+# Specifies the `worker_timeout` threshold that Puma will use to wait before
+# terminating a worker in development mode. Default is 3600 (1 hour).
+worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT", 3000)
 
-# Allow puma to be restarted by `bin/rails restart` command.
+# Specifies the `environment` that Puma will run in.
+environment ENV.fetch("RAILS_ENV", "development")
+
+# The number of worker processes to boot in clustered mode (when workers > 0).
+# We set this based on the container's CPU allocation.
+# Our ECS task has 1024 CPU units (1 vCPU), so we'll use 2 workers
+# This leaves room for the master process while maximizing CPU utilization
+workers ENV.fetch("WEB_CONCURRENCY", 2)
+
+# Use the `preload_app!` method when specifying a `workers` number.
+# This directive tells Puma to first boot the application and load code
+# before forking the application. This takes advantage of Copy On Write
+# process behavior so workers use less memory.
+preload_app!
+
+# The code in the `on_worker_boot` will be called if you are using
+# clustered mode by specifying a number of `workers`. After each worker
+# process is booted, this block will be run. If you are using the `preload_app!`
+# option, you will want to use this block to reconnect to any threads
+# or connections that may have been created at application boot.
+on_worker_boot do
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+end
+
+# Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-# Specify the PID file. Defaults to tmp/pids/server.pid in development.
-# In other environments, only set the PID file if requested.
-pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+# Verifies that all workers have checked in to the master process within
+# the given timeout. If not the worker process will be restarted.
+worker_check_interval 30
+worker_timeout 60
+
+# Redirect STDOUT and STDERR to files specified
+stdout_redirect "/dev/stdout", "/dev/stderr", true
+
+# Configure the default logger
+log_formatter do |str|
+  "[#{Process.pid}] #{str}"
+end
+
+# Set the default log level
+environment = ENV.fetch("RAILS_ENV", "development")
+log_level = environment == "production" ? "info" : "debug"
+set_default_log_level log_level
+
+# Rack timeout settings - terminate requests that take too long
+before_fork do
+  require "rack-timeout"
+  # Set to 25 seconds (should be less than the ALB's timeout)
+  ENV["RACK_TIMEOUT_SERVICE_TIMEOUT"] = "25"
+end
+
+# Lower the priority of the worker processes to help the master process get CPU time
+after_worker_fork do
+  Process.setproctitle "puma: worker #{Process.pid}"
+  Process.nice(1) if Process.respond_to?(:nice)
+end

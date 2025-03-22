@@ -77,8 +77,8 @@ resource "aws_ecs_task_definition" "web" {
   family                   = "${var.app_name}-web"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = 256
-  memory                   = 512
+  cpu                      = 1024
+  memory                   = 2048
   execution_role_arn       = aws_iam_role.ecs_execution.arn
   task_role_arn            = aws_iam_role.ecs_task.arn
 
@@ -131,8 +131,8 @@ resource "aws_ecs_task_definition" "sidekiq" {
   family                   = "${var.app_name}-sidekiq"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = 256
-  memory                   = 512
+  cpu                      = 1024
+  memory                   = 2048
   execution_role_arn       = aws_iam_role.ecs_execution.arn
   task_role_arn            = aws_iam_role.ecs_task.arn
 
@@ -225,10 +225,15 @@ resource "aws_ecs_service" "web" {
   name                   = "${var.app_name}-web"
   cluster                = aws_ecs_cluster.main.id
   task_definition        = aws_ecs_task_definition.web.arn
-  desired_count          = 1
+  desired_count          = 2
   launch_type            = "FARGATE"
   force_new_deployment   = true
   enable_execute_command = true
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
+  }
 
   deployment_maximum_percent         = 200
   deployment_minimum_healthy_percent = 100
@@ -255,14 +260,64 @@ resource "aws_ecs_service" "web" {
   }
 }
 
+resource "aws_appautoscaling_target" "web" {
+  max_capacity       = 4
+  min_capacity       = 2
+  resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.web.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
+}
+
+resource "aws_appautoscaling_policy" "web_cpu" {
+  name               = "${var.app_name}-web-cpu-autoscaling"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.web.resource_id
+  scalable_dimension = aws_appautoscaling_target.web.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.web.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageCPUUtilization"
+    }
+    target_value       = 70.0
+    scale_in_cooldown  = 300
+    scale_out_cooldown = 60
+  }
+}
+
+resource "aws_appautoscaling_policy" "web_memory" {
+  name               = "${var.app_name}-web-memory-autoscaling"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.web.resource_id
+  scalable_dimension = aws_appautoscaling_target.web.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.web.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageMemoryUtilization"
+    }
+    target_value       = 80.0
+    scale_in_cooldown  = 300
+    scale_out_cooldown = 60
+  }
+}
+
 resource "aws_ecs_service" "sidekiq" {
   name                   = "${var.app_name}-sidekiq"
   cluster                = aws_ecs_cluster.main.id
   task_definition        = aws_ecs_task_definition.sidekiq.arn
-  desired_count          = 1
+  desired_count          = 2
   launch_type            = "FARGATE"
   force_new_deployment   = true
   enable_execute_command = true
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
+  }
+
+  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 50
 
   network_configuration {
     subnets          = aws_subnet.private[*].id
