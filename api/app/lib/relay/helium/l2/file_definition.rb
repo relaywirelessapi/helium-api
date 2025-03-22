@@ -31,6 +31,12 @@ module Relay
                 category: "foundation-iot-verified-rewards",
                 prefix: "iot_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::IotRewardShareDeserializer.new
+              ),
+              new(
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-mobile-verified",
+                prefix: "mobile_reward_share",
+                deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
               )
             ]
           end

@@ -31,6 +31,9 @@ MESSAGES = %w[
   region
   mapper
   price_report
+  decimal
+  hex_boosting
+  service_provider
 ].freeze
 
 SOURCE_PATHS = [*SERVICES, *MESSAGES].map do |source_path|

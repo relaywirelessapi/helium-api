@@ -1,6 +1,72 @@
 # typed: false
 
 namespace :helium_l2 do
+  desc "List all available file definitions"
+  task list_definitions: :environment do
+    display_definitions_list
+  end
+
+  desc "Process a specific file by its S3 key for a given definition ID"
+  task :process_specific_file, [ :definition_id, :s3_key ] => :environment do |_t, args|
+    definition_id = args[:definition_id]
+    s3_key = args[:s3_key]
+
+    if definition_id.blank? || s3_key.blank?
+      puts "Error: Definition ID and S3 key are required"
+      puts "Usage: rake helium_l2:process_specific_file[definition_id,s3_key]"
+      exit 1
+    end
+
+    begin
+      definition = Relay::Helium::L2::FileDefinition.find!(definition_id)
+      display_definition_details(definition)
+
+      unless verify_s3_file_exists(definition, s3_key)
+        puts "Error: File not found in S3 bucket: #{definition.bucket}, key: #{s3_key}"
+        exit 1
+      end
+
+      puts "File found: #{s3_key}"
+      process_s3_file(definition, s3_key)
+    rescue Relay::Helium::L2::FileDefinitionNotFoundError => e
+      exit_with_definition_not_found_error(e)
+    rescue StandardError => e
+      exit_with_error(e)
+    end
+  end
+
+  desc "Pull the latest file for a given definition ID and process it"
+  task :process_latest_file, [ :definition_id ] => :environment do |_t, args|
+    definition_id = args[:definition_id]
+
+    if definition_id.blank?
+      puts "Error: Definition ID is required"
+      puts "Usage: rake helium_l2:process_latest_file[definition_id]"
+      exit 1
+    end
+
+    begin
+      definition = Relay::Helium::L2::FileDefinition.find!(definition_id)
+      display_definition_details(definition)
+
+      latest_key = find_latest_s3_file(definition)
+
+      if latest_key.nil?
+        puts "No files found for definition: #{definition.id}"
+        exit 0
+      end
+
+      puts "Found latest file: #{latest_key}"
+      process_s3_file(definition, latest_key)
+    rescue Relay::Helium::L2::FileDefinitionNotFoundError => e
+      exit_with_definition_not_found_error(e)
+    rescue StandardError => e
+      exit_with_error(e)
+    end
+  end
+
+  private
+
   def display_definition_details(definition)
     puts "Found definition: #{definition.id} (bucket: #{definition.bucket}, prefix: #{definition.s3_prefix})"
   end
@@ -84,70 +150,6 @@ namespace :helium_l2 do
       true
     rescue Aws::S3::Errors::NoSuchKey => _e
       false
-    end
-  end
-
-  desc "List all available file definitions"
-  task list_definitions: :environment do
-    display_definitions_list
-  end
-
-  desc "Process a specific file by its S3 key for a given definition ID"
-  task :process_specific_file, [ :definition_id, :s3_key ] => :environment do |_t, args|
-    definition_id = args[:definition_id]
-    s3_key = args[:s3_key]
-
-    if definition_id.blank? || s3_key.blank?
-      puts "Error: Definition ID and S3 key are required"
-      puts "Usage: rake helium_l2:process_specific_file[definition_id,s3_key]"
-      exit 1
-    end
-
-    begin
-      definition = Relay::Helium::L2::FileDefinition.find!(definition_id)
-      display_definition_details(definition)
-
-      unless verify_s3_file_exists(definition, s3_key)
-        puts "Error: File not found in S3 bucket: #{definition.bucket}, key: #{s3_key}"
-        exit 1
-      end
-
-      puts "File found: #{s3_key}"
-      process_s3_file(definition, s3_key)
-    rescue Relay::Helium::L2::FileDefinitionNotFoundError => e
-      exit_with_definition_not_found_error(e)
-    rescue StandardError => e
-      exit_with_error(e)
-    end
-  end
-
-  desc "Pull the latest file for a given definition ID and process it"
-  task :process_latest_file, [ :definition_id ] => :environment do |_t, args|
-    definition_id = args[:definition_id]
-
-    if definition_id.blank?
-      puts "Error: Definition ID is required"
-      puts "Usage: rake helium_l2:process_latest_file[definition_id]"
-      exit 1
-    end
-
-    begin
-      definition = Relay::Helium::L2::FileDefinition.find!(definition_id)
-      display_definition_details(definition)
-
-      latest_key = find_latest_s3_file(definition)
-
-      if latest_key.nil?
-        puts "No files found for definition: #{definition.id}"
-        exit 0
-      end
-
-      puts "Found latest file: #{latest_key}"
-      process_s3_file(definition, latest_key)
-    rescue Relay::Helium::L2::FileDefinitionNotFoundError => e
-      exit_with_definition_not_found_error(e)
-    rescue StandardError => e
-      exit_with_error(e)
     end
   end
 end
