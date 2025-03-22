@@ -43,6 +43,12 @@ module Relay
                 category: "foundation-iot-ingest",
                 prefix: "iot_witness_ingest_report",
                 deserializer: Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeserializer.new
+              ),
+              new(
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-iot-ingest",
+                prefix: "iot_beacon_ingest_report",
+                deserializer: Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializer.new
               )
             ]
           end
