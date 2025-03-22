@@ -9,6 +9,98 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
+type IotBeaconIngestReport {
+  """
+  The data of the beacon ingest report.
+  """
+  data: String
+
+  """
+  The data rate of the beacon ingest report.
+  """
+  dataRate: String
+
+  """
+  The frequency of the beacon ingest report.
+  """
+  frequency: BigInt
+
+  """
+  The key of the hotspot.
+  """
+  hotspotKey: String
+
+  """
+  The local entropy of the beacon ingest report.
+  """
+  localEntropy: String
+
+  """
+  The timestamp when the beacon ingest report was received.
+  """
+  receivedAt: ISO8601DateTime
+
+  """
+  The remote entropy of the beacon ingest report.
+  """
+  remoteEntropy: String
+
+  """
+  The timestamp when the beacon ingest report was reported.
+  """
+  reportedAt: ISO8601DateTime
+
+  """
+  The signature of the beacon ingest report.
+  """
+  signature: String
+
+  """
+  The timestamp of the beacon ingest report.
+  """
+  tmst: BigInt
+
+  """
+  The transmission power of the beacon ingest report.
+  """
+  txPower: BigInt
+}
+
+"""
+The connection type for IotBeaconIngestReport.
+"""
+type IotBeaconIngestReportConnection {
+  """
+  A list of edges.
+  """
+  edges: [IotBeaconIngestReportEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [IotBeaconIngestReport]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type IotBeaconIngestReportEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: IotBeaconIngestReport
+}
+
 type IotRewardShare {
   """
   The amount of the reward.
@@ -91,6 +183,270 @@ type IotRewardShareEdge {
   node: IotRewardShare
 }
 
+type IotWitnessIngestReport {
+  """
+  The data of the witness ingest report.
+  """
+  data: String
+
+  """
+  The data rate of the witness ingest report.
+  """
+  dataRate: String
+
+  """
+  The frequency of the witness ingest report.
+  """
+  frequency: BigInt
+
+  """
+  The key of the hotspot.
+  """
+  hotspotKey: String
+
+  """
+  The timestamp when the witness ingest report was received.
+  """
+  receivedAt: ISO8601DateTime
+
+  """
+  The timestamp when the witness ingest report was reported.
+  """
+  reportedAt: ISO8601DateTime
+
+  """
+  The signal strength of the witness ingest report.
+  """
+  signal: BigInt
+
+  """
+  The signature of the witness ingest report.
+  """
+  signature: String
+
+  """
+  The signal-to-noise ratio of the witness ingest report.
+  """
+  snr: BigInt
+
+  """
+  The timestamp of the witness ingest report.
+  """
+  tmst: BigInt
+}
+
+"""
+The connection type for IotWitnessIngestReport.
+"""
+type IotWitnessIngestReportConnection {
+  """
+  A list of edges.
+  """
+  edges: [IotWitnessIngestReportEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [IotWitnessIngestReport]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type IotWitnessIngestReportEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: IotWitnessIngestReport
+}
+
+type MobileRewardShare {
+  """
+  The amount of the reward.
+  """
+  amount: BigInt
+
+  """
+  The sum of base coverage points.
+  """
+  baseCoveragePointsSum: Float
+
+  """
+  The base POC reward.
+  """
+  basePocReward: BigInt
+
+  """
+  The base reward shares.
+  """
+  baseRewardShares: Float
+
+  """
+  The sum of boosted coverage points.
+  """
+  boostedCoveragePointsSum: Float
+
+  """
+  The boosted POC reward.
+  """
+  boostedPocReward: BigInt
+
+  """
+  The boosted reward shares.
+  """
+  boostedRewardShares: Float
+
+  """
+  The CBSD ID.
+  """
+  cbsdId: String
+
+  """
+  The amount of DC transfer rewards.
+  """
+  dcTransferReward: BigInt
+
+  """
+  The amount of discovery location rewards.
+  """
+  discoveryLocationAmount: BigInt
+
+  """
+  The end period of the mobile reward share.
+  """
+  endPeriod: ISO8601DateTime
+
+  """
+  The entity.
+  """
+  entity: String
+
+  """
+  The key of the hotspot.
+  """
+  hotspotKey: String
+
+  """
+  The location trust score multiplier.
+  """
+  locationTrustScoreMultiplier: Float
+
+  """
+  The matched amount.
+  """
+  matchedAmount: BigInt
+
+  """
+  The oracle boosted hex status.
+  """
+  oracleBoostedHexStatus: Int
+
+  """
+  The owner key of the mobile reward share.
+  """
+  ownerKey: String
+
+  """
+  The amount of POC rewards.
+  """
+  pocReward: BigInt
+
+  """
+  The type of reward.
+  """
+  rewardType: String
+
+  """
+  The seniority timestamp.
+  """
+  seniorityTimestamp: BigInt
+
+  """
+  The service provider amount.
+  """
+  serviceProviderAmount: BigInt
+
+  """
+  The service provider ID.
+  """
+  serviceProviderId: String
+
+  """
+  The service provider boosted hex status.
+  """
+  spBoostedHexStatus: Int
+
+  """
+  The speedtest multiplier.
+  """
+  speedtestMultiplier: Float
+
+  """
+  The start period of the mobile reward share.
+  """
+  startPeriod: ISO8601DateTime
+
+  """
+  The subscriber ID.
+  """
+  subscriberId: String
+
+  """
+  The amount of subscriber rewards.
+  """
+  subscriberReward: BigInt
+
+  """
+  The type of unallocated reward.
+  """
+  unallocatedRewardType: String
+}
+
+"""
+The connection type for MobileRewardShare.
+"""
+type MobileRewardShareConnection {
+  """
+  A list of edges.
+  """
+  edges: [MobileRewardShareEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [MobileRewardShare]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type MobileRewardShareEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: MobileRewardShare
+}
+
 type Mutation {
   """
   An example field added by the generator
@@ -133,6 +489,31 @@ type Query {
     """
     message: String!
   ): String!
+
+  """
+  Retrieves a list of IoT beacon ingest reports.
+  """
+  iotBeaconIngestReports(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): IotBeaconIngestReportConnection!
   iotRewardShares(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -154,6 +535,56 @@ type Query {
     """
     last: Int
   ): IotRewardShareConnection!
+
+  """
+  Retrieves a list of IoT witness ingest reports.
+  """
+  iotWitnessIngestReports(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): IotWitnessIngestReportConnection!
+
+  """
+  Retrieves a list of mobile reward shares.
+  """
+  mobileRewardShares(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MobileRewardShareConnection!
 
   """
   Retrieves the status of the API.

@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: float
+title: Float
 ---
 
 
@@ -39,12 +39,11 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
 
 
 ```graphql
-scalar BigInt
+scalar Float
 ```
 
 
@@ -56,5 +55,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotBeaconIngestReport`](/schema/types/objects/iot-beacon-ingest-report.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotWitnessIngestReport`](/schema/types/objects/iot-witness-ingest-report.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

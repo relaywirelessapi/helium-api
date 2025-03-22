@@ -1,0 +1,112 @@
+---
+id: iot-witness-ingest-report
+title: IotWitnessIngestReport
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+No description
+
+
+```graphql
+type IotWitnessIngestReport {
+  data: String
+  dataRate: String
+  frequency: BigInt
+  hotspotKey: String
+  receivedAt: ISO8601DateTime
+  reportedAt: ISO8601DateTime
+  signal: BigInt
+  signature: String
+  snr: BigInt
+  tmst: BigInt
+}
+```
+
+
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>data</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The data of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>dataRate</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The data rate of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>frequency</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The frequency of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The key of the hotspot.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>receivedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp when the witness ingest report was received.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>reportedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp when the witness ingest report was reported.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>signal</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The signal strength of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>signature</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The signature of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>snr</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The signal-to-noise ratio of the witness ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReport.<b>tmst</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp of the witness ingest report.
+
+
+
+
+
+
+### Member Of
+
+[`IotWitnessIngestReportConnection`](/schema/types/objects/iot-witness-ingest-report-connection.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotWitnessIngestReportEdge`](/schema/types/objects/iot-witness-ingest-report-edge.mdx)  <Badge class="badge badge--secondary" text="object"/>
+

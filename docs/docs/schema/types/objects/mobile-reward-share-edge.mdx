@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: mobile-reward-share-edge
+title: MobileRewardShareEdge
 ---
 
 
@@ -39,15 +39,27 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+An edge in a connection.
 
 
 ```graphql
-scalar BigInt
+type MobileRewardShareEdge {
+  cursor: String!
+  node: MobileRewardShare
+}
 ```
 
 
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShareEdge.<b>cursor</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+A cursor for use in pagination.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShareEdge.<b>node</b></code>](#)<Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx) <Badge class="badge badge--secondary" text="object"/> 
+The item at the end of the edge.
 
 
 
@@ -56,5 +68,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotBeaconIngestReport`](/schema/types/objects/iot-beacon-ingest-report.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotWitnessIngestReport`](/schema/types/objects/iot-witness-ingest-report.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`MobileRewardShareConnection`](/schema/types/objects/mobile-reward-share-connection.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

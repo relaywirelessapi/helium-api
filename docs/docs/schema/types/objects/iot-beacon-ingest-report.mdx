@@ -1,0 +1,117 @@
+---
+id: iot-beacon-ingest-report
+title: IotBeaconIngestReport
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+No description
+
+
+```graphql
+type IotBeaconIngestReport {
+  data: String
+  dataRate: String
+  frequency: BigInt
+  hotspotKey: String
+  localEntropy: String
+  receivedAt: ISO8601DateTime
+  remoteEntropy: String
+  reportedAt: ISO8601DateTime
+  signature: String
+  tmst: BigInt
+  txPower: BigInt
+}
+```
+
+
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>data</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The data of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>dataRate</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The data rate of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>frequency</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The frequency of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The key of the hotspot.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>localEntropy</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The local entropy of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>receivedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp when the beacon ingest report was received.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>remoteEntropy</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The remote entropy of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>reportedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp when the beacon ingest report was reported.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>signature</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The signature of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>tmst</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The timestamp of the beacon ingest report.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotBeaconIngestReport.<b>txPower</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The transmission power of the beacon ingest report.
+
+
+
+
+
+
+### Member Of
+
+[`IotBeaconIngestReportConnection`](/schema/types/objects/iot-beacon-ingest-report-connection.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotBeaconIngestReportEdge`](/schema/types/objects/iot-beacon-ingest-report-edge.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
