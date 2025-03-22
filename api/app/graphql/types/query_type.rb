@@ -48,5 +48,26 @@ module Types
     def iot_reward_shares
       Relay::Helium::L2::IotRewardShare.all.order(start_period: :desc)
     end
+
+    field :mobile_reward_shares, Types::MobileRewardShareType.connection_type, null: false, description: "Retrieves a list of mobile reward shares."
+
+    sig { returns(ActiveRecord::Relation) }
+    def mobile_reward_shares
+      Relay::Helium::L2::MobileRewardShare.all.order(start_period: :desc)
+    end
+
+    field :iot_beacon_ingest_reports, Types::IotBeaconIngestReportType.connection_type, null: false, description: "Retrieves a list of IoT beacon ingest reports."
+
+    sig { returns(ActiveRecord::Relation) }
+    def iot_beacon_ingest_reports
+      Relay::Helium::L2::IotBeaconIngestReport.all.order(received_at: :desc)
+    end
+
+    field :iot_witness_ingest_reports, Types::IotWitnessIngestReportType.connection_type, null: false, description: "Retrieves a list of IoT witness ingest reports."
+
+    sig { returns(ActiveRecord::Relation) }
+    def iot_witness_ingest_reports
+      Relay::Helium::L2::IotWitnessIngestReport.all.order(received_at: :desc)
+    end
   end
 end
