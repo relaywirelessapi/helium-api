@@ -83,18 +83,6 @@ log_formatter do |str|
   "[#{Process.pid}] #{str}"
 end
 
-# Set the default log level
-environment = ENV.fetch("RAILS_ENV", "development")
-log_level = environment == "production" ? "info" : "debug"
-set_default_log_level log_level
-
-# Rack timeout settings - terminate requests that take too long
-before_fork do
-  require "rack-timeout"
-  # Set to 25 seconds (should be less than the ALB's timeout)
-  ENV["RACK_TIMEOUT_SERVICE_TIMEOUT"] = "25"
-end
-
 # Lower the priority of the worker processes to help the master process get CPU time
 after_worker_fork do
   Process.setproctitle "puma: worker #{Process.pid}"
