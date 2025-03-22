@@ -65,6 +65,14 @@ resource "aws_ssm_parameter" "helium_oracles_aws_region" {
     Environment = var.environment
   }
 }
+
+resource "aws_ssm_parameter" "sentry_dsn" {
+  name        = "/${var.app_name}/${var.environment}/sentry_dsn"
+  description = "Sentry DSN"
+  type        = "String"
+  value       = "https://d10d616b2941b6fd266aa2371e79d3e7@o4509022648926208.ingest.us.sentry.io/4509022649778176"
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32

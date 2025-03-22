@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 
 require_dependency Rails.root.join("vendor/helium-protobuf/service/poc_lora_pb")
 
