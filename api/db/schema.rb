@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_15_143300) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_095354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -37,6 +37,42 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_15_143300) do
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
+  end
+
+  create_table "helium_l2_mobile_reward_shares", id: false, force: :cascade do |t|
+    t.string "owner_key"
+    t.string "hotspot_key"
+    t.string "cbsd_id"
+    t.bigint "amount"
+    t.datetime "start_period"
+    t.datetime "end_period"
+    t.string "reward_type"
+    t.bigint "dc_transfer_reward"
+    t.bigint "poc_reward"
+    t.string "subscriber_id"
+    t.bigint "subscriber_reward"
+    t.bigint "discovery_location_amount"
+    t.string "unallocated_reward_type"
+    t.string "service_provider_id"
+    t.string "deduplication_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "base_coverage_points_sum", precision: 20, scale: 8
+    t.decimal "boosted_coverage_points_sum", precision: 20, scale: 8
+    t.decimal "base_reward_shares", precision: 20, scale: 8
+    t.decimal "boosted_reward_shares", precision: 20, scale: 8
+    t.bigint "base_poc_reward"
+    t.bigint "boosted_poc_reward"
+    t.bigint "seniority_timestamp"
+    t.binary "coverage_object"
+    t.decimal "location_trust_score_multiplier", precision: 20, scale: 8
+    t.decimal "speedtest_multiplier", precision: 20, scale: 8
+    t.integer "sp_boosted_hex_status"
+    t.integer "oracle_boosted_hex_status"
+    t.string "entity"
+    t.bigint "service_provider_amount"
+    t.bigint "matched_amount"
+    t.index ["deduplication_key"], name: "index_helium_l2_mobile_reward_shares_on_deduplication_key", unique: true
   end
 
   create_table "users", force: :cascade do |t|
