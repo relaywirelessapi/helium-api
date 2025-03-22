@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Get app name from Terraform
-APP_NAME=$(terraform -chdir=terraform/app output -raw app_name)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+APP_NAME=$(terraform -chdir="${SCRIPT_DIR}/../tf" output -raw app_name)
 
 # Configuration
 CLUSTER_NAME="${APP_NAME}-cluster"
