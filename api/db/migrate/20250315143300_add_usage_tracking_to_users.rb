@@ -6,7 +6,7 @@ class AddUsageTrackingToUsers < ActiveRecord::Migration[8.0]
 
     reversible do |dir|
       dir.up do
-        Relay::User.update_all api_usage_reset_at: Time.current
+        User.update_all api_usage_reset_at: Time.current
       end
     end
 

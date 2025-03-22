@@ -5,7 +5,7 @@ class AddApiKeyToUsers < ActiveRecord::Migration[8.0]
     # Generate initial API keys
     reversible do |dir|
       dir.up do
-        Relay::User.find_each(&:refresh_api_key!)
+        User.find_each(&:refresh_api_key!)
       end
     end
 
