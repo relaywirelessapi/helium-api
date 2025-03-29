@@ -2135,19 +2135,19 @@ class Selenium::WebDriver::Driver
   # @param sel [String, Hash] id or selector
   # @return [WebDriver::Element]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#286
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#295
   def [](sel); end
 
   # @return [ActionBuilder]
   # @see ActionBuilder
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#125
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#134
   def action(**opts); end
 
   # @return [VirtualAuthenticator]
   # @see VirtualAuthenticator
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#247
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#256
   def add_virtual_authenticator(options); end
 
   # driver.all(class: 'bar') #=> [#<WebDriver::Element:0x1011c3b88, ...]
@@ -2155,22 +2155,22 @@ class Selenium::WebDriver::Driver
   # source://selenium-webdriver//lib/selenium/webdriver/common/search_context.rb#80
   def all(*args); end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#292
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#301
   def browser; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#296
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#305
   def capabilities; end
 
   # Close the current window, or the browser if no windows are left.
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#182
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#191
   def close; end
 
   # Get the URL of the current page
   #
   # @return [String]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#143
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#152
   def current_url; end
 
   # Execute an asynchronous piece of JavaScript in the context of the
@@ -2184,7 +2184,7 @@ class Selenium::WebDriver::Driver
   # @param args [WebDriver::Element, Integer, Float, Boolean, NilClass, String, Array] Arguments to the script. May be empty.
   # @return [WebDriver::Element, Integer, Float, Boolean, NilClass, String, Array]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#238
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#247
   def execute_async_script(script, *args); end
 
   # Execute the given JavaScript
@@ -2193,7 +2193,7 @@ class Selenium::WebDriver::Driver
   # @param args [WebDriver::Element, Integer, Float, Boolean, NilClass, String, Array] Arguments will be available in the given script in the 'arguments' pseudo-array.
   # @return [WebDriver::Element, Integer, Float, Boolean, NilClass, String, Array] The value returned from the script.
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#219
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#228
   def execute_script(script, *args); end
 
   # driver.first(id: 'foo')
@@ -2203,7 +2203,7 @@ class Selenium::WebDriver::Driver
 
   # Opens the specified URL in the browser.
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#133
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#142
   def get(url); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#78
@@ -2212,7 +2212,7 @@ class Selenium::WebDriver::Driver
   # @return [Manager]
   # @see Manager
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#116
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#125
   def manage; end
 
   # @return [Navigation]
@@ -2224,26 +2224,32 @@ class Selenium::WebDriver::Driver
   # @return [Network]
   # @see Network
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#256
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#265
   def network; end
 
   # Get the source of the current page
   #
   # @return [String]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#163
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#172
   def page_source; end
 
   # Quit the browser
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#171
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#180
   def quit; end
 
   # @api private
   # @see SearchContext
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#305
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#314
   def ref; end
+
+  # @return [Script]
+  # @see Script
+  #
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#107
+  def script; end
 
   # information about whether a remote end is in a state in which it can create new sessions,
   # and may include additional meta information.
@@ -2256,21 +2262,21 @@ class Selenium::WebDriver::Driver
   # @return [TargetLocator]
   # @see TargetLocator
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#107
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#116
   def switch_to; end
 
   # Get the title of the current page
   #
   # @return [String]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#153
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#162
   def title; end
 
   # Get the current window handle
   #
   # @return [String]
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#203
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#212
   def window_handle; end
 
   # Get the window handles of open browser windows.
@@ -2278,26 +2284,26 @@ class Selenium::WebDriver::Driver
   # @return [Array]
   # @see TargetLocator#window
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#193
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#202
   def window_handles; end
 
   private
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#329
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#338
   def add_extensions(browser); end
 
   # Returns the value of attribute bridge.
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#311
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#320
   def bridge; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#313
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#322
   def create_bridge(caps:, url:, http_client: T.unsafe(nil)); end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#325
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#334
   def screenshot; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#320
+  # source://selenium-webdriver//lib/selenium/webdriver/common/driver.rb#329
   def service_url(service); end
 
   class << self
