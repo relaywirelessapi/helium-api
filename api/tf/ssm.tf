@@ -73,6 +73,20 @@ resource "aws_ssm_parameter" "sentry_dsn" {
   value       = "https://d10d616b2941b6fd266aa2371e79d3e7@o4509022648926208.ingest.us.sentry.io/4509022649778176"
 }
 
+resource "aws_ssm_parameter" "sidekiq_username" {
+  name        = "/${var.app_name}/${var.environment}/sidekiq_username"
+  description = "Sidekiq username"
+  type        = "String"
+  value       = var.sidekiq_username
+}
+
+resource "aws_ssm_parameter" "sidekiq_password" {
+  name        = "/${var.app_name}/${var.environment}/sidekiq_password"
+  description = "Sidekiq password"
+  type        = "SecureString"
+  value       = random_password.sidekiq_password.result
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32
@@ -85,6 +99,11 @@ resource "random_password" "secret_key_base" {
 }
 
 resource "random_password" "devise_pepper" {
+  length  = 32
+  special = false
+}
+
+resource "random_password" "sidekiq_password" {
   length  = 32
   special = false
 }
