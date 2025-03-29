@@ -49,7 +49,10 @@ module Relay
 
             file.update!(completed_at: Time.current)
           rescue => e
-            Sentry.capture_exception(e)
+            Sentry.capture_exception(e, extra: {
+              file_id: file.id,
+              s3_key: file.s3_key
+            })
             raise
           ensure
             tempfile.close
