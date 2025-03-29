@@ -8,7 +8,7 @@ RSpec.describe "Email confirmation", type: :system do
       visit new_user_confirmation_path
 
       fill_in "Email", with: unconfirmed_user.email
-      click_button "Resend confirmation instructions"
+      click_button "Send instructions"
 
     expect(page).to have_content("You will receive an email with instructions")
   end

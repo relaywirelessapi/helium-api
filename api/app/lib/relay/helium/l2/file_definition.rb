@@ -3,48 +3,49 @@
 module Relay
   module Helium
     module L2
-      class FileDefinition
+      class FileDefinition < StaticModel
         extend T::Sig
 
-        include GlobalID::Identification
+        sig { returns(T.nilable(Deserializers::BaseDeserializer)) }
+        attr_reader :deserializer
 
-        sig { returns(String) }
-        attr_accessor :bucket
+        attribute :bucket, :string
+        attribute :category, :string
+        attribute :prefix, :string
 
-        sig { returns(String) }
-        attr_accessor :category
-
-        sig { returns(String) }
-        attr_accessor :prefix
-
-        sig { returns(Deserializers::BaseDeserializer) }
-        attr_accessor :deserializer
+        validates :bucket, presence: true
+        validates :category, presence: true
+        validates :prefix, presence: true
 
         class << self
           extend T::Sig
 
-          sig { returns(T::Array[FileDefinition]) }
+          sig { returns(T::Array[T.attached_class]) }
           def all
             [
               new(
+                id: "foundation-iot-verified-rewards/iot_reward_share",
                 bucket: "foundation-poc-data-requester-pays",
                 category: "foundation-iot-verified-rewards",
                 prefix: "iot_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::IotRewardShareDeserializer.new
               ),
               new(
+                id: "foundation-mobile-verified/mobile_reward_share",
                 bucket: "foundation-poc-data-requester-pays",
                 category: "foundation-mobile-verified",
                 prefix: "mobile_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
               ),
               new(
+                id: "foundation-iot-ingest/iot_witness_ingest_report",
                 bucket: "foundation-poc-data-requester-pays",
                 category: "foundation-iot-ingest",
                 prefix: "iot_witness_ingest_report",
                 deserializer: Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeserializer.new
               ),
               new(
+                id: "foundation-iot-ingest/iot_beacon_ingest_report",
                 bucket: "foundation-poc-data-requester-pays",
                 category: "foundation-iot-ingest",
                 prefix: "iot_beacon_ingest_report",
@@ -52,34 +53,12 @@ module Relay
               )
             ]
           end
-
-          sig { params(id: String).returns(T.nilable(FileDefinition)) }
-          def find(id)
-            all.find { |definition| definition.id == id }
-          end
-
-          sig { params(id: String).returns(T.nilable(FileDefinition)) }
-          def find_by_id(id)
-            find(id)
-          end
-
-          sig { params(id: String).returns(FileDefinition) }
-          def find!(id)
-            find(id) || raise(FileDefinitionNotFoundError, "File definition not found: #{id}")
-          end
         end
 
-        sig { params(bucket: String, category: String, prefix: String, deserializer: Deserializers::BaseDeserializer).void }
-        def initialize(bucket:, category:, prefix:, deserializer:)
-          @category = category
-          @prefix = prefix
-          @deserializer = deserializer
-          @bucket = bucket
-        end
-
-        sig { returns(String) }
-        def id
-          s3_prefix
+        sig { params(deserializer: T.nilable(Deserializers::BaseDeserializer), kwargs: T.untyped).void }
+        def initialize(deserializer: nil, **kwargs)
+          super(**kwargs)
+          @deserializer = T.let(deserializer, T.nilable(Deserializers::BaseDeserializer))
         end
 
         sig { returns(T.nilable(File)) }

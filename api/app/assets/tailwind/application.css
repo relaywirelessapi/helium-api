@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Inter", "sans-serif";
+  --color-primary: #0039FF;
 }
 
 body {

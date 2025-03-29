@@ -11,7 +11,7 @@ module Relay
         sig { void }
         def perform
           Relay::Helium::L2::FileDefinition.all.each do |definition|
-            PullFilesForDefinitionJob.perform_later(definition.id)
+            PullFilesForDefinitionJob.perform_later(T.must(definition.id))
           end
         end
       end
