@@ -1,12 +1,15 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
 class NavbarComponent < ViewComponent::Base
+  extend T::Sig
+
+  sig { returns(T::Array[T::Hash[Symbol, String]]) }
   def links
     [
       {
         name: "Dashboard",
-        path: root_path
+        path: helpers.root_path
       },
       {
         name: "Docs ↗",
@@ -15,7 +18,7 @@ class NavbarComponent < ViewComponent::Base
       },
       {
         name: "Settings",
-        path: edit_user_registration_path
+        path: helpers.edit_user_registration_path
       }
     ]
   end

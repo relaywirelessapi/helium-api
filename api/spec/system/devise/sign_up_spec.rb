@@ -10,7 +10,7 @@ RSpec.describe "Sign up", type: :system do
       fill_in "Password", with: "password123"
       fill_in "Password confirmation", with: "password123"
 
-      click_button "Sign up"
+      click_button "Create account"
 
     expect(page).to have_content("A message with a confirmation link has been sent to your email address")
   end

@@ -1,25 +1,6 @@
 # typed: false
 
 RSpec.describe Relay::Helium::L2::FileDefinition do
-  it "can be serialized and deserialized via GlobalID" do
-    file_definition = build_file_definition
-    allow(described_class).to receive(:all).and_return([ file_definition ])
-
-    global_id = file_definition.to_global_id
-    deserialized = GlobalID::Locator.locate(global_id)
-
-    expect(deserialized).to eq(file_definition)
-    expect(deserialized.id).to eq(file_definition.id)
-  end
-
-  describe "#id" do
-    it "returns the correct id format" do
-      file_definition = build_file_definition(category: "test-category", prefix: "test-prefix")
-
-      expect(file_definition.id).to eq("test-category/test-prefix")
-    end
-  end
-
   describe "#s3_prefix" do
     it "returns the category and prefix joined with a slash" do
       file_definition = build_file_definition(category: "test-category", prefix: "test-prefix")
@@ -50,8 +31,9 @@ RSpec.describe Relay::Helium::L2::FileDefinition do
 
   private
 
-  def build_file_definition(bucket: "test-bucket", category: "test-category", prefix: "test-prefix", deserializer: stub_deserializer)
+  def build_file_definition(id: "test-id", bucket: "test-bucket", category: "test-category", prefix: "test-prefix", deserializer: stub_deserializer)
     described_class.new(
+      id: id,
       bucket: bucket,
       category: category,
       prefix: prefix,

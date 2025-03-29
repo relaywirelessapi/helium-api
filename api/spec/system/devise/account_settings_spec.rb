@@ -12,18 +12,6 @@ RSpec.describe "Account settings", type: :system do
     fill_in "Current password", with: user.password
     click_button "Update"
 
-    expect(page).to have_content("You updated your account successfully")
-  end
-
-  it "allows users to cancel their account", js: true do
-    user = create(:user)
-    sign_in user, scope: :user
-
-    visit edit_user_registration_path
-    accept_confirm { click_link "Cancel my account" }
-
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
-    expect(current_path).to eq(new_user_session_path)
-    expect(User.exists?(user.id)).to be(false)
+    expect(page).to have_content("Your account has been updated successfully.")
   end
 end

@@ -29,14 +29,14 @@ module Relay
           tempfile = Tempfile.new([ "helium-l2-file", ".gz" ])
 
           begin
+            definition = T.must(file.definition)
             file_client.get_object(
-              bucket: T.must(file.definition).bucket,
+              bucket: T.must(definition.bucket),
               key: file.s3_key,
               response_target: T.must(tempfile.path)
             )
 
-            deserializer = T.must(file.definition).deserializer
-
+            deserializer = T.must(definition.deserializer)
             file_decoder.messages_in(T.must(tempfile.path), start_position: file.position).each_slice(batch_size) do |decoder_results|
               records = decoder_results.map do |decoder_result|
                 deserializer.deserialize(decoder_result.message)

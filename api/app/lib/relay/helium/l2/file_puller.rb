@@ -20,7 +20,7 @@ module Relay
           start_after = last_pulled_file&.s3_key
 
           file_client.each_object(
-            bucket: definition.bucket,
+            bucket: T.must(definition.bucket),
             prefix: definition.s3_prefix,
             start_after: start_after
           ) do |object|

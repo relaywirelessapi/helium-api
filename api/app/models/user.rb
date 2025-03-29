@@ -10,9 +10,19 @@ class User < ApplicationRecord
 
   API_USAGE_RESET_INTERVAL = 30.days
 
+  sig { returns(String) }
+  def plan_id
+    "beta"
+  end
+
+  sig { returns(Relay::Plan) }
+  def plan
+    @plan ||= Relay::Plan.find!(plan_id)
+  end
+
   sig { returns(Integer) }
   def api_usage_limit
-    10_000
+    plan.api_usage_limit
   end
 
   sig { params(complexity: Integer).returns(T::Boolean) }
@@ -57,6 +67,6 @@ class User < ApplicationRecord
 
   sig { params(notification: T.untyped, args: T.untyped).void }
   def send_devise_notification(notification, *args)
-    devise_mailer.send(notification, self, *args).deliver_now
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end
