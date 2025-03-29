@@ -261,7 +261,7 @@ For detailed information about the available fields and types, refer to the [Gra
 
 ## Tools and Resources
 
-- [GraphQL Playground](https://api.helium.io/graphql) - Interactive API explorer
+- [GraphQL Playground](https://helium-api.relaywireless.com/graphiql) - Interactive API explorer (you need to be authenticated)
 - [Apollo Studio](https://studio.apollographql.com/) - Advanced API development environment
 - [Insomnia](https://insomnia.rest/) - API client with GraphQL support
 - [Postman](https://www.postman.com/) - API platform with GraphQL support
