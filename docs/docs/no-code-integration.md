@@ -26,7 +26,7 @@ You don't need to be a developer to use the Helium API! This guide shows you how
 Configuration:
 
 ```
-URL: https://api.helium.io/graphql
+URL: https://helium-api.relaywireless.com/graphql
 Method: POST
 Headers:
   - Content-Type: application/json
@@ -52,7 +52,7 @@ For handling large datasets, use Zapier's "Do While" loop:
 Configuration:
 
 ```
-URL: https://api.helium.io/graphql
+URL: https://helium-api.relaywireless.com/graphql
 Method: POST
 Headers:
   - Content-Type: application/json
@@ -79,7 +79,7 @@ Body:
 2. Add an HTTP module
 3. Configure GraphQL request:
    - Method: POST
-   - URL: https://api.helium.io/graphql
+   - URL: https://helium-api.relaywireless.com/graphql
    - Headers: Add Authorization and Content-Type
    - Body: Your GraphQL query
 
@@ -133,7 +133,7 @@ let cursor = null;
 let allResults = [];
 
 while (hasNextPage) {
-  let response = await fetch("https://api.helium.io/graphql", {
+  let response = await fetch("https://helium-api.relaywireless.com/graphql", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -213,7 +213,10 @@ function fetchAllHeliumData() {
       }),
     };
 
-    var response = UrlFetchApp.fetch("https://api.helium.io/graphql", options);
+    var response = UrlFetchApp.fetch(
+      "https://helium-api.relaywireless.com/graphql",
+      options
+    );
     var data = JSON.parse(response.getContentText());
 
     allRewards = allRewards.concat(data.data.mobileRewardShares.nodes);
@@ -253,7 +256,7 @@ function fetchAllHeliumData() {
 1. Create new applet
 2. Choose "Webhooks" as service
 3. Configure webhook:
-   - URL: https://api.helium.io/graphql
+   - URL: https://helium-api.relaywireless.com/graphql
    - Method: POST
    - Content Type: application/json
    - Body: Your GraphQL query
