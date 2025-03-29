@@ -24,7 +24,7 @@ locals {
     },
     {
       name  = "REDIS_URL"
-      value = "redis://${aws_elasticache_cluster.redis.cache_nodes[0].address}:${aws_elasticache_cluster.redis.cache_nodes[0].port}/0"
+      value = "redis://${aws_elasticache_replication_group.redis.primary_endpoint_address}:${aws_elasticache_replication_group.redis.port}/0"
     },
     {
       name  = "SECRET_KEY_BASE"
