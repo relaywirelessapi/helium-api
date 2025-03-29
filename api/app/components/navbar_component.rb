@@ -3,14 +3,22 @@
 
 class NavbarComponent < ViewComponent::Base
   def links
+    links = [
+      {
+        name: "Docs ↗",
+        path: "https://docs.relaywireless.com",
+        target: "_blank"
+      }
+    ]
+
     if helpers.user_signed_in?
-      [
+      links += [
         {
           name: "Dashboard",
           path: root_path
         },
         {
-          name: "Profile",
+          name: "Settings",
           path: edit_user_registration_path
         },
         {
@@ -19,17 +27,8 @@ class NavbarComponent < ViewComponent::Base
           data: { turbo_method: :delete }
         }
       ]
-    else
-      [
-        {
-          name: "Sign In",
-          path: new_user_session_path
-        },
-        {
-          name: "Sign Up",
-          path: new_user_registration_path
-        }
-      ]
     end
+
+    links
   end
 end
