@@ -75,7 +75,7 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
   end
 
   def stub_file(definition:)
-    instance_spy(Relay::Helium::L2::File, definition: definition, position: 0)
+    instance_spy(Relay::Helium::L2::File, definition: definition, position: 0, started_at: nil)
   end
 
   def stub_file_definition(deserializer:)

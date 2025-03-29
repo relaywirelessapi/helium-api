@@ -21,7 +21,16 @@ module Relay
 
     sig { params(row: T::Hash[Symbol, T.untyped]).returns(String) }
     def calculate_deduplication_key(row)
-      Digest::MD5.hexdigest(row.except(:id, :deduplication_key).sort.to_h.to_json)
+      sanitized_row = row.except(:id, :deduplication_key).transform_values do |value|
+        case value
+        when String
+          value.encode("UTF-8", invalid: :replace, undef: :replace, replace: "")
+        else
+          value
+        end
+      end
+
+      Digest::MD5.hexdigest(sanitized_row.sort.to_h.to_json)
     end
   end
 end

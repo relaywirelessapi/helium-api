@@ -24,7 +24,7 @@ module Relay
 
         sig { params(file: File).void }
         def process(file)
-          file.update!(started_at: Time.current)
+          file.update!(started_at: Time.current) unless file.started_at.present?
 
           tempfile = Tempfile.new([ "helium-l2-file", ".gz" ])
 

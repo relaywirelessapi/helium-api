@@ -10,6 +10,7 @@ const config: Config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  favicon: "img/logo.svg",
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -34,6 +35,10 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: "Relay API",
+      logo: {
+        alt: "Relay API Logo",
+        src: "img/logo.svg",
+      },
     },
     footer: {
       style: "dark",
@@ -43,6 +48,10 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    colorMode: {
+      defaultMode: "light",
+      respectPrefersColorScheme: true,
     },
   } satisfies Preset.ThemeConfig,
 
