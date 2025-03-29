@@ -22,7 +22,16 @@ module Relay
     sig { params(row: T::Hash[Symbol, T.untyped]).returns(String) }
     def calculate_deduplication_key(row)
       sanitized_row = row.except(:id, :deduplication_key)
-      Digest::MD5.hexdigest(sanitized_row.sort.to_h.to_json)
+
+      encoded_row = sanitized_row.transform_values do |value|
+        if value.is_a?(String) && value.encoding == Encoding::BINARY
+          Base64.strict_encode64(value)
+        else
+          value
+        end
+      end
+
+      Digest::MD5.hexdigest(encoded_row.sort.to_h.to_json)
     end
   end
 end
