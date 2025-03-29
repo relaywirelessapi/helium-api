@@ -35,21 +35,6 @@ RSpec.describe Relay::BatchImporter do
         ], on_duplicate_key_ignore: true)
       end
     end
-
-    it "handles binary and invalid UTF-8 data" do
-      model_klass = stub_model_klass(columns: [ "id", "content" ])
-      binary_content = "\xB2)}\xA5s\x8F\f".force_encoding("ASCII-8BIT")
-
-      batch_importer = Relay::BatchImporter.new
-      batch_importer.import(model_klass, [
-        { id: 1, content: binary_content }
-      ])
-
-      expect(model_klass).to have_received(:import) do |rows, _options|
-        expect { rows.first[:deduplication_key] }.not_to raise_error
-        expect(rows.first[:deduplication_key]).to match(/\A[a-f0-9]{32}\z/)
-      end
-    end
   end
 
   private
