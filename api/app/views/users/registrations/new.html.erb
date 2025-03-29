@@ -1,6 +1,6 @@
-<% content_for :title, "Sign Up" %>
+<% content_for :title, "Join" %>
 
-<%= render(FormContainerComponent.new(title: "Create an account")) do %>
+<%= render(FormContainerComponent.new(title: "Join Relay API")) do %>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="space-y-6">
       <%= f.input :email,
@@ -17,12 +17,12 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
 
-      <%= f.button :submit, "Sign up" %>
+      <%= render(ButtonComponent.new(text: "Create account", style: :primary, type: "submit", full_width: true)) %>
     </div>
   <% end %>
 
   <p class="mt-6 text-center text-sm/6 text-gray-500">
     Already have an account?
-    <%= link_to "Sign in", new_session_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+    <%= link_to "Log in", new_session_path(resource_name), class: "font-semibold hover:text-primary transition-colors" %>
   </p>
 <% end %>

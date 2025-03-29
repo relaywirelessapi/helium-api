@@ -1,6 +1,6 @@
-<% content_for :title, "Sign In" %>
+<% content_for :title, "Log In" %>
 
-<%= render(FormContainerComponent.new(title: "Sign in to your account")) do %>
+<%= render(FormContainerComponent.new(title: "Log in to Relay API")) do %>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="space-y-6">
       <%= f.input :email,
@@ -11,7 +11,7 @@
       <div>
         <div class="flex items-center justify-between">
           <%= f.label :password, class: "block text-sm/6 font-medium text-gray-900" %>
-          <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-sm font-semibold text-indigo-600 hover:text-indigo-500" %>
+          <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-sm font-semibold hover:text-primary transition-colors" %>
         </div>
         <%= f.input :password,
                     required: true,
@@ -23,17 +23,17 @@
         <%= f.input :remember_me, as: :boolean %>
       <% end %>
 
-      <%= f.button :submit, "Sign in" %>
+      <%= render(ButtonComponent.new(text: "Sign in", style: :primary, type: "submit", full_width: true)) %>
     </div>
   <% end %>
 
   <p class="mt-6 text-center text-sm/6 text-gray-500">
     Don't have an account?
-    <%= link_to "Sign up", new_registration_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "font-semibold hover:text-primary transition-colors" %>
   </p>
 
   <p class="mt-2 text-center text-sm/6 text-gray-500">
     Didn't receive a confirmation email?
-    <%= link_to "Request a new one", new_confirmation_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+    <%= link_to "Request a new one", new_confirmation_path(resource_name), class: "font-semibold hover:text-primary transition-colors" %>
   </p>
 <% end %>

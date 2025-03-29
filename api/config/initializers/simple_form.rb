@@ -24,8 +24,8 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
 
-    b.use :label, class: "block text-sm/6 font-medium text-gray-900"
-    b.use :input, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6", error_class: "outline-red-500 focus:outline-red-500"
+    b.use :label, class: "block text-sm/6 font-medium text-gray-700"
+    b.use :input, class: "block w-full rounded-md bg-white p-4 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary", error_class: "outline-red-500 focus:outline-red-500"
     b.use :hint, wrap_with: { tag: :p, class: "mt-1 text-sm/6 text-gray-600" }
     b.use :error, wrap_with: { tag: :p, class: "mt-1 text-sm/6 text-red-600" }
   end
@@ -35,13 +35,13 @@ SimpleForm.setup do |config|
 
     b.wrapper class: "flex h-6 shrink-0 items-center" do |ba|
       ba.wrapper class: "group grid size-4 grid-cols-1" do |bb|
-        bb.use :input, class: "col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+        bb.use :input, class: "col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-primary checked:bg-primary indeterminate:border-primary indeterminate:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
         bb.use :checkbox_svg
       end
     end
 
     b.wrapper class: "text-sm/6" do |ba|
-      ba.use :label, class: "font-medium text-gray-900"
+      ba.use :label, class: "font-medium text-gray-700"
       ba.use :hint, wrap_with: { tag: :p, class: "text-gray-500" }
       ba.use :error, wrap_with: { tag: :p, class: "mt-1 text-red-600" }
     end
@@ -49,15 +49,15 @@ SimpleForm.setup do |config|
 
   config.wrappers :radio, class: "flex items-center gap-x-3" do |b|
     b.use :html5
-    b.use :input, class: "relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-    b.use :label, class: "block text-sm/6 font-medium text-gray-900"
+    b.use :input, class: "relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-primary checked:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
+    b.use :label, class: "block text-sm/6 font-medium text-gray-700"
     b.use :error, wrap_with: { tag: :p, class: "mt-1 text-sm/6 text-red-600" }
   end
 
   config.wrappers :select, class: "mt-2 grid grid-cols-1" do |b|
     b.use :html5
     b.use :label, class: "block text-sm/6 font-medium text-gray-900"
-    b.use :input, class: "col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+    b.use :input, class: "col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
     b.use :error, wrap_with: { tag: :p, class: "mt-1 text-sm/6 text-red-600" }
   end
 
@@ -66,9 +66,6 @@ SimpleForm.setup do |config|
 
   # Define the way to render check boxes / radio buttons with labels.
   config.boolean_style = :inline
-
-  # Default class for buttons
-  config.button_class = "flex w-full px-5 py-3 justify-center items-center gap-2.5 self-stretch rounded-[34px] bg-[#0039FF] text-white font-semibold hover:bg-[#0039FF]/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0039FF] cursor-pointer"
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

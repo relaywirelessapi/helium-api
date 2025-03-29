@@ -4,7 +4,7 @@
     <div class="flex h-16 items-center justify-between">
       <%# Logo section %>
       <div class="flex items-center">
-        <%= link_to root_path, class: "flex items-center gap-2" do %>
+        <%= link_to root_path, class: "flex items-center gap-2 hover:text-primary transition-colors" do %>
           <%= image_tag "logo.svg", class: "h-8 w-8", alt: "Relay API" %>
           <span class="text-lg font-semibold">Relay API</span>
         <% end %>
@@ -16,7 +16,7 @@
           <%= link_to(
             link[:path],
             class: class_names(
-              "flex items-center text-sm transition-colors rounded p-2.5",
+              "flex items-center text-sm transition-colors rounded p-2.5 font-medium",
               "bg-[#0039FF0F] text-[#0039FF]" => current_page?(link[:path]),
               "text-gray-600 hover:text-gray-900" => !current_page?(link[:path])
             ),

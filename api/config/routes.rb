@@ -5,7 +5,7 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   root "dashboard#show"
 
-  devise_for :users, class_name: "User", controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   post "/graphql", to: "graphql#execute"
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
