@@ -2,7 +2,7 @@
 id: schema
 slug: /schema
 title: GraphQL Schema
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # GraphQL Schema
