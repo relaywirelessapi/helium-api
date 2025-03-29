@@ -60,7 +60,7 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
 
     instance_double(Relay::Helium::L2::FileDecoder).tap do |decoder|
       allow(decoder).to receive(:messages_in).with(
-        an_instance_of(Pathname),
+        an_instance_of(String),
         start_position: 0
       ).and_return(decoder_results)
     end

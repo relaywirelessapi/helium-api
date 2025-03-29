@@ -24,7 +24,7 @@ module Relay
 
         sig do
           params(
-            file_path: Pathname,
+            file_path: T.any(Pathname, String),
             start_position: Integer,
           ).returns(T::Enumerator[DecoderResult])
         end
