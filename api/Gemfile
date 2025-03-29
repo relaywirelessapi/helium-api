@@ -38,7 +38,7 @@ gem "tapioca", require: false, group: :development # For generating RBI files
 
 # GraphQL
 gem "graphql"
-gem "graphiql-rails", group: :development
+gem "graphiql-rails"
 
 # AWS
 gem "aws-sdk-s3"

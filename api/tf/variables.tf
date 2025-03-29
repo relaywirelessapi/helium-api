@@ -46,3 +46,9 @@ variable "helium_oracles_aws_region" {
   description = "AWS region"
   default     = "us-west-2"
 }
+
+variable "sidekiq_username" {
+  description = "Sidekiq username"
+  type        = string
+  default     = "admin"
+}

@@ -73,6 +73,14 @@ locals {
     {
       name  = "SENTRY_DSN"
       value = aws_ssm_parameter.sentry_dsn.value
+    },
+    {
+      name  = "SIDEKIQ_USERNAME"
+      value = aws_ssm_parameter.sidekiq_username.value
+    },
+    {
+      name  = "SIDEKIQ_PASSWORD"
+      value = aws_ssm_parameter.sidekiq_password.value
     }
   ]
 }
