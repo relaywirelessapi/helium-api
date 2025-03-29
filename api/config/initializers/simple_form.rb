@@ -68,7 +68,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :inline
 
   # Default class for buttons
-  config.button_class = "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer"
+  config.button_class = "flex w-full px-5 py-3 justify-center items-center gap-2.5 self-stretch rounded-[34px] bg-[#0039FF] text-white font-semibold hover:bg-[#0039FF]/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0039FF] cursor-pointer"
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
