@@ -20,9 +20,11 @@
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
 
-  <body class="h-full bg-gray-50">
+  <body class="h-full">
     <div class="min-h-full">
-      <%= render NavbarComponent.new %>
+      <% if user_signed_in? %>
+        <%= render NavbarComponent.new %>
+      <% end %>
 
       <div class="py-6">
         <main>
