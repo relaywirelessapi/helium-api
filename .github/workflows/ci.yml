@@ -94,29 +94,29 @@ jobs:
           terraform -chdir=api/tf init -backend=false
           terraform -chdir=api/tf validate
 
-  deploy:
-    needs: [lint-ruby, lint-js, lint-tf, test-ruby, verify-schema]
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    env:
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ vars.AWS_REGION }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # deploy:
+  #   needs: [lint-ruby, lint-js, lint-tf, test-ruby, verify-schema]
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #     AWS_REGION: ${{ vars.AWS_REGION }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v3
 
-      - name: Cache Terraform
-        uses: actions/cache@v3
-        with:
-          path: api/tf/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
-          restore-keys: |
-            ${{ runner.os }}-terraform-
+  #     - name: Cache Terraform
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: api/tf/.terraform
+  #         key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-terraform-
 
-      - name: Deploy to ECS
-        run: api/bin/deploy
+  #     - name: Deploy to ECS
+  #       run: api/bin/deploy
