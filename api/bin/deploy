@@ -9,15 +9,16 @@ TF_ROOT="$(cd "$API_ROOT/tf/" && pwd)"
 # Initialize Terraform
 terraform -chdir=$TF_ROOT init
 
-# Get ECR repo URL, Git SHA, and app name
+# Get ECR repo URL, Git SHA, app name, and AWS region
 APP_NAME=$(terraform -chdir=$TF_ROOT output -raw app_name)
 ECR_REPO=$(terraform -chdir=$TF_ROOT output -raw ecr_repository_url)
+AWS_REGION=$(terraform -chdir=$TF_ROOT output -raw aws_region)
 GIT_SHA=$(git rev-parse --short HEAD)
 
 # Check if image with Git SHA already exists in ECR
-if ! aws ecr describe-images --repository-name $(echo $ECR_REPO | cut -d'/' -f2) --image-ids imageTag=${GIT_SHA} >/dev/null 2>&1; then
+if ! aws ecr describe-images --region $AWS_REGION --repository-name $(echo $ECR_REPO | cut -d'/' -f2) --image-ids imageTag=${GIT_SHA} >/dev/null 2>&1; then
   # Login to ECR only if we need to push
-  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query Account --output text).dkr.ecr.us-east-1.amazonaws.com
+  aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$AWS_REGION.amazonaws.com
 
   # Build and push only if image doesn't exist
   echo "Building and pushing new image ${ECR_REPO}:${GIT_SHA}"
@@ -28,7 +29,7 @@ else
 fi
 
 # Get current image tag from ECS service
-CURRENT_TAG=$(aws ecs describe-services --cluster ${APP_NAME}-cluster --services ${APP_NAME} --query 'services[0].taskDefinition' --output text | rev | cut -d':' -f1 | rev)
+CURRENT_TAG=$(aws ecs describe-services --region $AWS_REGION --cluster ${APP_NAME}-cluster --services ${APP_NAME} --query 'services[0].taskDefinition' --output text | rev | cut -d':' -f1 | rev)
 
 # Only deploy if the image tag has changed
 if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
@@ -37,7 +38,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
 
   # Wait for deployment to stabilize
   echo "Waiting for deployment to stabilize..."
-  aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}-web
+  aws ecs wait services-stable --region $AWS_REGION --cluster ${APP_NAME}-cluster --services ${APP_NAME}-web
 
   # Get VPC configuration
   PRIVATE_SUBNET_IDS=$(terraform -chdir=$TF_ROOT output -json private_subnet_ids | jq -c .)
@@ -45,7 +46,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
 
   # Run database migrations
   echo "Running database migrations..."
-  TASK_ARN=$(aws ecs run-task \
+  TASK_ARN=$(aws ecs run-task --region $AWS_REGION \
     --cluster ${APP_NAME}-cluster \
     --task-definition ${APP_NAME}-web \
     --network-configuration "awsvpcConfiguration={subnets=${PRIVATE_SUBNET_IDS},securityGroups=[\"${APP_SECURITY_GROUP_ID}\"],assignPublicIp=DISABLED}" \
@@ -56,13 +57,13 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
 
   # Wait for migration task to complete and show logs
   echo "Waiting for migration task to complete..."
-  aws ecs wait tasks-stopped --cluster ${APP_NAME}-cluster --tasks $TASK_ARN
+  aws ecs wait tasks-stopped --region $AWS_REGION --cluster ${APP_NAME}-cluster --tasks $TASK_ARN
 
   # Print the task ARN
   echo "Migration task ARN: $TASK_ARN"
 
   # Check if the migration task failed
-  TASK_STATUS=$(aws ecs describe-tasks --cluster ${APP_NAME}-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
+  TASK_STATUS=$(aws ecs describe-tasks --region $AWS_REGION --cluster ${APP_NAME}-cluster --tasks $TASK_ARN --query 'tasks[0].containers[0].exitCode' --output text)
   if [ "$TASK_STATUS" != "0" ]; then
     echo "Migration task failed with exit code $TASK_STATUS"
     echo "Rolling back to previous image tag ${CURRENT_TAG}"
@@ -72,7 +73,7 @@ if [ "$CURRENT_TAG" != "$GIT_SHA" ]; then
     
     # Wait for rollback to stabilize
     echo "Waiting for rollback to stabilize..."
-    aws ecs wait services-stable --cluster ${APP_NAME}-cluster --services ${APP_NAME}
+    aws ecs wait services-stable --region $AWS_REGION --cluster ${APP_NAME}-cluster --services ${APP_NAME}
     
     echo "Rollback complete"
     exit 1

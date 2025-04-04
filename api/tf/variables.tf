@@ -13,6 +13,11 @@ output "app_name" {
   value       = var.app_name
 }
 
+output "aws_region" {
+  description = "AWS region"
+  value       = var.aws_region
+}
+
 variable "environment" {
   description = "Environment (staging/production)"
   default     = "production"
