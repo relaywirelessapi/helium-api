@@ -12,13 +12,6 @@
   <%= render(CardComponent.new(title: "Getting Started")) do %>
     <p class="text-gray-600 mb-6">Welcome to the Relay GraphQL API for Helium Oracle data! This API allows you to easily query information about any Helium hotspot, including essential details, earnings, and historical data.</p>
 
-    <h3 class="text-lg font-semibold mb-4">Start using the API in 3 easy steps:</h3>
-    <ol class="list-decimal list-inside space-y-2 mb-6">
-      <li>Copy your API key</li>
-      <li>Use the desired endpoint for the data you're looking to access (see docs for all endpoints)</li>
-      <li>Request data via any standard API interface like Zapier. We recommend using x service for best results</li>
-    </ol>
-
     <div class="flex gap-4">
       <%= render(ButtonComponent.new(
         text: "Read Docs",

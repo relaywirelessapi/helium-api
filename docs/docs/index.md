@@ -10,12 +10,22 @@ Welcome to the Helium API documentation! This guide will help you understand our
 
 ## Overview
 
-The Helium API provides access to IoT and Mobile data from the Helium Network. Through our GraphQL API, you can:
+The Helium API provides access to IoT, Mobile, and HNT data from the Helium Network. Through our GraphQL API, you can:
 
+- Sync hotspot rewards including HNT, IOT, MOBILE
 - Access IoT beacon and witness ingest reports
-- Retrieve IoT and mobile reward shares
-- Monitor network status
-- Query historical data
+- Retrieve IoT and Mobile reward shares
+- Monitor hotspot network status
+- Query Helium historical data
+- And get any data provided by Helium Oracles
+
+## Open Source
+
+Relay API is open-source. The backend code will be published under the Relay GitHub organization and made publicly accessible for review, feedback, contributions, and independent development. The API will be open-sourced after the Beta phase, at the time of the public launch.
+
+### Sponsored by Helium Foundation
+
+Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community—removing the need to interact directly with AWS S3 and its complexities.
 
 ## Why GraphQL?
 
