@@ -37,20 +37,20 @@ module Relay
                 prefix: "mobile_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
               ),
-              new(
-                id: "foundation-iot-ingest/iot_witness_ingest_report",
-                bucket: "foundation-poc-data-requester-pays",
-                category: "foundation-iot-ingest",
-                prefix: "iot_witness_ingest_report",
-                deserializer: Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeserializer.new
-              ),
-              new(
-                id: "foundation-iot-ingest/iot_beacon_ingest_report",
-                bucket: "foundation-poc-data-requester-pays",
-                category: "foundation-iot-ingest",
-                prefix: "iot_beacon_ingest_report",
-                deserializer: Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializer.new
-              )
+              # new(
+              #   id: "foundation-iot-ingest/iot_witness_ingest_report",
+              #   bucket: "foundation-poc-data-requester-pays",
+              #   category: "foundation-iot-ingest",
+              #   prefix: "iot_witness_ingest_report",
+              #   deserializer: Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeserializer.new
+              # ),
+              # new(
+              #   id: "foundation-iot-ingest/iot_beacon_ingest_report",
+              #   bucket: "foundation-poc-data-requester-pays",
+              #   category: "foundation-iot-ingest",
+              #   prefix: "iot_beacon_ingest_report",
+              #   deserializer: Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializer.new
+              # )
             ]
           end
         end
