@@ -22,7 +22,7 @@ RSpec.describe "GraphQL usage limits", type: :request do
         status
       }
     GRAPHQL
-    user = create(:user, current_api_usage: 10_000)
+    user = create(:user, current_api_usage: 100_000)
 
     execute_graphql_query(query, api_key: user.api_key)
 

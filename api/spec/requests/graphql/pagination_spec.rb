@@ -6,14 +6,16 @@ require "rails_helper"
 RSpec.describe "GraphQL pagination", type: :request do
   it "returns all rewards when no pagination arguments are provided" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query {
-        iotRewardShares {
+        iotRewardShares(startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -43,14 +45,16 @@ RSpec.describe "GraphQL pagination", type: :request do
 
   it "returns first N rewards when first argument is provided" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query($first: Int) {
-        iotRewardShares(first: $first) {
+        iotRewardShares(first: $first, startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -80,14 +84,16 @@ RSpec.describe "GraphQL pagination", type: :request do
 
   it "returns last N rewards when last argument is provided" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query($last: Int) {
-        iotRewardShares(last: $last) {
+        iotRewardShares(last: $last, startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -118,14 +124,16 @@ RSpec.describe "GraphQL pagination", type: :request do
 
   it "paginates forward using after cursor" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query($first: Int, $after: String) {
-        iotRewardShares(first: $first, after: $after) {
+        iotRewardShares(first: $first, after: $after, startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -158,14 +166,16 @@ RSpec.describe "GraphQL pagination", type: :request do
 
   it "paginates backward using before cursor" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query($last: Int, $before: String) {
-        iotRewardShares(last: $last, before: $before) {
+        iotRewardShares(last: $last, before: $before, startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -196,16 +206,18 @@ RSpec.describe "GraphQL pagination", type: :request do
     )
   end
 
-  it "maintains sort order (descending by start_period)" do
+  it "maintains sort order (ascending by start_period)" do
     user = create(:user)
-    create(:helium_l2_iot_reward_share, start_period: 3.days.ago, amount: 100)
-    create(:helium_l2_iot_reward_share, start_period: 2.days.ago, amount: 200)
-    create(:helium_l2_iot_reward_share, start_period: 1.day.ago, amount: 300)
-    create(:helium_l2_iot_reward_share, start_period: Time.current, amount: 400)
+    start_time = Time.parse("2024-01-01T00:00:00Z")
+    end_time = Time.parse("2024-01-04T00:00:00Z")
+    create(:helium_l2_iot_reward_share, start_period: start_time, end_period: end_time, amount: 100)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 1.day, end_period: end_time, amount: 200)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 2.days, end_period: end_time, amount: 300)
+    create(:helium_l2_iot_reward_share, start_period: start_time + 3.days, end_period: end_time, amount: 400)
 
     query = <<~GRAPHQL
       query {
-        iotRewardShares {
+        iotRewardShares(startPeriod: "#{start_time.iso8601}", endPeriod: "#{end_time.iso8601}") {
           edges {
             cursor
             node {
@@ -228,6 +240,6 @@ RSpec.describe "GraphQL pagination", type: :request do
     expect(response).to have_http_status(:ok)
     edges = parsed_response["data"]["iotRewardShares"]["edges"]
     start_periods = edges.map { |edge| Time.parse(edge["node"]["startPeriod"]) }
-    expect(start_periods).to eq(start_periods.sort.reverse)
+    expect(start_periods).to eq(start_periods.sort)
   end
 end
