@@ -722,7 +722,7 @@ class Sidekiq::Config
 
   # @return [Config] a new instance of Config
   #
-  # source://sidekiq//lib/sidekiq/config.rb#61
+  # source://sidekiq//lib/sidekiq/config.rb#62
   def initialize(options = T.unsafe(nil)); end
 
   # source://forwardable/1.3.3/forwardable.rb#231
@@ -737,33 +737,33 @@ class Sidekiq::Config
   #
   # See sidekiq/scheduled.rb for an in-depth explanation of this value
   #
-  # source://sidekiq//lib/sidekiq/config.rb#245
+  # source://sidekiq//lib/sidekiq/config.rb#246
   def average_scheduled_poll_interval=(interval); end
 
   # register a new queue processing subsystem
   #
   # @yield [cap]
   #
-  # source://sidekiq//lib/sidekiq/config.rb#132
+  # source://sidekiq//lib/sidekiq/config.rb#133
   def capsule(name); end
 
   # Returns the value of attribute capsules.
   #
-  # source://sidekiq//lib/sidekiq/config.rb#70
+  # source://sidekiq//lib/sidekiq/config.rb#71
   def capsules; end
 
   # @yield [@client_chain]
   #
-  # source://sidekiq//lib/sidekiq/config.rb#115
+  # source://sidekiq//lib/sidekiq/config.rb#116
   def client_middleware; end
 
-  # source://sidekiq//lib/sidekiq/config.rb#89
+  # source://sidekiq//lib/sidekiq/config.rb#90
   def concurrency; end
 
   # LEGACY: edits the default capsule
   # config.concurrency = 5
   #
-  # source://sidekiq//lib/sidekiq/config.rb#85
+  # source://sidekiq//lib/sidekiq/config.rb#86
   def concurrency=(val); end
 
   # Death handlers are called when all retries for a job have been exhausted and
@@ -775,10 +775,10 @@ class Sidekiq::Config
   #   end
   # end
   #
-  # source://sidekiq//lib/sidekiq/config.rb#236
+  # source://sidekiq//lib/sidekiq/config.rb#237
   def death_handlers; end
 
-  # source://sidekiq//lib/sidekiq/config.rb#127
+  # source://sidekiq//lib/sidekiq/config.rb#128
   def default_capsule(&block); end
 
   # source://forwardable/1.3.3/forwardable.rb#231
@@ -792,48 +792,48 @@ class Sidekiq::Config
   #
   # The default error handler logs errors to @logger.
   #
-  # source://sidekiq//lib/sidekiq/config.rb#256
+  # source://sidekiq//lib/sidekiq/config.rb#257
   def error_handlers; end
 
   # source://forwardable/1.3.3/forwardable.rb#231
   def fetch(*args, **_arg1, &block); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#221
+  # source://sidekiq//lib/sidekiq/config.rb#222
   def freeze!; end
 
   # INTERNAL USE ONLY
   #
-  # source://sidekiq//lib/sidekiq/config.rb#300
+  # source://sidekiq//lib/sidekiq/config.rb#301
   def handle_exception(ex, ctx = T.unsafe(nil)); end
 
   # source://forwardable/1.3.3/forwardable.rb#231
   def has_key?(*args, **_arg1, &block); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#73
+  # source://sidekiq//lib/sidekiq/config.rb#74
   def inspect; end
 
   # source://forwardable/1.3.3/forwardable.rb#231
   def key?(*args, **_arg1, &block); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#274
+  # source://sidekiq//lib/sidekiq/config.rb#275
   def logger; end
 
-  # source://sidekiq//lib/sidekiq/config.rb#285
+  # source://sidekiq//lib/sidekiq/config.rb#286
   def logger=(logger); end
 
   # find a singleton
   #
-  # source://sidekiq//lib/sidekiq/config.rb#213
+  # source://sidekiq//lib/sidekiq/config.rb#214
   def lookup(name, default_class = T.unsafe(nil)); end
 
   # source://forwardable/1.3.3/forwardable.rb#231
   def merge!(*args, **_arg1, &block); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#157
+  # source://sidekiq//lib/sidekiq/config.rb#158
   def new_redis_pool(size, name = T.unsafe(nil)); end
 
   # Register a block to run at a point in the Sidekiq lifecycle.
-  # :startup, :quiet or :shutdown are valid events.
+  # :startup, :quiet, :shutdown, or :exit are valid events.
   #
   #   Sidekiq.configure_server do |config|
   #     config.on(:shutdown) do
@@ -843,10 +843,10 @@ class Sidekiq::Config
   #
   # @raise [ArgumentError]
   #
-  # source://sidekiq//lib/sidekiq/config.rb#268
+  # source://sidekiq//lib/sidekiq/config.rb#269
   def on(event, &block); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#111
+  # source://sidekiq//lib/sidekiq/config.rb#112
   def queues; end
 
   # Edit the default capsule.
@@ -860,66 +860,66 @@ class Sidekiq::Config
   # are ridiculous and unnecessarily expensive. You can get random queue ordering
   # by explicitly setting all weights to 1.
   #
-  # source://sidekiq//lib/sidekiq/config.rb#107
+  # source://sidekiq//lib/sidekiq/config.rb#108
   def queues=(val); end
 
   # @raise [ArgumentError]
   #
-  # source://sidekiq//lib/sidekiq/config.rb#179
+  # source://sidekiq//lib/sidekiq/config.rb#180
   def redis; end
 
   # All capsules must use the same Redis configuration
   #
-  # source://sidekiq//lib/sidekiq/config.rb#143
+  # source://sidekiq//lib/sidekiq/config.rb#144
   def redis=(hash); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#163
+  # source://sidekiq//lib/sidekiq/config.rb#164
   def redis_info; end
 
-  # source://sidekiq//lib/sidekiq/config.rb#147
+  # source://sidekiq//lib/sidekiq/config.rb#148
   def redis_pool; end
 
   # register global singletons which can be accessed elsewhere
   #
-  # source://sidekiq//lib/sidekiq/config.rb#202
+  # source://sidekiq//lib/sidekiq/config.rb#203
   def register(name, instance); end
 
   # @yield [@server_chain]
   #
-  # source://sidekiq//lib/sidekiq/config.rb#121
+  # source://sidekiq//lib/sidekiq/config.rb#122
   def server_middleware; end
 
   # Returns the value of attribute thread_priority.
   #
-  # source://sidekiq//lib/sidekiq/config.rb#71
+  # source://sidekiq//lib/sidekiq/config.rb#72
   def thread_priority; end
 
   # Sets the attribute thread_priority
   #
   # @param value the value to set the attribute thread_priority to.
   #
-  # source://sidekiq//lib/sidekiq/config.rb#71
+  # source://sidekiq//lib/sidekiq/config.rb#72
   def thread_priority=(_arg0); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#79
+  # source://sidekiq//lib/sidekiq/config.rb#80
   def to_json(*_arg0); end
 
-  # source://sidekiq//lib/sidekiq/config.rb#93
+  # source://sidekiq//lib/sidekiq/config.rb#94
   def total_concurrency; end
 
   private
 
-  # source://sidekiq//lib/sidekiq/config.rb#151
+  # source://sidekiq//lib/sidekiq/config.rb#152
   def local_redis_pool; end
 
-  # source://sidekiq//lib/sidekiq/config.rb#294
+  # source://sidekiq//lib/sidekiq/config.rb#295
   def parameter_size(handler); end
 end
 
 # source://sidekiq//lib/sidekiq/config.rb#11
 Sidekiq::Config::DEFAULTS = T.let(T.unsafe(nil), Hash)
 
-# source://sidekiq//lib/sidekiq/config.rb#41
+# source://sidekiq//lib/sidekiq/config.rb#42
 Sidekiq::Config::ERROR_HANDLER = T.let(T.unsafe(nil), Proc)
 
 # source://sidekiq//lib/sidekiq/logger.rb#7
