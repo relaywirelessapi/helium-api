@@ -4,7 +4,6 @@
 :timeout: 25
 
 :queues:
-  - [critical, 3]
-  - [high, 2]
-  - [default, 1]
+  - [high, 3]
+  - [default, 2]
   - [low, 1]
