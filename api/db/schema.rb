@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_29_102600) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_05_104326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -53,6 +53,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_29_102600) do
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
+    t.index ["start_period"], name: "index_helium_l2_iot_reward_shares_on_start_period"
   end
 
   create_table "helium_l2_iot_witness_ingest_reports", id: false, force: :cascade do |t|
