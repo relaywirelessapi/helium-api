@@ -139,8 +139,8 @@ resource "aws_ecs_task_definition" "web" {
   }
 }
 
-resource "aws_ecs_task_definition" "sidekiq" {
-  family                   = "${var.app_name}-sidekiq"
+resource "aws_ecs_task_definition" "sidekiq_low" {
+  family                   = "${var.app_name}-sidekiq-low"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = 1024
@@ -155,7 +155,7 @@ resource "aws_ecs_task_definition" "sidekiq" {
 
   container_definitions = jsonencode([
     {
-      name    = "${var.app_name}-sidekiq"
+      name    = "${var.app_name}-sidekiq-low"
       image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
       command = ["bundle", "exec", "sidekiq", "-q", "low", "-c", "15"]
 
@@ -174,14 +174,14 @@ resource "aws_ecs_task_definition" "sidekiq" {
         options = {
           awslogs-group         = aws_cloudwatch_log_group.app.name
           awslogs-region        = var.aws_region
-          awslogs-stream-prefix = "${var.app_name}-sidekiq"
+          awslogs-stream-prefix = "${var.app_name}-sidekiq-low"
         }
       }
     }
   ])
 
   tags = {
-    Name        = "${var.app_name}-sidekiq-task-definition"
+    Name        = "${var.app_name}-sidekiq-low-task-definition"
     Environment = var.environment
   }
 }
@@ -408,10 +408,10 @@ resource "aws_appautoscaling_policy" "web_memory" {
   }
 }
 
-resource "aws_ecs_service" "sidekiq" {
-  name                   = "${var.app_name}-sidekiq"
+resource "aws_ecs_service" "sidekiq_low" {
+  name                   = "${var.app_name}-sidekiq-low"
   cluster                = aws_ecs_cluster.main.id
-  task_definition        = aws_ecs_task_definition.sidekiq.arn
+  task_definition        = aws_ecs_task_definition.sidekiq_low.arn
   desired_count          = 2
   launch_type            = "FARGATE"
   force_new_deployment   = true
@@ -434,7 +434,7 @@ resource "aws_ecs_service" "sidekiq" {
   depends_on = [aws_route_table_association.private]
 
   tags = {
-    Name        = "${var.app_name}-sidekiq-service"
+    Name        = "${var.app_name}-sidekiq-low-service"
     Environment = var.environment
   }
 }
