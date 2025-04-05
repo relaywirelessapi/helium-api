@@ -6,6 +6,8 @@ module Relay
       class ProcessFileJob < ApplicationJob
         extend T::Sig
 
+        queue_as :low
+
         sig { params(oracle_file: File).void }
         def perform(oracle_file)
           processor = FileProcessor.new
