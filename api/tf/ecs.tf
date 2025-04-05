@@ -204,7 +204,7 @@ resource "aws_ecs_task_definition" "sidekiq_default" {
     {
       name    = "${var.app_name}-sidekiq-default"
       image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
-      command = ["bundle", "exec", "sidekiq", "-q", "default", "-c", "5"]
+      command = ["bundle", "exec", "sidekiq", "-q", "default", "-c", "10"]
 
       environment = local.container_environment
 
@@ -251,7 +251,7 @@ resource "aws_ecs_task_definition" "sidekiq_high" {
     {
       name    = "${var.app_name}-sidekiq-high"
       image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
-      command = ["bundle", "exec", "sidekiq", "-q", "high", "-c", "2"]
+      command = ["bundle", "exec", "sidekiq", "-q", "high", "-c", "5"]
 
       environment = local.container_environment
 
@@ -474,7 +474,7 @@ resource "aws_ecs_service" "sidekiq_high" {
   name                   = "${var.app_name}-sidekiq-high"
   cluster                = aws_ecs_cluster.main.id
   task_definition        = aws_ecs_task_definition.sidekiq_high.arn
-  desired_count          = 1
+  desired_count          = 2
   launch_type            = "FARGATE"
   force_new_deployment   = true
   enable_execute_command = true
