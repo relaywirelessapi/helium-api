@@ -53,6 +53,7 @@ gem "zlib"
 # Sentry
 gem "sentry-ruby"
 gem "sentry-rails"
+gem "stackprof"
 
 group :development, :test do
   # Debugging

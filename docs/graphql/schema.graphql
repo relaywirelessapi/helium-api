@@ -9,98 +9,6 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
-type IotBeaconIngestReport {
-  """
-  The data of the beacon ingest report.
-  """
-  data: String
-
-  """
-  The data rate of the beacon ingest report.
-  """
-  dataRate: String
-
-  """
-  The frequency of the beacon ingest report.
-  """
-  frequency: BigInt
-
-  """
-  The key of the hotspot.
-  """
-  hotspotKey: String
-
-  """
-  The local entropy of the beacon ingest report.
-  """
-  localEntropy: String
-
-  """
-  The timestamp when the beacon ingest report was received.
-  """
-  receivedAt: ISO8601DateTime
-
-  """
-  The remote entropy of the beacon ingest report.
-  """
-  remoteEntropy: String
-
-  """
-  The timestamp when the beacon ingest report was reported.
-  """
-  reportedAt: ISO8601DateTime
-
-  """
-  The signature of the beacon ingest report.
-  """
-  signature: String
-
-  """
-  The timestamp of the beacon ingest report.
-  """
-  tmst: BigInt
-
-  """
-  The transmission power of the beacon ingest report.
-  """
-  txPower: BigInt
-}
-
-"""
-The connection type for IotBeaconIngestReport.
-"""
-type IotBeaconIngestReportConnection {
-  """
-  A list of edges.
-  """
-  edges: [IotBeaconIngestReportEdge]
-
-  """
-  A list of nodes.
-  """
-  nodes: [IotBeaconIngestReport]
-
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-}
-
-"""
-An edge in a connection.
-"""
-type IotBeaconIngestReportEdge {
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-
-  """
-  The item at the end of the edge.
-  """
-  node: IotBeaconIngestReport
-}
-
 type IotRewardShare {
   """
   The amount of the reward.
@@ -181,93 +89,6 @@ type IotRewardShareEdge {
   The item at the end of the edge.
   """
   node: IotRewardShare
-}
-
-type IotWitnessIngestReport {
-  """
-  The data of the witness ingest report.
-  """
-  data: String
-
-  """
-  The data rate of the witness ingest report.
-  """
-  dataRate: String
-
-  """
-  The frequency of the witness ingest report.
-  """
-  frequency: BigInt
-
-  """
-  The key of the hotspot.
-  """
-  hotspotKey: String
-
-  """
-  The timestamp when the witness ingest report was received.
-  """
-  receivedAt: ISO8601DateTime
-
-  """
-  The timestamp when the witness ingest report was reported.
-  """
-  reportedAt: ISO8601DateTime
-
-  """
-  The signal strength of the witness ingest report.
-  """
-  signal: BigInt
-
-  """
-  The signature of the witness ingest report.
-  """
-  signature: String
-
-  """
-  The signal-to-noise ratio of the witness ingest report.
-  """
-  snr: BigInt
-
-  """
-  The timestamp of the witness ingest report.
-  """
-  tmst: BigInt
-}
-
-"""
-The connection type for IotWitnessIngestReport.
-"""
-type IotWitnessIngestReportConnection {
-  """
-  A list of edges.
-  """
-  edges: [IotWitnessIngestReportEdge]
-
-  """
-  A list of nodes.
-  """
-  nodes: [IotWitnessIngestReport]
-
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-}
-
-"""
-An edge in a connection.
-"""
-type IotWitnessIngestReportEdge {
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-
-  """
-  The item at the end of the edge.
-  """
-  node: IotWitnessIngestReport
 }
 
 type MobileRewardShare {
@@ -491,29 +312,8 @@ type Query {
   ): String!
 
   """
-  Retrieves a list of IoT beacon ingest reports.
+  Retrieves a list of IoT reward shares within a specified time period.
   """
-  iotBeaconIngestReports(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-  ): IotBeaconIngestReportConnection!
   iotRewardShares(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -526,43 +326,38 @@ type Query {
     before: String
 
     """
+    End of the time period to fetch reward shares for
+    """
+    endPeriod: ISO8601DateTime!
+
+    """
     Returns the first _n_ elements from the list.
     """
     first: Int
 
     """
+    Hotspot key to filter by
+    """
+    hotspotKey: String
+
+    """
     Returns the last _n_ elements from the list.
     """
     last: Int
+
+    """
+    Reward type to filter by
+    """
+    rewardType: String
+
+    """
+    Start of the time period to fetch reward shares for
+    """
+    startPeriod: ISO8601DateTime!
   ): IotRewardShareConnection!
 
   """
-  Retrieves a list of IoT witness ingest reports.
-  """
-  iotWitnessIngestReports(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-  ): IotWitnessIngestReportConnection!
-
-  """
-  Retrieves a list of mobile reward shares.
+  Retrieves a list of MOBILE reward shares within a specified time period.
   """
   mobileRewardShares(
     """
@@ -576,14 +371,34 @@ type Query {
     before: String
 
     """
+    End of the time period to fetch reward shares for
+    """
+    endPeriod: ISO8601DateTime!
+
+    """
     Returns the first _n_ elements from the list.
     """
     first: Int
 
     """
+    Hotspot key to filter by
+    """
+    hotspotKey: String
+
+    """
     Returns the last _n_ elements from the list.
     """
     last: Int
+
+    """
+    Reward type to filter by
+    """
+    rewardType: String
+
+    """
+    Start of the time period to fetch reward shares for
+    """
+    startPeriod: ISO8601DateTime!
   ): MobileRewardShareConnection!
 
   """

@@ -6,6 +6,7 @@
 
 
 class Relay::Helium::L2::MobileRewardShare
+  include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
 
@@ -565,6 +566,1909 @@ class Relay::Helium::L2::MobileRewardShare
 
     sig { params(args: T.untyped, blk: T.untyped).returns(PrivateAssociationRelation) }
     def without(*args, &blk); end
+  end
+
+  module GeneratedAttributeMethods
+    sig { returns(T.nilable(::Integer)) }
+    def amount; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def amount=(value); end
+
+    sig { returns(T::Boolean) }
+    def amount?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def amount_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def amount_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def amount_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def amount_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def amount_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def amount_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def amount_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def amount_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def amount_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def amount_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def amount_was; end
+
+    sig { void }
+    def amount_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum=(value); end
+
+    sig { returns(T::Boolean) }
+    def base_coverage_points_sum?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def base_coverage_points_sum_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def base_coverage_points_sum_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_coverage_points_sum_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_coverage_points_sum_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def base_coverage_points_sum_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_coverage_points_sum_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def base_coverage_points_sum_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_coverage_points_sum_was; end
+
+    sig { void }
+    def base_coverage_points_sum_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def base_poc_reward; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def base_poc_reward=(value); end
+
+    sig { returns(T::Boolean) }
+    def base_poc_reward?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def base_poc_reward_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def base_poc_reward_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def base_poc_reward_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def base_poc_reward_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def base_poc_reward_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def base_poc_reward_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def base_poc_reward_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def base_poc_reward_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def base_poc_reward_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def base_poc_reward_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def base_poc_reward_was; end
+
+    sig { void }
+    def base_poc_reward_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares=(value); end
+
+    sig { returns(T::Boolean) }
+    def base_reward_shares?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def base_reward_shares_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def base_reward_shares_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_reward_shares_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_reward_shares_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def base_reward_shares_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def base_reward_shares_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def base_reward_shares_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def base_reward_shares_was; end
+
+    sig { void }
+    def base_reward_shares_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum=(value); end
+
+    sig { returns(T::Boolean) }
+    def boosted_coverage_points_sum?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def boosted_coverage_points_sum_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def boosted_coverage_points_sum_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_coverage_points_sum_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_coverage_points_sum_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def boosted_coverage_points_sum_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_coverage_points_sum_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def boosted_coverage_points_sum_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_coverage_points_sum_was; end
+
+    sig { void }
+    def boosted_coverage_points_sum_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def boosted_poc_reward; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def boosted_poc_reward=(value); end
+
+    sig { returns(T::Boolean) }
+    def boosted_poc_reward?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def boosted_poc_reward_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def boosted_poc_reward_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def boosted_poc_reward_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def boosted_poc_reward_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def boosted_poc_reward_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def boosted_poc_reward_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def boosted_poc_reward_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def boosted_poc_reward_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def boosted_poc_reward_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def boosted_poc_reward_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def boosted_poc_reward_was; end
+
+    sig { void }
+    def boosted_poc_reward_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares=(value); end
+
+    sig { returns(T::Boolean) }
+    def boosted_reward_shares?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def boosted_reward_shares_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def boosted_reward_shares_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_reward_shares_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_reward_shares_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def boosted_reward_shares_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def boosted_reward_shares_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def boosted_reward_shares_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def boosted_reward_shares_was; end
+
+    sig { void }
+    def boosted_reward_shares_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def cbsd_id; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def cbsd_id=(value); end
+
+    sig { returns(T::Boolean) }
+    def cbsd_id?; end
+
+    sig { returns(T.nilable(::String)) }
+    def cbsd_id_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def cbsd_id_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def cbsd_id_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def cbsd_id_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def cbsd_id_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def cbsd_id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def cbsd_id_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def cbsd_id_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def cbsd_id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def cbsd_id_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def cbsd_id_was; end
+
+    sig { void }
+    def cbsd_id_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def coverage_object; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def coverage_object=(value); end
+
+    sig { returns(T::Boolean) }
+    def coverage_object?; end
+
+    sig { returns(T.nilable(::String)) }
+    def coverage_object_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def coverage_object_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def coverage_object_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def coverage_object_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def coverage_object_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def coverage_object_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def coverage_object_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def coverage_object_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def coverage_object_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def coverage_object_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def coverage_object_was; end
+
+    sig { void }
+    def coverage_object_will_change!; end
+
+    sig { returns(::ActiveSupport::TimeWithZone) }
+    def created_at; end
+
+    sig { params(value: ::ActiveSupport::TimeWithZone).returns(::ActiveSupport::TimeWithZone) }
+    def created_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def created_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def created_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def created_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def created_at_came_from_user?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def created_at_change; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def created_at_change_to_be_saved; end
+
+    sig { params(from: ::ActiveSupport::TimeWithZone, to: ::ActiveSupport::TimeWithZone).returns(T::Boolean) }
+    def created_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def created_at_in_database; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def created_at_previous_change; end
+
+    sig { params(from: ::ActiveSupport::TimeWithZone, to: ::ActiveSupport::TimeWithZone).returns(T::Boolean) }
+    def created_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def created_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def created_at_was; end
+
+    sig { void }
+    def created_at_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def dc_transfer_reward; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def dc_transfer_reward=(value); end
+
+    sig { returns(T::Boolean) }
+    def dc_transfer_reward?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def dc_transfer_reward_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def dc_transfer_reward_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def dc_transfer_reward_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def dc_transfer_reward_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def dc_transfer_reward_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def dc_transfer_reward_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def dc_transfer_reward_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def dc_transfer_reward_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def dc_transfer_reward_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def dc_transfer_reward_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def dc_transfer_reward_was; end
+
+    sig { void }
+    def dc_transfer_reward_will_change!; end
+
+    sig { returns(::String) }
+    def deduplication_key; end
+
+    sig { params(value: ::String).returns(::String) }
+    def deduplication_key=(value); end
+
+    sig { returns(T::Boolean) }
+    def deduplication_key?; end
+
+    sig { returns(T.nilable(::String)) }
+    def deduplication_key_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def deduplication_key_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def deduplication_key_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def deduplication_key_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def deduplication_key_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def deduplication_key_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def deduplication_key_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def deduplication_key_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def deduplication_key_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def deduplication_key_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def deduplication_key_was; end
+
+    sig { void }
+    def deduplication_key_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def discovery_location_amount; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def discovery_location_amount=(value); end
+
+    sig { returns(T::Boolean) }
+    def discovery_location_amount?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def discovery_location_amount_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def discovery_location_amount_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def discovery_location_amount_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def discovery_location_amount_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def discovery_location_amount_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def discovery_location_amount_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def discovery_location_amount_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def discovery_location_amount_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def discovery_location_amount_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def discovery_location_amount_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def discovery_location_amount_was; end
+
+    sig { void }
+    def discovery_location_amount_will_change!; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period=(value); end
+
+    sig { returns(T::Boolean) }
+    def end_period?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def end_period_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def end_period_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def end_period_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def end_period_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def end_period_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def end_period_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def end_period_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def end_period_was; end
+
+    sig { void }
+    def end_period_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def entity; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def entity=(value); end
+
+    sig { returns(T::Boolean) }
+    def entity?; end
+
+    sig { returns(T.nilable(::String)) }
+    def entity_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def entity_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def entity_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def entity_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def entity_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def entity_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def entity_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def entity_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def entity_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def entity_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def entity_was; end
+
+    sig { void }
+    def entity_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def hotspot_key; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def hotspot_key=(value); end
+
+    sig { returns(T::Boolean) }
+    def hotspot_key?; end
+
+    sig { returns(T.nilable(::String)) }
+    def hotspot_key_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def hotspot_key_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def hotspot_key_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def hotspot_key_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def hotspot_key_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def hotspot_key_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def hotspot_key_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def hotspot_key_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def hotspot_key_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def hotspot_key_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def hotspot_key_was; end
+
+    sig { void }
+    def hotspot_key_will_change!; end
+
+    sig { returns(T.untyped) }
+    def id; end
+
+    sig { params(value: T.untyped).returns(T.untyped) }
+    def id=(value); end
+
+    sig { returns(T::Boolean) }
+    def id?; end
+
+    sig { returns(T.untyped) }
+    def id_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def id_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def id_came_from_user?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def id_change; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def id_change_to_be_saved; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def id_in_database; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def id_previous_change; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def id_previously_was; end
+
+    sig { returns(T.untyped) }
+    def id_was; end
+
+    sig { void }
+    def id_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier=(value); end
+
+    sig { returns(T::Boolean) }
+    def location_trust_score_multiplier?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def location_trust_score_multiplier_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def location_trust_score_multiplier_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def location_trust_score_multiplier_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def location_trust_score_multiplier_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def location_trust_score_multiplier_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def location_trust_score_multiplier_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def location_trust_score_multiplier_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def location_trust_score_multiplier_was; end
+
+    sig { void }
+    def location_trust_score_multiplier_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def matched_amount; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def matched_amount=(value); end
+
+    sig { returns(T::Boolean) }
+    def matched_amount?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def matched_amount_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def matched_amount_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def matched_amount_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def matched_amount_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def matched_amount_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def matched_amount_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def matched_amount_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def matched_amount_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def matched_amount_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def matched_amount_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def matched_amount_was; end
+
+    sig { void }
+    def matched_amount_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status=(value); end
+
+    sig { returns(T::Boolean) }
+    def oracle_boosted_hex_status?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def oracle_boosted_hex_status_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def oracle_boosted_hex_status_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def oracle_boosted_hex_status_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def oracle_boosted_hex_status_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def oracle_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def oracle_boosted_hex_status_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def oracle_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def oracle_boosted_hex_status_was; end
+
+    sig { void }
+    def oracle_boosted_hex_status_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def owner_key; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def owner_key=(value); end
+
+    sig { returns(T::Boolean) }
+    def owner_key?; end
+
+    sig { returns(T.nilable(::String)) }
+    def owner_key_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def owner_key_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def owner_key_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def owner_key_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def owner_key_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def owner_key_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def owner_key_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def owner_key_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def owner_key_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def owner_key_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def owner_key_was; end
+
+    sig { void }
+    def owner_key_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def poc_reward; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def poc_reward=(value); end
+
+    sig { returns(T::Boolean) }
+    def poc_reward?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def poc_reward_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def poc_reward_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def poc_reward_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def poc_reward_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def poc_reward_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def poc_reward_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def poc_reward_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def poc_reward_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def poc_reward_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def poc_reward_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def poc_reward_was; end
+
+    sig { void }
+    def poc_reward_will_change!; end
+
+    sig { void }
+    def restore_amount!; end
+
+    sig { void }
+    def restore_base_coverage_points_sum!; end
+
+    sig { void }
+    def restore_base_poc_reward!; end
+
+    sig { void }
+    def restore_base_reward_shares!; end
+
+    sig { void }
+    def restore_boosted_coverage_points_sum!; end
+
+    sig { void }
+    def restore_boosted_poc_reward!; end
+
+    sig { void }
+    def restore_boosted_reward_shares!; end
+
+    sig { void }
+    def restore_cbsd_id!; end
+
+    sig { void }
+    def restore_coverage_object!; end
+
+    sig { void }
+    def restore_created_at!; end
+
+    sig { void }
+    def restore_dc_transfer_reward!; end
+
+    sig { void }
+    def restore_deduplication_key!; end
+
+    sig { void }
+    def restore_discovery_location_amount!; end
+
+    sig { void }
+    def restore_end_period!; end
+
+    sig { void }
+    def restore_entity!; end
+
+    sig { void }
+    def restore_hotspot_key!; end
+
+    sig { void }
+    def restore_id!; end
+
+    sig { void }
+    def restore_location_trust_score_multiplier!; end
+
+    sig { void }
+    def restore_matched_amount!; end
+
+    sig { void }
+    def restore_oracle_boosted_hex_status!; end
+
+    sig { void }
+    def restore_owner_key!; end
+
+    sig { void }
+    def restore_poc_reward!; end
+
+    sig { void }
+    def restore_reward_type!; end
+
+    sig { void }
+    def restore_seniority_timestamp!; end
+
+    sig { void }
+    def restore_service_provider_amount!; end
+
+    sig { void }
+    def restore_service_provider_id!; end
+
+    sig { void }
+    def restore_sp_boosted_hex_status!; end
+
+    sig { void }
+    def restore_speedtest_multiplier!; end
+
+    sig { void }
+    def restore_start_period!; end
+
+    sig { void }
+    def restore_subscriber_id!; end
+
+    sig { void }
+    def restore_subscriber_reward!; end
+
+    sig { void }
+    def restore_unallocated_reward_type!; end
+
+    sig { void }
+    def restore_updated_at!; end
+
+    sig { returns(T.nilable(::String)) }
+    def reward_type; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def reward_type=(value); end
+
+    sig { returns(T::Boolean) }
+    def reward_type?; end
+
+    sig { returns(T.nilable(::String)) }
+    def reward_type_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def reward_type_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def reward_type_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def reward_type_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def reward_type_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def reward_type_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def reward_type_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def reward_type_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def reward_type_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def reward_type_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def reward_type_was; end
+
+    sig { void }
+    def reward_type_will_change!; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_amount; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_amount?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_base_coverage_points_sum; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_base_coverage_points_sum?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_base_poc_reward; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_base_poc_reward?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_base_reward_shares; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_base_reward_shares?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_boosted_coverage_points_sum; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_boosted_coverage_points_sum?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_boosted_poc_reward; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_boosted_poc_reward?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_boosted_reward_shares; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_boosted_reward_shares?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_cbsd_id; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_cbsd_id?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_coverage_object; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_coverage_object?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def saved_change_to_created_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_created_at?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_dc_transfer_reward; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_dc_transfer_reward?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_deduplication_key; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_deduplication_key?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_discovery_location_amount; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_discovery_location_amount?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_end_period; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_end_period?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_entity; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_entity?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_hotspot_key; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_hotspot_key?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def saved_change_to_id; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_id?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_location_trust_score_multiplier; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_location_trust_score_multiplier?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_matched_amount; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_matched_amount?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_oracle_boosted_hex_status; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_oracle_boosted_hex_status?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_owner_key; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_owner_key?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_poc_reward; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_poc_reward?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_reward_type; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_reward_type?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_seniority_timestamp; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_seniority_timestamp?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_service_provider_amount; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_service_provider_amount?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_service_provider_id; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_service_provider_id?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_sp_boosted_hex_status; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_sp_boosted_hex_status?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def saved_change_to_speedtest_multiplier; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_speedtest_multiplier?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_start_period; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_start_period?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_subscriber_id; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_subscriber_id?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_subscriber_reward; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_subscriber_reward?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_unallocated_reward_type; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_unallocated_reward_type?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def saved_change_to_updated_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_updated_at?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def seniority_timestamp; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def seniority_timestamp=(value); end
+
+    sig { returns(T::Boolean) }
+    def seniority_timestamp?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def seniority_timestamp_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def seniority_timestamp_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def seniority_timestamp_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def seniority_timestamp_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def seniority_timestamp_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def seniority_timestamp_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def seniority_timestamp_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def seniority_timestamp_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def seniority_timestamp_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def seniority_timestamp_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def seniority_timestamp_was; end
+
+    sig { void }
+    def seniority_timestamp_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def service_provider_amount; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def service_provider_amount=(value); end
+
+    sig { returns(T::Boolean) }
+    def service_provider_amount?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def service_provider_amount_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def service_provider_amount_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def service_provider_amount_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def service_provider_amount_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def service_provider_amount_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def service_provider_amount_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def service_provider_amount_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def service_provider_amount_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def service_provider_amount_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def service_provider_amount_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def service_provider_amount_was; end
+
+    sig { void }
+    def service_provider_amount_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def service_provider_id; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def service_provider_id=(value); end
+
+    sig { returns(T::Boolean) }
+    def service_provider_id?; end
+
+    sig { returns(T.nilable(::String)) }
+    def service_provider_id_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def service_provider_id_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def service_provider_id_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def service_provider_id_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def service_provider_id_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def service_provider_id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def service_provider_id_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def service_provider_id_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def service_provider_id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def service_provider_id_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def service_provider_id_was; end
+
+    sig { void }
+    def service_provider_id_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status=(value); end
+
+    sig { returns(T::Boolean) }
+    def sp_boosted_hex_status?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def sp_boosted_hex_status_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def sp_boosted_hex_status_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def sp_boosted_hex_status_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def sp_boosted_hex_status_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def sp_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def sp_boosted_hex_status_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def sp_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def sp_boosted_hex_status_was; end
+
+    sig { void }
+    def sp_boosted_hex_status_will_change!; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier; end
+
+    sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier=(value); end
+
+    sig { returns(T::Boolean) }
+    def speedtest_multiplier?; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def speedtest_multiplier_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def speedtest_multiplier_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def speedtest_multiplier_change; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def speedtest_multiplier_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def speedtest_multiplier_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::BigDecimal), T.nilable(::BigDecimal)])) }
+    def speedtest_multiplier_previous_change; end
+
+    sig { params(from: T.nilable(::BigDecimal), to: T.nilable(::BigDecimal)).returns(T::Boolean) }
+    def speedtest_multiplier_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier_previously_was; end
+
+    sig { returns(T.nilable(::BigDecimal)) }
+    def speedtest_multiplier_was; end
+
+    sig { void }
+    def speedtest_multiplier_will_change!; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period=(value); end
+
+    sig { returns(T::Boolean) }
+    def start_period?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def start_period_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def start_period_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def start_period_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def start_period_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def start_period_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def start_period_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def start_period_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def start_period_was; end
+
+    sig { void }
+    def start_period_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def subscriber_id; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def subscriber_id=(value); end
+
+    sig { returns(T::Boolean) }
+    def subscriber_id?; end
+
+    sig { returns(T.nilable(::String)) }
+    def subscriber_id_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def subscriber_id_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def subscriber_id_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def subscriber_id_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def subscriber_id_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def subscriber_id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def subscriber_id_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def subscriber_id_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def subscriber_id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def subscriber_id_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def subscriber_id_was; end
+
+    sig { void }
+    def subscriber_id_will_change!; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def subscriber_reward; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def subscriber_reward=(value); end
+
+    sig { returns(T::Boolean) }
+    def subscriber_reward?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def subscriber_reward_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def subscriber_reward_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def subscriber_reward_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def subscriber_reward_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def subscriber_reward_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def subscriber_reward_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def subscriber_reward_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def subscriber_reward_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def subscriber_reward_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def subscriber_reward_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def subscriber_reward_was; end
+
+    sig { void }
+    def subscriber_reward_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def unallocated_reward_type; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def unallocated_reward_type=(value); end
+
+    sig { returns(T::Boolean) }
+    def unallocated_reward_type?; end
+
+    sig { returns(T.nilable(::String)) }
+    def unallocated_reward_type_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def unallocated_reward_type_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def unallocated_reward_type_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def unallocated_reward_type_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def unallocated_reward_type_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def unallocated_reward_type_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def unallocated_reward_type_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def unallocated_reward_type_previous_change; end
+
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
+    def unallocated_reward_type_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def unallocated_reward_type_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def unallocated_reward_type_was; end
+
+    sig { void }
+    def unallocated_reward_type_will_change!; end
+
+    sig { returns(::ActiveSupport::TimeWithZone) }
+    def updated_at; end
+
+    sig { params(value: ::ActiveSupport::TimeWithZone).returns(::ActiveSupport::TimeWithZone) }
+    def updated_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def updated_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def updated_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def updated_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def updated_at_came_from_user?; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def updated_at_change; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def updated_at_change_to_be_saved; end
+
+    sig { params(from: ::ActiveSupport::TimeWithZone, to: ::ActiveSupport::TimeWithZone).returns(T::Boolean) }
+    def updated_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def updated_at_in_database; end
+
+    sig { returns(T.nilable([::ActiveSupport::TimeWithZone, ::ActiveSupport::TimeWithZone])) }
+    def updated_at_previous_change; end
+
+    sig { params(from: ::ActiveSupport::TimeWithZone, to: ::ActiveSupport::TimeWithZone).returns(T::Boolean) }
+    def updated_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def updated_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def updated_at_was; end
+
+    sig { void }
+    def updated_at_will_change!; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_amount?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_base_coverage_points_sum?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_base_poc_reward?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_base_reward_shares?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_boosted_coverage_points_sum?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_boosted_poc_reward?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_boosted_reward_shares?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_cbsd_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_coverage_object?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_created_at?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_dc_transfer_reward?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_deduplication_key?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_discovery_location_amount?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_end_period?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_entity?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_hotspot_key?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_location_trust_score_multiplier?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_matched_amount?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_oracle_boosted_hex_status?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_owner_key?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_poc_reward?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_reward_type?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_seniority_timestamp?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_service_provider_amount?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_service_provider_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_sp_boosted_hex_status?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_speedtest_multiplier?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_start_period?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_subscriber_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_subscriber_reward?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_unallocated_reward_type?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_updated_at?; end
   end
 
   module GeneratedRelationMethods

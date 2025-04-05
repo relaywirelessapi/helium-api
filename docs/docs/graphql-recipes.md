@@ -60,19 +60,25 @@ query {
 
 ```graphql
 query {
-  iotRewardShares(first: 10) {
-    edges {
-      node {
-        hotspotKey
-        amount
-        beaconAmount
-        dcTransferAmount
-        witnessAmount
-        startPeriod
-        endPeriod
-        rewardType
-        unallocatedRewardType
-      }
+  iotRewardShares(
+    first: 10
+    startPeriod: "2024-01-01T00:00:00Z"
+    endPeriod: "2024-01-31T23:59:59Z"
+  ) {
+    nodes {
+      hotspotKey
+      amount
+      beaconAmount
+      dcTransferAmount
+      witnessAmount
+      startPeriod
+      endPeriod
+      rewardType
+      unallocatedRewardType
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
     }
   }
 }
@@ -82,25 +88,44 @@ query {
 
 ```graphql
 query {
-  mobileRewardShares(first: 10) {
-    edges {
-      node {
-        hotspotKey
-        amount
-        cbsdId
-        dcTransferReward
-        discoveryLocationAmount
-        startPeriod
-        endPeriod
-        entity
-        matchedAmount
-        pocReward
-        rewardType
-        serviceProviderAmount
-        serviceProviderId
-        subscriberId
-        subscriberReward
-      }
+  mobileRewardShares(
+    first: 10
+    startPeriod: "2024-01-01T00:00:00Z"
+    endPeriod: "2024-01-31T23:59:59Z"
+  ) {
+    nodes {
+      hotspotKey
+      amount
+      baseCoveragePointsSum
+      basePocReward
+      baseRewardShares
+      boostedCoveragePointsSum
+      boostedPocReward
+      boostedRewardShares
+      cbsdId
+      dcTransferReward
+      discoveryLocationAmount
+      startPeriod
+      endPeriod
+      entity
+      locationTrustScoreMultiplier
+      matchedAmount
+      oracleBoostedHexStatus
+      ownerKey
+      pocReward
+      rewardType
+      seniorityTimestamp
+      serviceProviderAmount
+      serviceProviderId
+      spBoostedHexStatus
+      speedtestMultiplier
+      subscriberId
+      subscriberReward
+      unallocatedRewardType
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
     }
   }
 }
@@ -124,13 +149,17 @@ All connection-based queries support cursor-based pagination. Here's an example:
 
 ```graphql
 query {
-  iotBeaconIngestReports(first: 5, after: "cursor_value") {
-    edges {
-      cursor
-      node {
-        hotspotKey
-        receivedAt
-      }
+  iotRewardShares(
+    first: 5
+    after: "cursor_value"
+    startPeriod: "2024-01-01T00:00:00Z"
+    endPeriod: "2024-01-31T23:59:59Z"
+  ) {
+    nodes {
+      hotspotKey
+      amount
+      startPeriod
+      endPeriod
     }
     pageInfo {
       hasNextPage
@@ -143,23 +172,39 @@ query {
 ### Using Variables for Flexible Queries
 
 ```graphql
-query GetRewardShares($first: Int!) {
-  mobile: mobileRewardShares(first: $first) {
-    edges {
-      node {
-        hotspotKey
-        amount
-        rewardType
-      }
+query GetRewardShares(
+  $first: Int!
+  $startPeriod: ISO8601DateTime!
+  $endPeriod: ISO8601DateTime!
+) {
+  mobile: mobileRewardShares(
+    first: $first
+    startPeriod: $startPeriod
+    endPeriod: $endPeriod
+  ) {
+    nodes {
+      hotspotKey
+      amount
+      rewardType
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
     }
   }
-  iot: iotRewardShares(first: $first) {
-    edges {
-      node {
-        hotspotKey
-        amount
-        rewardType
-      }
+  iot: iotRewardShares(
+    first: $first
+    startPeriod: $startPeriod
+    endPeriod: $endPeriod
+  ) {
+    nodes {
+      hotspotKey
+      amount
+      rewardType
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
     }
   }
 }
@@ -169,7 +214,9 @@ Variables:
 
 ```json
 {
-  "first": 5
+  "first": 5,
+  "startPeriod": "2024-01-01T00:00:00Z",
+  "endPeriod": "2024-01-31T23:59:59Z"
 }
 ```
 
@@ -195,5 +242,5 @@ Variables:
 
 4. **Data Analysis**:
    - Aggregate reward data across time periods
-   - Track beacon and witness patterns
-   - Monitor reward distribution
+   - Track reward distribution patterns
+   - Monitor reward types and amounts

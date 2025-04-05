@@ -42,32 +42,34 @@ module Types
       "ok"
     end
 
-    field :iot_reward_shares, Types::IotRewardShareType.connection_type, null: false
-
-    sig { returns(ActiveRecord::Relation) }
-    def iot_reward_shares
-      Relay::Helium::L2::IotRewardShare.all.order(start_period: :desc)
+    field :iot_reward_shares, Types::IotRewardShareType.connection_type, null: false, description: "Retrieves a list of IoT reward shares within a specified time period." do
+      argument :start_period, GraphQL::Types::ISO8601DateTime, required: true, description: "Start of the time period to fetch reward shares for"
+      argument :end_period, GraphQL::Types::ISO8601DateTime, required: true, description: "End of the time period to fetch reward shares for"
+      argument :hotspot_key, String, required: false, description: "Hotspot key to filter by"
+      argument :reward_type, String, required: false, description: "Reward type to filter by"
     end
 
-    field :mobile_reward_shares, Types::MobileRewardShareType.connection_type, null: false, description: "Retrieves a list of mobile reward shares."
-
-    sig { returns(ActiveRecord::Relation) }
-    def mobile_reward_shares
-      Relay::Helium::L2::MobileRewardShare.all.order(start_period: :desc)
+    sig { params(start_period: Time, end_period: Time, hotspot_key: T.nilable(String), reward_type: T.nilable(String)).returns(ActiveRecord::Relation) }
+    def iot_reward_shares(start_period:, end_period:, hotspot_key: nil, reward_type: nil)
+      query = Relay::Helium::L2::IotRewardShare.where("start_period >= ?", start_period).where("end_period <= ?", end_period)
+      query = query.where(hotspot_key: hotspot_key) if hotspot_key.present?
+      query = query.where(reward_type: reward_type) if reward_type.present?
+      query.order(start_period: :asc)
     end
 
-    field :iot_beacon_ingest_reports, Types::IotBeaconIngestReportType.connection_type, null: false, description: "Retrieves a list of IoT beacon ingest reports."
-
-    sig { returns(ActiveRecord::Relation) }
-    def iot_beacon_ingest_reports
-      Relay::Helium::L2::IotBeaconIngestReport.all.order(received_at: :desc)
+    field :mobile_reward_shares, Types::MobileRewardShareType.connection_type, null: false, description: "Retrieves a list of MOBILE reward shares within a specified time period." do
+      argument :start_period, GraphQL::Types::ISO8601DateTime, required: true, description: "Start of the time period to fetch reward shares for"
+      argument :end_period, GraphQL::Types::ISO8601DateTime, required: true, description: "End of the time period to fetch reward shares for"
+      argument :hotspot_key, String, required: false, description: "Hotspot key to filter by"
+      argument :reward_type, String, required: false, description: "Reward type to filter by"
     end
 
-    field :iot_witness_ingest_reports, Types::IotWitnessIngestReportType.connection_type, null: false, description: "Retrieves a list of IoT witness ingest reports."
-
-    sig { returns(ActiveRecord::Relation) }
-    def iot_witness_ingest_reports
-      Relay::Helium::L2::IotWitnessIngestReport.all.order(received_at: :desc)
+    sig { params(start_period: Time, end_period: Time, hotspot_key: T.nilable(String), reward_type: T.nilable(String)).returns(ActiveRecord::Relation) }
+    def mobile_reward_shares(start_period:, end_period:, hotspot_key: nil, reward_type: nil)
+      query = Relay::Helium::L2::MobileRewardShare.where("start_period >= ?", start_period).where("end_period <= ?", end_period)
+      query = query.where(hotspot_key: hotspot_key) if hotspot_key.present?
+      query = query.where(reward_type: reward_type) if reward_type.present?
+      query.order(start_period: :asc)
     end
   end
 end

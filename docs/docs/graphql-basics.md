@@ -72,19 +72,25 @@ query {
 
 ### Example Queries
 
-1. **Get IoT Beacon Ingest Reports**:
+1. **Get IoT Reward Shares**:
 
    ```graphql
    query {
-     iotBeaconIngestReports(first: 10) {
+     iotRewardShares(
+       first: 10
+       startPeriod: "2024-01-01T00:00:00Z"
+       endPeriod: "2024-01-31T23:59:59Z"
+     ) {
        nodes {
          hotspotKey
-         data
-         dataRate
-         frequency
-         receivedAt
-         reportedAt
-         signature
+         amount
+         beaconAmount
+         dcTransferAmount
+         witnessAmount
+         startPeriod
+         endPeriod
+         rewardType
+         unallocatedRewardType
        }
        pageInfo {
          hasNextPage
@@ -97,14 +103,44 @@ query {
 2. **Get Mobile Reward Shares**:
    ```graphql
    query {
-     mobileRewardShares(first: 10) {
+     mobileRewardShares(
+       first: 10
+       startPeriod: "2024-01-01T00:00:00Z"
+       endPeriod: "2024-01-31T23:59:59Z"
+     ) {
        nodes {
          hotspotKey
          amount
-         rewardType
+         baseCoveragePointsSum
+         basePocReward
+         baseRewardShares
+         boostedCoveragePointsSum
+         boostedPocReward
+         boostedRewardShares
+         cbsdId
+         dcTransferReward
+         discoveryLocationAmount
          startPeriod
          endPeriod
+         entity
+         locationTrustScoreMultiplier
+         matchedAmount
+         oracleBoostedHexStatus
+         ownerKey
+         pocReward
+         rewardType
+         seniorityTimestamp
+         serviceProviderAmount
          serviceProviderId
+         spBoostedHexStatus
+         speedtestMultiplier
+         subscriberId
+         subscriberReward
+         unallocatedRewardType
+       }
+       pageInfo {
+         hasNextPage
+         endCursor
        }
      }
    }
@@ -246,10 +282,9 @@ query {
 The API provides the following main queries:
 
 - `status`: Get the API status
-- `iotBeaconIngestReports`: Get IoT beacon ingest reports
-- `iotWitnessIngestReports`: Get IoT witness ingest reports
 - `iotRewardShares`: Get IoT reward shares
-- `mobileRewardShares`: Get mobile reward shares
+- `mobileRewardShares`: Get Mobile reward shares
+- `echo`: Echo a message (for testing)
 
 For detailed information about the available fields and types, refer to the [GraphQL Schema Documentation](./schema).
 

@@ -11,5 +11,6 @@ FactoryBot.define do
     dc_transfer_amount { 2 }
     amount { 100 }
     unallocated_reward_type { "test-unallocated-reward" }
+    deduplication_key { SecureRandom.uuid }
   end
 end

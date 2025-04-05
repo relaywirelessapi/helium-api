@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_05_104326) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_05_143220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -53,7 +53,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_104326) do
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
-    t.index ["start_period"], name: "index_helium_l2_iot_reward_shares_on_start_period"
+    t.index ["hotspot_key"], name: "index_helium_l2_iot_reward_shares_on_hotspot_key"
+    t.index ["reward_type"], name: "index_helium_l2_iot_reward_shares_on_reward_type"
+    t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_65a8c97b27"
   end
 
   create_table "helium_l2_iot_witness_ingest_reports", id: false, force: :cascade do |t|
@@ -105,6 +107,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_104326) do
     t.bigint "service_provider_amount"
     t.bigint "matched_amount"
     t.index ["deduplication_key"], name: "index_helium_l2_mobile_reward_shares_on_deduplication_key", unique: true
+    t.index ["hotspot_key"], name: "index_helium_l2_mobile_reward_shares_on_hotspot_key"
+    t.index ["reward_type"], name: "index_helium_l2_mobile_reward_shares_on_reward_type"
+    t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_b04efac248"
   end
 
   create_table "users", force: :cascade do |t|
