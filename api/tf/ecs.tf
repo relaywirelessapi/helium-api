@@ -157,7 +157,7 @@ resource "aws_ecs_task_definition" "sidekiq" {
     {
       name    = "${var.app_name}-sidekiq"
       image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
-      command = ["bundle", "exec", "sidekiq"]
+      command = ["bundle", "exec", "sidekiq", "-q", "default", "-q", "low"]
 
       environment = local.container_environment
 
@@ -182,6 +182,53 @@ resource "aws_ecs_task_definition" "sidekiq" {
 
   tags = {
     Name        = "${var.app_name}-sidekiq-task-definition"
+    Environment = var.environment
+  }
+}
+
+resource "aws_ecs_task_definition" "sidekiq_high" {
+  family                   = "${var.app_name}-sidekiq-high"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = 256
+  memory                   = 512
+  execution_role_arn       = aws_iam_role.ecs_execution.arn
+  task_role_arn            = aws_iam_role.ecs_task.arn
+
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+
+  container_definitions = jsonencode([
+    {
+      name    = "${var.app_name}-sidekiq-high"
+      image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
+      command = ["bundle", "exec", "sidekiq", "-q", "high", "-c", "2"]
+
+      environment = local.container_environment
+
+      healthCheck = {
+        command     = ["CMD-SHELL", "ps aux | grep '[s]idekiq' || exit 1"]
+        interval    = 30
+        timeout     = 5
+        retries     = 3
+        startPeriod = 60
+      }
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.app.name
+          awslogs-region        = var.aws_region
+          awslogs-stream-prefix = "${var.app_name}-sidekiq-high"
+        }
+      }
+    }
+  ])
+
+  tags = {
+    Name        = "${var.app_name}-sidekiq-high-task-definition"
     Environment = var.environment
   }
 }
@@ -341,6 +388,37 @@ resource "aws_ecs_service" "sidekiq" {
 
   tags = {
     Name        = "${var.app_name}-sidekiq-service"
+    Environment = var.environment
+  }
+}
+
+resource "aws_ecs_service" "sidekiq_high" {
+  name                   = "${var.app_name}-sidekiq-high"
+  cluster                = aws_ecs_cluster.main.id
+  task_definition        = aws_ecs_task_definition.sidekiq_high.arn
+  desired_count          = 1
+  launch_type            = "FARGATE"
+  force_new_deployment   = true
+  enable_execute_command = true
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
+  }
+
+  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 50
+
+  network_configuration {
+    subnets          = aws_subnet.private[*].id
+    security_groups  = [aws_security_group.app.id]
+    assign_public_ip = false
+  }
+
+  depends_on = [aws_route_table_association.private]
+
+  tags = {
+    Name        = "${var.app_name}-sidekiq-high-service"
     Environment = var.environment
   }
 }
