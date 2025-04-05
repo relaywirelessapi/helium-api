@@ -7,6 +7,9 @@ class HeliumApiSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
+  # This is not applicable without a sequential ID on our models, unfortunately.
+  # connections.add ActiveRecord::Relation, Connections::ActiveRecordConnection
+
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
 
