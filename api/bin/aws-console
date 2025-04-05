@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Get app name from Terraform
+# Get app name and region from Terraform
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APP_NAME=$(terraform -chdir="${SCRIPT_DIR}/../tf" output -raw app_name)
+AWS_REGION=$(terraform -chdir="${SCRIPT_DIR}/../tf" output -raw aws_region)
 
 # Configuration
 CLUSTER_NAME="${APP_NAME}-cluster"
@@ -40,6 +41,7 @@ print_status "Finding the latest task for service ${SERVICE_NAME}..."
 
 # Get the task ARN
 TASK_ID=$(aws ecs list-tasks \
+    --region "${AWS_REGION}" \
     --cluster "${CLUSTER_NAME}" \
     --service-name "${SERVICE_NAME}" \
     --output text \
@@ -56,6 +58,7 @@ print_warning "After connecting, run 'bundle exec rails console' to start the Ra
 
 # Connect to the container
 aws ecs execute-command \
+    --region "${AWS_REGION}" \
     --cluster "${CLUSTER_NAME}" \
     --task "${TASK_ID}" \
     --container "${CONTAINER_NAME}" \

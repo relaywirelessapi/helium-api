@@ -36,7 +36,7 @@ module Relay
                 category: "foundation-mobile-verified",
                 prefix: "mobile_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
-              ),
+              )
               # new(
               #   id: "foundation-iot-ingest/iot_witness_ingest_report",
               #   bucket: "foundation-poc-data-requester-pays",
