@@ -22,8 +22,8 @@ module Relay
           @batch_size = T.let(batch_size, Integer)
         end
 
-        sig { params(file: File).void }
-        def process(file)
+        sig { params(file: File, force: T::Boolean).void }
+        def process(file, force: false)
           file.update!(started_at: Time.current) unless file.started_at.present?
 
           tempfile = Tempfile.new([ "helium-l2-file", ".gz" ])
@@ -41,7 +41,22 @@ module Relay
               records = decoder_results.map do |decoder_result|
                 deserializer.deserialize(decoder_result.message)
               end
-              deserializer.import(records) unless Rails.env.development?
+
+              if Rails.env.production? || force
+                begin
+                  deserializer.import(records)
+                rescue StandardError => e
+                  Rails.logger.debug "Error importing records: #{records.inspect}"
+
+                  Sentry.capture_exception(e, extra: {
+                    file_id: file.id,
+                    s3_key: file.s3_key,
+                    records: records,
+                  }) if Rails.env.production?
+
+                  raise
+                end
+              end
 
               new_position = T.must(decoder_results.last).position
               file.update!(position: new_position)
