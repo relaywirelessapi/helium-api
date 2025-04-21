@@ -20,7 +20,7 @@ class HeliumApiSchema < GraphQL::Schema
   validate_max_errors(100)
 
   # Track query complexity
-  query_analyzer(ComplexityAnalyzer)
+  query_analyzer(Analyzers::ComplexityAnalyzer)
 
   # GraphQL-Ruby calls this when something goes wrong while running a query:
   def self.type_error(err, context)
