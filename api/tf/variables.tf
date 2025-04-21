@@ -57,3 +57,19 @@ variable "sidekiq_username" {
   type        = string
   default     = "admin"
 }
+
+variable "sentry_dsn" {
+  description = "Sentry DSN for error tracking"
+  type        = string
+}
+
+variable "posthog_api_key" {
+  description = "PostHog API key for analytics"
+  type        = string
+}
+
+variable "posthog_host" {
+  description = "PostHog host URL"
+  type        = string
+  default     = "https://us.i.posthog.com"
+}

@@ -55,6 +55,9 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem "stackprof"
 
+# Analytics
+gem "posthog-ruby"
+
 group :development, :test do
   # Debugging
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"

@@ -75,6 +75,14 @@ locals {
       value = aws_ssm_parameter.sentry_dsn.value
     },
     {
+      name  = "POSTHOG_API_KEY"
+      value = aws_ssm_parameter.posthog_api_key.value
+    },
+    {
+      name  = "POSTHOG_HOST"
+      value = aws_ssm_parameter.posthog_host.value
+    },
+    {
       name  = "SIDEKIQ_USERNAME"
       value = aws_ssm_parameter.sidekiq_username.value
     },
