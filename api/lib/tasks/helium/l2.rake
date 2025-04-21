@@ -29,7 +29,7 @@ namespace :helium do
 
         puts "File found: #{s3_key}"
         process_s3_file(definition, s3_key)
-      rescue Relay::Helium::L2::ArgumentError => e
+      rescue ArgumentError => e
         exit_with_definition_not_found_error(e)
       rescue StandardError => e
         exit_with_error(e)
