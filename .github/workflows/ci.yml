@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp api/.env.ci api/.env
+        run: cp api/.env.example api/.env
 
       - name: Run ${{ matrix.linter }}
         run: |
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp api/.env.ci api/.env
+        run: cp api/.env.example api/.env
 
       - name: Audit JS dependencies
         run: docker compose run --rm --no-deps web bin/importmap audit
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp api/.env.ci api/.env
+        run: cp api/.env.example api/.env
 
       - name: Generate current schema
         run: docker compose run --rm --no-deps web bundle exec rails graphql:schema:idl
@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy environment file
-        run: cp api/.env.ci api/.env
+        run: cp api/.env.example api/.env
 
       - name: Prepare the database
         run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
