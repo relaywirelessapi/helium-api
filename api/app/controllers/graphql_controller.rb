@@ -19,6 +19,16 @@ class GraphqlController < ApplicationController
     )
 
     render json: result
+
+    Relay::PostHog::Client.new.capture(
+      distinct_id: current_user&.id,
+      event: "graphql_query",
+      properties: {
+        query: query,
+        variables: variables,
+        operation_name: operation_name
+      }
+    )
   rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development(e)

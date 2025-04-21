@@ -70,7 +70,21 @@ resource "aws_ssm_parameter" "sentry_dsn" {
   name        = "/${var.app_name}/${var.environment}/sentry_dsn"
   description = "Sentry DSN"
   type        = "String"
-  value       = "https://d10d616b2941b6fd266aa2371e79d3e7@o4509022648926208.ingest.us.sentry.io/4509022649778176"
+  value       = var.sentry_dsn
+}
+
+resource "aws_ssm_parameter" "posthog_api_key" {
+  name        = "/${var.app_name}/${var.environment}/posthog_api_key"
+  description = "PostHog API key"
+  type        = "String"
+  value       = var.posthog_api_key
+}
+
+resource "aws_ssm_parameter" "posthog_host" {
+  name        = "/${var.app_name}/${var.environment}/posthog_host"
+  description = "PostHog host URL"
+  type        = "String"
+  value       = var.posthog_host
 }
 
 resource "aws_ssm_parameter" "sidekiq_username" {
