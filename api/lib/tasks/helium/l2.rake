@@ -114,7 +114,7 @@ namespace :helium do
       )
 
       puts "Processing file..."
-      Relay::Helium::L2::FileProcessor.new.process(file, force: true)
+      Relay::Helium::L2::FileProcessor.new.process(file, skip_import: false)
 
       display_file_processing_results(file)
     end

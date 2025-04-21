@@ -22,8 +22,8 @@ module Relay
           @batch_size = T.let(batch_size, Integer)
         end
 
-        sig { params(file: File, force: T::Boolean).void }
-        def process(file, force: false)
+        sig { params(file: File, skip_import: T::Boolean).void }
+        def process(file, skip_import: Rails.env.development?)
           file.update!(started_at: Time.current) unless file.started_at.present?
 
           tempfile = Tempfile.new([ "helium-l2-file", ".gz" ])
@@ -42,7 +42,7 @@ module Relay
                 deserializer.deserialize(decoder_result.message)
               end
 
-              if Rails.env.production? || force
+              unless skip_import
                 begin
                   deserializer.import(records)
                 rescue StandardError => e
@@ -51,7 +51,7 @@ module Relay
                   Sentry.capture_exception(e, extra: {
                     file_id: file.id,
                     s3_key: file.s3_key,
-                    records: records,
+                    records: records
                   }) if Rails.env.production?
 
                   raise
