@@ -3,7 +3,7 @@ sidebar_position: 5
 title: No-Code Integrations
 ---
 
-# Using the Helium API Without Code
+# No-Code Integration
 
 You don't need to be a developer to use the Helium API! This guide shows you how to integrate with popular no-code tools.
 

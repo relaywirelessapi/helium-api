@@ -6,35 +6,124 @@ class GraphqlController < ApplicationController
 
   before_action :require_authentication!
 
-  def execute
-    variables = prepare_variables(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
+  PERSISTED_QUERIES = {
+    "iot-reward-shares" => <<~GRAPHQL,
+      query IotRewards($startPeriod: ISO8601DateTime!, $endPeriod: ISO8601DateTime!, $hotspotKey: String, $first: Int, $after: String) {
+        iotRewardShares(
+          startPeriod: $startPeriod
+          endPeriod: $endPeriod
+          hotspotKey: $hotspotKey
+          first: $first
+          after: $after
+        ) {
+          edges {
+            cursor
+            node {
+              amount
+              beaconAmount
+              witnessAmount
+              dcTransferAmount
+              rewardType
+              unallocatedRewardType
+              startPeriod
+              endPeriod
+              hotspotKey
+            }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    GRAPHQL
 
-    result = HeliumApiSchema.execute(
-      query,
+    "mobile-reward-shares" => <<~GRAPHQL
+      query MobileRewards($startPeriod: ISO8601DateTime!, $endPeriod: ISO8601DateTime!, $hotspotKey: String, $first: Int, $after: String) {
+        mobileRewardShares(
+          startPeriod: $startPeriod
+          endPeriod: $endPeriod
+          hotspotKey: $hotspotKey
+          first: $first
+          after: $after
+        ) {
+          edges {
+            cursor
+            node {
+              amount
+              baseCoveragePointsSum
+              basePocReward
+              baseRewardShares
+              boostedCoveragePointsSum
+              boostedPocReward
+              boostedRewardShares
+              cbsdId
+              dcTransferReward
+              discoveryLocationAmount
+              endPeriod
+              entity
+              hotspotKey
+              locationTrustScoreMultiplier
+              matchedAmount
+              oracleBoostedHexStatus
+              ownerKey
+              pocReward
+              rewardType
+              seniorityTimestamp
+              serviceProviderAmount
+              serviceProviderId
+              spBoostedHexStatus
+              speedtestMultiplier
+              startPeriod
+              subscriberId
+              subscriberReward
+              unallocatedRewardType
+            }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    GRAPHQL
+  }
+
+  def execute
+    execute_query(
+      query: params[:query],
+      variables: prepare_variables(params[:variables]),
+    )
+  end
+
+  def execute_persisted_query
+    variables = request.query_parameters.transform_keys do |key|
+      key.to_s.underscore.camelize(:lower)
+    end
+
+    execute_query(
+      query: PERSISTED_QUERIES.fetch(params.fetch(:query_id)),
       variables: variables,
-      context: { current_user: current_api_user || current_user },
-      operation_name: operation_name
+    )
+  end
+
+  private
+
+  def execute_query(query:, variables:)
+    result = Relay::Graphql::Executor.new(
+      schema: HeliumApiSchema,
+      posthog: Relay::PostHog::Client.new
+    ).execute(
+      query: query,
+      variables: variables,
+      current_user: current_api_user || current_user
     )
 
     render json: result
-
-    Relay::PostHog::Client.new.capture(
-      distinct_id: current_user&.id,
-      event: "graphql_query",
-      properties: {
-        query: query,
-        variables: variables,
-        operation_name: operation_name
-      }
-    )
   rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development(e)
   end
-
-  private
 
   def current_api_user
     @current_api_user ||= begin
