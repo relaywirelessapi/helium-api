@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
 
+  GraphqlController::PERSISTED_QUERIES.each_key do |query_id|
+    get "/graphql/#{query_id}", to: "graphql#execute_persisted_query", query_id: query_id, as: "#{query_id.parameterize(separator: '_')}_graphql_query"
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
