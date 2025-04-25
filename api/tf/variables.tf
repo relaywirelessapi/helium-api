@@ -32,7 +32,7 @@ variable "image_tag" {
 variable "domain_name" {
   description = "The main domain name for the application"
   type        = string
-  default     = "helium-api.relaywireless.com"
+  default     = "api.relaywireless.com"
 }
 
 variable "email_domain" {
