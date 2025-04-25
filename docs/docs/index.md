@@ -38,7 +38,7 @@ We chose GraphQL for our API for several key reasons:
 
 ## Getting Started
 
-1. **API Endpoint**: The API is accessible at `https://helium-api.relaywireless.com/graphql`
+1. **API Endpoint**: The API is accessible at `https://api.relaywireless.com/graphql`
 2. **Authentication**: All requests require an API key, passed via the `Authorization: Bearer <API_KEY>` header
 
 ## Support

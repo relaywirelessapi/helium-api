@@ -16,7 +16,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"query": "{ status }"}' \
-  https://helium-api.relaywireless.com/graphql
+  https://api.relaywireless.com/graphql
 ```
 
 ### Using a GraphQL Client
@@ -26,7 +26,7 @@ curl -X POST \
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://helium-api.relaywireless.com/graphql",
+  uri: "https://api.relaywireless.com/graphql",
   cache: new InMemoryCache(),
   headers: {
     Authorization: "Bearer YOUR_API_KEY",
@@ -296,7 +296,7 @@ For detailed information about the available fields and types, refer to the [Gra
 
 ## Tools and Resources
 
-- [GraphQL Playground](https://helium-api.relaywireless.com/graphiql) - Interactive API explorer (you need to be authenticated)
+- [GraphQL Playground](https://api.relaywireless.com/graphiql) - Interactive API explorer (you need to be authenticated)
 - [Apollo Studio](https://studio.apollographql.com/) - Advanced API development environment
 - [Insomnia](https://insomnia.rest/) - API client with GraphQL support
 - [Postman](https://www.postman.com/) - API platform with GraphQL support
