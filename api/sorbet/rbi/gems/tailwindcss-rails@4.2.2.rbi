@@ -11,12 +11,15 @@ module Tailwindcss; end
 # source://tailwindcss-rails//lib/tailwindcss/commands.rb#4
 module Tailwindcss::Commands
   class << self
+    # source://tailwindcss-rails//lib/tailwindcss/commands.rb#32
+    def command_env(verbose:); end
+
     # source://tailwindcss-rails//lib/tailwindcss/commands.rb#6
     def compile_command(debug: T.unsafe(nil), **kwargs); end
 
     # @return [Boolean]
     #
-    # source://tailwindcss-rails//lib/tailwindcss/commands.rb#32
+    # source://tailwindcss-rails//lib/tailwindcss/commands.rb#38
     def rails_css_compressor?; end
 
     # source://tailwindcss-rails//lib/tailwindcss/commands.rb#24
