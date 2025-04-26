@@ -49,5 +49,8 @@ module HeliumApi
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Allow storing numbers wider than 64-bit (needed for Helium L2 reward amounts).
+    config.active_record.raise_int_wider_than_64bit = false
   end
 end

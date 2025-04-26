@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_133613) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -52,10 +52,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_133613) do
     t.datetime "start_period"
     t.datetime "end_period"
     t.string "hotspot_key"
-    t.bigint "beacon_amount"
-    t.bigint "witness_amount"
-    t.bigint "dc_transfer_amount"
-    t.bigint "amount"
+    t.decimal "beacon_amount", precision: 20
+    t.decimal "witness_amount", precision: 20
+    t.decimal "dc_transfer_amount", precision: 20
+    t.decimal "amount", precision: 20
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
     t.string "file_category", null: false
@@ -89,15 +89,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_133613) do
     t.string "owner_key"
     t.string "hotspot_key"
     t.string "cbsd_id"
-    t.bigint "amount"
+    t.decimal "amount", precision: 20
     t.datetime "start_period"
     t.datetime "end_period"
     t.string "reward_type"
-    t.bigint "dc_transfer_reward"
-    t.bigint "poc_reward"
+    t.decimal "dc_transfer_reward", precision: 20
+    t.decimal "poc_reward", precision: 20
     t.string "subscriber_id"
-    t.bigint "subscriber_reward"
-    t.bigint "discovery_location_amount"
+    t.decimal "subscriber_reward", precision: 20
+    t.decimal "discovery_location_amount", precision: 20
     t.string "unallocated_reward_type"
     t.string "service_provider_id"
     t.string "deduplication_key", null: false
@@ -115,8 +115,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_133613) do
     t.string "sp_boosted_hex_status"
     t.string "oracle_boosted_hex_status"
     t.string "entity"
-    t.bigint "service_provider_amount"
-    t.bigint "matched_amount"
+    t.decimal "service_provider_amount", precision: 20
+    t.decimal "matched_amount", precision: 20
     t.string "file_category", null: false
     t.string "file_name", null: false
     t.datetime "seniority_timestamp"
