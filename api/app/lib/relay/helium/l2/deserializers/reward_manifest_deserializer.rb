@@ -21,7 +21,7 @@ module Relay
           def deserialize(encoded_message)
             message = ::Helium::Reward_manifest.decode(encoded_message)
 
-            reward_data = case message.reward_data.to_sym
+            reward_data = case message.reward_data
             when :mobile_reward_data
               {
                 reward_type: :mobile,
@@ -51,7 +51,7 @@ module Relay
                 dc_bones_per_share: message.iot_reward_data.dc_bones_per_share.value,
                 token: message.iot_reward_data.token
               }
-            when :""
+            when nil
               {}
             else
               raise "Cannot sync manifest reward data `#{message.reward_data}`"
