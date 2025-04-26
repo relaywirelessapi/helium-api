@@ -6,6 +6,12 @@ class GraphqlController < ApplicationController
 
   before_action :require_authentication!
 
+  # Rate limit based on API key for authenticated users
+  rate_limit to: 120, within: 1.minute, by: -> { current_api_user&.api_key }, name: "api_key_rate_limit"
+
+  # Rate limit based on IP for unauthenticated requests
+  rate_limit to: 60, within: 1.minute, by: -> { request.ip }, name: "ip_rate_limit"
+
   PERSISTED_QUERIES = {
     "iot-reward-shares" => <<~GRAPHQL,
       query IotRewards($startPeriod: ISO8601DateTime!, $endPeriod: ISO8601DateTime!, $hotspotKey: String, $first: Int, $after: String) {
