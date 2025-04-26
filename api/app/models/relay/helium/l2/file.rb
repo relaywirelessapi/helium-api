@@ -7,6 +7,7 @@ module Relay
         extend T::Sig
 
         self.table_name = "helium_l2_files"
+        self.primary_key = [ :category, :name ]
 
         sig { returns(T.nilable(FileDefinition)) }
         def definition
@@ -14,6 +15,11 @@ module Relay
             FileDefinition.find(definition_id),
             T.nilable(FileDefinition)
           )
+        end
+
+        sig { returns(String) }
+        def s3_key
+          "#{category}/#{name}"
         end
       end
     end

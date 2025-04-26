@@ -17,7 +17,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
@@ -26,7 +27,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           hotspot_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
           cbsd_id: "test_cbsd_id",
           dc_transfer_reward: 1 * 10**6,
-          poc_reward: 2 * 10**6
+          poc_reward: 2 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -42,14 +45,17 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :gateway_reward,
           hotspot_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
-          dc_transfer_reward: 1 * 10**6
+          dc_transfer_reward: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -65,14 +71,17 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :subscriber_reward,
           subscriber_id: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
-          discovery_location_amount: 1 * 10**6
+          discovery_location_amount: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -88,14 +97,17 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :service_provider_reward,
           service_provider_id: :helium_mobile,
-          amount: 1 * 10**6
+          amount: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -123,7 +135,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
@@ -142,7 +155,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           location_trust_score_multiplier: Helium::Decimal.new(value: "1.5"),
           speedtest_multiplier: Helium::Decimal.new(value: "2.0"),
           sp_boosted_hex_status: :sp_boosted_hex_status_eligible,
-          oracle_boosted_hex_status: :oracle_boosted_hex_status_banned
+          oracle_boosted_hex_status: :oracle_boosted_hex_status_banned,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -159,7 +174,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
@@ -167,7 +183,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           reward_type: :promotion_reward,
           entity: "test_entity",
           service_provider_amount: 1 * 10**6,
-          matched_amount: 2 * 10**6
+          matched_amount: 2 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -182,14 +200,17 @@ RSpec.describe Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer d
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :unallocated_reward,
           unallocated_reward_type: :unallocated_reward_type_poc,
-          amount: 1 * 10**6
+          amount: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end

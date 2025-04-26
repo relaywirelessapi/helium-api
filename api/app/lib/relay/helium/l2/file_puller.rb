@@ -24,9 +24,12 @@ module Relay
             prefix: definition.s3_prefix,
             start_after: start_after
           ) do |object|
+            key_parts = object.key.split("/")
+
             file = File.create!(
               definition_id: definition.id,
-              s3_key: object.key,
+              category: key_parts[0..-2].join("/"),
+              name: key_parts[-1]
             )
 
             block.call(file)

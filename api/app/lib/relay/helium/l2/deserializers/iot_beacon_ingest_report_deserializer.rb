@@ -21,8 +21,8 @@ module Relay
             @batch_importer = batch_importer
           end
 
-          sig { override.params(encoded_message: String).returns(T::Hash[Symbol, T.untyped]) }
-          def deserialize(encoded_message)
+          sig { override.params(encoded_message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
+          def deserialize(encoded_message, file:)
             message = ::Helium::PocLora::Lora_beacon_ingest_report_v1.decode(encoded_message)
 
             {
@@ -36,7 +36,9 @@ module Relay
               tx_power: message.report.tx_power,
               local_entropy: message.report.local_entropy,
               remote_entropy: message.report.remote_entropy,
-              signature: message.report.signature
+              signature: message.report.signature,
+              file_category: file.category,
+              file_name: file.name
             }
           end
 

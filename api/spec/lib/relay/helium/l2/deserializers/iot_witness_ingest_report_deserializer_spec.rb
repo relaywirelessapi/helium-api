@@ -22,7 +22,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeseriali
         )
       )
 
-      record = build_deserializer.deserialize(message)
+      file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+      record = build_deserializer.deserialize(message, file: file)
 
       expect(record).to eq(
         received_timestamp: Time.zone.at(1674864600),
@@ -34,7 +35,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeseriali
         snr: 5,
         frequency: 915,
         datarate: :SF10BW125,
-        signature: "test_signature"
+        signature: "test_signature",
+        file_category: "test_category",
+        file_name: "test_file"
       )
     end
   end

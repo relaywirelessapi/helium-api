@@ -23,7 +23,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializ
         )
       )
 
-      record = build_deserializer.deserialize(message)
+      file = build_stubbed(:helium_l2_file, category: "test_category", name: "test_file")
+      record = build_deserializer.deserialize(message, file: file)
 
       expect(record).to eq(
         received_timestamp: Time.zone.at(1674864600),
@@ -36,7 +37,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializ
         tx_power: 27,
         local_entropy: "local_entropy_data",
         remote_entropy: "remote_entropy_data",
-        signature: "test_signature"
+        signature: "test_signature",
+        file_category: "test_category",
+        file_name: "test_file"
       )
     end
   end
@@ -57,7 +60,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotBeaconIngestReportDeserializ
         tx_power: 27,
         local_entropy: "local_entropy_data",
         remote_entropy: "remote_entropy_data",
-        signature: "test_signature"
+        signature: "test_signature",
+        file_category: "test_category",
+        file_name: "test_file"
       } ]
 
       deserializer.import(messages)

@@ -3,7 +3,7 @@
 RSpec.describe Relay::Helium::L2::FilePuller do
   describe "#pull_for" do
     it "creates a new File record for each processed object" do
-      last_pulled_file = stub_oracle_file(s3_key: "test-category/test-prefix/last-file")
+      last_pulled_file = stub_oracle_file(category: "test-category/test-prefix", name: "last-file")
       definition = stub_file_definition(
         bucket: "test-bucket",
         category: "test-category",
@@ -24,7 +24,7 @@ RSpec.describe Relay::Helium::L2::FilePuller do
     end
 
     it "yields each created File record" do
-      last_pulled_file = stub_oracle_file(s3_key: "test-category/test-prefix/last-file")
+      last_pulled_file = stub_oracle_file(category: "test-category/test-prefix", name: "last-file")
       definition = stub_file_definition(
         bucket: "test-bucket",
         category: "test-category",
@@ -44,8 +44,8 @@ RSpec.describe Relay::Helium::L2::FilePuller do
       puller = build_file_puller(file_client: file_client)
 
       expect { |b| puller.pull_for(definition, &b) }.to yield_successive_args(
-        have_attributes(s3_key: "test-category/test-prefix/file1"),
-        have_attributes(s3_key: "test-category/test-prefix/file2")
+        have_attributes(category: "test-category/test-prefix", name: "file1"),
+        have_attributes(category: "test-category/test-prefix", name: "file2")
       )
     end
   end
@@ -81,8 +81,8 @@ RSpec.describe Relay::Helium::L2::FilePuller do
     )
   end
 
-  def stub_oracle_file(s3_key:)
-    instance_double(Relay::Helium::L2::File, s3_key:)
+  def stub_oracle_file(category:, name:)
+    instance_double(Relay::Helium::L2::File, category:, name:, s3_key: "#{category}/#{name}")
   end
 
   def stub_s3_object(key:)

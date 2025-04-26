@@ -17,7 +17,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotRewardShareDeserializer do
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
@@ -26,7 +27,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotRewardShareDeserializer do
           hotspot_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
           dc_transfer_amount: 1 * 10**6,
           witness_amount: 2 * 10**6,
-          beacon_amount: 3 * 10**6
+          beacon_amount: 3 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -41,13 +44,16 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotRewardShareDeserializer do
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :operational_reward,
-          amount: 1 * 10**6
+          amount: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -63,14 +69,17 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotRewardShareDeserializer do
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = instance_double(Relay::Helium::L2::File, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           start_period: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
           end_period: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
           reward_type: :unallocated_reward,
           unallocated_reward_type: :unallocated_reward_type_poc,
-          amount: 1 * 10**6
+          amount: 1 * 10**6,
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end

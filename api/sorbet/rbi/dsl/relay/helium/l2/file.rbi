@@ -147,12 +147,12 @@ class Relay::Helium::L2::File
 
     sig do
       params(
-        args: T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])
+        args: T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]
       ).returns(::Relay::Helium::L2::File)
     end
     sig do
       params(
-        args: T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]
+        args: T::Array[T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]]
       ).returns(T::Enumerable[::Relay::Helium::L2::File])
     end
     sig do
@@ -569,6 +569,51 @@ class Relay::Helium::L2::File
   end
 
   module GeneratedAttributeMethods
+    sig { returns(::String) }
+    def category; end
+
+    sig { params(value: ::String).returns(::String) }
+    def category=(value); end
+
+    sig { returns(T::Boolean) }
+    def category?; end
+
+    sig { returns(T.nilable(::String)) }
+    def category_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def category_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def category_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def category_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def category_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def category_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def category_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def category_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def category_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def category_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def category_was; end
+
+    sig { void }
+    def category_will_change!; end
+
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def completed_at; end
 
@@ -714,16 +759,16 @@ class Relay::Helium::L2::File
     sig { void }
     def definition_id_will_change!; end
 
-    sig { returns(::Integer) }
+    sig { returns([::String, ::String]) }
     def id; end
 
-    sig { params(value: ::Integer).returns(::Integer) }
+    sig { params(value: [::String, ::String]).returns([::String, ::String]) }
     def id=(value); end
 
     sig { returns(T::Boolean) }
     def id?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -732,77 +777,77 @@ class Relay::Helium::L2::File
     sig { returns(T::Boolean) }
     def id_came_from_user?; end
 
-    sig { returns(T.nilable([::Integer, ::Integer])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_change; end
 
-    sig { returns(T.nilable([::Integer, ::Integer])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_change_to_be_saved; end
 
-    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
+    sig { params(from: [::String, ::String], to: [::String, ::String]).returns(T::Boolean) }
     def id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_in_database; end
 
-    sig { returns(T.nilable([::Integer, ::Integer])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_previous_change; end
 
-    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
+    sig { params(from: [::String, ::String], to: [::String, ::String]).returns(T::Boolean) }
     def id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_previously_was; end
 
-    sig { returns(::Integer) }
-    def id_value; end
-
-    sig { params(value: ::Integer).returns(::Integer) }
-    def id_value=(value); end
-
-    sig { returns(T::Boolean) }
-    def id_value?; end
-
-    sig { returns(T.nilable(::Integer)) }
-    def id_value_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def id_value_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def id_value_came_from_user?; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def id_value_change; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def id_value_change_to_be_saved; end
-
-    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
-    def id_value_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::Integer)) }
-    def id_value_in_database; end
-
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def id_value_previous_change; end
-
-    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
-    def id_value_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::Integer)) }
-    def id_value_previously_was; end
-
-    sig { returns(T.nilable(::Integer)) }
-    def id_value_was; end
-
-    sig { void }
-    def id_value_will_change!; end
-
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_was; end
 
     sig { void }
     def id_will_change!; end
+
+    sig { returns(::String) }
+    def name; end
+
+    sig { params(value: ::String).returns(::String) }
+    def name=(value); end
+
+    sig { returns(T::Boolean) }
+    def name?; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def name_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def name_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def name_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def name_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def name_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def name_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def name_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def name_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def name_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_was; end
+
+    sig { void }
+    def name_will_change!; end
 
     sig { returns(::Integer) }
     def position; end
@@ -850,6 +895,9 @@ class Relay::Helium::L2::File
     def position_will_change!; end
 
     sig { void }
+    def restore_category!; end
+
+    sig { void }
     def restore_completed_at!; end
 
     sig { void }
@@ -862,13 +910,10 @@ class Relay::Helium::L2::File
     def restore_id!; end
 
     sig { void }
-    def restore_id_value!; end
+    def restore_name!; end
 
     sig { void }
     def restore_position!; end
-
-    sig { void }
-    def restore_s3_key!; end
 
     sig { void }
     def restore_started_at!; end
@@ -876,50 +921,11 @@ class Relay::Helium::L2::File
     sig { void }
     def restore_updated_at!; end
 
-    sig { returns(::String) }
-    def s3_key; end
-
-    sig { params(value: ::String).returns(::String) }
-    def s3_key=(value); end
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_category; end
 
     sig { returns(T::Boolean) }
-    def s3_key?; end
-
-    sig { returns(T.nilable(::String)) }
-    def s3_key_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def s3_key_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def s3_key_came_from_user?; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def s3_key_change; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def s3_key_change_to_be_saved; end
-
-    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
-    def s3_key_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::String)) }
-    def s3_key_in_database; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def s3_key_previous_change; end
-
-    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
-    def s3_key_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
-
-    sig { returns(T.nilable(::String)) }
-    def s3_key_previously_was; end
-
-    sig { returns(T.nilable(::String)) }
-    def s3_key_was; end
-
-    sig { void }
-    def s3_key_will_change!; end
+    def saved_change_to_category?; end
 
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_completed_at; end
@@ -939,29 +945,23 @@ class Relay::Helium::L2::File
     sig { returns(T::Boolean) }
     def saved_change_to_definition_id?; end
 
-    sig { returns(T.nilable([::Integer, ::Integer])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def saved_change_to_id; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_id?; end
 
-    sig { returns(T.nilable([::Integer, ::Integer])) }
-    def saved_change_to_id_value; end
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_name; end
 
     sig { returns(T::Boolean) }
-    def saved_change_to_id_value?; end
+    def saved_change_to_name?; end
 
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_position; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_position?; end
-
-    sig { returns(T.nilable([::String, ::String])) }
-    def saved_change_to_s3_key; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_s3_key?; end
 
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_started_at; end
@@ -1076,6 +1076,9 @@ class Relay::Helium::L2::File
     def updated_at_will_change!; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_category?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_completed_at?; end
 
     sig { returns(T::Boolean) }
@@ -1088,13 +1091,10 @@ class Relay::Helium::L2::File
     def will_save_change_to_id?; end
 
     sig { returns(T::Boolean) }
-    def will_save_change_to_id_value?; end
+    def will_save_change_to_name?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_position?; end
-
-    sig { returns(T::Boolean) }
-    def will_save_change_to_s3_key?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_started_at?; end

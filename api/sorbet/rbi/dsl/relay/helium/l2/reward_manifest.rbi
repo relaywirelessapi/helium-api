@@ -6,6 +6,7 @@
 
 
 class Relay::Helium::L2::RewardManifest
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -419,6 +420,35 @@ class Relay::Helium::L2::RewardManifest
     def third_to_last!; end
   end
 
+  module GeneratedAssociationMethods
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def build_file(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def create_file(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def create_file!(*args, &blk); end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::File)) }
+    def file; end
+
+    sig { params(value: T.nilable(::Relay::Helium::L2::File)).void }
+    def file=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_changed?; end
+
+    sig { returns(T::Boolean) }
+    def file_previously_changed?; end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::File)) }
+    def reload_file; end
+
+    sig { void }
+    def reset_file; end
+  end
+
   module GeneratedAssociationRelationMethods
     sig { returns(PrivateAssociationRelation) }
     def all; end
@@ -714,6 +744,96 @@ class Relay::Helium::L2::RewardManifest
     sig { void }
     def epoch_will_change!; end
 
+    sig { returns(::String) }
+    def file_category; end
+
+    sig { params(value: ::String).returns(::String) }
+    def file_category=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_category?; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def file_category_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def file_category_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_category_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_category_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_was; end
+
+    sig { void }
+    def file_category_will_change!; end
+
+    sig { returns(::String) }
+    def file_name; end
+
+    sig { params(value: ::String).returns(::String) }
+    def file_name=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_name?; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def file_name_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def file_name_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_name_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_name_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_was; end
+
+    sig { void }
+    def file_name_will_change!; end
+
     sig { returns(T.untyped) }
     def id; end
 
@@ -814,6 +934,12 @@ class Relay::Helium::L2::RewardManifest
     def restore_epoch!; end
 
     sig { void }
+    def restore_file_category!; end
+
+    sig { void }
+    def restore_file_name!; end
+
+    sig { void }
     def restore_id!; end
 
     sig { void }
@@ -890,6 +1016,18 @@ class Relay::Helium::L2::RewardManifest
 
     sig { returns(T::Boolean) }
     def saved_change_to_epoch?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_file_category; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_file_category?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_file_name; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_file_name?; end
 
     sig { returns(T.nilable([T.untyped, T.untyped])) }
     def saved_change_to_id; end
@@ -984,6 +1122,12 @@ class Relay::Helium::L2::RewardManifest
 
     sig { returns(T::Boolean) }
     def will_save_change_to_epoch?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_file_category?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_file_name?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id?; end

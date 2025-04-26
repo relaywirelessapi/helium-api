@@ -10,19 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_130040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "helium_l2_files", force: :cascade do |t|
+  create_table "helium_l2_files", id: false, force: :cascade do |t|
     t.string "definition_id", null: false
-    t.string "s3_key", null: false
     t.datetime "started_at"
     t.datetime "completed_at"
     t.bigint "position", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["s3_key"], name: "index_helium_l2_files_on_s3_key", unique: true
+    t.string "category", null: false
+    t.string "name", null: false
+    t.index ["category", "name"], name: "index_helium_l2_files_on_category_and_name", unique: true
+    t.index ["category"], name: "index_helium_l2_files_on_category"
+    t.index ["name"], name: "index_helium_l2_files_on_name"
   end
 
   create_table "helium_l2_iot_beacon_ingest_reports", id: false, force: :cascade do |t|
@@ -38,7 +41,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
     t.binary "remote_entropy"
     t.binary "signature"
     t.string "deduplication_key", null: false
+    t.string "file_category", null: false
+    t.string "file_name", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_beacon_ingest_reports_on_deduplication_key", unique: true
+    t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_42ad2551ea"
   end
 
   create_table "helium_l2_iot_reward_shares", id: false, force: :cascade do |t|
@@ -52,7 +58,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
     t.bigint "amount"
     t.string "unallocated_reward_type"
     t.string "deduplication_key", null: false
+    t.string "file_category", null: false
+    t.string "file_name", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
+    t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_b2d1df30e4"
     t.index ["hotspot_key"], name: "index_helium_l2_iot_reward_shares_on_hotspot_key"
     t.index ["reward_type"], name: "index_helium_l2_iot_reward_shares_on_reward_type"
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_65a8c97b27"
@@ -70,7 +79,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
     t.string "data_rate"
     t.binary "signature"
     t.string "deduplication_key", null: false
+    t.string "file_category", null: false
+    t.string "file_name", null: false
     t.index ["deduplication_key"], name: "idx_on_deduplication_key_ba179087f7", unique: true
+    t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_016ec07462"
   end
 
   create_table "helium_l2_mobile_reward_shares", id: false, force: :cascade do |t|
@@ -106,7 +118,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
     t.string "entity"
     t.bigint "service_provider_amount"
     t.bigint "matched_amount"
+    t.string "file_category", null: false
+    t.string "file_name", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_mobile_reward_shares_on_deduplication_key", unique: true
+    t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_2579294e1e"
     t.index ["hotspot_key"], name: "index_helium_l2_mobile_reward_shares_on_hotspot_key"
     t.index ["reward_type"], name: "index_helium_l2_mobile_reward_shares_on_reward_type"
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_b04efac248"
@@ -120,8 +135,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
     t.bigint "epoch"
     t.bigint "price"
     t.string "deduplication_key", null: false
+    t.string "file_category", null: false
+    t.string "file_name", null: false
     t.index ["deduplication_key"], name: "index_helium_l2_reward_manifests_on_deduplication_key", unique: true
     t.index ["end_timestamp"], name: "index_helium_l2_reward_manifests_on_end_timestamp"
+    t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_02f1bf3b37"
     t.index ["start_timestamp"], name: "index_helium_l2_reward_manifests_on_start_timestamp"
     t.index ["written_files"], name: "index_helium_l2_reward_manifests_on_written_files", using: :gin
   end

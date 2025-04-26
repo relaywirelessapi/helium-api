@@ -14,12 +14,14 @@ RSpec.describe Relay::Helium::L2::FileDefinition do
       file_definition = build_file_definition
       file = create(:helium_l2_file,
         definition_id: file_definition.id,
-        s3_key: "test-key",
+        category: "test",
+        name: "key",
         created_at: Time.current
       )
       create(:helium_l2_file,
         definition_id: file_definition.id,
-        s3_key: "older-key",
+        category: "older",
+        name: "key",
         created_at: 1.day.ago
       )
 

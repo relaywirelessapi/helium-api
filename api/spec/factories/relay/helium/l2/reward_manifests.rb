@@ -2,6 +2,12 @@
 
 FactoryBot.define do
   factory :helium_l2_reward_manifest, class: "Relay::Helium::L2::RewardManifest" do
+    transient do
+      file { create(:helium_l2_file, category: "test-category", name: "test-file") }
+    end
+
+    file_category { file.category }
+    file_name { file.name }
     written_files { [ "file1.json", "file2.json" ] }
     start_timestamp { Time.current }
     end_timestamp { Time.current + 1.day }

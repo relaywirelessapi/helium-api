@@ -10,8 +10,8 @@ module Relay
 
           abstract!
 
-          sig { abstract.params(message: String).returns(T::Hash[Symbol, T.untyped]) }
-          def deserialize(message); end
+          sig { abstract.params(message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
+          def deserialize(message, file:); end
 
           sig { abstract.params(records: T::Array[T::Hash[Symbol, T.untyped]]).void }
           def import(records); end
