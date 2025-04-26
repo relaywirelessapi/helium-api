@@ -17,8 +17,8 @@ module Relay
             @batch_importer = batch_importer
           end
 
-          sig { override.params(encoded_message: String).returns(T::Hash[Symbol, T.untyped]) }
-          def deserialize(encoded_message)
+          sig { override.params(encoded_message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
+          def deserialize(encoded_message, file:)
             message = ::Helium::Reward_manifest.decode(encoded_message)
 
             reward_data = case message.reward_data
@@ -63,7 +63,9 @@ module Relay
               end_timestamp: Time.zone.at(message.end_timestamp),
               epoch: message.epoch == 0 ? nil : message.epoch,
               price: message.price == 0 ? nil : message.price,
-              reward_data: reward_data
+              reward_data: reward_data,
+              file_category: file.category,
+              file_name: file.name
             }
           end
 

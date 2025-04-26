@@ -3,8 +3,8 @@
 require_dependency Rails.root.join("vendor/helium-protobuf/service/poc_lora_pb")
 
 RSpec.describe Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeserializer do
-  describe "#deserialize" do
-    it "returns a hash with the decoded message data" do
+  describe "deserialization and import flow" do
+    it "deserializes a message and imports it into the database" do
       message = Helium::PocLora::Lora_witness_ingest_report_v1.encode(
         Helium::PocLora::Lora_witness_ingest_report_v1.new(
           received_timestamp: 1674864600000,
@@ -22,60 +22,28 @@ RSpec.describe Relay::Helium::L2::Deserializers::IotWitnessIngestReportDeseriali
         )
       )
 
-      record = build_deserializer.deserialize(message)
+      file = create(:helium_l2_file, category: "test_category", name: "test_file")
 
-      expect(record).to eq(
-        received_timestamp: Time.zone.at(1674864600),
-        pub_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
-        data: "test_data",
-        timestamp: Time.zone.at(1674864600),
-        tmst: 123456,
-        signal: -80,
-        snr: 5,
-        frequency: 915,
-        datarate: :SF10BW125,
-        signature: "test_signature"
-      )
+      deserializer = described_class.new
+      deserialized_data = deserializer.deserialize(message, file: file)
+      deserializer.import([ deserialized_data ])
+
+      expect(Relay::Helium::L2::IotWitnessIngestReport.all).to match_array([
+        have_attributes(
+          received_at: Time.zone.at(1674864600),
+          hotspot_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
+          data: "test_data",
+          reported_at: Time.zone.at(1674864600),
+          tmst: 123456,
+          signal: -80,
+          snr: 5,
+          frequency: 915,
+          data_rate: "SF10BW125",
+          signature: "test_signature",
+          file_category: "test_category",
+          file_name: "test_file"
+        )
+      ])
     end
-  end
-
-  describe "#import" do
-    it "imports the given messages into the DB" do
-      batch_importer = stub_batch_importer
-      deserializer = build_deserializer(batch_importer: batch_importer)
-
-      messages = [ {
-        received_timestamp: Time.zone.at(1674864600),
-        pub_key: "112phT6PPtLyQqkdnMppgWrTwdDpzzz2C7Q7agHQMhgpiPfsUh5N",
-        data: "test_data",
-        timestamp: Time.zone.at(1674864600),
-        tmst: 123456,
-        signal: -80,
-        snr: 5.5,
-        frequency: 915.0,
-        datarate: "SF10BW125",
-        signature: "test_signature"
-      } ]
-
-      deserializer.import(messages)
-
-      expect(batch_importer).to have_received(:import).with(
-        Relay::Helium::L2::IotWitnessIngestReport,
-        messages
-      )
-    end
-  end
-
-  private
-
-  def build_deserializer(batch_importer: stub_batch_importer)
-    described_class.new(
-      base58_encoder: Relay::Base58Encoder.new,
-      batch_importer: batch_importer
-    )
-  end
-
-  def stub_batch_importer
-    instance_spy(Relay::BatchImporter)
   end
 end

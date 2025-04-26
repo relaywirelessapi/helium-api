@@ -69,13 +69,16 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
   def stub_deserializer(message_records)
     instance_spy(Relay::Helium::L2::Deserializers::BaseDeserializer).tap do |deserializer|
       message_records.each_pair do |message, record|
-        allow(deserializer).to receive(:deserialize).with(message).and_return(record)
+        allow(deserializer).to receive(:deserialize).with(message, file: an_instance_of(Relay::Helium::L2::File)).and_return(record)
       end
     end
   end
 
   def stub_file(definition:)
-    instance_spy(Relay::Helium::L2::File, definition: definition, position: 0, started_at: nil)
+    build_stubbed(:helium_l2_file, position: 0, started_at: nil).tap do |file|
+      allow(file).to receive(:definition).and_return(definition)
+      allow(file).to receive(:update!)
+    end
   end
 
   def stub_file_definition(deserializer:)

@@ -6,6 +6,7 @@
 
 
 class Relay::Helium::L2::MobileRewardShare
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -417,6 +418,35 @@ class Relay::Helium::L2::MobileRewardShare
 
     sig { returns(::Relay::Helium::L2::MobileRewardShare) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def build_file(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def create_file(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
+    def create_file!(*args, &blk); end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::File)) }
+    def file; end
+
+    sig { params(value: T.nilable(::Relay::Helium::L2::File)).void }
+    def file=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_changed?; end
+
+    sig { returns(T::Boolean) }
+    def file_previously_changed?; end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::File)) }
+    def reload_file; end
+
+    sig { void }
+    def reset_file; end
   end
 
   module GeneratedAssociationRelationMethods
@@ -1254,6 +1284,96 @@ class Relay::Helium::L2::MobileRewardShare
     sig { void }
     def entity_will_change!; end
 
+    sig { returns(::String) }
+    def file_category; end
+
+    sig { params(value: ::String).returns(::String) }
+    def file_category=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_category?; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def file_category_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def file_category_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_category_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_category_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_category_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_category_was; end
+
+    sig { void }
+    def file_category_will_change!; end
+
+    sig { returns(::String) }
+    def file_name; end
+
+    sig { params(value: ::String).returns(::String) }
+    def file_name=(value); end
+
+    sig { returns(T::Boolean) }
+    def file_name?; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def file_name_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def file_name_came_from_user?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_change; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_change_to_be_saved; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_name_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_in_database; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def file_name_previous_change; end
+
+    sig { params(from: ::String, to: ::String).returns(T::Boolean) }
+    def file_name_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def file_name_was; end
+
+    sig { void }
+    def file_name_will_change!; end
+
     sig { returns(T.nilable(::String)) }
     def hotspot_key; end
 
@@ -1434,16 +1554,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { void }
     def matched_amount_will_change!; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
     def oracle_boosted_hex_status=(value); end
 
     sig { returns(T::Boolean) }
     def oracle_boosted_hex_status?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -1452,28 +1572,28 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def oracle_boosted_hex_status_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def oracle_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def oracle_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_was; end
 
     sig { void }
@@ -1613,6 +1733,12 @@ class Relay::Helium::L2::MobileRewardShare
 
     sig { void }
     def restore_entity!; end
+
+    sig { void }
+    def restore_file_category!; end
+
+    sig { void }
+    def restore_file_name!; end
 
     sig { void }
     def restore_hotspot_key!; end
@@ -1803,6 +1929,18 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_entity?; end
 
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_file_category; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_file_category?; end
+
+    sig { returns(T.nilable([::String, ::String])) }
+    def saved_change_to_file_name; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_file_name?; end
+
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_hotspot_key; end
 
@@ -1827,7 +1965,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_matched_amount?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_oracle_boosted_hex_status; end
 
     sig { returns(T::Boolean) }
@@ -1851,7 +1989,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_reward_type?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_seniority_timestamp; end
 
     sig { returns(T::Boolean) }
@@ -1869,7 +2007,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_service_provider_id?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_sp_boosted_hex_status; end
 
     sig { returns(T::Boolean) }
@@ -1911,16 +2049,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_updated_at?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp=(value); end
 
     sig { returns(T::Boolean) }
     def seniority_timestamp?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -1929,28 +2067,38 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def seniority_timestamp_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
     def seniority_timestamp_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
     def seniority_timestamp_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_was; end
 
     sig { void }
@@ -2046,16 +2194,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { void }
     def service_provider_id_will_change!; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
     def sp_boosted_hex_status=(value); end
 
     sig { returns(T::Boolean) }
     def sp_boosted_hex_status?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -2064,28 +2212,28 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def sp_boosted_hex_status_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def sp_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def sp_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_was; end
 
     sig { void }
@@ -2415,6 +2563,12 @@ class Relay::Helium::L2::MobileRewardShare
 
     sig { returns(T::Boolean) }
     def will_save_change_to_entity?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_file_category?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_file_name?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_hotspot_key?; end

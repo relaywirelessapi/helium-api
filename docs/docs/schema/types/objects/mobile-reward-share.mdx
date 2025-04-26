@@ -52,6 +52,7 @@ type MobileRewardShare {
   boostedPocReward: BigInt
   boostedRewardShares: Float
   cbsdId: String
+  coverageObject: String
   dcTransferReward: BigInt
   discoveryLocationAmount: BigInt
   endPeriod: ISO8601DateTime
@@ -59,14 +60,14 @@ type MobileRewardShare {
   hotspotKey: String
   locationTrustScoreMultiplier: Float
   matchedAmount: BigInt
-  oracleBoostedHexStatus: Int
+  oracleBoostedHexStatus: String
   ownerKey: String
   pocReward: BigInt
   rewardType: String
-  seniorityTimestamp: BigInt
+  seniorityTimestamp: ISO8601DateTime
   serviceProviderAmount: BigInt
   serviceProviderId: String
-  spBoostedHexStatus: Int
+  spBoostedHexStatus: String
   speedtestMultiplier: Float
   startPeriod: ISO8601DateTime
   subscriberId: String
@@ -112,6 +113,10 @@ The boosted reward shares.
 The CBSD ID.
 
 
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>coverageObject</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The coverage object data.
+
+
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>dcTransferReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The amount of DC transfer rewards.
 
@@ -140,7 +145,7 @@ The location trust score multiplier.
 The matched amount.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>oracleBoostedHexStatus</b></code>](#)<Bullet />[`Int`](/schema/types/scalars/int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>oracleBoostedHexStatus</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The oracle boosted hex status.
 
 
@@ -156,7 +161,7 @@ The amount of POC rewards.
 The type of reward.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>seniorityTimestamp</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>seniorityTimestamp</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The seniority timestamp.
 
 
@@ -168,7 +173,7 @@ The service provider amount.
 The service provider ID.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>spBoostedHexStatus</b></code>](#)<Bullet />[`Int`](/schema/types/scalars/int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>spBoostedHexStatus</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The service provider boosted hex status.
 
 

@@ -21,8 +21,8 @@ module Relay
             @batch_importer = batch_importer
           end
 
-          sig { override.params(encoded_message: String).returns(T::Hash[Symbol, T.untyped]) }
-          def deserialize(encoded_message)
+          sig { override.params(encoded_message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
+          def deserialize(encoded_message, file:)
             message = ::Helium::PocLora::Iot_reward_share.decode(encoded_message)
 
             attributes = case message.reward
@@ -50,7 +50,9 @@ module Relay
               **attributes,
               reward_type: message.reward,
               start_period: Time.zone.at(message.start_period),
-              end_period: Time.zone.at(message.end_period)
+              end_period: Time.zone.at(message.end_period),
+              file_category: file.category,
+              file_name: file.name
             }
           end
 

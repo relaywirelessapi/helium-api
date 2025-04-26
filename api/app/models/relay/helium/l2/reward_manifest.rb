@@ -4,6 +4,8 @@ module Relay
   module Helium
     module L2
       class RewardManifest < ApplicationRecord
+        include OracleData
+
         self.table_name = "helium_l2_reward_manifests"
       end
     end

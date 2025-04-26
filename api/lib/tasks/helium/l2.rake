@@ -103,14 +103,19 @@ namespace :helium do
     end
 
     def process_s3_file(definition, s3_key)
-      if existing_file = Relay::Helium::L2::File.find_by(definition_id: definition.id, s3_key: s3_key)
-        puts "File record already exists with ID: #{existing_file.id}. Re-processing from scratch..."
+      key_parts = s3_key.split("/")
+      category = key_parts[0..-2].join("/")
+      name = key_parts[-1]
+
+      if existing_file = Relay::Helium::L2::File.find_by(category: category, name: name)
+        puts "File record already exists with category: #{category}, name: #{name}. Re-processing from scratch..."
         existing_file.destroy!
       end
 
       file = Relay::Helium::L2::File.create!(
         definition_id: definition.id,
-        s3_key: s3_key
+        category: category,
+        name: name
       )
 
       puts "Processing file..."

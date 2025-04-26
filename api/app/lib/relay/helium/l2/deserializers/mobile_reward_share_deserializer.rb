@@ -21,8 +21,8 @@ module Relay
             @batch_importer = batch_importer
           end
 
-          sig { override.params(encoded_message: String).returns(T::Hash[Symbol, T.untyped]) }
-          def deserialize(encoded_message)
+          sig { override.params(encoded_message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
+          def deserialize(encoded_message, file:)
             message = ::Helium::PocMobile::Mobile_reward_share.decode(encoded_message)
 
             attributes = case message.reward.to_sym
@@ -54,19 +54,20 @@ module Relay
                 amount: message.unallocated_reward.amount
               }
             when :radio_reward_v2
+              puts message.inspect
               {
                 hotspot_key: base58_encoder.base58check_from_data("\x00#{message.radio_reward_v2.hotspot_key}"),
                 cbsd_id: message.radio_reward_v2.cbsd_id,
-                base_coverage_points_sum: message.radio_reward_v2.base_coverage_points_sum,
-                boosted_coverage_points_sum: message.radio_reward_v2.boosted_coverage_points_sum,
-                base_reward_shares: message.radio_reward_v2.base_reward_shares,
-                boosted_reward_shares: message.radio_reward_v2.boosted_reward_shares,
+                base_coverage_points_sum: message.radio_reward_v2.base_coverage_points_sum.value,
+                boosted_coverage_points_sum: message.radio_reward_v2.boosted_coverage_points_sum.value,
+                base_reward_shares: message.radio_reward_v2.base_reward_shares.value,
+                boosted_reward_shares: message.radio_reward_v2.boosted_reward_shares.value,
                 base_poc_reward: message.radio_reward_v2.base_poc_reward,
                 boosted_poc_reward: message.radio_reward_v2.boosted_poc_reward,
-                seniority_timestamp: message.radio_reward_v2.seniority_timestamp,
+                seniority_timestamp: Time.zone.at(message.radio_reward_v2.seniority_timestamp),
                 coverage_object: message.radio_reward_v2.coverage_object,
-                location_trust_score_multiplier: message.radio_reward_v2.location_trust_score_multiplier,
-                speedtest_multiplier: message.radio_reward_v2.speedtest_multiplier,
+                location_trust_score_multiplier: message.radio_reward_v2.location_trust_score_multiplier.value,
+                speedtest_multiplier: message.radio_reward_v2.speedtest_multiplier.value,
                 sp_boosted_hex_status: message.radio_reward_v2.sp_boosted_hex_status,
                 oracle_boosted_hex_status: message.radio_reward_v2.oracle_boosted_hex_status
               }
@@ -84,7 +85,9 @@ module Relay
               **attributes,
               reward_type: message.reward,
               start_period: Time.zone.at(message.start_period),
-              end_period: Time.zone.at(message.end_period)
+              end_period: Time.zone.at(message.end_period),
+              file_category: file.category,
+              file_name: file.name
             }
           end
 

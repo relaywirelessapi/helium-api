@@ -33,7 +33,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = build_stubbed(:helium_l2_file, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           written_files: [ "file1", "file2" ],
@@ -60,7 +61,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
               }
             ],
             token: :mobile_reward_token_hnt
-          }
+          },
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end
@@ -81,7 +84,8 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
           )
         ))
 
-        record = build_deserializer.deserialize(message)
+        file = build_stubbed(:helium_l2_file, category: "test_category", name: "test_file")
+        record = build_deserializer.deserialize(message, file: file)
 
         expect(record).to eq(
           written_files: [ "file1", "file2" ],
@@ -95,7 +99,9 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
             poc_bones_per_witness_reward_share: "50",
             dc_bones_per_share: "20",
             token: :iot_reward_token_iot
-          }
+          },
+          file_category: "test_category",
+          file_name: "test_file"
         )
       end
     end

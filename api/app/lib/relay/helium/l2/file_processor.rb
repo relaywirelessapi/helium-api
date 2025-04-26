@@ -39,7 +39,7 @@ module Relay
             deserializer = T.must(definition.deserializer)
             file_decoder.messages_in(T.must(tempfile.path), start_position: file.position).each_slice(batch_size) do |decoder_results|
               records = decoder_results.map do |decoder_result|
-                deserializer.deserialize(decoder_result.message)
+                deserializer.deserialize(decoder_result.message, file: file)
               end
 
               unless skip_import
