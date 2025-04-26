@@ -46,11 +46,11 @@ module Relay
                 begin
                   deserializer.import(records)
                 rescue StandardError => e
-                  Rails.logger.debug "Error importing records: #{records.inspect}"
+                  puts "Error importing records: #{records.inspect}"
 
                   Sentry.capture_exception(e, extra: {
-                    file_id: file.id,
-                    s3_key: file.s3_key,
+                    file_category: file.category,
+                    file_name: file.name,
                     records: records
                   }) if Rails.env.production?
 
