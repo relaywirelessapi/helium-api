@@ -2,8 +2,8 @@
 
 # Get app name and region from Terraform
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-APP_NAME=$(terraform -chdir="${SCRIPT_DIR}/../tf" output -raw app_name)
-AWS_REGION=$(terraform -chdir="${SCRIPT_DIR}/../tf" output -raw aws_region)
+APP_NAME=$(terraform -chdir="${SCRIPT_DIR}/../../terraform" output -raw app_name)
+AWS_REGION=$(terraform -chdir="${SCRIPT_DIR}/../../terraform" output -raw aws_region)
 
 # Configuration
 CLUSTER_NAME="${APP_NAME}-cluster"
@@ -33,7 +33,7 @@ fi
 
 # Check if we're logged in to AWS
 if ! aws sts get-caller-identity &> /dev/null; then
-    echo "Error: Not logged in to AWS. Please run 'aws configure' first"
+    echo "Error: Not logged in to AWS. Please run 'aws sso login' first"
     exit 1
 fi
 
