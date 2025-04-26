@@ -31,11 +31,53 @@ module Relay
                 deserializer: Relay::Helium::L2::Deserializers::IotRewardShareDeserializer.new
               ),
               new(
+                id: "foundation-iot-verified-rewards/iot_network_reward_shares_v1",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-iot-verified-rewards",
+                prefix: "iot_network_reward_shares_v1",
+                deserializer: Relay::Helium::L2::Deserializers::IotRewardShareDeserializer.new
+              ),
+              new(
                 id: "foundation-mobile-verified/mobile_reward_share",
                 bucket: "foundation-poc-data-requester-pays",
                 category: "foundation-mobile-verified",
                 prefix: "mobile_reward_share",
                 deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
+              ),
+              new(
+                id: "foundation-mobile-verified/mobile_network_reward_shares_v1",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-mobile-verified",
+                prefix: "mobile_network_reward_shares_v1",
+                deserializer: Relay::Helium::L2::Deserializers::MobileRewardShareDeserializer.new
+              ),
+              new(
+                id: "foundation-iot-verified-rewards/reward_manifest",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-iot-verified-rewards",
+                prefix: "reward_manifest",
+                deserializer: Relay::Helium::L2::Deserializers::RewardManifestDeserializer.new
+              ),
+              new(
+                id: "foundation-iot-verified-rewards/network_reward_manifest_v1",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-iot-verified-rewards",
+                prefix: "network_reward_manifest_v1",
+                deserializer: Relay::Helium::L2::Deserializers::RewardManifestDeserializer.new
+              ),
+              new(
+                id: "foundation-mobile-verified/reward_manifest",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-mobile-verified",
+                prefix: "reward_manifest",
+                deserializer: Relay::Helium::L2::Deserializers::RewardManifestDeserializer.new
+              ),
+              new(
+                id: "foundation-mobile-verified/network_reward_manifest_v1",
+                bucket: "foundation-poc-data-requester-pays",
+                category: "foundation-mobile-verified",
+                prefix: "network_reward_manifest_v1",
+                deserializer: Relay::Helium::L2::Deserializers::RewardManifestDeserializer.new
               )
               # new(
               #   id: "foundation-iot-ingest/iot_witness_ingest_report",

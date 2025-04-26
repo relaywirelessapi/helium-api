@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 
 module Relay::Helium::L2
   def self.table_name_prefix

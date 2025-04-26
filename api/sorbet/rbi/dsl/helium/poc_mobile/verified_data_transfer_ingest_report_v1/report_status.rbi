@@ -18,6 +18,7 @@ module Helium::PocMobile::Verified_data_transfer_ingest_report_v1::Report_status
   end
 end
 
+Helium::PocMobile::Verified_data_transfer_ingest_report_v1::Report_status::banned = 4
 Helium::PocMobile::Verified_data_transfer_ingest_report_v1::Report_status::duplicate = 3
 Helium::PocMobile::Verified_data_transfer_ingest_report_v1::Report_status::invalid_gateway_key = 1
 Helium::PocMobile::Verified_data_transfer_ingest_report_v1::Report_status::invalid_routing_key = 2
