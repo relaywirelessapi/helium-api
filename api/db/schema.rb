@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_130040) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_133613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -109,17 +109,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_130040) do
     t.decimal "boosted_reward_shares", precision: 20, scale: 8
     t.bigint "base_poc_reward"
     t.bigint "boosted_poc_reward"
-    t.bigint "seniority_timestamp"
     t.binary "coverage_object"
     t.decimal "location_trust_score_multiplier", precision: 20, scale: 8
     t.decimal "speedtest_multiplier", precision: 20, scale: 8
-    t.integer "sp_boosted_hex_status"
-    t.integer "oracle_boosted_hex_status"
+    t.string "sp_boosted_hex_status"
+    t.string "oracle_boosted_hex_status"
     t.string "entity"
     t.bigint "service_provider_amount"
     t.bigint "matched_amount"
     t.string "file_category", null: false
     t.string "file_name", null: false
+    t.datetime "seniority_timestamp"
     t.index ["deduplication_key"], name: "index_helium_l2_mobile_reward_shares_on_deduplication_key", unique: true
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_2579294e1e"
     t.index ["hotspot_key"], name: "index_helium_l2_mobile_reward_shares_on_hotspot_key"

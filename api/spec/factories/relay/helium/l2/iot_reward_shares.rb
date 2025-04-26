@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :helium_l2_iot_reward_share, class: "Relay::Helium::L2::IotRewardShare" do
     transient do
-      file { create(:helium_l2_file, category: "test-category", name: "test-file") }
+      file { create(:helium_l2_file) }
     end
 
     file_category { file.category }

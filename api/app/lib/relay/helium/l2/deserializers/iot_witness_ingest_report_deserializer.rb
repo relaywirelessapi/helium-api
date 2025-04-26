@@ -26,15 +26,15 @@ module Relay
             message = ::Helium::PocLora::Lora_witness_ingest_report_v1.decode(encoded_message)
 
             {
-              received_timestamp: Time.zone.at(message.received_timestamp / 10**3),
-              pub_key: base58_encoder.base58check_from_data("\x00#{message.report.pub_key}"),
+              received_at: Time.zone.at(message.received_timestamp / 10**3),
+              hotspot_key: base58_encoder.base58check_from_data("\x00#{message.report.pub_key}"),
               data: message.report.data,
-              timestamp: Time.zone.at(message.report.timestamp / 10**9),
+              reported_at: Time.zone.at(message.report.timestamp / 10**9),
               tmst: message.report.tmst,
               signal: message.report.signal,
               snr: message.report.snr,
               frequency: message.report.frequency,
-              datarate: message.report.datarate,
+              data_rate: message.report.datarate,
               signature: message.report.signature,
               file_category: file.category,
               file_name: file.name

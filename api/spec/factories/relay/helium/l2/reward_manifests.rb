@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :helium_l2_reward_manifest, class: "Relay::Helium::L2::RewardManifest" do
     transient do
-      file { create(:helium_l2_file, category: "test-category", name: "test-file") }
+      file { create(:helium_l2_file) }
     end
 
     file_category { file.category }

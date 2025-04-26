@@ -1554,16 +1554,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { void }
     def matched_amount_will_change!; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
     def oracle_boosted_hex_status=(value); end
 
     sig { returns(T::Boolean) }
     def oracle_boosted_hex_status?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -1572,28 +1572,28 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def oracle_boosted_hex_status_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def oracle_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def oracle_boosted_hex_status_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def oracle_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def oracle_boosted_hex_status_was; end
 
     sig { void }
@@ -1965,7 +1965,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_matched_amount?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_oracle_boosted_hex_status; end
 
     sig { returns(T::Boolean) }
@@ -1989,7 +1989,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_reward_type?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_seniority_timestamp; end
 
     sig { returns(T::Boolean) }
@@ -2007,7 +2007,7 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_service_provider_id?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_sp_boosted_hex_status; end
 
     sig { returns(T::Boolean) }
@@ -2049,16 +2049,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def saved_change_to_updated_at?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp=(value); end
 
     sig { returns(T::Boolean) }
     def seniority_timestamp?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -2067,28 +2067,38 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def seniority_timestamp_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
     def seniority_timestamp_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def seniority_timestamp_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
     def seniority_timestamp_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def seniority_timestamp_was; end
 
     sig { void }
@@ -2184,16 +2194,16 @@ class Relay::Helium::L2::MobileRewardShare
     sig { void }
     def service_provider_id_will_change!; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
     def sp_boosted_hex_status=(value); end
 
     sig { returns(T::Boolean) }
     def sp_boosted_hex_status?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -2202,28 +2212,28 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T::Boolean) }
     def sp_boosted_hex_status_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def sp_boosted_hex_status_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def sp_boosted_hex_status_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: T.nilable(::String), to: T.nilable(::String)).returns(T::Boolean) }
     def sp_boosted_hex_status_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_previously_was; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(T.nilable(::String)) }
     def sp_boosted_hex_status_was; end
 
     sig { void }
