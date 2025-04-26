@@ -21,7 +21,7 @@ module Relay
           def deserialize(encoded_message)
             message = ::Helium::Reward_manifest.decode(encoded_message)
 
-            reward_data = case message.reward_data
+            reward_data = case message.reward_data.to_sym
             when :mobile_reward_data
               {
                 reward_type: :mobile,
