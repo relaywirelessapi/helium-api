@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_150249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "helium_l2_files", id: false, force: :cascade do |t|
+  create_table "helium_l2_files", primary_key: ["category", "name"], force: :cascade do |t|
     t.string "definition_id", null: false
     t.datetime "started_at"
     t.datetime "completed_at"
@@ -28,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
     t.index ["name"], name: "index_helium_l2_files_on_name"
   end
 
-  create_table "helium_l2_iot_beacon_ingest_reports", id: false, force: :cascade do |t|
+  create_table "helium_l2_iot_beacon_ingest_reports", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "received_at"
     t.string "hotspot_key"
     t.binary "data"
@@ -47,7 +48,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_42ad2551ea"
   end
 
-  create_table "helium_l2_iot_reward_shares", id: false, force: :cascade do |t|
+  create_table "helium_l2_iot_reward_shares", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "reward_type"
     t.datetime "start_period"
     t.datetime "end_period"
@@ -67,7 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_65a8c97b27"
   end
 
-  create_table "helium_l2_iot_witness_ingest_reports", id: false, force: :cascade do |t|
+  create_table "helium_l2_iot_witness_ingest_reports", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "received_at"
     t.string "hotspot_key"
     t.binary "data"
@@ -85,7 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_016ec07462"
   end
 
-  create_table "helium_l2_mobile_reward_shares", id: false, force: :cascade do |t|
+  create_table "helium_l2_mobile_reward_shares", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "owner_key"
     t.string "hotspot_key"
     t.string "cbsd_id"
@@ -127,7 +128,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_144411) do
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_b04efac248"
   end
 
-  create_table "helium_l2_reward_manifests", id: false, force: :cascade do |t|
+  create_table "helium_l2_reward_manifests", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "written_files", array: true
     t.datetime "start_timestamp"
     t.datetime "end_timestamp"
