@@ -84,15 +84,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            api/tf/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
+            terraform/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 
       - name: Validate Terraform
         run: |
-          terraform -chdir=api/tf init -backend=false
-          terraform -chdir=api/tf validate
+          terraform -chdir=terraform init -backend=false
+          terraform -chdir=terraform validate
 
   deploy:
     needs: [lint-ruby, lint-js, lint-tf, test-ruby, verify-schema]
@@ -115,8 +115,8 @@ jobs:
       - name: Cache Terraform
         uses: actions/cache@v3
         with:
-          path: api/tf/.terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('api/tf/**/*.tf') }}
+          path: terraform/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
 

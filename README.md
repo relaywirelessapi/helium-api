@@ -5,6 +5,8 @@ This repository is organized as a monorepo containing multiple projects:
 ## Projects
 
 - `api/`: Ruby on Rails API backend
+- `docs/`: Docusaurus documentation for the API
+- `terraform/`: Terraform definitions for AWS deployment
 
 ## Contributing
 

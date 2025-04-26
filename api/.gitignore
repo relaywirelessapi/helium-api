@@ -35,13 +35,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Terraform
-*.tfstate
-*.tfstate.*
-*.tfvars
-.terraform/
-crash.log
-
 # Assets
 /app/assets/builds/*
 !/app/assets/builds/.keep

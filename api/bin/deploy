@@ -4,7 +4,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 API_ROOT="$(cd "$SCRIPT_DIR/../" && pwd)"
-TF_ROOT="$(cd "$API_ROOT/tf/" && pwd)"
+TF_ROOT="$(cd "$API_ROOT/../terraform/" && pwd)"
 
 # Initialize Terraform
 terraform -chdir=$TF_ROOT init
