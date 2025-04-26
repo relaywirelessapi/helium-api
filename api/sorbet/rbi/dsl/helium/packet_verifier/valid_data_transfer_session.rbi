@@ -8,6 +8,7 @@
 class Helium::PacketVerifier::Valid_data_transfer_session < Google::Protobuf::AbstractMessage
   sig do
     params(
+      burn_timestamp: T.nilable(Integer),
       download_bytes: T.nilable(Integer),
       first_timestamp: T.nilable(Integer),
       last_timestamp: T.nilable(Integer),
@@ -18,7 +19,16 @@ class Helium::PacketVerifier::Valid_data_transfer_session < Google::Protobuf::Ab
       upload_bytes: T.nilable(Integer)
     ).void
   end
-  def initialize(download_bytes: nil, first_timestamp: nil, last_timestamp: nil, num_dcs: nil, payer: nil, pub_key: nil, rewardable_bytes: nil, upload_bytes: nil); end
+  def initialize(burn_timestamp: nil, download_bytes: nil, first_timestamp: nil, last_timestamp: nil, num_dcs: nil, payer: nil, pub_key: nil, rewardable_bytes: nil, upload_bytes: nil); end
+
+  sig { returns(Integer) }
+  def burn_timestamp; end
+
+  sig { params(value: Integer).void }
+  def burn_timestamp=(value); end
+
+  sig { void }
+  def clear_burn_timestamp; end
 
   sig { void }
   def clear_download_bytes; end

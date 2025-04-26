@@ -34,6 +34,7 @@ MESSAGES = %w[
   decimal
   hex_boosting
   service_provider
+  reward_manifest
 ].freeze
 
 SOURCE_PATHS = [*SERVICES, *MESSAGES].map do |source_path|
