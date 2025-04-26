@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_094755) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_120040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -112,7 +112,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_094755) do
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_b04efac248"
   end
 
-  create_table "relay_helium_l2_reward_manifests", id: false, force: :cascade do |t|
+  create_table "helium_l2_reward_manifests", id: false, force: :cascade do |t|
     t.string "written_files", array: true
     t.datetime "start_timestamp"
     t.datetime "end_timestamp"
@@ -120,9 +120,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_094755) do
     t.bigint "epoch"
     t.bigint "price"
     t.string "deduplication_key", null: false
-    t.index ["deduplication_key"], name: "index_relay_helium_l2_reward_manifests_on_deduplication_key", unique: true
-    t.index ["end_timestamp"], name: "index_relay_helium_l2_reward_manifests_on_end_timestamp"
-    t.index ["start_timestamp"], name: "index_relay_helium_l2_reward_manifests_on_start_timestamp"
+    t.index ["deduplication_key"], name: "index_helium_l2_reward_manifests_on_deduplication_key", unique: true
+    t.index ["end_timestamp"], name: "index_helium_l2_reward_manifests_on_end_timestamp"
+    t.index ["start_timestamp"], name: "index_helium_l2_reward_manifests_on_start_timestamp"
+    t.index ["written_files"], name: "index_helium_l2_reward_manifests_on_written_files", using: :gin
   end
 
   create_table "users", force: :cascade do |t|
