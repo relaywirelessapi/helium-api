@@ -54,7 +54,6 @@ module Relay
                 amount: message.unallocated_reward.amount
               }
             when :radio_reward_v2
-              puts message.inspect
               {
                 hotspot_key: base58_encoder.base58check_from_data("\x00#{message.radio_reward_v2.hotspot_key}"),
                 cbsd_id: message.radio_reward_v2.cbsd_id,
