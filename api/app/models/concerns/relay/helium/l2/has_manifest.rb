@@ -22,6 +22,28 @@ module Relay
             source: :reward_manifest
           )
         end
+
+        private
+
+        def format_amount_for_manifest_token(amount)
+          return unless reward_manifest
+
+          case reward_manifest.reward_data["token"]
+          when "iot_reward_token_hnt", "mobile_reward_token_hnt"
+            (amount.to_f / 10**8).to_s
+          when "iot_reward_token_iot"
+            (amount.to_f / 10**6).to_s
+          when "mobile_reward_token_mobile"
+            (amount.to_f / 10**6).to_s
+          else
+            Sentry.capture_message("Unknown token in reward manifest: #{reward_manifest.reward_data["token"]}",
+              extra: {
+                record_id: to_global_id
+              }
+            )
+            nil
+          end
+        end
       end
     end
   end

@@ -71,7 +71,10 @@ This query retrieves IOT reward share information for a given time period and ho
             "hotspotKey": "11aabbccddeeff",
             "beaconAmount": "1000000",
             "witnessAmount": "500000",
-            "dcTransferAmount": "250000"
+            "dcTransferAmount": "250000",
+            "formattedBeaconAmount": "1.000000",
+            "formattedWitnessAmount": "0.500000",
+            "formattedDcTransferAmount": "0.250000"
           }
         },
         {
@@ -95,7 +98,8 @@ This query retrieves IOT reward share information for a given time period and ho
             "price": "5000000000"
           },
           "rewardDetail": {
-            "amount": "750000"
+            "amount": "750000",
+            "formattedAmount": "0.750000"
           }
         },
         {
@@ -120,6 +124,7 @@ This query retrieves IOT reward share information for a given time period and ho
           },
           "rewardDetail": {
             "amount": "300000",
+            "formattedAmount": "0.300000",
             "unallocatedRewardType": "excess"
           }
         }
@@ -208,7 +213,11 @@ This query retrieves Mobile reward share information for a given time period and
             "locationTrustScoreMultiplier": 1.2,
             "speedtestMultiplier": 1.1,
             "spBoostedHexStatus": "active",
-            "oracleBoostedHexStatus": "active"
+            "oracleBoostedHexStatus": "active",
+            "dcTransferReward": "1000000",
+            "formattedDcTransferReward": "1.000000",
+            "pocReward": "2000000",
+            "formattedPocReward": "2.000000"
           }
         },
         {
@@ -233,7 +242,8 @@ This query retrieves Mobile reward share information for a given time period and
           },
           "rewardDetail": {
             "hotspotKey": "33aabbccddeeff",
-            "dcTransferReward": "1000000"
+            "dcTransferReward": "1000000",
+            "formattedDcTransferReward": "1.000000"
           }
         },
         {
@@ -311,7 +321,8 @@ This query retrieves Mobile reward share information for a given time period and
           },
           "rewardDetail": {
             "serviceProviderId": "provider2",
-            "amount": "1500000"
+            "amount": "1500000",
+            "formattedAmount": "1.500000"
           }
         },
         {
@@ -336,7 +347,9 @@ This query retrieves Mobile reward share information for a given time period and
           },
           "rewardDetail": {
             "subscriberId": "subscriber1",
-            "discoveryLocationAmount": "250000"
+            "discoveryLocationAmount": "250000",
+            "formattedDiscoveryLocationAmount": "0.250000",
+            "formattedSubscriberReward": "0.250000"
           }
         },
         {
@@ -361,6 +374,7 @@ This query retrieves Mobile reward share information for a given time period and
           },
           "rewardDetail": {
             "amount": "100000",
+            "formattedAmount": "0.100000",
             "unallocatedRewardType": "excess"
           }
         }

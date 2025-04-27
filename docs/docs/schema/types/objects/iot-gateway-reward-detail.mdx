@@ -46,6 +46,9 @@ Represents an IoT gateway reward share.
 type IotGatewayRewardDetail {
   beaconAmount: BigInt
   dcTransferAmount: BigInt
+  formattedBeaconAmount: String
+  formattedDcTransferAmount: String
+  formattedWitnessAmount: String
   hotspotKey: String
   witnessAmount: BigInt
 }
@@ -62,6 +65,18 @@ The amount of beacon rewards.
 
 #### [<code style={{ fontWeight: 'normal' }}>IotGatewayRewardDetail.<b>dcTransferAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotGatewayRewardDetail.<b>formattedBeaconAmount</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of beacon rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotGatewayRewardDetail.<b>formattedDcTransferAmount</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotGatewayRewardDetail.<b>formattedWitnessAmount</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of witness rewards.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>IotGatewayRewardDetail.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

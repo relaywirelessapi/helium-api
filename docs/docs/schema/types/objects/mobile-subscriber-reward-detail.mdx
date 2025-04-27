@@ -45,6 +45,8 @@ Represents a mobile subscriber reward share.
 ```graphql
 type MobileSubscriberRewardDetail {
   discoveryLocationAmount: BigInt
+  formattedDiscoveryLocationAmount: String
+  formattedSubscriberReward: String
   subscriberId: String
 }
 ```
@@ -56,6 +58,14 @@ type MobileSubscriberRewardDetail {
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileSubscriberRewardDetail.<b>discoveryLocationAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The amount of discovery location rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileSubscriberRewardDetail.<b>formattedDiscoveryLocationAmount</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of discovery location rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileSubscriberRewardDetail.<b>formattedSubscriberReward</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of subscriber rewards.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileSubscriberRewardDetail.<b>subscriberId</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

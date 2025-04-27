@@ -15,12 +15,16 @@ module Relay
             field :beacon_amount, GraphQL::Types::BigInt, null: true, description: "The amount of beacon rewards."
             field :witness_amount, GraphQL::Types::BigInt, null: true, description: "The amount of witness rewards."
             field :dc_transfer_amount, GraphQL::Types::BigInt, null: true, description: "The amount of DC transfer rewards."
+            field :formatted_beacon_amount, String, null: true, description: "The formatted amount of beacon rewards."
+            field :formatted_witness_amount, String, null: true, description: "The formatted amount of witness rewards."
+            field :formatted_dc_transfer_amount, String, null: true, description: "The formatted amount of DC transfer rewards."
           end
 
           class IotOperationalRewardDetailType < Relay::Types::BaseObject
             description "Represents an IoT operational reward share."
 
             field :amount, GraphQL::Types::BigInt, null: true, description: "The amount of the reward."
+            field :formatted_amount, String, null: true, description: "The formatted amount of the reward."
           end
 
           class IotUnallocatedRewardDetailType < Relay::Types::BaseObject
@@ -28,6 +32,7 @@ module Relay
 
             field :unallocated_reward_type, String, null: true, description: "The type of unallocated reward."
             field :amount, GraphQL::Types::BigInt, null: true, description: "The amount of the reward."
+            field :formatted_amount, String, null: true, description: "The formatted amount of the reward."
           end
 
           class IotRewardShareDetailType < Relay::Types::BaseUnion

@@ -14,7 +14,9 @@ module Relay
             field :hotspot_key, String, null: true, description: "The key of the hotspot."
             field :cbsd_id, String, null: true, description: "The CBSD ID."
             field :dc_transfer_reward, GraphQL::Types::BigInt, null: true, description: "The amount of DC transfer rewards."
+            field :formatted_dc_transfer_reward, String, null: true, description: "The formatted amount of DC transfer rewards."
             field :poc_reward, GraphQL::Types::BigInt, null: true, description: "The amount of POC rewards."
+            field :formatted_poc_reward, String, null: true, description: "The formatted amount of POC rewards."
           end
 
           class MobileGatewayRewardDetailType < Relay::Types::BaseObject
@@ -22,6 +24,7 @@ module Relay
 
             field :hotspot_key, String, null: true, description: "The key of the hotspot."
             field :dc_transfer_reward, GraphQL::Types::BigInt, null: true, description: "The amount of DC transfer rewards."
+            field :formatted_dc_transfer_reward, String, null: true, description: "The formatted amount of DC transfer rewards."
           end
 
           class MobileSubscriberRewardDetailType < Relay::Types::BaseObject
@@ -29,6 +32,8 @@ module Relay
 
             field :subscriber_id, String, null: true, description: "The subscriber ID."
             field :discovery_location_amount, GraphQL::Types::BigInt, null: true, description: "The amount of discovery location rewards."
+            field :formatted_discovery_location_amount, String, null: true, description: "The formatted amount of discovery location rewards."
+            field :formatted_subscriber_reward, String, null: true, description: "The formatted amount of subscriber rewards."
           end
 
           class MobileServiceProviderRewardDetailType < Relay::Types::BaseObject
@@ -36,6 +41,7 @@ module Relay
 
             field :service_provider_id, String, null: true, description: "The service provider ID."
             field :amount, GraphQL::Types::BigInt, null: true, description: "The service provider amount."
+            field :formatted_amount, String, null: true, description: "The formatted service provider amount."
           end
 
           class MobileUnallocatedRewardDetailType < Relay::Types::BaseObject
