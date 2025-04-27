@@ -1,6 +1,6 @@
 ---
-id: json
-title: JSON
+id: iot-operational-reward-detail
+title: IotOperationalRewardDetail
 ---
 
 
@@ -39,21 +39,29 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents untyped JSON
+Represents an IoT operational reward share.
 
 
 ```graphql
-scalar JSON
+type IotOperationalRewardDetail {
+  amount: BigInt
+}
 ```
 
 
 
 
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IotOperationalRewardDetail.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The amount of the reward.
 
 
 
 
-### Member Of
 
-[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented By
+
+[`IotRewardShareDetail`](/schema/types/unions/iot-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

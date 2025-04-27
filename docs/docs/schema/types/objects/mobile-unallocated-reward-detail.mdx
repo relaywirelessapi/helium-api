@@ -1,6 +1,6 @@
 ---
-id: iot-witness-ingest-report-edge
-title: IotWitnessIngestReportEdge
+id: mobile-unallocated-reward-detail
+title: MobileUnallocatedRewardDetail
 ---
 
 
@@ -39,13 +39,13 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-An edge in a connection.
+Represents a mobile unallocated reward share.
 
 
 ```graphql
-type IotWitnessIngestReportEdge {
-  cursor: String!
-  node: IotWitnessIngestReport
+type MobileUnallocatedRewardDetail {
+  amount: BigInt
+  unallocatedRewardType: String
 }
 ```
 
@@ -54,19 +54,19 @@ type IotWitnessIngestReportEdge {
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReportEdge.<b>cursor</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
-A cursor for use in pagination.
+#### [<code style={{ fontWeight: 'normal' }}>MobileUnallocatedRewardDetail.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The amount of the reward.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>IotWitnessIngestReportEdge.<b>node</b></code>](#)<Bullet />[`IotWitnessIngestReport`](/schema/types/objects/iot-witness-ingest-report.mdx) <Badge class="badge badge--secondary" text="object"/> 
-The item at the end of the edge.
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>MobileUnallocatedRewardDetail.<b>unallocatedRewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The type of unallocated reward.
 
 
 
-### Member Of
 
-[`IotWitnessIngestReportConnection`](/schema/types/objects/iot-witness-ingest-report-connection.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+
+### Implemented By
+
+[`MobileRewardShareDetail`](/schema/types/unions/mobile-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

@@ -1,6 +1,6 @@
 ---
-id: reward-data
-title: RewardData
+id: mobile-service-provider-reward-detail
+title: MobileServiceProviderRewardDetail
 ---
 
 
@@ -39,31 +39,34 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents either mobile or IoT reward data
+Represents a mobile service provider reward share.
 
 
 ```graphql
-union RewardData = IotRewardData | MobileRewardData
+type MobileServiceProviderRewardDetail {
+  amount: BigInt
+  serviceProviderId: String
+}
 ```
 
 
 
 
-### Possible types
+### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>RewardData.<b>IotRewardData</b></code>](/schema/types/objects/iot-reward-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
-
-
-
-#### [<code style={{ fontWeight: 'normal' }}>RewardData.<b>MobileRewardData</b></code>](/schema/types/objects/mobile-reward-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
+#### [<code style={{ fontWeight: 'normal' }}>MobileServiceProviderRewardDetail.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The service provider amount.
 
 
-
+#### [<code style={{ fontWeight: 'normal' }}>MobileServiceProviderRewardDetail.<b>serviceProviderId</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The service provider ID.
 
 
 
 
-### Member Of
 
-[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented By
+
+[`MobileRewardShareDetail`](/schema/types/unions/mobile-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

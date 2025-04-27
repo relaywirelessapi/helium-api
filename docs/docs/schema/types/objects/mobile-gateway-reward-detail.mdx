@@ -1,6 +1,6 @@
 ---
-id: float
-title: Float
+id: mobile-gateway-reward-detail
+title: MobileGatewayRewardDetail
 ---
 
 
@@ -39,21 +39,34 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+Represents a mobile gateway reward share.
 
 
 ```graphql
-scalar Float
+type MobileGatewayRewardDetail {
+  dcTransferReward: BigInt
+  hotspotKey: String
+}
 ```
 
 
 
 
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileGatewayRewardDetail.<b>dcTransferReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileGatewayRewardDetail.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The key of the hotspot.
 
 
 
 
-### Member Of
 
-[`MobileRadioRewardV2Share`](/schema/types/objects/mobile-radio-reward-v2-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented By
+
+[`MobileRewardShareDetail`](/schema/types/unions/mobile-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

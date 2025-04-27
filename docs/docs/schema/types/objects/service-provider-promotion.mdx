@@ -45,7 +45,7 @@ No description
 ```graphql
 type ServiceProviderPromotion {
   incentiveEscrowFundBps: BigInt!
-  promotions: [Promotion!]!
+  promotions: [ServiceProviderPromotionDetail!]!
   serviceProvider: String!
 }
 ```
@@ -59,8 +59,8 @@ type ServiceProviderPromotion {
 The incentive escrow fund basis points.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>promotions</b></code>](#)<Bullet />[`[Promotion!]!`](/schema/types/objects/promotion.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/> 
-The promotions.
+#### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>promotions</b></code>](#)<Bullet />[`[ServiceProviderPromotionDetail!]!`](/schema/types/objects/service-provider-promotion-detail.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/> 
+Details of the promotions.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>serviceProvider</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
@@ -73,5 +73,5 @@ The service provider.
 
 ### Member Of
 
-[`MobileRewardData`](/schema/types/objects/mobile-reward-data.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifestMobileData`](/schema/types/objects/reward-manifest-mobile-data.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

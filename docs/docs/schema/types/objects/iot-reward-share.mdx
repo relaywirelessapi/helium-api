@@ -44,17 +44,12 @@ No description
 
 ```graphql
 type IotRewardShare {
-  amount: BigInt
-  beaconAmount: BigInt
-  dcTransferAmount: BigInt
   endPeriod: ISO8601DateTime
-  hotspotKey: String
   id: ID!
   manifest: RewardManifest
+  rewardDetail: IotRewardShareDetail
   rewardType: String
   startPeriod: ISO8601DateTime
-  unallocatedRewardType: String
-  witnessAmount: BigInt
 }
 ```
 
@@ -63,24 +58,8 @@ type IotRewardShare {
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of the reward.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>beaconAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of beacon rewards.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>dcTransferAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of DC transfer rewards.
-
-
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>endPeriod</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The end period of the iot reward share.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The key of the hotspot.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>id</b></code>](#)<Bullet />[`ID!`](/schema/types/scalars/id.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
@@ -91,20 +70,16 @@ The unique identifier of the IoT reward share.
 The reward manifest associated with this reward share.
 
 
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>rewardDetail</b></code>](#)<Bullet />[`IotRewardShareDetail`](/schema/types/unions/iot-reward-share-detail.mdx) <Badge class="badge badge--secondary" text="union"/> 
+Type-specific details of this reward share.
+
+
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>rewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The type of reward.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>startPeriod</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The start period of the iot reward share.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>unallocatedRewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The type of unallocated reward.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>witnessAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of witness rewards.
 
 
 

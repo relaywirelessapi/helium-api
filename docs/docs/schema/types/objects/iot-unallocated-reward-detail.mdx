@@ -1,6 +1,6 @@
 ---
-id: float
-title: Float
+id: iot-unallocated-reward-detail
+title: IotUnallocatedRewardDetail
 ---
 
 
@@ -39,21 +39,34 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+Represents an IoT unallocated reward share.
 
 
 ```graphql
-scalar Float
+type IotUnallocatedRewardDetail {
+  amount: BigInt
+  unallocatedRewardType: String
+}
 ```
 
 
 
 
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IotUnallocatedRewardDetail.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The amount of the reward.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotUnallocatedRewardDetail.<b>unallocatedRewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The type of unallocated reward.
 
 
 
 
-### Member Of
 
-[`MobileRadioRewardV2Share`](/schema/types/objects/mobile-radio-reward-v2-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented By
+
+[`IotRewardShareDetail`](/schema/types/unions/iot-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

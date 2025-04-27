@@ -8,7 +8,7 @@ FactoryBot.define do
 
     file_category { file.category }
     file_name { file.name }
-    reward_type { "test-reward-type" }
+    reward_type { "gateway_reward" }
     start_period { Time.current }
     end_period { Time.current + 1.day }
     hotspot_key { "test-hotspot-key" }

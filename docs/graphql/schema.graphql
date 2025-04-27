@@ -9,39 +9,10 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
-type IotRewardData {
-  """
-  The DC bones per share.
-  """
-  dcBonesPerShare: BigInt!
-
-  """
-  The POC bones per beacon reward share.
-  """
-  pocBonesPerBeaconRewardShare: BigInt!
-
-  """
-  The POC bones per witness reward share.
-  """
-  pocBonesPerWitnessRewardShare: BigInt!
-
-  """
-  The type of reward (iot).
-  """
-  rewardType: String!
-
-  """
-  The token.
-  """
-  token: String!
-}
-
-type IotRewardShare {
-  """
-  The amount of the reward.
-  """
-  amount: BigInt
-
+"""
+Represents an IoT gateway reward share.
+"""
+type IotGatewayRewardDetail {
   """
   The amount of beacon rewards.
   """
@@ -53,14 +24,31 @@ type IotRewardShare {
   dcTransferAmount: BigInt
 
   """
-  The end period of the iot reward share.
-  """
-  endPeriod: ISO8601DateTime
-
-  """
   The key of the hotspot.
   """
   hotspotKey: String
+
+  """
+  The amount of witness rewards.
+  """
+  witnessAmount: BigInt
+}
+
+"""
+Represents an IoT operational reward share.
+"""
+type IotOperationalRewardDetail {
+  """
+  The amount of the reward.
+  """
+  amount: BigInt
+}
+
+type IotRewardShare {
+  """
+  The end period of the iot reward share.
+  """
+  endPeriod: ISO8601DateTime
 
   """
   The unique identifier of the IoT reward share.
@@ -73,6 +61,11 @@ type IotRewardShare {
   manifest: RewardManifest
 
   """
+  Type-specific details of this reward share.
+  """
+  rewardDetail: IotRewardShareDetail
+
+  """
   The type of reward.
   """
   rewardType: String
@@ -81,16 +74,6 @@ type IotRewardShare {
   The start period of the iot reward share.
   """
   startPeriod: ISO8601DateTime
-
-  """
-  The type of unallocated reward.
-  """
-  unallocatedRewardType: String
-
-  """
-  The amount of witness rewards.
-  """
-  witnessAmount: BigInt
 }
 
 """
@@ -114,6 +97,11 @@ type IotRewardShareConnection {
 }
 
 """
+Represents either mobile or IoT reward data
+"""
+union IotRewardShareDetail = IotGatewayRewardDetail | IotOperationalRewardDetail | IotUnallocatedRewardDetail
+
+"""
 An edge in a connection.
 """
 type IotRewardShareEdge {
@@ -128,39 +116,85 @@ type IotRewardShareEdge {
   node: IotRewardShare
 }
 
-type MobileRewardData {
-  """
-  The boosted POC bones per reward share.
-  """
-  boostedPocBonesPerRewardShare: BigInt!
-
-  """
-  The POC bones per reward share.
-  """
-  pocBonesPerRewardShare: BigInt!
-
-  """
-  The type of reward (mobile).
-  """
-  rewardType: String!
-
-  """
-  The service provider promotions.
-  """
-  serviceProviderPromotions: [ServiceProviderPromotion!]!
-
-  """
-  The token.
-  """
-  token: String!
-}
-
-type MobileRewardShare {
+"""
+Represents an IoT unallocated reward share.
+"""
+type IotUnallocatedRewardDetail {
   """
   The amount of the reward.
   """
   amount: BigInt
 
+  """
+  The type of unallocated reward.
+  """
+  unallocatedRewardType: String
+}
+
+"""
+Represents a mobile gateway reward share.
+"""
+type MobileGatewayRewardDetail {
+  """
+  The amount of DC transfer rewards.
+  """
+  dcTransferReward: BigInt
+
+  """
+  The key of the hotspot.
+  """
+  hotspotKey: String
+}
+
+"""
+Represents a mobile promotion reward share.
+"""
+type MobilePromotionRewardDetail {
+  """
+  The entity.
+  """
+  entity: String
+
+  """
+  The matched amount.
+  """
+  matchedAmount: BigInt
+
+  """
+  The service provider amount.
+  """
+  serviceProviderAmount: BigInt
+}
+
+"""
+Represents a mobile radio reward share.
+"""
+type MobileRadioRewardDetail {
+  """
+  The CBSD ID.
+  """
+  cbsdId: String
+
+  """
+  The amount of DC transfer rewards.
+  """
+  dcTransferReward: BigInt
+
+  """
+  The key of the hotspot.
+  """
+  hotspotKey: String
+
+  """
+  The amount of POC rewards.
+  """
+  pocReward: BigInt
+}
+
+"""
+Represents a mobile radio reward v2 share.
+"""
+type MobileRadioRewardV2Share {
   """
   The sum of base coverage points.
   """
@@ -202,34 +236,9 @@ type MobileRewardShare {
   coverageObject: String
 
   """
-  The amount of DC transfer rewards.
-  """
-  dcTransferReward: BigInt
-
-  """
-  The amount of discovery location rewards.
-  """
-  discoveryLocationAmount: BigInt
-
-  """
-  The end period of the mobile reward share.
-  """
-  endPeriod: ISO8601DateTime
-
-  """
-  The entity.
-  """
-  entity: String
-
-  """
   The key of the hotspot.
   """
   hotspotKey: String
-
-  """
-  The unique identifier of the IoT reward share.
-  """
-  id: ID!
 
   """
   The location trust score multiplier.
@@ -237,49 +246,14 @@ type MobileRewardShare {
   locationTrustScoreMultiplier: Float
 
   """
-  The reward manifest associated with this reward share.
-  """
-  manifest: RewardManifest
-
-  """
-  The matched amount.
-  """
-  matchedAmount: BigInt
-
-  """
   The oracle boosted hex status.
   """
   oracleBoostedHexStatus: String
 
   """
-  The owner key of the mobile reward share.
-  """
-  ownerKey: String
-
-  """
-  The amount of POC rewards.
-  """
-  pocReward: BigInt
-
-  """
-  The type of reward.
-  """
-  rewardType: String
-
-  """
   The seniority timestamp.
   """
   seniorityTimestamp: ISO8601DateTime
-
-  """
-  The service provider amount.
-  """
-  serviceProviderAmount: BigInt
-
-  """
-  The service provider ID.
-  """
-  serviceProviderId: String
 
   """
   The service provider boosted hex status.
@@ -290,26 +264,38 @@ type MobileRewardShare {
   The speedtest multiplier.
   """
   speedtestMultiplier: Float
+}
+
+type MobileRewardShare {
+  """
+  The end period of the mobile reward share.
+  """
+  endPeriod: ISO8601DateTime
+
+  """
+  The unique identifier of the mobile reward share.
+  """
+  id: ID!
+
+  """
+  The reward manifest associated with this reward share.
+  """
+  manifest: RewardManifest
+
+  """
+  Type-specific details of this reward share.
+  """
+  rewardDetail: MobileRewardShareDetail
+
+  """
+  The type of reward.
+  """
+  rewardType: String
 
   """
   The start period of the mobile reward share.
   """
   startPeriod: ISO8601DateTime
-
-  """
-  The subscriber ID.
-  """
-  subscriberId: String
-
-  """
-  The amount of subscriber rewards.
-  """
-  subscriberReward: BigInt
-
-  """
-  The type of unallocated reward.
-  """
-  unallocatedRewardType: String
 }
 
 """
@@ -333,6 +319,11 @@ type MobileRewardShareConnection {
 }
 
 """
+Represents different types of mobile reward data
+"""
+union MobileRewardShareDetail = MobileGatewayRewardDetail | MobilePromotionRewardDetail | MobileRadioRewardDetail | MobileRadioRewardV2Share | MobileServiceProviderRewardDetail | MobileSubscriberRewardDetail | MobileUnallocatedRewardDetail
+
+"""
 An edge in a connection.
 """
 type MobileRewardShareEdge {
@@ -345,6 +336,51 @@ type MobileRewardShareEdge {
   The item at the end of the edge.
   """
   node: MobileRewardShare
+}
+
+"""
+Represents a mobile service provider reward share.
+"""
+type MobileServiceProviderRewardDetail {
+  """
+  The service provider amount.
+  """
+  amount: BigInt
+
+  """
+  The service provider ID.
+  """
+  serviceProviderId: String
+}
+
+"""
+Represents a mobile subscriber reward share.
+"""
+type MobileSubscriberRewardDetail {
+  """
+  The amount of discovery location rewards.
+  """
+  discoveryLocationAmount: BigInt
+
+  """
+  The subscriber ID.
+  """
+  subscriberId: String
+}
+
+"""
+Represents a mobile unallocated reward share.
+"""
+type MobileUnallocatedRewardDetail {
+  """
+  The amount of the reward.
+  """
+  amount: BigInt
+
+  """
+  The type of unallocated reward.
+  """
+  unallocatedRewardType: String
 }
 
 """
@@ -370,28 +406,6 @@ type PageInfo {
   When paginating backwards, the cursor to continue.
   """
   startCursor: String
-}
-
-type Promotion {
-  """
-  The end timestamp.
-  """
-  endTs: ISO8601DateTime!
-
-  """
-  The entity.
-  """
-  entity: String!
-
-  """
-  The shares.
-  """
-  shares: BigInt!
-
-  """
-  The start timestamp.
-  """
-  startTs: ISO8601DateTime!
 }
 
 type Query {
@@ -536,11 +550,6 @@ type Query {
   status: String!
 }
 
-"""
-Represents either mobile or IoT reward data
-"""
-union RewardData = IotRewardData | MobileRewardData
-
 type RewardManifest {
   """
   The end timestamp of the reward period.
@@ -565,7 +574,7 @@ type RewardManifest {
   """
   The reward data, either for mobile or IoT.
   """
-  rewardData: RewardData
+  rewardData: RewardManifestData
 
   """
   The start timestamp of the reward period.
@@ -599,6 +608,11 @@ type RewardManifestConnection {
 }
 
 """
+Represents either mobile or IoT reward data
+"""
+union RewardManifestData = RewardManifestIotData | RewardManifestMobileData
+
+"""
 An edge in a connection.
 """
 type RewardManifestEdge {
@@ -613,6 +627,60 @@ type RewardManifestEdge {
   node: RewardManifest
 }
 
+type RewardManifestIotData {
+  """
+  The DC bones per share.
+  """
+  dcBonesPerShare: BigInt!
+
+  """
+  The POC bones per beacon reward share.
+  """
+  pocBonesPerBeaconRewardShare: BigInt!
+
+  """
+  The POC bones per witness reward share.
+  """
+  pocBonesPerWitnessRewardShare: BigInt!
+
+  """
+  The type of reward (iot).
+  """
+  rewardType: String!
+
+  """
+  The token.
+  """
+  token: String!
+}
+
+type RewardManifestMobileData {
+  """
+  The boosted POC bones per reward share.
+  """
+  boostedPocBonesPerRewardShare: BigInt!
+
+  """
+  The POC bones per reward share.
+  """
+  pocBonesPerRewardShare: BigInt!
+
+  """
+  The type of reward (mobile).
+  """
+  rewardType: String!
+
+  """
+  The service provider promotions.
+  """
+  serviceProviderPromotions: [ServiceProviderPromotion!]!
+
+  """
+  The token.
+  """
+  token: String!
+}
+
 type ServiceProviderPromotion {
   """
   The incentive escrow fund basis points.
@@ -620,12 +688,34 @@ type ServiceProviderPromotion {
   incentiveEscrowFundBps: BigInt!
 
   """
-  The promotions.
+  Details of the promotions.
   """
-  promotions: [Promotion!]!
+  promotions: [ServiceProviderPromotionDetail!]!
 
   """
   The service provider.
   """
   serviceProvider: String!
+}
+
+type ServiceProviderPromotionDetail {
+  """
+  The end timestamp.
+  """
+  endTs: ISO8601DateTime!
+
+  """
+  The entity.
+  """
+  entity: String!
+
+  """
+  The shares.
+  """
+  shares: BigInt!
+
+  """
+  The start timestamp.
+  """
+  startTs: ISO8601DateTime!
 }
