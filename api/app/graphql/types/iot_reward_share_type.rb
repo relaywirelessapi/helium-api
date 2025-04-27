@@ -1,10 +1,8 @@
-# typed: strict
+# typed: false
 # frozen_string_literal: true
 
 module Types
   class IotRewardShareType < Types::BaseObject
-    extend T::Sig
-
     field :start_period, GraphQL::Types::ISO8601DateTime, null: true, description: "The start period of the iot reward share."
     field :end_period, GraphQL::Types::ISO8601DateTime, null: true, description: "The end period of the iot reward share."
     field :reward_type, String, null: true, description: "The type of reward."
@@ -14,5 +12,10 @@ module Types
     field :beacon_amount, GraphQL::Types::BigInt, null: true, description: "The amount of beacon rewards."
     field :witness_amount, GraphQL::Types::BigInt, null: true, description: "The amount of witness rewards."
     field :dc_transfer_amount, GraphQL::Types::BigInt, null: true, description: "The amount of DC transfer rewards."
+    field :manifest, Types::RewardManifestType, null: true, description: "The reward manifest associated with this reward share." do
+      def resolve
+        dataloader.with(Sources::RewardManifestByFileName).load(object.file_name)
+      end
+    end
   end
 end

@@ -5,6 +5,7 @@ module Relay
     module L2
       class IotRewardShare < ApplicationRecord
         include OracleData
+        include HasManifest
 
         self.table_name = "helium_l2_iot_reward_shares"
       end

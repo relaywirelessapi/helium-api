@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: reward-manifest-edge
+title: RewardManifestEdge
 ---
 
 
@@ -39,15 +39,27 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+An edge in a connection.
 
 
 ```graphql
-scalar BigInt
+type RewardManifestEdge {
+  cursor: String!
+  node: RewardManifest
+}
 ```
 
 
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestEdge.<b>cursor</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+A cursor for use in pagination.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestEdge.<b>node</b></code>](#)<Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx) <Badge class="badge badge--secondary" text="object"/> 
+The item at the end of the edge.
 
 
 
@@ -56,5 +68,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifestConnection`](/schema/types/objects/reward-manifest-connection.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

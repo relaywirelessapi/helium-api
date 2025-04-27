@@ -49,6 +49,7 @@ type IotRewardShare {
   dcTransferAmount: BigInt
   endPeriod: ISO8601DateTime
   hotspotKey: String
+  manifest: RewardManifest
   rewardType: String
   startPeriod: ISO8601DateTime
   unallocatedRewardType: String
@@ -79,6 +80,10 @@ The end period of the iot reward share.
 
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The key of the hotspot.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>manifest</b></code>](#)<Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx) <Badge class="badge badge--secondary" text="object"/> 
+The reward manifest associated with this reward share.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>IotRewardShare.<b>rewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

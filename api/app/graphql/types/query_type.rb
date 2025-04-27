@@ -71,5 +71,18 @@ module Types
       query = query.where(reward_type: reward_type) if reward_type.present?
       query.order(start_period: :asc)
     end
+
+    field :reward_manifests, Types::RewardManifestType.connection_type, null: false, description: "Retrieves a list of reward manifests within a specified time period." do
+      argument :start_timestamp, GraphQL::Types::ISO8601DateTime, required: true, description: "Start of the time period to fetch reward manifests for"
+      argument :end_timestamp, GraphQL::Types::ISO8601DateTime, required: true, description: "End of the time period to fetch reward manifests for"
+    end
+
+    sig { params(start_timestamp: Time, end_timestamp: Time).returns(ActiveRecord::Relation) }
+    def reward_manifests(start_timestamp:, end_timestamp:)
+      Relay::Helium::L2::RewardManifest
+        .where("start_timestamp >= ?", start_timestamp)
+        .where("end_timestamp <= ?", end_timestamp)
+        .order(start_timestamp: :asc)
+    end
   end
 end

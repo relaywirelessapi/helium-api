@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: id
+title: ID
 ---
 
 
@@ -39,12 +39,11 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 
 
 ```graphql
-scalar BigInt
+scalar ID
 ```
 
 
@@ -56,5 +55,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

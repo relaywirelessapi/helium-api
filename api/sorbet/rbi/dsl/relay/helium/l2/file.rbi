@@ -759,6 +759,116 @@ class Relay::Helium::L2::File
     sig { void }
     def definition_id_will_change!; end
 
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def download_completed_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def download_completed_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def download_completed_at_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_completed_at_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_completed_at_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def download_completed_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_completed_at_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def download_completed_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_completed_at_was; end
+
+    sig { void }
+    def download_completed_at_will_change!; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def download_started_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def download_started_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def download_started_at_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_started_at_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_started_at_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def download_started_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def download_started_at_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def download_started_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def download_started_at_was; end
+
+    sig { void }
+    def download_started_at_will_change!; end
+
     sig { returns([::String, ::String]) }
     def id; end
 
@@ -803,6 +913,116 @@ class Relay::Helium::L2::File
 
     sig { void }
     def id_will_change!; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def import_completed_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def import_completed_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def import_completed_at_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_completed_at_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_completed_at_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def import_completed_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_completed_at_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def import_completed_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_completed_at_was; end
+
+    sig { void }
+    def import_completed_at_will_change!; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at; end
+
+    sig { params(value: T.nilable(::ActiveSupport::TimeWithZone)).returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at=(value); end
+
+    sig { returns(T::Boolean) }
+    def import_started_at?; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def import_started_at_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def import_started_at_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_started_at_change; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_started_at_change_to_be_saved; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def import_started_at_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def import_started_at_previous_change; end
+
+    sig do
+      params(
+        from: T.nilable(::ActiveSupport::TimeWithZone),
+        to: T.nilable(::ActiveSupport::TimeWithZone)
+      ).returns(T::Boolean)
+    end
+    def import_started_at_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at_previously_was; end
+
+    sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
+    def import_started_at_was; end
+
+    sig { void }
+    def import_started_at_will_change!; end
 
     sig { returns(::String) }
     def name; end
@@ -907,7 +1127,19 @@ class Relay::Helium::L2::File
     def restore_definition_id!; end
 
     sig { void }
+    def restore_download_completed_at!; end
+
+    sig { void }
+    def restore_download_started_at!; end
+
+    sig { void }
     def restore_id!; end
+
+    sig { void }
+    def restore_import_completed_at!; end
+
+    sig { void }
+    def restore_import_started_at!; end
 
     sig { void }
     def restore_name!; end
@@ -945,11 +1177,35 @@ class Relay::Helium::L2::File
     sig { returns(T::Boolean) }
     def saved_change_to_definition_id?; end
 
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_download_completed_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_download_completed_at?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_download_started_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_download_started_at?; end
+
     sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def saved_change_to_id; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_id?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_import_completed_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_import_completed_at?; end
+
+    sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
+    def saved_change_to_import_started_at; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_import_started_at?; end
 
     sig { returns(T.nilable([::String, ::String])) }
     def saved_change_to_name; end
@@ -1088,7 +1344,19 @@ class Relay::Helium::L2::File
     def will_save_change_to_definition_id?; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_download_completed_at?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_download_started_at?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_import_completed_at?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_import_started_at?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_name?; end
