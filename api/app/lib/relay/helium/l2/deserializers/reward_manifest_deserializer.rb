@@ -9,12 +9,12 @@ module Relay
         class RewardManifestDeserializer < BaseDeserializer
           extend T::Sig
 
-          sig { returns(Relay::BatchImporter) }
-          attr_reader :batch_importer
+          sig { returns(Relay::Deduplicator) }
+          attr_reader :deduplicator
 
-          sig { params(batch_importer: Relay::BatchImporter).void }
-          def initialize(batch_importer: Relay::BatchImporter.new)
-            @batch_importer = batch_importer
+          sig { params(deduplicator: Relay::Deduplicator).void }
+          def initialize(deduplicator: Relay::Deduplicator.new)
+            @deduplicator = deduplicator
           end
 
           sig { override.params(encoded_message: String, file: File).returns(T::Hash[Symbol, T.untyped]) }
@@ -71,7 +71,13 @@ module Relay
 
           sig { override.params(messages: T::Array[T::Hash[Symbol, T.untyped]]).void }
           def import(messages)
-            batch_importer.import(Relay::Helium::L2::RewardManifest, messages)
+            messages.each do |message|
+              Relay::Helium::L2::RewardManifest.create!(message.merge(
+                deduplication_key: deduplicator.calculate_deduplication_key(message)
+              ))
+            rescue ActiveRecord::RecordNotUnique
+              # no-op
+            end
           end
         end
       end
