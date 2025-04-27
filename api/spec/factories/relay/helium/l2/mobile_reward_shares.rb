@@ -14,7 +14,7 @@ FactoryBot.define do
     amount { 100 }
     start_period { Time.current }
     end_period { Time.current + 1.day }
-    reward_type { "test-reward-type" }
+    reward_type { "gateway_reward" }
     dc_transfer_reward { 10 }
     poc_reward { 5 }
     subscriber_id { "test-subscriber-id" }

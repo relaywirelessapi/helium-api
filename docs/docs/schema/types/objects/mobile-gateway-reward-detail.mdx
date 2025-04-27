@@ -1,6 +1,6 @@
 ---
-id: id
-title: ID
+id: mobile-gateway-reward-detail
+title: MobileGatewayRewardDetail
 ---
 
 
@@ -39,21 +39,34 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+Represents a mobile gateway reward share.
 
 
 ```graphql
-scalar ID
+type MobileGatewayRewardDetail {
+  dcTransferReward: BigInt
+  hotspotKey: String
+}
 ```
 
 
 
 
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileGatewayRewardDetail.<b>dcTransferReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileGatewayRewardDetail.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The key of the hotspot.
 
 
 
 
-### Member Of
 
-[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented By
+
+[`MobileRewardShareDetail`](/schema/types/unions/mobile-reward-share-detail.mdx)  <Badge class="badge badge--secondary" text="union"/>
 

@@ -44,36 +44,12 @@ No description
 
 ```graphql
 type MobileRewardShare {
-  amount: BigInt
-  baseCoveragePointsSum: Float
-  basePocReward: BigInt
-  baseRewardShares: Float
-  boostedCoveragePointsSum: Float
-  boostedPocReward: BigInt
-  boostedRewardShares: Float
-  cbsdId: String
-  coverageObject: String
-  dcTransferReward: BigInt
-  discoveryLocationAmount: BigInt
   endPeriod: ISO8601DateTime
-  entity: String
-  hotspotKey: String
-  locationTrustScoreMultiplier: Float
+  id: ID!
   manifest: RewardManifest
-  matchedAmount: BigInt
-  oracleBoostedHexStatus: String
-  ownerKey: String
-  pocReward: BigInt
+  rewardDetail: MobileRewardShareDetail
   rewardType: String
-  seniorityTimestamp: ISO8601DateTime
-  serviceProviderAmount: BigInt
-  serviceProviderId: String
-  spBoostedHexStatus: String
-  speedtestMultiplier: Float
   startPeriod: ISO8601DateTime
-  subscriberId: String
-  subscriberReward: BigInt
-  unallocatedRewardType: String
 }
 ```
 
@@ -82,124 +58,28 @@ type MobileRewardShare {
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>amount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of the reward.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>baseCoveragePointsSum</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The sum of base coverage points.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>basePocReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The base POC reward.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>baseRewardShares</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The base reward shares.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>boostedCoveragePointsSum</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The sum of boosted coverage points.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>boostedPocReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The boosted POC reward.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>boostedRewardShares</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The boosted reward shares.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>cbsdId</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The CBSD ID.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>coverageObject</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The coverage object data.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>dcTransferReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of DC transfer rewards.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>discoveryLocationAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of discovery location rewards.
-
-
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>endPeriod</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The end period of the mobile reward share.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>entity</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The entity.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The key of the hotspot.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>locationTrustScoreMultiplier</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The location trust score multiplier.
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>id</b></code>](#)<Bullet />[`ID!`](/schema/types/scalars/id.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The unique identifier of the mobile reward share.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>manifest</b></code>](#)<Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx) <Badge class="badge badge--secondary" text="object"/> 
 The reward manifest associated with this reward share.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>matchedAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The matched amount.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>oracleBoostedHexStatus</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The oracle boosted hex status.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>ownerKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The owner key of the mobile reward share.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>pocReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of POC rewards.
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>rewardDetail</b></code>](#)<Bullet />[`MobileRewardShareDetail`](/schema/types/unions/mobile-reward-share-detail.mdx) <Badge class="badge badge--secondary" text="union"/> 
+Type-specific details of this reward share.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>rewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The type of reward.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>seniorityTimestamp</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The seniority timestamp.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>serviceProviderAmount</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The service provider amount.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>serviceProviderId</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The service provider ID.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>spBoostedHexStatus</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The service provider boosted hex status.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>speedtestMultiplier</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The speedtest multiplier.
-
-
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>startPeriod</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The start period of the mobile reward share.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>subscriberId</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The subscriber ID.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>subscriberReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The amount of subscriber rewards.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>unallocatedRewardType</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The type of unallocated reward.
 
 
 

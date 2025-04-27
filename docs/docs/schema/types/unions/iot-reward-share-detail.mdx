@@ -1,0 +1,73 @@
+---
+id: iot-reward-share-detail
+title: IotRewardShareDetail
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+Represents either mobile or IoT reward data
+
+
+```graphql
+union IotRewardShareDetail = IotGatewayRewardDetail | IotOperationalRewardDetail | IotUnallocatedRewardDetail
+```
+
+
+
+
+### Possible types
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardShareDetail.<b>IotGatewayRewardDetail</b></code>](/schema/types/objects/iot-gateway-reward-detail.mdx) <Badge class="badge badge--secondary" text="object"/> 
+Represents an IoT gateway reward share.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardShareDetail.<b>IotOperationalRewardDetail</b></code>](/schema/types/objects/iot-operational-reward-detail.mdx) <Badge class="badge badge--secondary" text="object"/> 
+Represents an IoT operational reward share.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardShareDetail.<b>IotUnallocatedRewardDetail</b></code>](/schema/types/objects/iot-unallocated-reward-detail.mdx) <Badge class="badge badge--secondary" text="object"/> 
+Represents an IoT unallocated reward share.
+
+
+
+
+
+
+### Member Of
+
+[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/>
+

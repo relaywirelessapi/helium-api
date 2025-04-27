@@ -1,6 +1,6 @@
 ---
-id: id
-title: ID
+id: reward-manifest-data
+title: RewardManifestData
 ---
 
 
@@ -39,13 +39,23 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+Represents either mobile or IoT reward data
 
 
 ```graphql
-scalar ID
+union RewardManifestData = RewardManifestIotData | RewardManifestMobileData
 ```
 
+
+
+
+### Possible types
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestData.<b>RewardManifestIotData</b></code>](/schema/types/objects/reward-manifest-iot-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
+
+
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestData.<b>RewardManifestMobileData</b></code>](/schema/types/objects/reward-manifest-mobile-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
 
 
 
@@ -55,5 +65,5 @@ scalar ID
 
 ### Member Of
 
-[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
 
