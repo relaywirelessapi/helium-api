@@ -16,7 +16,7 @@ module Relay
         attr_reader :batch_size
 
         sig { params(file_client: FileClient, file_decoder: FileDecoder, batch_size: Integer).void }
-        def initialize(file_client: FileClient.new, file_decoder: FileDecoder.new, batch_size: 100)
+        def initialize(file_client: FileClient.new, file_decoder: FileDecoder.new, batch_size: 1000)
           @file_client = T.let(file_client, FileClient)
           @file_decoder = T.let(file_decoder, FileDecoder)
           @batch_size = T.let(batch_size, Integer)
@@ -26,53 +26,42 @@ module Relay
         def process(file, skip_import: Rails.env.development?)
           file.update!(started_at: Time.current) unless file.started_at.present?
 
-          tempfile = Tempfile.new([ "helium-l2-file", ".gz" ])
-
-          begin
+          Tempfile.create([ "helium-l2-file", ".gz" ]) do |tempfile|
             definition = T.must(file.definition)
+            deserializer = T.must(definition.deserializer)
+
             file_client.get_object(
               bucket: T.must(definition.bucket),
               key: file.s3_key,
-              response_target: T.must(tempfile.path)
+              response_target: tempfile.path
             )
 
-            deserializer = T.must(definition.deserializer)
-            file_decoder.messages_in(T.must(tempfile.path), start_position: file.position).each_slice(batch_size) do |decoder_results|
+            file_decoder.messages_in(tempfile.path, start_position: file.position).each_slice(batch_size) do |decoder_results|
               records = decoder_results.map do |decoder_result|
                 deserializer.deserialize(decoder_result.message, file: file)
               end
 
-              unless skip_import
-                begin
-                  deserializer.import(records)
-                rescue StandardError => e
-                  puts "Error importing records: #{records.inspect}"
-
-                  Sentry.capture_exception(e, extra: {
-                    file_category: file.category,
-                    file_name: file.name,
-                    records: records
-                  }) if Rails.env.production?
-
-                  raise
-                end
-              end
+              begin
+                deserializer.import(records)
+              rescue StandardError
+                puts "Error while importing the following records: #{records.inspect}"
+                raise
+              end unless skip_import
 
               new_position = T.must(decoder_results.last).position
               file.update!(position: new_position)
             end
 
             file.update!(completed_at: Time.current)
-          rescue => e
-            Sentry.capture_exception(e, extra: {
-              file_id: file.id,
-              s3_key: file.s3_key
-            })
-            raise
-          ensure
-            tempfile.close
-            tempfile.unlink
           end
+        rescue => e
+          Sentry.capture_exception(e, extra: {
+            file_id: file.id,
+            file_category: file.category,
+            file_name: file.name
+          })
+
+          raise
         end
       end
     end
