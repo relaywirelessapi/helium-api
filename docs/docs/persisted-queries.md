@@ -29,13 +29,16 @@ This query retrieves IOT reward share information for a given time period and ho
 
 #### Parameters
 
-| Parameter     | Type            | Description                 |
-| ------------- | --------------- | --------------------------- |
-| `startPeriod` | ISO8601DateTime | Start of the time period    |
-| `endPeriod`   | ISO8601DateTime | End of the time period      |
-| `hotspotKey`  | String          | Optional hotspot identifier |
-| `first`       | Int             | Number of results to return |
-| `after`       | String          | Cursor for pagination       |
+| Parameter     | Type            | Description                              |
+| ------------- | --------------- | ---------------------------------------- |
+| `startPeriod` | ISO8601DateTime | Start of the time period                 |
+| `endPeriod`   | ISO8601DateTime | End of the time period                   |
+| `hotspotKey`  | String          | Optional hotspot identifier              |
+| `rewardType`  | String          | Optional reward type filter              |
+| `first`       | Int             | Number of results to return              |
+| `last`        | Int             | Number of results to return from the end |
+| `after`       | String          | Cursor for forward pagination            |
+| `before`      | String          | Cursor for backward pagination           |
 
 #### Sample Response
 
@@ -43,21 +46,43 @@ This query retrieves IOT reward share information for a given time period and ho
 {
   "data": {
     "iotRewardShares": {
-      "edges": [
+      "nodes": [
         {
-          "node": {
-            "amount": "100",
-            "beaconAmount": "50",
-            "witnessAmount": "30",
-            "dcTransferAmount": "20",
-            "rewardType": "iot",
-            "unallocatedRewardType": "none",
-            "startPeriod": "2024-01-01T00:00:00Z",
-            "endPeriod": "2024-01-04T00:00:00Z",
-            "hotspotKey": "11aBcDeFgHiJkLmNoPqRsTuVwXyZ123456"
+          "amount": "100",
+          "beaconAmount": "50",
+          "witnessAmount": "30",
+          "dcTransferAmount": "20",
+          "rewardType": "iot",
+          "unallocatedRewardType": "none",
+          "startPeriod": "2024-01-01T00:00:00Z",
+          "endPeriod": "2024-01-04T00:00:00Z",
+          "hotspotKey": "11aBcDeFgHiJkLmNoPqRsTuVwXyZ123456",
+          "manifest": {
+            "id": "manifest123",
+            "writtenFiles": ["file1", "file2"],
+            "startTimestamp": "2024-01-01T00:00:00Z",
+            "endTimestamp": "2024-01-04T00:00:00Z",
+            "rewardData": {
+              "rewardType": "iot",
+              "pocBonesPerBeaconRewardShare": "100",
+              "pocBonesPerWitnessRewardShare": "50",
+              "dcBonesPerShare": "20",
+              "token": "IOT"
+            },
+            "epoch": 123,
+            "price": "1.23",
+            "deduplicationKey": "key123",
+            "fileCategory": "rewards",
+            "fileName": "rewards_20240101.json"
           }
         }
-      ]
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "cursor123",
+        "endCursor": "cursor456"
+      }
     }
   }
 }
@@ -71,13 +96,16 @@ This query retrieves Mobile reward share information for a given time period and
 
 #### Parameters
 
-| Parameter     | Type            | Description                 |
-| ------------- | --------------- | --------------------------- |
-| `startPeriod` | ISO8601DateTime | Start of the time period    |
-| `endPeriod`   | ISO8601DateTime | End of the time period      |
-| `hotspotKey`  | String          | Optional hotspot identifier |
-| `first`       | Int             | Number of results to return |
-| `after`       | String          | Cursor for pagination       |
+| Parameter     | Type            | Description                              |
+| ------------- | --------------- | ---------------------------------------- |
+| `startPeriod` | ISO8601DateTime | Start of the time period                 |
+| `endPeriod`   | ISO8601DateTime | End of the time period                   |
+| `hotspotKey`  | String          | Optional hotspot identifier              |
+| `rewardType`  | String          | Optional reward type filter              |
+| `first`       | Int             | Number of results to return              |
+| `last`        | Int             | Number of results to return from the end |
+| `after`       | String          | Cursor for forward pagination            |
+| `before`      | String          | Cursor for backward pagination           |
 
 #### Sample Response
 
@@ -85,40 +113,142 @@ This query retrieves Mobile reward share information for a given time period and
 {
   "data": {
     "mobileRewardShares": {
-      "edges": [
+      "nodes": [
         {
-          "node": {
-            "amount": "200",
-            "baseCoveragePointsSum": 150.5,
-            "basePocReward": "100",
-            "baseRewardShares": 1.5,
-            "boostedCoveragePointsSum": 200.5,
-            "boostedPocReward": "150",
-            "boostedRewardShares": 2.0,
-            "cbsdId": "CBSD123",
-            "dcTransferReward": "50",
-            "discoveryLocationAmount": "30",
-            "endPeriod": "2024-01-04T00:00:00Z",
-            "entity": "entity123",
-            "hotspotKey": "11aBcDeFgHiJkLmNoPqRsTuVwXyZ123456",
-            "locationTrustScoreMultiplier": 1.2,
-            "matchedAmount": "180",
-            "oracleBoostedHexStatus": 1,
-            "ownerKey": "owner123",
-            "pocReward": "120",
-            "rewardType": "mobile",
-            "seniorityTimestamp": "1234567890",
-            "serviceProviderAmount": "40",
-            "serviceProviderId": "SP123",
-            "spBoostedHexStatus": 1,
-            "speedtestMultiplier": 1.1,
-            "startPeriod": "2024-01-01T00:00:00Z",
-            "subscriberId": "SUB123",
-            "subscriberReward": "60",
-            "unallocatedRewardType": "none"
+          "amount": "200",
+          "baseCoveragePointsSum": 150.5,
+          "basePocReward": "100",
+          "baseRewardShares": 1.5,
+          "boostedCoveragePointsSum": 200.5,
+          "boostedPocReward": "150",
+          "boostedRewardShares": 2.0,
+          "cbsdId": "CBSD123",
+          "dcTransferReward": "50",
+          "discoveryLocationAmount": "30",
+          "endPeriod": "2024-01-04T00:00:00Z",
+          "entity": "entity123",
+          "hotspotKey": "11aBcDeFgHiJkLmNoPqRsTuVwXyZ123456",
+          "locationTrustScoreMultiplier": 1.2,
+          "matchedAmount": "180",
+          "oracleBoostedHexStatus": 1,
+          "ownerKey": "owner123",
+          "pocReward": "120",
+          "rewardType": "mobile",
+          "seniorityTimestamp": "1234567890",
+          "serviceProviderAmount": "40",
+          "serviceProviderId": "SP123",
+          "spBoostedHexStatus": 1,
+          "speedtestMultiplier": 1.1,
+          "startPeriod": "2024-01-01T00:00:00Z",
+          "subscriberId": "SUB123",
+          "subscriberReward": "60",
+          "unallocatedRewardType": "none",
+          "manifest": {
+            "id": "manifest123",
+            "writtenFiles": ["file1", "file2"],
+            "startTimestamp": "2024-01-01T00:00:00Z",
+            "endTimestamp": "2024-01-04T00:00:00Z",
+            "rewardData": {
+              "rewardType": "mobile",
+              "pocBonesPerRewardShare": "100",
+              "boostedPocBonesPerRewardShare": "150",
+              "serviceProviderPromotions": [
+                {
+                  "serviceProvider": "SP123",
+                  "incentiveEscrowFundBps": 100,
+                  "promotions": [
+                    {
+                      "entity": "entity123",
+                      "startTs": "2024-01-01T00:00:00Z",
+                      "endTs": "2024-01-04T00:00:00Z",
+                      "shares": 1.5
+                    }
+                  ]
+                }
+              ],
+              "token": "MOBILE"
+            },
+            "epoch": 123,
+            "price": "1.23",
+            "deduplicationKey": "key123",
+            "fileCategory": "rewards",
+            "fileName": "rewards_20240101.json"
           }
         }
-      ]
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "cursor123",
+        "endCursor": "cursor456"
+      }
+    }
+  }
+}
+```
+
+### Reward Manifests
+
+**Query ID:** `reward-manifests`
+
+This query retrieves reward manifest information for a given time period.
+
+#### Parameters
+
+| Parameter        | Type            | Description                              |
+| ---------------- | --------------- | ---------------------------------------- |
+| `startTimestamp` | ISO8601DateTime | Start of the time period                 |
+| `endTimestamp`   | ISO8601DateTime | End of the time period                   |
+| `first`          | Int             | Number of results to return              |
+| `last`           | Int             | Number of results to return from the end |
+| `after`          | String          | Cursor for forward pagination            |
+| `before`         | String          | Cursor for backward pagination           |
+
+#### Sample Response
+
+```json
+{
+  "data": {
+    "rewardManifests": {
+      "nodes": [
+        {
+          "id": "manifest123",
+          "writtenFiles": ["file1", "file2"],
+          "startTimestamp": "2024-01-01T00:00:00Z",
+          "endTimestamp": "2024-01-04T00:00:00Z",
+          "rewardData": {
+            "rewardType": "mobile",
+            "pocBonesPerRewardShare": "100",
+            "boostedPocBonesPerRewardShare": "150",
+            "serviceProviderPromotions": [
+              {
+                "serviceProvider": "SP123",
+                "incentiveEscrowFundBps": 100,
+                "promotions": [
+                  {
+                    "entity": "entity123",
+                    "startTs": "2024-01-01T00:00:00Z",
+                    "endTs": "2024-01-04T00:00:00Z",
+                    "shares": 1.5
+                  }
+                ]
+              }
+            ],
+            "token": "MOBILE"
+          },
+          "epoch": 123,
+          "price": "1.23",
+          "deduplicationKey": "key123",
+          "fileCategory": "rewards",
+          "fileName": "rewards_20240101.json"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "cursor123",
+        "endCursor": "cursor456"
+      }
     }
   }
 }
