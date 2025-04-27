@@ -20,7 +20,7 @@ RSpec.describe "GraphQL persisted queries", type: :request do
       }
     )
 
-    expect(parsed_response["data"]["iotRewardShares"]["edges"].size).to eq(1)
+    expect(parsed_response["data"]["iotRewardShares"]["nodes"].size).to eq(1)
   end
 
   it "returns mobile reward shares for a given time period" do
@@ -39,6 +39,24 @@ RSpec.describe "GraphQL persisted queries", type: :request do
       }
     )
 
-    expect(parsed_response["data"]["mobileRewardShares"]["edges"].size).to eq(1)
+    expect(parsed_response["data"]["mobileRewardShares"]["nodes"].size).to eq(1)
+  end
+
+  it "returns reward manifests for a given time period" do
+    user = create(:user)
+    helium_l2_reward_manifest = create(:helium_l2_reward_manifest)
+
+    get(
+      reward_manifests_graphql_query_path(
+        start_timestamp: helium_l2_reward_manifest.start_timestamp.beginning_of_day.iso8601,
+        end_timestamp: helium_l2_reward_manifest.end_timestamp.end_of_day.iso8601
+      ),
+      headers: {
+        "Content-Type" => "application/json",
+        "Authorization" => "Bearer #{user.api_key}"
+      }
+    )
+
+    expect(parsed_response["data"]["rewardManifests"]["nodes"].size).to eq(1)
   end
 end

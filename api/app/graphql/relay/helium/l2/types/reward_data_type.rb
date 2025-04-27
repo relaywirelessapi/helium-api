@@ -28,7 +28,7 @@ module Relay
               when "iot"
                 IotRewardDataType
               else
-                raise "Unexpected reward type: #{object["reward_type"]}"
+                raise "Unexpected reward type: #{object["reward_type"].inspect}"
               end
             end
           end

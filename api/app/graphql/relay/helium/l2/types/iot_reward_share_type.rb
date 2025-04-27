@@ -19,7 +19,7 @@ module Relay
           field :dc_transfer_amount, GraphQL::Types::BigInt, null: true, description: "The amount of DC transfer rewards."
           field :manifest, RewardManifestType, null: true, description: "The reward manifest associated with this reward share."
 
-          sig { returns(RewardManifest) }
+          sig { returns(T.nilable(Relay::Helium::L2::RewardManifest)) }
           def manifest
             dataloader.with(Sources::RewardManifestByFileName).load(object.file_name)
           end

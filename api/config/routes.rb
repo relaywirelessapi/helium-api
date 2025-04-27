@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
 
-  GraphqlController::PERSISTED_QUERIES.each_key do |query_id|
+  JSON.parse(File.read(Rails.root.join("config", "data", "persisted-queries.json"))).each_key do |query_id|
     get "/graphql/#{query_id}", to: "graphql#execute_persisted_query", query_id: query_id, as: "#{query_id.parameterize(separator: '_')}_graphql_query"
   end
 
