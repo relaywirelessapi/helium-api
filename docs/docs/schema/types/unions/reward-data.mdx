@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: reward-data
+title: RewardData
 ---
 
 
@@ -39,14 +39,23 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+Represents either mobile or IoT reward data
 
 
 ```graphql
-scalar BigInt
+union RewardData = IotRewardData | MobileRewardData
 ```
 
+
+
+
+### Possible types
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardData.<b>IotRewardData</b></code>](/schema/types/objects/iot-reward-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
+
+
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardData.<b>MobileRewardData</b></code>](/schema/types/objects/mobile-reward-data.mdx) <Badge class="badge badge--secondary" text="object"/> 
 
 
 
@@ -56,5 +65,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotRewardData`](/schema/types/objects/iot-reward-data.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardData`](/schema/types/objects/mobile-reward-data.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`Promotion`](/schema/types/objects/promotion.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`ServiceProviderPromotion`](/schema/types/objects/service-provider-promotion.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

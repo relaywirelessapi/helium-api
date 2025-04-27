@@ -1,0 +1,82 @@
+---
+id: promotion
+title: Promotion
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+No description
+
+
+```graphql
+type Promotion {
+  endTs: ISO8601DateTime!
+  entity: String!
+  shares: BigInt!
+  startTs: ISO8601DateTime!
+}
+```
+
+
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>endTs</b></code>](#)<Bullet />[`ISO8601DateTime!`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The end timestamp.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>entity</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The entity.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>shares</b></code>](#)<Bullet />[`BigInt!`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The shares.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>startTs</b></code>](#)<Bullet />[`ISO8601DateTime!`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The start timestamp.
+
+
+
+
+
+
+### Member Of
+
+[`ServiceProviderPromotion`](/schema/types/objects/service-provider-promotion.mdx)  <Badge class="badge badge--secondary" text="object"/>
+
