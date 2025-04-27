@@ -51,7 +51,7 @@ type RewardManifest {
   fileName: String!
   id: ID!
   price: BigInt
-  rewardData: JSON
+  rewardData: RewardData
   startTimestamp: ISO8601DateTime
   writtenFiles: [String!]
 }
@@ -90,8 +90,8 @@ The unique identifier of the reward manifest.
 The price value.
 
 
-#### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>rewardData</b></code>](#)<Bullet />[`JSON`](/schema/types/scalars/json.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
-The reward data in JSON format.
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>rewardData</b></code>](#)<Bullet />[`RewardData`](/schema/types/unions/reward-data.mdx) <Badge class="badge badge--secondary" text="union"/> 
+The reward data, either for mobile or IoT.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>startTimestamp</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

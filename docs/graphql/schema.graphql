@@ -9,6 +9,33 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
+type IotRewardData {
+  """
+  The DC bones per share.
+  """
+  dcBonesPerShare: BigInt!
+
+  """
+  The POC bones per beacon reward share.
+  """
+  pocBonesPerBeaconRewardShare: BigInt!
+
+  """
+  The POC bones per witness reward share.
+  """
+  pocBonesPerWitnessRewardShare: BigInt!
+
+  """
+  The type of reward (iot).
+  """
+  rewardType: String!
+
+  """
+  The token.
+  """
+  token: String!
+}
+
 type IotRewardShare {
   """
   The amount of the reward.
@@ -96,10 +123,32 @@ type IotRewardShareEdge {
   node: IotRewardShare
 }
 
-"""
-Represents untyped JSON
-"""
-scalar JSON
+type MobileRewardData {
+  """
+  The boosted POC bones per reward share.
+  """
+  boostedPocBonesPerRewardShare: BigInt!
+
+  """
+  The POC bones per reward share.
+  """
+  pocBonesPerRewardShare: BigInt!
+
+  """
+  The type of reward (mobile).
+  """
+  rewardType: String!
+
+  """
+  The service provider promotions.
+  """
+  serviceProviderPromotions: [ServiceProviderPromotion!]!
+
+  """
+  The token.
+  """
+  token: String!
+}
 
 type MobileRewardShare {
   """
@@ -320,6 +369,28 @@ type PageInfo {
   startCursor: String
 }
 
+type Promotion {
+  """
+  The end timestamp.
+  """
+  endTs: ISO8601DateTime!
+
+  """
+  The entity.
+  """
+  entity: String!
+
+  """
+  The shares.
+  """
+  shares: BigInt!
+
+  """
+  The start timestamp.
+  """
+  startTs: ISO8601DateTime!
+}
+
 type Query {
   """
   Echoes the given message.
@@ -462,6 +533,11 @@ type Query {
   status: String!
 }
 
+"""
+Represents either mobile or IoT reward data
+"""
+union RewardData = IotRewardData | MobileRewardData
+
 type RewardManifest {
   """
   The unique key used for deduplication.
@@ -499,9 +575,9 @@ type RewardManifest {
   price: BigInt
 
   """
-  The reward data in JSON format.
+  The reward data, either for mobile or IoT.
   """
-  rewardData: JSON
+  rewardData: RewardData
 
   """
   The start timestamp of the reward period.
@@ -547,4 +623,21 @@ type RewardManifestEdge {
   The item at the end of the edge.
   """
   node: RewardManifest
+}
+
+type ServiceProviderPromotion {
+  """
+  The incentive escrow fund basis points.
+  """
+  incentiveEscrowFundBps: BigInt!
+
+  """
+  The promotions.
+  """
+  promotions: [Promotion!]!
+
+  """
+  The service provider.
+  """
+  serviceProvider: String!
 }

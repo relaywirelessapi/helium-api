@@ -1,0 +1,87 @@
+---
+id: iot-reward-data
+title: IotRewardData
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+No description
+
+
+```graphql
+type IotRewardData {
+  dcBonesPerShare: BigInt!
+  pocBonesPerBeaconRewardShare: BigInt!
+  pocBonesPerWitnessRewardShare: BigInt!
+  rewardType: String!
+  token: String!
+}
+```
+
+
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardData.<b>dcBonesPerShare</b></code>](#)<Bullet />[`BigInt!`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The DC bones per share.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardData.<b>pocBonesPerBeaconRewardShare</b></code>](#)<Bullet />[`BigInt!`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The POC bones per beacon reward share.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardData.<b>pocBonesPerWitnessRewardShare</b></code>](#)<Bullet />[`BigInt!`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The POC bones per witness reward share.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardData.<b>rewardType</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The type of reward (iot).
+
+
+#### [<code style={{ fontWeight: 'normal' }}>IotRewardData.<b>token</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The token.
+
+
+
+
+
+
+### Implemented By
+
+[`RewardData`](/schema/types/unions/reward-data.mdx)  <Badge class="badge badge--secondary" text="union"/>
+

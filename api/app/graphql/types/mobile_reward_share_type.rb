@@ -1,8 +1,10 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
 module Types
   class MobileRewardShareType < Types::BaseObject
+    extend T::Sig
+
     field :owner_key, String, null: true, description: "The owner key of the mobile reward share."
     field :hotspot_key, String, null: true, description: "The key of the hotspot."
     field :cbsd_id, String, null: true, description: "The CBSD ID."
@@ -32,10 +34,11 @@ module Types
     field :entity, String, null: true, description: "The entity."
     field :service_provider_amount, GraphQL::Types::BigInt, null: true, description: "The service provider amount."
     field :matched_amount, GraphQL::Types::BigInt, null: true, description: "The matched amount."
-    field :manifest, Types::RewardManifestType, null: true, description: "The reward manifest associated with this reward share." do
-      def resolve
-        dataloader.with(Sources::RewardManifestByFileName).load(object.file_name)
-      end
+    field :manifest, Types::RewardManifestType, null: true, description: "The reward manifest associated with this reward share."
+
+    sig { returns(Relay::Helium::L2::RewardManifest) }
+    def manifest
+      dataloader.with(Sources::RewardManifestByFileName).load(object.file_name)
     end
   end
 end
