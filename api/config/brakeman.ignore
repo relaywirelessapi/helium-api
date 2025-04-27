@@ -3,63 +3,17 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "7ed333857127da2b25a6c61580afce0d8da8c8a4e09bd1e58eda71b72325eb5d",
+      "fingerprint": "0159fa5205a506ec45425d460b505830d7a6b4c6fdefc89a4bc13157fe8eaf74",
       "check_name": "SQL",
       "message": "Possible SQL injection",
-      "file": "app/graphql/connections/active_record_connection.rb",
-      "line": 45,
-      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "query.where(\"#{sort_column} #{(sort_direction == :asc) ? (\">\") : (\"<\")} ?\", Base64.strict_decode64(after))",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "Connections::ActiveRecordConnection",
-        "method": "apply_cursor_filters"
-      },
-      "user_input": "sort_column",
-      "confidence": "Weak",
-      "cwe_id": [
-        89
-      ],
-      "note": ""
-    },
-    {
-      "warning_type": "SQL Injection",
-      "warning_code": 0,
-      "fingerprint": "a6f8ef7aa16774012d56e36e466ac5b51ab8edc243e79e41f7c3b44d427fc3be",
-      "check_name": "SQL",
-      "message": "Possible SQL injection",
-      "file": "app/graphql/connections/active_record_connection.rb",
-      "line": 50,
-      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "query.where(\"#{sort_column} #{(sort_direction == :asc) ? (\">\") : (\"<\")} ?\", Base64.strict_decode64(after)).where(\"#{sort_column} #{(sort_direction == :asc) ? (\"<\") : (\">\")} ?\", Base64.strict_decode64(before))",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "Connections::ActiveRecordConnection",
-        "method": "apply_cursor_filters"
-      },
-      "user_input": "sort_column",
-      "confidence": "Weak",
-      "cwe_id": [
-        89
-      ],
-      "note": ""
-    },
-    {
-      "warning_type": "SQL Injection",
-      "warning_code": 0,
-      "fingerprint": "cb7927e6bc1e7528b2d6d0c01907ff10b8d9e4bd0ad1052f6ac5286ab4a1ade7",
-      "check_name": "SQL",
-      "message": "Possible SQL injection",
-      "file": "app/graphql/connections/active_record_connection.rb",
-      "line": 30,
+      "file": "app/graphql/relay/connections/active_record_connection.rb",
+      "line": 31,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
       "code": "items.where(\"#{sort_column} #{(sort_direction == :asc) ? (\"<\") : (\">\")} ?\", nodes.first.public_send(sort_column))",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "Connections::ActiveRecordConnection",
+        "class": "Relay::Connections::ActiveRecordConnection",
         "method": "has_previous_page"
       },
       "user_input": "sort_column",
@@ -72,17 +26,63 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "d6317a925208b0de9ed4dcdfa4e9bc480c805940a56f16c37a0c6a490a929b0e",
+      "fingerprint": "0ee8bfffe4596246fe9733684b4d32198459f086b9986e10fb29c0aa7178fce2",
       "check_name": "SQL",
       "message": "Possible SQL injection",
-      "file": "app/graphql/connections/active_record_connection.rb",
-      "line": 21,
+      "file": "app/graphql/relay/connections/active_record_connection.rb",
+      "line": 51,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "query.where(\"#{sort_column} #{(sort_direction == :asc) ? (\">\") : (\"<\")} ?\", Base64.strict_decode64(after)).where(\"#{sort_column} #{(sort_direction == :asc) ? (\"<\") : (\">\")} ?\", Base64.strict_decode64(before))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Relay::Connections::ActiveRecordConnection",
+        "method": "apply_cursor_filters"
+      },
+      "user_input": "sort_column",
+      "confidence": "Weak",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "6712a38ca3d632a389c13e1a5182f9031b2839f06f886239ed710a0509c566c5",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/graphql/relay/connections/active_record_connection.rb",
+      "line": 46,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "query.where(\"#{sort_column} #{(sort_direction == :asc) ? (\">\") : (\"<\")} ?\", Base64.strict_decode64(after))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Relay::Connections::ActiveRecordConnection",
+        "method": "apply_cursor_filters"
+      },
+      "user_input": "sort_column",
+      "confidence": "Weak",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "fd8851cc963793bc14c7e84ec754d2abf87793e933ce3633e2f5dccb5274caf6",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/graphql/relay/connections/active_record_connection.rb",
+      "line": 22,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
       "code": "items.where(\"#{sort_column} #{(sort_direction == :asc) ? (\">\") : (\"<\")} ?\", nodes.last.public_send(sort_column))",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "Connections::ActiveRecordConnection",
+        "class": "Relay::Connections::ActiveRecordConnection",
         "method": "has_next_page"
       },
       "user_input": "sort_column",

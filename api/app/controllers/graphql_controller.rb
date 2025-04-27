@@ -117,7 +117,7 @@ class GraphqlController < ApplicationController
 
   def execute_query(query:, variables:)
     result = Relay::Graphql::Executor.new(
-      schema: HeliumApiSchema,
+      schema: Relay::ApplicationSchema,
       posthog: Relay::PostHog::Client.new
     ).execute(
       query: query,

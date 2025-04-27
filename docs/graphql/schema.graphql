@@ -337,13 +337,6 @@ type MobileRewardShareEdge {
   node: MobileRewardShare
 }
 
-type Mutation {
-  """
-  An example field added by the generator
-  """
-  testField: String!
-}
-
 """
 Information about pagination in a connection.
 """

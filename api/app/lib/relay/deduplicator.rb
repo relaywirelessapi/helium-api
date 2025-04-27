@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 
 module Relay
   class Deduplicator
