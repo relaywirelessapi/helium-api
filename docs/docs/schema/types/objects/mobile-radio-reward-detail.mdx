@@ -46,6 +46,8 @@ Represents a mobile radio reward share.
 type MobileRadioRewardDetail {
   cbsdId: String
   dcTransferReward: BigInt
+  formattedDcTransferReward: String
+  formattedPocReward: String
   hotspotKey: String
   pocReward: BigInt
 }
@@ -62,6 +64,14 @@ The CBSD ID.
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRadioRewardDetail.<b>dcTransferReward</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileRadioRewardDetail.<b>formattedDcTransferReward</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of DC transfer rewards.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileRadioRewardDetail.<b>formattedPocReward</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
+The formatted amount of POC rewards.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRadioRewardDetail.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

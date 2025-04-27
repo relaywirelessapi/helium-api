@@ -24,6 +24,21 @@ type IotGatewayRewardDetail {
   dcTransferAmount: BigInt
 
   """
+  The formatted amount of beacon rewards.
+  """
+  formattedBeaconAmount: String
+
+  """
+  The formatted amount of DC transfer rewards.
+  """
+  formattedDcTransferAmount: String
+
+  """
+  The formatted amount of witness rewards.
+  """
+  formattedWitnessAmount: String
+
+  """
   The key of the hotspot.
   """
   hotspotKey: String
@@ -42,6 +57,11 @@ type IotOperationalRewardDetail {
   The amount of the reward.
   """
   amount: BigInt
+
+  """
+  The formatted amount of the reward.
+  """
+  formattedAmount: String
 }
 
 type IotRewardShare {
@@ -126,6 +146,11 @@ type IotUnallocatedRewardDetail {
   amount: BigInt
 
   """
+  The formatted amount of the reward.
+  """
+  formattedAmount: String
+
+  """
   The type of unallocated reward.
   """
   unallocatedRewardType: String
@@ -139,6 +164,11 @@ type MobileGatewayRewardDetail {
   The amount of DC transfer rewards.
   """
   dcTransferReward: BigInt
+
+  """
+  The formatted amount of DC transfer rewards.
+  """
+  formattedDcTransferReward: String
 
   """
   The key of the hotspot.
@@ -179,6 +209,16 @@ type MobileRadioRewardDetail {
   The amount of DC transfer rewards.
   """
   dcTransferReward: BigInt
+
+  """
+  The formatted amount of DC transfer rewards.
+  """
+  formattedDcTransferReward: String
+
+  """
+  The formatted amount of POC rewards.
+  """
+  formattedPocReward: String
 
   """
   The key of the hotspot.
@@ -348,6 +388,11 @@ type MobileServiceProviderRewardDetail {
   amount: BigInt
 
   """
+  The formatted service provider amount.
+  """
+  formattedAmount: String
+
+  """
   The service provider ID.
   """
   serviceProviderId: String
@@ -361,6 +406,16 @@ type MobileSubscriberRewardDetail {
   The amount of discovery location rewards.
   """
   discoveryLocationAmount: BigInt
+
+  """
+  The formatted amount of discovery location rewards.
+  """
+  formattedDiscoveryLocationAmount: String
+
+  """
+  The formatted amount of subscriber rewards.
+  """
+  formattedSubscriberReward: String
 
   """
   The subscriber ID.
