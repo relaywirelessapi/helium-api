@@ -1,6 +1,6 @@
 ---
-id: int
-title: Int
+id: reward-manifest-edge
+title: RewardManifestEdge
 ---
 
 
@@ -39,14 +39,27 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+An edge in a connection.
 
 
 ```graphql
-scalar Int
+type RewardManifestEdge {
+  cursor: String!
+  node: RewardManifest
+}
 ```
 
 
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestEdge.<b>cursor</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+A cursor for use in pagination.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>RewardManifestEdge.<b>node</b></code>](#)<Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx) <Badge class="badge badge--secondary" text="object"/> 
+The item at the end of the edge.
 
 
 
@@ -55,5 +68,5 @@ scalar Int
 
 ### Member Of
 
-[`iotRewardShares`](/schema/operations/queries/iot-reward-shares.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`mobileRewardShares`](/schema/operations/queries/mobile-reward-shares.mdx)  <Badge class="badge badge--secondary" text="query"/><Bullet />[`rewardManifests`](/schema/operations/queries/reward-manifests.mdx)  <Badge class="badge badge--secondary" text="query"/>
+[`RewardManifestConnection`](/schema/types/objects/reward-manifest-connection.mdx)  <Badge class="badge badge--secondary" text="object"/>
 
