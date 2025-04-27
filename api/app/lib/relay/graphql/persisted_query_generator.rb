@@ -12,10 +12,14 @@ module Relay
       sig { returns(Integer) }
       attr_reader :max_depth
 
-      sig { params(schema: T.class_of(GraphQL::Schema), max_depth: Integer).void }
-      def initialize(schema, max_depth: 1)
+      sig { returns(T::Array[String]) }
+      attr_reader :ignored_fields
+
+      sig { params(schema: T.class_of(GraphQL::Schema), max_depth: Integer, ignored_fields: T::Array[String]).void }
+      def initialize(schema, max_depth: 1, ignored_fields: [ "edges" ])
         @schema = schema
         @max_depth = max_depth
+        @ignored_fields = ignored_fields
       end
 
       sig { params(field_name: String).returns(String) }
@@ -52,7 +56,8 @@ module Relay
         visited_types = visited_types + [ type.graphql_name ]
 
         fields = type.fields.values.map do |field|
-          next if field.name == "edges"  # Skip edges field
+          next if ignored_fields.include?(field.name)
+
           field_type = field.type.unwrap
 
           if field_type.kind.scalar? || field_type.kind.enum?

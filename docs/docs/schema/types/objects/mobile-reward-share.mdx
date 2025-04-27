@@ -58,6 +58,7 @@ type MobileRewardShare {
   endPeriod: ISO8601DateTime
   entity: String
   hotspotKey: String
+  id: ID!
   locationTrustScoreMultiplier: Float
   manifest: RewardManifest
   matchedAmount: BigInt
@@ -136,6 +137,10 @@ The entity.
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>hotspotKey</b></code>](#)<Bullet />[`String`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The key of the hotspot.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>id</b></code>](#)<Bullet />[`ID!`](/schema/types/scalars/id.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
+The unique identifier of the IoT reward share.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>MobileRewardShare.<b>locationTrustScoreMultiplier</b></code>](#)<Bullet />[`Float`](/schema/types/scalars/float.mdx) <Badge class="badge badge--secondary" text="scalar"/> 

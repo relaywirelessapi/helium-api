@@ -63,6 +63,11 @@ type IotRewardShare {
   hotspotKey: String
 
   """
+  The unique identifier of the IoT reward share.
+  """
+  id: ID!
+
+  """
   The reward manifest associated with this reward share.
   """
   manifest: RewardManifest
@@ -220,6 +225,11 @@ type MobileRewardShare {
   The key of the hotspot.
   """
   hotspotKey: String
+
+  """
+  The unique identifier of the IoT reward share.
+  """
+  id: ID!
 
   """
   The location trust score multiplier.
@@ -533,11 +543,6 @@ union RewardData = IotRewardData | MobileRewardData
 
 type RewardManifest {
   """
-  The unique key used for deduplication.
-  """
-  deduplicationKey: String!
-
-  """
   The end timestamp of the reward period.
   """
   endTimestamp: ISO8601DateTime
@@ -546,16 +551,6 @@ type RewardManifest {
   The epoch number.
   """
   epoch: BigInt
-
-  """
-  The category of the file.
-  """
-  fileCategory: String!
-
-  """
-  The name of the file.
-  """
-  fileName: String!
 
   """
   The unique identifier of the reward manifest.

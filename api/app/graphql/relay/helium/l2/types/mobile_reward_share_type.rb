@@ -8,6 +8,7 @@ module Relay
         class MobileRewardShareType < Relay::Types::BaseObject
           extend T::Sig
 
+          field :id, ID, null: false, description: "The unique identifier of the IoT reward share."
           field :owner_key, String, null: true, description: "The owner key of the mobile reward share."
           field :hotspot_key, String, null: true, description: "The key of the hotspot."
           field :cbsd_id, String, null: true, description: "The CBSD ID."

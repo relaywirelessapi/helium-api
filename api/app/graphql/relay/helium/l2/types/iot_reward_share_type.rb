@@ -8,6 +8,7 @@ module Relay
         class IotRewardShareType < Relay::Types::BaseObject
           extend T::Sig
 
+          field :id, ID, null: false, description: "The unique identifier of the IoT reward share."
           field :start_period, GraphQL::Types::ISO8601DateTime, null: true, description: "The start period of the iot reward share."
           field :end_period, GraphQL::Types::ISO8601DateTime, null: true, description: "The end period of the iot reward share."
           field :reward_type, String, null: true, description: "The type of reward."

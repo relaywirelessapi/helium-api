@@ -44,11 +44,8 @@ No description
 
 ```graphql
 type RewardManifest {
-  deduplicationKey: String!
   endTimestamp: ISO8601DateTime
   epoch: BigInt
-  fileCategory: String!
-  fileName: String!
   id: ID!
   price: BigInt
   rewardData: RewardData
@@ -62,24 +59,12 @@ type RewardManifest {
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>deduplicationKey</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
-The unique key used for deduplication.
-
-
 #### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>endTimestamp</b></code>](#)<Bullet />[`ISO8601DateTime`](/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The end timestamp of the reward period.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>epoch</b></code>](#)<Bullet />[`BigInt`](/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary" text="scalar"/> 
 The epoch number.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>fileCategory</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
-The category of the file.
-
-
-#### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>fileName</b></code>](#)<Bullet />[`String!`](/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
-The name of the file.
 
 
 #### [<code style={{ fontWeight: 'normal' }}>RewardManifest.<b>id</b></code>](#)<Bullet />[`ID!`](/schema/types/scalars/id.mdx) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/> 
