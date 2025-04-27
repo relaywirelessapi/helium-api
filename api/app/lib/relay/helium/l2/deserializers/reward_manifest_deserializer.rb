@@ -72,9 +72,15 @@ module Relay
           sig { override.params(messages: T::Array[T::Hash[Symbol, T.untyped]]).void }
           def import(messages)
             messages.each do |message|
-              Relay::Helium::L2::RewardManifest.create!(message.merge(
-                deduplication_key: deduplicator.calculate_deduplication_key(message)
-              ))
+              ActiveRecord::Base.transaction do
+                reward_manifest = Relay::Helium::L2::RewardManifest.create!(message.merge(
+                  deduplication_key: deduplicator.calculate_deduplication_key(message)
+                ))
+
+                message[:written_files].each do |file|
+                  reward_manifest.files.create!(file_name: file)
+                end
+              end
             rescue ActiveRecord::RecordNotUnique
               # no-op
             end

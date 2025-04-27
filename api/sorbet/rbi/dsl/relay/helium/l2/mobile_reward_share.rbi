@@ -424,11 +424,29 @@ class Relay::Helium::L2::MobileRewardShare
     sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
     def build_file(*args, &blk); end
 
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifest) }
+    def build_reward_manifest(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifestFile) }
+    def build_reward_manifest_file(*args, &blk); end
+
     sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
     def create_file(*args, &blk); end
 
     sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::File) }
     def create_file!(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifest) }
+    def create_reward_manifest(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifest) }
+    def create_reward_manifest!(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifestFile) }
+    def create_reward_manifest_file(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Relay::Helium::L2::RewardManifestFile) }
+    def create_reward_manifest_file!(*args, &blk); end
 
     sig { returns(T.nilable(::Relay::Helium::L2::File)) }
     def file; end
@@ -445,8 +463,38 @@ class Relay::Helium::L2::MobileRewardShare
     sig { returns(T.nilable(::Relay::Helium::L2::File)) }
     def reload_file; end
 
+    sig { returns(T.nilable(::Relay::Helium::L2::RewardManifest)) }
+    def reload_reward_manifest; end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::RewardManifestFile)) }
+    def reload_reward_manifest_file; end
+
     sig { void }
     def reset_file; end
+
+    sig { void }
+    def reset_reward_manifest; end
+
+    sig { void }
+    def reset_reward_manifest_file; end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::RewardManifest)) }
+    def reward_manifest; end
+
+    sig { params(value: T.nilable(::Relay::Helium::L2::RewardManifest)).void }
+    def reward_manifest=(value); end
+
+    sig { returns(T.nilable(::Relay::Helium::L2::RewardManifestFile)) }
+    def reward_manifest_file; end
+
+    sig { params(value: T.nilable(::Relay::Helium::L2::RewardManifestFile)).void }
+    def reward_manifest_file=(value); end
+
+    sig { returns(T::Boolean) }
+    def reward_manifest_file_changed?; end
+
+    sig { returns(T::Boolean) }
+    def reward_manifest_file_previously_changed?; end
   end
 
   module GeneratedAssociationRelationMethods

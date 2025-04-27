@@ -439,8 +439,22 @@ class Relay::Helium::L2::RewardManifest
     sig { returns(T::Boolean) }
     def file_changed?; end
 
+    sig { returns(T::Array[T.untyped]) }
+    def file_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def file_ids=(ids); end
+
     sig { returns(T::Boolean) }
     def file_previously_changed?; end
+
+    # This method is created by ActiveRecord on the `Relay::Helium::L2::RewardManifest` class because it declared `has_many :files`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Relay::Helium::L2::RewardManifestFile::PrivateCollectionProxy) }
+    def files; end
+
+    sig { params(value: T::Enumerable[::Relay::Helium::L2::RewardManifestFile]).void }
+    def files=(value); end
 
     sig { returns(T.nilable(::Relay::Helium::L2::File)) }
     def reload_file; end

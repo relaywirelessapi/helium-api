@@ -37,37 +37,39 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
     deserialized_data = deserializer.deserialize(message, file: file)
     deserializer.import([ deserialized_data ])
 
-    expect(Relay::Helium::L2::RewardManifest.all).to match_array([
-      have_attributes(
-        written_files: [ "file1", "file2" ],
-        start_timestamp: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
-        end_timestamp: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
-        epoch: 100,
-        price: 150,
-        reward_data: {
-          "reward_type" => "mobile",
-          "poc_bones_per_reward_share" => "100",
-          "boosted_poc_bones_per_reward_share" => "150",
-          "service_provider_promotions" => [
-            {
-              "service_provider" => "helium_mobile",
-              "incentive_escrow_fund_bps" => 1000,
-              "promotions" => [
-                {
-                  "entity" => "test_entity",
-                  "start_ts" => Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
-                  "end_ts" => Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
-                  "shares" => 200
-                }
-              ]
-            }
-          ],
-          "token" => "mobile_reward_token_hnt"
-        },
-        file_category: "test_category",
-        file_name: "test_file"
-      )
-    ])
+    reward_manifest = Relay::Helium::L2::RewardManifest.first
+    expect(reward_manifest).to have_attributes(
+      written_files: [ "file1", "file2" ],
+      start_timestamp: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
+      end_timestamp: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
+      epoch: 100,
+      price: 150,
+      reward_data: {
+        "reward_type" => "mobile",
+        "poc_bones_per_reward_share" => "100",
+        "boosted_poc_bones_per_reward_share" => "150",
+        "service_provider_promotions" => [
+          {
+            "service_provider" => "helium_mobile",
+            "incentive_escrow_fund_bps" => 1000,
+            "promotions" => [
+              {
+                "entity" => "test_entity",
+                "start_ts" => Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
+                "end_ts" => Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
+                "shares" => 200
+              }
+            ]
+          }
+        ],
+        "token" => "mobile_reward_token_hnt"
+      },
+      file_category: "test_category",
+      file_name: "test_file"
+    )
+
+    expect(reward_manifest.files.count).to eq(2)
+    expect(reward_manifest.files.pluck(:file_name)).to match_array([ "file1", "file2" ])
   end
 
   it "deserializes an IoT reward manifest message and imports it into the database" do
@@ -91,23 +93,25 @@ RSpec.describe Relay::Helium::L2::Deserializers::RewardManifestDeserializer do
     deserialized_data = deserializer.deserialize(message, file: file)
     deserializer.import([ deserialized_data ])
 
-    expect(Relay::Helium::L2::RewardManifest.all).to match_array([
-      have_attributes(
-        written_files: [ "file1", "file2" ],
-        start_timestamp: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
-        end_timestamp: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
-        epoch: 100,
-        price: 150,
-        reward_data: {
-          "reward_type" => "iot",
-          "poc_bones_per_beacon_reward_share" => "100",
-          "poc_bones_per_witness_reward_share" => "50",
-          "dc_bones_per_share" => "20",
-          "token" => "iot_reward_token_iot"
-        },
-        file_category: "test_category",
-        file_name: "test_file"
-      )
-    ])
+    reward_manifest = Relay::Helium::L2::RewardManifest.first
+    expect(reward_manifest).to have_attributes(
+      written_files: [ "file1", "file2" ],
+      start_timestamp: Time.zone.parse("Fri, 27 Jan 2023 20:30:00.000000000 EST -05:00"),
+      end_timestamp: Time.zone.parse("Sat, 28 Jan 2023 20:30:00.000000000 EST -05:00"),
+      epoch: 100,
+      price: 150,
+      reward_data: {
+        "reward_type" => "iot",
+        "poc_bones_per_beacon_reward_share" => "100",
+        "poc_bones_per_witness_reward_share" => "50",
+        "dc_bones_per_share" => "20",
+        "token" => "iot_reward_token_iot"
+      },
+      file_category: "test_category",
+      file_name: "test_file"
+    )
+
+    expect(reward_manifest.files.count).to eq(2)
+    expect(reward_manifest.files.pluck(:file_name)).to match_array([ "file1", "file2" ])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_150249) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_27_131718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
@@ -24,6 +24,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_150249) do
     t.datetime "updated_at", null: false
     t.string "category", null: false
     t.string "name", null: false
+    t.datetime "download_started_at"
+    t.datetime "download_completed_at"
+    t.datetime "import_started_at"
+    t.datetime "import_completed_at"
     t.index ["category", "name"], name: "index_helium_l2_files_on_category_and_name", unique: true
     t.index ["category"], name: "index_helium_l2_files_on_category"
     t.index ["name"], name: "index_helium_l2_files_on_name"
@@ -128,6 +132,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_150249) do
     t.index ["start_period", "end_period"], name: "idx_on_start_period_end_period_b04efac248"
   end
 
+  create_table "helium_l2_reward_manifest_files", id: false, force: :cascade do |t|
+    t.uuid "reward_manifest_id", null: false
+    t.string "file_name", null: false
+    t.index ["file_name"], name: "index_helium_l2_reward_manifest_files_on_file_name"
+    t.index ["reward_manifest_id", "file_name"], name: "idx_on_reward_manifest_id_file_name_21a7838b6c", unique: true
+  end
+
   create_table "helium_l2_reward_manifests", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "written_files", array: true
     t.datetime "start_timestamp"
@@ -171,4 +182,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_150249) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "helium_l2_reward_manifest_files", "helium_l2_reward_manifests", column: "reward_manifest_id", on_delete: :cascade
 end

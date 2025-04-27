@@ -30,12 +30,15 @@ module Relay
             definition = T.must(file.definition)
             deserializer = T.must(definition.deserializer)
 
+            file.update!(download_started_at: Time.current)
             file_client.get_object(
               bucket: T.must(definition.bucket),
               key: file.s3_key,
               response_target: tempfile.path
             )
+            file.update!(download_completed_at: Time.current)
 
+            file.update!(import_started_at: Time.current)
             file_decoder.messages_in(tempfile.path, start_position: file.position).each_slice(batch_size) do |decoder_results|
               records = decoder_results.map do |decoder_result|
                 deserializer.deserialize(decoder_result.message, file: file)
@@ -51,6 +54,7 @@ module Relay
               new_position = T.must(decoder_results.last).position
               file.update!(position: new_position)
             end
+            file.update!(import_completed_at: Time.current)
 
             file.update!(completed_at: Time.current)
           end
