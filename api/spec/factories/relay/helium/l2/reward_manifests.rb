@@ -11,7 +11,7 @@ FactoryBot.define do
     written_files { [ "file1.json", "file2.json" ] }
     start_timestamp { Time.current }
     end_timestamp { Time.current + 1.day }
-    reward_data { { "key" => "value" } }
+    reward_data { nil }
     epoch { Time.current }
     price { 100 }
     deduplication_key { SecureRandom.uuid }

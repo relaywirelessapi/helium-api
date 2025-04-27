@@ -12,89 +12,6 @@ class GraphqlController < ApplicationController
   # Rate limit based on IP for unauthenticated requests
   rate_limit to: 60, within: 1.minute, by: -> { request.ip }, name: "ip_rate_limit"
 
-  PERSISTED_QUERIES = {
-    "iot-reward-shares" => <<~GRAPHQL,
-      query IotRewards($startPeriod: ISO8601DateTime!, $endPeriod: ISO8601DateTime!, $hotspotKey: String, $first: Int, $after: String) {
-        iotRewardShares(
-          startPeriod: $startPeriod
-          endPeriod: $endPeriod
-          hotspotKey: $hotspotKey
-          first: $first
-          after: $after
-        ) {
-          edges {
-            cursor
-            node {
-              amount
-              beaconAmount
-              witnessAmount
-              dcTransferAmount
-              rewardType
-              unallocatedRewardType
-              startPeriod
-              endPeriod
-              hotspotKey
-            }
-          }
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-        }
-      }
-    GRAPHQL
-
-    "mobile-reward-shares" => <<~GRAPHQL
-      query MobileRewards($startPeriod: ISO8601DateTime!, $endPeriod: ISO8601DateTime!, $hotspotKey: String, $first: Int, $after: String) {
-        mobileRewardShares(
-          startPeriod: $startPeriod
-          endPeriod: $endPeriod
-          hotspotKey: $hotspotKey
-          first: $first
-          after: $after
-        ) {
-          edges {
-            cursor
-            node {
-              amount
-              baseCoveragePointsSum
-              basePocReward
-              baseRewardShares
-              boostedCoveragePointsSum
-              boostedPocReward
-              boostedRewardShares
-              cbsdId
-              dcTransferReward
-              discoveryLocationAmount
-              endPeriod
-              entity
-              hotspotKey
-              locationTrustScoreMultiplier
-              matchedAmount
-              oracleBoostedHexStatus
-              ownerKey
-              pocReward
-              rewardType
-              seniorityTimestamp
-              serviceProviderAmount
-              serviceProviderId
-              spBoostedHexStatus
-              speedtestMultiplier
-              startPeriod
-              subscriberId
-              subscriberReward
-              unallocatedRewardType
-            }
-          }
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-        }
-      }
-    GRAPHQL
-  }
-
   def execute
     execute_query(
       query: params[:query],
@@ -108,12 +25,16 @@ class GraphqlController < ApplicationController
     end
 
     execute_query(
-      query: PERSISTED_QUERIES.fetch(params.fetch(:query_id)),
+      query: fetch_persisted_query(params.fetch(:query_id)),
       variables: variables,
     )
   end
 
   private
+
+  def fetch_persisted_query(query_id)
+    JSON.parse(File.read(Rails.root.join("config", "data", "persisted-queries.json"))).fetch(query_id)
+  end
 
   def execute_query(query:, variables:)
     result = Relay::Graphql::Executor.new(
