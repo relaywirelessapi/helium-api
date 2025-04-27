@@ -1,6 +1,6 @@
 ---
-id: big-int
-title: BigInt
+id: json
+title: JSON
 ---
 
 
@@ -39,12 +39,11 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
 
 
 
-Represents non-fractional signed whole numeric values. Since the value may
-exceed the size of a 32-bit integer, it's encoded as a string.
+Represents untyped JSON
 
 
 ```graphql
-scalar BigInt
+scalar JSON
 ```
 
 
@@ -56,5 +55,5 @@ scalar BigInt
 
 ### Member Of
 
-[`IotRewardShare`](/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`MobileRewardShare`](/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary" text="object"/><Bullet />[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
+[`RewardManifest`](/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary" text="object"/>
 

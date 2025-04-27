@@ -36,6 +36,11 @@ type IotRewardShare {
   hotspotKey: String
 
   """
+  The reward manifest associated with this reward share.
+  """
+  manifest: RewardManifest
+
+  """
   The type of reward.
   """
   rewardType: String
@@ -90,6 +95,11 @@ type IotRewardShareEdge {
   """
   node: IotRewardShare
 }
+
+"""
+Represents untyped JSON
+"""
+scalar JSON
 
 type MobileRewardShare {
   """
@@ -166,6 +176,11 @@ type MobileRewardShare {
   The location trust score multiplier.
   """
   locationTrustScoreMultiplier: Float
+
+  """
+  The reward manifest associated with this reward share.
+  """
+  manifest: RewardManifest
 
   """
   The matched amount.
@@ -410,4 +425,56 @@ type Query {
   Retrieves the status of the API.
   """
   status: String!
+}
+
+type RewardManifest {
+  """
+  The unique key used for deduplication.
+  """
+  deduplicationKey: String!
+
+  """
+  The end timestamp of the reward period.
+  """
+  endTimestamp: ISO8601DateTime
+
+  """
+  The epoch number.
+  """
+  epoch: BigInt
+
+  """
+  The category of the file.
+  """
+  fileCategory: String!
+
+  """
+  The name of the file.
+  """
+  fileName: String!
+
+  """
+  The unique identifier of the reward manifest.
+  """
+  id: ID!
+
+  """
+  The price value.
+  """
+  price: BigInt
+
+  """
+  The reward data in JSON format.
+  """
+  rewardData: JSON
+
+  """
+  The start timestamp of the reward period.
+  """
+  startTimestamp: ISO8601DateTime
+
+  """
+  Array of written files associated with the reward manifest.
+  """
+  writtenFiles: [String!]
 }
