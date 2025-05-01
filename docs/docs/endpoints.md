@@ -1,13 +1,11 @@
 ---
 sidebar_position: 4
-title: Persisted Queries
+title: Endpoints
 ---
 
-# Persisted Queries
+# Endpoints
 
-This document outlines the available persisted queries in the Helium API.
-
-Persisted queries are pre-defined GraphQL queries that can be executed by their ID, providing a more efficient and user-friendly way to query the API.
+GraphQL Endpoints, also know as persisted queries are pre-defined GraphQL queries that can be executed by their ID, providing a more efficient and user-friendly way to query the API.
 
 ## Usage
 
