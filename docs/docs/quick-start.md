@@ -9,6 +9,7 @@ This guide will help you understand how to use our GraphQL API, even if you're n
 
 :::info
 This is a technical guide on how to query Relay API using GraphQL clients. If you're looking for no-code integrations, [learn more here](./no-code-integration).
+:::
 
 ## Making Your First Query
 
