@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: GraphQL Recipes
+title: Query Examples
 ---
 
 # GraphQL Recipes
