@@ -1,11 +1,13 @@
 ---
 sidebar_position: 4
-title: Persisted Queries
+title: Endpoints
 ---
 
-# Persisted Queries
+# Endpoints
 
-This document outlines the available persisted queries in the Helium API.
+With GraphQL, you can call stable URL to return a predefined data pattern, known as persistent queries. This concept is the same concept as the REST API has endpoints.
+
+This document outlines the available persisted queries in the Relay Helium API.
 
 Persisted queries are pre-defined GraphQL queries that can be executed by their ID, providing a more efficient and user-friendly way to query the API.
 
