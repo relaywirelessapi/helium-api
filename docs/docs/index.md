@@ -6,18 +6,41 @@ title: Introduction
 
 # Introduction
 
-Welcome to the Helium API documentation! This guide will help you understand our API, its capabilities, and how to integrate it into your applications.
+Relay API is an easy-to-use, open-source GraphQL API for [Helium Oracle data](https://docs.helium.com/oracles/). It enables you to fetch data from Helium Oracles within seconds, eliminating the complexity of extracting data from AWS S3 buckets.
 
-## Overview
+:::caution Relay API is currently in beta.
+During this phase, you may encounter some issues, bugs, or imperfections. We welcome your feedback in our official Helium Discord channel.
+:::
 
-The Helium API provides access to IoT, Mobile, and HNT data from the Helium Network. Through our GraphQL API, you can:
+## Use Cases
 
-- Sync hotspot rewards including HNT, IOT, MOBILE
-- Access IoT beacon and witness ingest reports
-- Retrieve IoT and Mobile reward shares
-- Monitor hotspot network status
-- Query Helium historical data
-- And get any data provided by Helium Oracles
+During the Beta phase, Relay API primarily provides access to Helium Network hotspot data, including `earnings` (HNT, IOT, and MOBILE) and hotspot `activity`. With Relay API, you can:
+
+- Sync hotspot rewards including HNT, IOT, MOBILE [See how](./persisted-queries)
+- Retrieve IoT and Mobile individual reward shares [See how](./persisted-queries)
+- Access IoT hotspot activity including beacon and witness ingest reports [See how](./persisted-queries)
+- Monitor hotspot network status [See how](./persisted-queries)
+- Query Helium historical earnings data [See how](./persisted-queries)
+
+:::info
+The Relay team is actively expanding the API's capabilities. For more information about our development roadmap, [visit our website](https://relaywireless.com).
+:::
+
+## About GraphQL
+
+Relay API is built on GraphQL — the modern standard for flexible, high-performance APIs. It combines GraphQL's power with familiar REST-style endpoints, allowing both developers and non-technical users to retrieve exactly the data they need, efficiently and simply.
+
+Couple of key advantages of the GraphQL:
+1. **Flexibility**: GraphQL allows you to request exactly the data you need, nothing more and nothing less.
+2. **Strong Typing**: The schema provides clear contracts about available data and operations.
+3. **Efficient Data Loading**: Reduce over-fetching and under-fetching of data common in REST APIs.
+4. **Developer Experience**: Better tooling, introspection, and documentation capabilities.
+
+GraphQL travels the same HTTP routes as REST, but gives you far more control. Using endpoints (persistent queries) — pre-defined calls you invoke by ID — you keep the convenience of familiar endpoints while gaining GraphQL’s precision and efficiency in a single request.
+
+Learn more about [GraphQL](https://graphql.org/learn/).
+
+Learn more about [Relay Endpoints](./persisted-queries).
 
 ## Open Source
 
@@ -27,24 +50,10 @@ Relay API is open-source. The backend code will be published under the Relay Git
 
 Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community—removing the need to interact directly with AWS S3 and its complexities.
 
-## Why GraphQL?
-
-We chose GraphQL for our API for several key reasons:
-
-1. **Flexibility**: GraphQL allows you to request exactly the data you need, nothing more and nothing less.
-2. **Strong Typing**: The schema provides clear contracts about available data and operations.
-3. **Efficient Data Loading**: Reduce over-fetching and under-fetching of data common in REST APIs.
-4. **Developer Experience**: Better tooling, introspection, and documentation capabilities.
-
-## Getting Started
-
-1. **API Endpoint**: The API is accessible at `https://api.relaywireless.com/graphql`
-2. **Authentication**: All requests require an API key, passed via the `Authorization: Bearer <API_KEY>` header
-
 ## Support
 
 If you need help or have questions about the API:
 
 1. Check our documentation for guides and examples
-2. Explore the GraphQL schema using introspection
-3. Contact support if you need additional assistance
+2. Explore the GraphQL schema using introspection [(learn more here)](./basics#tools-and-resources)
+3. Chat with our team and community in our official Discord channel
