@@ -52,10 +52,10 @@ module Relay
 
       sig { params(start_period: Time, end_period: Time, hotspot_key: T.nilable(String), reward_type: T.nilable(String)).returns(ActiveRecord::Relation) }
       def iot_reward_shares(start_period:, end_period:, hotspot_key: nil, reward_type: nil)
-        query = Helium::L2::IotRewardShare.where("start_period >= ?", start_period).where("end_period <= ?", end_period)
+        query = Helium::L2::IotRewardShare.where("end_period >= ?", start_period).where("end_period <= ?", end_period)
         query = query.where(hotspot_key: hotspot_key) if hotspot_key.present?
         query = query.where(reward_type: reward_type) if reward_type.present?
-        query.order(start_period: :asc)
+        query.order(end_period: :asc)
       end
 
       field :mobile_reward_shares, Helium::L2::Types::MobileRewardShareType.connection_type, null: false, description: "Retrieves a list of MOBILE reward shares within a specified time period." do
@@ -67,10 +67,10 @@ module Relay
 
       sig { params(start_period: Time, end_period: Time, hotspot_key: T.nilable(String), reward_type: T.nilable(String)).returns(ActiveRecord::Relation) }
       def mobile_reward_shares(start_period:, end_period:, hotspot_key: nil, reward_type: nil)
-        query = Helium::L2::MobileRewardShare.where("start_period >= ?", start_period).where("end_period <= ?", end_period)
+        query = Helium::L2::MobileRewardShare.where("end_period >= ?", start_period).where("end_period <= ?", end_period)
         query = query.where(hotspot_key: hotspot_key) if hotspot_key.present?
         query = query.where(reward_type: reward_type) if reward_type.present?
-        query.order(start_period: :asc)
+        query.order(end_period: :asc)
       end
 
       field :reward_manifests, Helium::L2::Types::RewardManifestType.connection_type, null: false, description: "Retrieves a list of reward manifests within a specified time period." do
