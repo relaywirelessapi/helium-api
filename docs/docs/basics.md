@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: GraphQL Basics
+title: Basics
 ---
 
 # Getting Started with GraphQL
