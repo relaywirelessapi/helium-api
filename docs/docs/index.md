@@ -16,11 +16,11 @@ During this phase, you may encounter some issues, bugs, or imperfections. We wel
 
 During the Beta phase, Relay API primarily provides access to Helium Network hotspot data, including `earnings` (HNT, IOT, and MOBILE) and hotspot `activity`. With Relay API, you can:
 
-- Sync hotspot rewards including HNT, IOT, MOBILE [See how](./persisted-queries)
-- Retrieve IoT and Mobile individual reward shares [See how](./persisted-queries)
-- Access IoT hotspot activity including beacon and witness ingest reports [See how](./persisted-queries)
-- Monitor hotspot network status [See how](./persisted-queries)
-- Query Helium historical earnings data [See how](./persisted-queries)
+- Sync hotspot rewards including HNT, IOT, MOBILE [See how](./endpoints)
+- Retrieve IoT and Mobile individual reward shares [See how](./endpoints)
+- Access IoT hotspot activity including beacon and witness ingest reports [See how](./endpoints)
+- Monitor hotspot network status [See how](./endpoints)
+- Query Helium historical earnings data [See how](./endpoints)
 
 :::info
 The Relay team is actively expanding the API's capabilities. For more information about our development roadmap, [visit our website](https://relaywireless.com).
@@ -40,7 +40,7 @@ GraphQL travels the same HTTP routes as REST, but gives you far more control. Us
 
 Learn more about [GraphQL](https://graphql.org/learn/).
 
-Learn more about [Relay Endpoints](./persisted-queries).
+Learn more about [Relay Endpoints](./endpoints).
 
 ## Open Source
 
@@ -55,5 +55,5 @@ Relay API was built in partnership with the Helium Foundation. The Foundation aw
 If you need help or have questions about the API:
 
 1. Check our documentation for guides and examples
-2. Explore the GraphQL schema using introspection [(learn more here)](./basics#tools-and-resources)
+2. Explore the GraphQL schema using introspection [(learn more here)](./quick-start#tools-and-resources)
 3. Chat with our team and community in our official Discord channel
