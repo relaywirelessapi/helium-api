@@ -18,8 +18,6 @@ During the Beta phase, Relay API primarily provides access to Helium Network hot
 
 - Sync hotspot rewards including HNT, IOT, MOBILE
 - Retrieve IoT and Mobile individual reward shares
-- Access IoT hotspot activity including beacon and witness ingest reports
-- Monitor hotspot network status
 - Query Helium historical earnings data
 
 :::info
@@ -31,6 +29,7 @@ The Relay team is actively expanding the API's capabilities. For more informatio
 Relay API is built on GraphQL — the modern standard for flexible, high-performance APIs. It combines GraphQL's power with familiar REST-style endpoints, allowing both developers and non-technical users to retrieve exactly the data they need, efficiently and simply.
 
 Couple of key advantages of the GraphQL:
+
 1. **Flexibility**: GraphQL allows you to request exactly the data you need, nothing more and nothing less.
 2. **Strong Typing**: The schema provides clear contracts about available data and operations.
 3. **Efficient Data Loading**: Reduce over-fetching and under-fetching of data common in REST APIs.

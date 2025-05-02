@@ -53,6 +53,14 @@ const config: Config = {
       defaultMode: "light",
       respectPrefersColorScheme: true,
     },
+    algolia: {
+      appId: "494RXN3JUG",
+      apiKey: "9fdb002caa4cbd417dcfc31c0ea66b36",
+      indexName: "relaywireless",
+      contextualSearch: true,
+      searchPagePath: "search",
+      insights: true,
+    },
   } satisfies Preset.ThemeConfig,
 
   plugins: [

@@ -7,53 +7,6 @@ title: Query Examples
 
 Common query examples and patterns for getting specific data from the Relay API.
 
-## IoT Data
-
-### Get IoT Beacon Ingest Reports
-
-```graphql
-query {
-  iotBeaconIngestReports(first: 10) {
-    edges {
-      node {
-        hotspotKey
-        data
-        dataRate
-        frequency
-        receivedAt
-        reportedAt
-        signature
-        tmst
-        txPower
-      }
-    }
-  }
-}
-```
-
-### Get IoT Witness Ingest Reports
-
-```graphql
-query {
-  iotWitnessIngestReports(first: 10) {
-    edges {
-      node {
-        hotspotKey
-        data
-        dataRate
-        frequency
-        receivedAt
-        reportedAt
-        signal
-        signature
-        snr
-        tmst
-      }
-    }
-  }
-}
-```
-
 ## Reward Data
 
 ### Get IoT Reward Shares

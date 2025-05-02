@@ -22,33 +22,7 @@ To use "Custom Request" in "Webhooks by Zapier", make sure you set it as **actio
 
 ### Common Zapier Examples
 
-#### 1. Monitor IoT Activity Reports
-
-**Trigger**: Schedule (Every hour)
-**Action**: Webhook to fetch recent beacon reports
-
-Configuration:
-
-```
-URL: https://api.relaywireless.com/graphql
-Method: POST
-Headers:
-  - Content-Type: application/json
-  - Authorization: Bearer YOUR_API_KEY
-Body:
-{
-  "query": "{ iotBeaconIngestReports(first: 10, after: null) { nodes { hotspotKey receivedAt frequency dataRate } pageInfo { hasNextPage endCursor } } }"
-}
-```
-
-For handling large datasets, use Zapier's "Do While" loop:
-
-1. Set up a "Do While" loop after your webhook
-2. Check `data.iotBeaconIngestReports.pageInfo.hasNextPage`
-3. Update the cursor using `data.iotBeaconIngestReports.pageInfo.endCursor`
-4. Store accumulated results in Zapier Storage or external database
-
-#### 2. Track IoT Rewards
+#### 1. Track IoT Rewards
 
 **Trigger**: Schedule (Daily)
 **Action**: Webhook to fetch rewards with pagination
@@ -88,24 +62,6 @@ Body:
    - Body: Your GraphQL query
 
 ### Example Scenarios
-
-#### Monitor Multiple IoT Witnesses
-
-1. **Schedule Trigger** (Every 6 hours)
-2. **HTTP Request** (GraphQL query for witness reports):
-
-```json
-{
-  "query": "{ iotWitnessIngestReports(first: 20, after: null) { nodes { hotspotKey receivedAt signal snr } pageInfo { hasNextPage endCursor } } }"
-}
-```
-
-3. **Iterator** module to handle pagination:
-   - Add a Router after the HTTP Request
-   - In one route, process current page data
-   - In another route, make next HTTP request with `endCursor`
-4. **Array Aggregator** to collect results
-5. **Google Sheets** to log data
 
 #### Track Mobile Rewards
 
