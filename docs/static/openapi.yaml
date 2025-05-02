@@ -1,0 +1,551 @@
+openapi: 3.1.1
+info:
+  title: Helium API
+  description: |
+    The Helium API provides access to IOT and Mobile reward share information, as well as reward manifest data.
+
+    ## Resources
+
+    * https://docs.relaywireless.com
+  version: 1.0.0
+  contact:
+    name: Relay Wireless
+    url: https://relaywireless.com
+servers:
+  - url: https://api.relaywireless.com
+    description: Production API server
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key authentication
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          nullable: true
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              locations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line:
+                      type: integer
+                    column:
+                      type: integer
+              path:
+                type: array
+                items:
+                  type: string
+    IotRewardSharesResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            iotRewardShares:
+              type: object
+              properties:
+                nodes:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/IotRewardShare"
+                pageInfo:
+                  $ref: "#/components/schemas/PageInfo"
+    MobileRewardSharesResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            mobileRewardShares:
+              type: object
+              properties:
+                nodes:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/MobileRewardShare"
+                pageInfo:
+                  $ref: "#/components/schemas/PageInfo"
+    RewardManifestsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            rewardManifests:
+              type: object
+              properties:
+                nodes:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/RewardManifest"
+                pageInfo:
+                  $ref: "#/components/schemas/PageInfo"
+    IotRewardShare:
+      type: object
+      properties:
+        id:
+          type: string
+        rewardType:
+          type: string
+        startPeriod:
+          type: string
+          format: date-time
+        endPeriod:
+          type: string
+          format: date-time
+        manifest:
+          $ref: "#/components/schemas/Manifest"
+        rewardDetail:
+          type: object
+          properties:
+            hotspotKey:
+              type: string
+            beaconAmount:
+              type: string
+            witnessAmount:
+              type: string
+            dcTransferAmount:
+              type: string
+            formattedBeaconAmount:
+              type: string
+            formattedWitnessAmount:
+              type: string
+            formattedDcTransferAmount:
+              type: string
+            amount:
+              type: string
+            formattedAmount:
+              type: string
+            unallocatedRewardType:
+              type: string
+    MobileRewardShare:
+      type: object
+      properties:
+        id:
+          type: string
+        rewardType:
+          type: string
+        startPeriod:
+          type: string
+          format: date-time
+        endPeriod:
+          type: string
+          format: date-time
+        manifest:
+          $ref: "#/components/schemas/Manifest"
+        rewardDetail:
+          type: object
+          properties:
+            hotspotKey:
+              type: string
+            cbsdId:
+              type: string
+            baseCoveragePointsSum:
+              type: number
+            boostedCoveragePointsSum:
+              type: number
+            baseRewardShares:
+              type: number
+            boostedRewardShares:
+              type: number
+            basePocReward:
+              type: string
+            boostedPocReward:
+              type: string
+            seniorityTimestamp:
+              type: string
+              format: date-time
+            coverageObject:
+              type: string
+            locationTrustScoreMultiplier:
+              type: number
+            speedtestMultiplier:
+              type: number
+            spBoostedHexStatus:
+              type: string
+            oracleBoostedHexStatus:
+              type: string
+            dcTransferReward:
+              type: string
+            formattedDcTransferReward:
+              type: string
+            pocReward:
+              type: string
+            formattedPocReward:
+              type: string
+            entity:
+              type: string
+            matchedAmount:
+              type: string
+            serviceProviderAmount:
+              type: string
+            serviceProviderId:
+              type: string
+            amount:
+              type: string
+            formattedAmount:
+              type: string
+            subscriberId:
+              type: string
+            discoveryLocationAmount:
+              type: string
+            formattedDiscoveryLocationAmount:
+              type: string
+            formattedSubscriberReward:
+              type: string
+            unallocatedRewardType:
+              type: string
+    RewardManifest:
+      type: object
+      properties:
+        id:
+          type: string
+        writtenFiles:
+          type: array
+          items:
+            type: string
+        startTimestamp:
+          type: string
+          format: date-time
+        endTimestamp:
+          type: string
+          format: date-time
+        rewardData:
+          type: object
+          properties:
+            rewardType:
+              type: string
+            pocBonesPerBeaconRewardShare:
+              type: string
+            pocBonesPerWitnessRewardShare:
+              type: string
+            dcBonesPerShare:
+              type: string
+            pocBonesPerRewardShare:
+              type: string
+            boostedPocBonesPerRewardShare:
+              type: string
+            serviceProviderPromotions:
+              type: array
+              items:
+                $ref: "#/components/schemas/ServiceProviderPromotion"
+            token:
+              type: string
+        epoch:
+          type: integer
+        price:
+          type: string
+    Manifest:
+      type: object
+      properties:
+        id:
+          type: string
+        writtenFiles:
+          type: array
+          items:
+            type: string
+        startTimestamp:
+          type: string
+          format: date-time
+        endTimestamp:
+          type: string
+          format: date-time
+        rewardData:
+          type: object
+          properties:
+            rewardType:
+              type: string
+            pocBonesPerBeaconRewardShare:
+              type: string
+            pocBonesPerWitnessRewardShare:
+              type: string
+            dcBonesPerShare:
+              type: string
+            pocBonesPerRewardShare:
+              type: string
+            boostedPocBonesPerRewardShare:
+              type: string
+            serviceProviderPromotions:
+              type: array
+              items:
+                $ref: "#/components/schemas/ServiceProviderPromotion"
+            token:
+              type: string
+        epoch:
+          type: integer
+        price:
+          type: string
+    ServiceProviderPromotion:
+      type: object
+      properties:
+        serviceProvider:
+          type: string
+        incentiveEscrowFundBps:
+          type: string
+        promotions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Promotion"
+    Promotion:
+      type: object
+      properties:
+        entity:
+          type: string
+        startTs:
+          type: string
+          format: date-time
+        endTs:
+          type: string
+          format: date-time
+        shares:
+          type: string
+    PageInfo:
+      type: object
+      properties:
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+        startCursor:
+          type: string
+        endCursor:
+          type: string
+paths:
+  "/graphql/iot-reward-shares":
+    get:
+      tags:
+        - Rewards
+      summary: Get IOT reward shares
+      description: Retrieves IOT reward share information for a given time period and hotspot
+      operationId: getIotRewardShares
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: startPeriod
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Start of the time period
+        - name: endPeriod
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: End of the time period
+        - name: hotspotKey
+          in: query
+          schema:
+            type: string
+          description: Optional hotspot identifier (ECC Key)
+        - name: rewardType
+          in: query
+          schema:
+            type: string
+          description: Optional reward type filter
+        - name: first
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return (for pagination)
+        - name: last
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return from the end (for pagination)
+        - name: after
+          in: query
+          schema:
+            type: string
+          description: Cursor for forward pagination
+        - name: before
+          in: query
+          schema:
+            type: string
+          description: Cursor for backward pagination
+      responses:
+        "200":
+          description: Successful response
+          headers:
+            X-RateLimit-Remaining:
+              description: Number of requests remaining in the current rate limit window
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IotRewardSharesResponse"
+        "401":
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Too Many Requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/graphql/mobile-reward-shares":
+    get:
+      tags:
+        - Rewards
+      summary: Get Mobile reward shares
+      description: Retrieves Mobile reward share information for a given time period and hotspot
+      operationId: getMobileRewardShares
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: startPeriod
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Start of the time period
+        - name: endPeriod
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: End of the time period
+        - name: hotspotKey
+          in: query
+          schema:
+            type: string
+          description: Optional hotspot identifier
+        - name: rewardType
+          in: query
+          schema:
+            type: string
+          description: Optional reward type filter
+        - name: first
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return (for pagination)
+        - name: last
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return from the end (for pagination)
+        - name: after
+          in: query
+          schema:
+            type: string
+          description: Cursor for forward pagination
+        - name: before
+          in: query
+          schema:
+            type: string
+          description: Cursor for backward pagination
+      responses:
+        "200":
+          description: Successful response
+          headers:
+            X-RateLimit-Remaining:
+              description: Number of requests remaining in the current rate limit window
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MobileRewardSharesResponse"
+        "401":
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Too Many Requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/graphql/reward-manifests":
+    get:
+      tags:
+        - Rewards
+      summary: Get reward manifests
+      description: Retrieves reward manifest information for a given time period
+      operationId: getRewardManifests
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: startTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Start of the time period
+        - name: endTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: End of the time period
+        - name: first
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return (for pagination)
+        - name: last
+          in: query
+          schema:
+            type: integer
+          description: Number of results to return from the end (for pagination)
+        - name: after
+          in: query
+          schema:
+            type: string
+          description: Cursor for forward pagination
+        - name: before
+          in: query
+          schema:
+            type: string
+          description: Cursor for backward pagination
+      responses:
+        "200":
+          description: Successful response
+          headers:
+            X-RateLimit-Remaining:
+              description: Number of requests remaining in the current rate limit window
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RewardManifestsResponse"
+        "401":
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Too Many Requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"

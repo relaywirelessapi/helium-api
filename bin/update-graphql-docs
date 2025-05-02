@@ -9,7 +9,7 @@ mkdir -p docs/graphql
 mv api/schema.graphql docs/graphql/schema.graphql
 
 echo "Generating GraphQL documentation..."
-rm -rf docs/docs/schema/operations docs/docs/schema/types
+rm -rf docs/docs/graphql/schema/operations docs/docs/graphql/schema/types
 docker-compose run --rm --no-deps docs npm run docusaurus graphql-to-doc
 
 echo "GraphQL schema updated successfully!"
