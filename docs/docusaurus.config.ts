@@ -40,6 +40,18 @@ const config: Config = {
         alt: "Relay API Logo",
         src: "img/logo.svg",
       },
+      items: [
+        {
+          to: "/graphql",
+          label: "GraphQL API",
+          position: "left",
+        },
+        {
+          to: "/rest",
+          label: "REST API",
+          position: "left",
+        },
+      ],
     },
     footer: {
       style: "dark",
@@ -71,8 +83,8 @@ const config: Config = {
       {
         schema: "./graphql/schema.graphql",
         homepage: "./graphql/index.md",
-        rootPath: "./docs/graphql",
-        baseURL: "schema",
+        rootPath: "./docs",
+        baseURL: "graphql/schema",
         loaders: {
           GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
         },
@@ -85,6 +97,7 @@ const config: Config = {
         route: "/rest",
         showNavLink: false,
         configuration: {
+          hideSearch: true,
           url: "/openapi.yaml",
         },
       } as ScalarOptions,

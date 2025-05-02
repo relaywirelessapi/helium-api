@@ -1,0 +1,76 @@
+---
+id: service-provider-promotion
+title: ServiceProviderPromotion
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+No description
+
+
+```graphql
+type ServiceProviderPromotion {
+  incentiveEscrowFundBps: BigInt!
+  promotions: [ServiceProviderPromotionDetail!]!
+  serviceProvider: String!
+}
+```
+
+
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>incentiveEscrowFundBps</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/graphql/schema/types/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> 
+The incentive escrow fund basis points.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>promotions</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[ServiceProviderPromotionDetail!]!</b></code>](/graphql/schema/types/objects/service-provider-promotion-detail.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> 
+Details of the promotions.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceProviderPromotion.<b>serviceProvider</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/graphql/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> 
+The service provider.
+
+
+
+
+
+
+### Member Of
+
+[`RewardManifestMobileData`](/graphql/schema/types/objects/reward-manifest-mobile-data.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/>

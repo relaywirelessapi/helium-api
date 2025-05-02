@@ -1,0 +1,60 @@
+---
+id: iso8601-date-time
+title: ISO8601DateTime
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+An ISO 8601-encoded datetime
+
+
+```graphql
+scalar ISO8601DateTime
+```
+
+
+
+
+### <SpecifiedBy url="https://tools.ietf.org/html/rfc3339"/>
+
+
+
+
+
+### Member Of
+
+[`IotRewardShare`](/graphql/schema/types/objects/iot-reward-share.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`iotRewardShares`](/graphql/schema/operations/queries/iot-reward-shares.mdx)  <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`MobileRadioRewardV2Share`](/graphql/schema/types/objects/mobile-radio-reward-v2-share.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`MobileRewardShare`](/graphql/schema/types/objects/mobile-reward-share.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`mobileRewardShares`](/graphql/schema/operations/queries/mobile-reward-shares.mdx)  <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`RewardManifest`](/graphql/schema/types/objects/reward-manifest.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`rewardManifests`](/graphql/schema/operations/queries/reward-manifests.mdx)  <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`ServiceProviderPromotionDetail`](/graphql/schema/types/objects/service-provider-promotion-detail.mdx)  <Badge class="badge badge--secondary badge--relation" text="object"/>

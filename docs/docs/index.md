@@ -1,6 +1,4 @@
 ---
-sidebar_position: 1
-slug: /
 title: Introduction
 ---
 
@@ -35,11 +33,11 @@ Couple of key advantages of the GraphQL:
 3. **Efficient Data Loading**: Reduce over-fetching and under-fetching of data common in REST APIs.
 4. **Developer Experience**: Better tooling, introspection, and documentation capabilities.
 
-GraphQL travels the same HTTP routes as REST, but gives you far more control. Using endpoints (persistent queries), you keep the convenience of familiar endpoints while gaining GraphQL’s precision and efficiency in a single request.
+GraphQL travels the same HTTP routes as REST, but gives you far more control. Using endpoints (persistent queries), you keep the convenience of familiar endpoints while gaining GraphQL's precision and efficiency in a single request.
 
 Learn more about [GraphQL](https://graphql.org/learn/).
 
-Learn more about [Relay Endpoints](./endpoints).
+Learn more about [Relay's REST API](/rest).
 
 ## Open Source
 

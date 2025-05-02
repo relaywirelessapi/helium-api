@@ -1,0 +1,98 @@
+---
+id: iot-reward-shares
+title: iotRewardShares
+---
+
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle:'none' }}
+      >
+      {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+
+
+
+
+
+
+
+Retrieves a list of IoT reward shares within a specified time period.
+
+
+```graphql
+iotRewardShares(
+  after: String
+  before: String
+  endPeriod: ISO8601DateTime!
+  first: Int
+  hotspotKey: String
+  last: Int
+  rewardType: String
+  startPeriod: ISO8601DateTime!
+): IotRewardShareConnection!
+```
+
+
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>after</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/graphql/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>before</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/graphql/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>endPeriod</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>ISO8601DateTime!</b></code>](/graphql/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> 
+End of the time period to fetch reward shares for
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/graphql/schema/types/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Returns the first _n_ elements from the list.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>hotspotKey</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/graphql/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Hotspot key to filter by
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>last</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/graphql/schema/types/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Returns the last _n_ elements from the list.
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>rewardType</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/graphql/schema/types/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> 
+Reward type to filter by
+
+
+#### [<code style={{ fontWeight: 'normal' }}>iotRewardShares.<b>startPeriod</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>ISO8601DateTime!</b></code>](/graphql/schema/types/scalars/iso8601-date-time.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> 
+Start of the time period to fetch reward shares for
+
+
+### Type
+
+#### [<code style={{ fontWeight: 'normal' }}><b>IotRewardShareConnection</b></code>](/graphql/schema/types/objects/iot-reward-share-connection.mdx) <Badge class="badge badge--secondary " text="object"/> 
+The connection type for IotRewardShare.
