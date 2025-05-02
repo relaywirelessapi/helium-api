@@ -16,11 +16,11 @@ During this phase, you may encounter some issues, bugs, or imperfections. We wel
 
 During the Beta phase, Relay API primarily provides access to Helium Network hotspot data, including `earnings` (HNT, IOT, and MOBILE) and hotspot `activity`. With Relay API, you can:
 
-- Sync hotspot rewards including HNT, IOT, MOBILE [See how](./endpoints)
-- Retrieve IoT and Mobile individual reward shares [See how](./endpoints)
-- Access IoT hotspot activity including beacon and witness ingest reports [See how](./endpoints)
-- Monitor hotspot network status [See how](./endpoints)
-- Query Helium historical earnings data [See how](./endpoints)
+- Sync hotspot rewards including HNT, IOT, MOBILE
+- Retrieve IoT and Mobile individual reward shares
+- Access IoT hotspot activity including beacon and witness ingest reports
+- Monitor hotspot network status
+- Query Helium historical earnings data
 
 :::info
 The Relay team is actively expanding the API's capabilities. For more information about our development roadmap, [visit our website](https://relaywireless.com).
