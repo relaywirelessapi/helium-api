@@ -9,7 +9,7 @@ title: Introduction
 Relay API is an easy-to-use, open-source GraphQL API for [Helium Oracle data](https://docs.helium.com/oracles/). It enables you to fetch data from Helium Oracles within seconds, eliminating the complexity of extracting data from AWS S3 buckets.
 
 :::caution Relay API is currently in beta
-During this phase, you may encounter some issues, bugs, or imperfections. We welcome your feedback in our official Helium Discord channel(link TBD).
+During this phase, you may encounter some issues, bugs, or imperfections. We welcome your feedback in our official Helium Discord channel (link TBD).
 :::
 
 ## Use Cases
@@ -48,12 +48,6 @@ Relay API is open-source. The backend code will be published under the [Relay Gi
 
 ### Sponsored by Helium Foundation
 
-Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community—removing the need to interact directly with AWS S3 and its complexities.
+Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community — removing the need to interact directly with AWS S3 and its complexities.
 
-## Support
-
-If you need help or have questions about the API:
-
-1. Check our documentation for guides and examples
-2. Explore the GraphQL schema using introspection [(learn more here)](./quick-start#tools-and-resources)
-3. Chat with our team and community in our official Discord channel
+Read the announcement (link TBD).
