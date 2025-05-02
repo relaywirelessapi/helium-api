@@ -61,11 +61,3 @@ Total cost for this query: 55 credits
 
 - 15 credits for `iotBeaconIngestReports` connection (3 children × 5 items)
 - 40 credits for `mobileRewardShares` connection (4 children × 10 items)
-
-## Need Help?
-
-Contact our support team for:
-
-- Optimization advice
-- Custom pricing plans
-- Technical assistance
