@@ -44,7 +44,7 @@ Learn more about [Relay Endpoints](./endpoints).
 
 ## Open Source
 
-Relay API is open-source. The backend code will be published under the Relay GitHub organization and made publicly accessible for review, feedback, contributions, and independent development. The API will be open-sourced after the Beta phase, at the time of the public launch.
+Relay API is open-source. The backend code will be published under the [Relay GitHub organization](https://github.com/relaywireless) and made publicly accessible for review, feedback, contributions, and independent development. The API will be open-sourced after the Beta phase, at the time of the public launch.
 
 ### Sponsored by Helium Foundation
 
