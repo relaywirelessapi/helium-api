@@ -1,23 +1,25 @@
 ---
 sidebar_position: 4
-title: Persisted Queries
+title: Endpoints
 ---
 
-# Persisted Queries
+# Endpoints
 
-This document outlines the available persisted queries in the Helium API.
-
-Persisted queries are pre-defined GraphQL queries that can be executed by their ID, providing a more efficient and user-friendly way to query the API.
+GraphQL endpoints, also know as persisted queries are pre-defined GraphQL queries that can be executed by their ID, providing a more efficient and user-friendly way to query the API.
 
 ## Usage
 
-To use a persisted query, make a GET request to the API in the following format:
+To use a persisted query, make a `GET` request to the API in the following format:
 
 ```
-GET /graphql/[QUERY_ID]
+GET https://api.relaywireless.com/graphql/[QUERY_ID]
 ```
 
 All parameters should be provided as query parameters in the request URL.
+
+:::tip Pro Tip
+You can easily fetch Helium Oracle data using Relay API and no-code platforms like Zapier. Learn more in the [No-code Integrations guide](./no-code-integration)
+:::
 
 ## Available Queries
 
@@ -33,7 +35,7 @@ This query retrieves IOT reward share information for a given time period and ho
 | ------------- | --------------- | -------- | ---------------------------------------- |
 | `startPeriod` | ISO8601DateTime | Yes      | Start of the time period                 |
 | `endPeriod`   | ISO8601DateTime | Yes      | End of the time period                   |
-| `hotspotKey`  | String          | No       | Optional hotspot identifier              |
+| `hotspotKey`  | String          | No       | Optional hotspot identifier (ECC Key)    |
 | `rewardType`  | String          | No       | Optional reward type filter              |
 | `first`       | Int             | No       | Number of results to return              |
 | `last`        | Int             | No       | Number of results to return from the end |

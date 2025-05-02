@@ -6,45 +6,48 @@ title: Introduction
 
 # Introduction
 
-Welcome to the Helium API documentation! This guide will help you understand our API, its capabilities, and how to integrate it into your applications.
+Relay API is an easy-to-use, open-source GraphQL API for [Helium Oracle data](https://docs.helium.com/oracles/). It enables you to fetch data from Helium Oracles within seconds, eliminating the complexity of extracting data from AWS S3 buckets.
 
-## Overview
+:::caution Relay API is currently in beta
+During this phase, you may encounter some issues, bugs, or imperfections. We welcome your feedback in our official Helium Discord channel (link TBD).
+:::
 
-The Helium API provides access to IoT, Mobile, and HNT data from the Helium Network. Through our GraphQL API, you can:
+## Use Cases
+
+During the Beta phase, Relay API primarily provides access to Helium Network hotspot data, including `earnings` (HNT, IOT, and MOBILE) and hotspot `activity`. With Relay API, you can:
 
 - Sync hotspot rewards including HNT, IOT, MOBILE
-- Access IoT beacon and witness ingest reports
-- Retrieve IoT and Mobile reward shares
+- Retrieve IoT and Mobile individual reward shares
+- Access IoT hotspot activity including beacon and witness ingest reports
 - Monitor hotspot network status
-- Query Helium historical data
-- And get any data provided by Helium Oracles
+- Query Helium historical earnings data
 
-## Open Source
+:::info
+The Relay team is actively expanding the API's capabilities. For more information about our development roadmap, [visit our website](https://relaywireless.com).
+:::
 
-Relay API is open-source. The backend code will be published under the Relay GitHub organization and made publicly accessible for review, feedback, contributions, and independent development. The API will be open-sourced after the Beta phase, at the time of the public launch.
+## About GraphQL
 
-### Sponsored by Helium Foundation
+Relay API is built on GraphQL — the modern standard for flexible, high-performance APIs. It combines GraphQL's power with familiar REST-style endpoints, allowing both developers and non-technical users to retrieve exactly the data they need, efficiently and simply.
 
-Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community—removing the need to interact directly with AWS S3 and its complexities.
-
-## Why GraphQL?
-
-We chose GraphQL for our API for several key reasons:
-
+Couple of key advantages of the GraphQL:
 1. **Flexibility**: GraphQL allows you to request exactly the data you need, nothing more and nothing less.
 2. **Strong Typing**: The schema provides clear contracts about available data and operations.
 3. **Efficient Data Loading**: Reduce over-fetching and under-fetching of data common in REST APIs.
 4. **Developer Experience**: Better tooling, introspection, and documentation capabilities.
 
-## Getting Started
+GraphQL travels the same HTTP routes as REST, but gives you far more control. Using endpoints (persistent queries), you keep the convenience of familiar endpoints while gaining GraphQL’s precision and efficiency in a single request.
 
-1. **API Endpoint**: The API is accessible at `https://api.relaywireless.com/graphql`
-2. **Authentication**: All requests require an API key, passed via the `Authorization: Bearer <API_KEY>` header
+Learn more about [GraphQL](https://graphql.org/learn/).
 
-## Support
+Learn more about [Relay Endpoints](./endpoints).
 
-If you need help or have questions about the API:
+## Open Source
 
-1. Check our documentation for guides and examples
-2. Explore the GraphQL schema using introspection
-3. Contact support if you need additional assistance
+Relay API is open-source. The backend code will be published under the [Relay GitHub organization](https://github.com/relaywireless) and made publicly accessible for review, feedback, contributions, and independent development. The API will be open-sourced after the Beta phase, at the time of the public launch.
+
+### Sponsored by Helium Foundation
+
+Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community — removing the need to interact directly with AWS S3 and its complexities.
+
+Read the announcement (link TBD).

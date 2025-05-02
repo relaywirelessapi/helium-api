@@ -14,11 +14,15 @@ You don't need to be a developer to use the Helium API! This guide shows you how
 1. Sign up for a Zapier account at [zapier.com](https://zapier.com)
 2. Create a new Zap
 3. Search for "Webhooks by Zapier" as your trigger or action
-4. Select "Custom Request" as your action type
+4. Select "Custom Request" as your **action** type
 
-### Common Zapier Recipes
+:::caution
+To use "Custom Request" in "Webhooks by Zapier", make sure you set it as **action** and not trigger. Learn more about Webhooks by Zapier in [Zapier's official guide](https://zapier.com/apps/webhook/integrations)
+:::
 
-#### 1. Monitor IoT Beacon Reports
+### Common Zapier Examples
+
+#### 1. Monitor IoT Activity Reports
 
 **Trigger**: Schedule (Every hour)
 **Action**: Webhook to fetch recent beacon reports

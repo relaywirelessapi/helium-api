@@ -1,11 +1,11 @@
 ---
 sidebar_position: 3
-title: GraphQL Recipes
+title: Query Examples
 ---
 
 # GraphQL Recipes
 
-Common recipes and patterns for getting specific data from the Helium API.
+Common query examples and patterns for getting specific data from the Relay API.
 
 ## IoT Data
 

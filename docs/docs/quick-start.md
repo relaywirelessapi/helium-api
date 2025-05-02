@@ -1,11 +1,40 @@
 ---
 sidebar_position: 2
-title: Basics
+title: Quick Start
 ---
 
 # Getting Started with GraphQL
 
-This guide will help you understand how to use our GraphQL API, even if you're new to GraphQL.
+:::info
+This is a technical guide on how to query Relay API using GraphQL clients. If you're looking for no-code integrations, [learn more here](./no-code-integration).
+:::
+
+GraphQL queries are executed by making `POST` HTTP requests to the following endpoint:
+
+```javascript
+https://api.relaywireless.com/graphql
+```
+
+Each query starts with one of the objects listed in [GraphQL Schema](./schema), which serves as the entry point for all queries defined by the schema.
+
+GraphQL queries function similarly to a `GET` request in REST.
+
+## Basic Query Structure
+
+GraphQL queries follow this pattern:
+
+```graphql
+query {
+  resourceName {
+    field1
+    field2
+    nestedResource {
+      nestedField1
+      nestedField2
+    }
+  }
+}
+```
 
 ## Making Your First Query
 
@@ -45,6 +74,10 @@ client
   .then((result) => console.log(result));
 ```
 
+:::tip Pro Tip
+You don’t have to create your own GraphQL queries. You can also use Relay API's predefined endpoints (persistent queries) that allow you to call general endpoints directly without manually setting up a query. [Learn More About Endpoints](./endpoints)
+:::
+
 ## Authentication
 
 All requests need to include your API key in the Authorization header:
@@ -53,24 +86,24 @@ All requests need to include your API key in the Authorization header:
 Authorization: Bearer YOUR_API_KEY
 ```
 
-## Basic Query Structure
+## Available Queries
 
-GraphQL queries follow this pattern:
+The API provides the following main queries:
 
-```graphql
-query {
-  resourceName {
-    field1
-    field2
-    nestedResource {
-      nestedField1
-      nestedField2
-    }
-  }
-}
-```
+- `status`: Get the API status
+- `iotRewardShares`: Get IoT reward shares
+- `mobileRewardShares`: Get Mobile reward shares
+- `echo`: Echo a message (for testing)
 
-### Example Queries
+For detailed information about the available fields and types, refer to the [GraphQL Schema Documentation](./schema).
+
+## Rate Limiting
+
+- Monitor your rate limits in response headers
+- Use the `X-RateLimit-Remaining` header to track usage
+- Implement exponential backoff for retry logic
+
+## Example Queries
 
 1. **Get IoT Reward Shares**:
 
@@ -276,23 +309,6 @@ query {
      }
    }
    ```
-
-## Available Queries
-
-The API provides the following main queries:
-
-- `status`: Get the API status
-- `iotRewardShares`: Get IoT reward shares
-- `mobileRewardShares`: Get Mobile reward shares
-- `echo`: Echo a message (for testing)
-
-For detailed information about the available fields and types, refer to the [GraphQL Schema Documentation](./schema).
-
-## Rate Limiting
-
-- Monitor your rate limits in response headers
-- Use the `X-RateLimit-Remaining` header to track usage
-- Implement exponential backoff for retry logic
 
 ## Tools and Resources
 
