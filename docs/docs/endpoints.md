@@ -18,7 +18,7 @@ GET https://api.relaywireless.com/graphql/[QUERY_ID]
 All parameters should be provided as query parameters in the request URL.
 
 :::tip Pro Tip
-You can easily fetch Helium Oracle data using Relay API and no-code platforms like Zapier. Learn more in the [No-code Integrations guide](./no-code-integrations)
+You can easily fetch Helium Oracle data using Relay API and no-code platforms like Zapier. Learn more in the [No-code Integrations guide](./no-code-integration)
 :::
 
 ## Available Queries
