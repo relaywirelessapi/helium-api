@@ -165,7 +165,7 @@ resource "aws_ecs_task_definition" "sidekiq_low" {
     {
       name    = "${var.app_name}-sidekiq-low"
       image   = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
-      command = ["bundle", "exec", "sidekiq", "-q", "low", "-c", "15"]
+      command = ["bundle", "exec", "sidekiq", "-q", "low", "-c", "10"]
 
       environment = local.container_environment
 
