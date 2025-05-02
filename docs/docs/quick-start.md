@@ -74,6 +74,10 @@ client
   .then((result) => console.log(result));
 ```
 
+:::info Pro Tip
+You don’t have to create your own GraphQL queries. You can also use Relay API's predefined endpoints (persistent queries) that allow you to call general endpoints directly without manually setting up a query. [Learn More About Endpoints](./endpoints)
+:::
+
 ## Authentication
 
 All requests need to include your API key in the Authorization header:
