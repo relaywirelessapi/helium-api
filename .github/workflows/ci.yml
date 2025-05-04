@@ -108,6 +108,7 @@ jobs:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
       TF_VAR_posthog_api_key: ${{ secrets.TF_VAR_POSTHOG_API_KEY }}
       TF_VAR_sentry_dsn: ${{ secrets.TF_VAR_SENTRY_DSN }}
+      TF_VAR_sidekiq_pro_credentials: ${{ secrets.BUNDLE_GEMS__CONTRIBSYS__COM }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
