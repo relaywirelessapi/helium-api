@@ -28,6 +28,10 @@ RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v30.0
 # Set up application
 WORKDIR /app
 
+# Set Sidekiq Pro Bundler credentials
+ARG BUNDLE_GEMS__CONTRIBSYS__COM
+ENV BUNDLE_GEMS__CONTRIBSYS__COM=${BUNDLE_GEMS__CONTRIBSYS__COM}
+
 # Install gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --jobs "$(nproc)" --retry 3

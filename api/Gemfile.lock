@@ -1,4 +1,10 @@
 GEM
+  remote: https://gems.contribsys.com/
+  specs:
+    sidekiq-pro (8.0.1)
+      sidekiq (>= 8.0.0, < 9)
+
+GEM
   remote: https://rubygems.org/
   specs:
     actioncable (8.0.2)
@@ -503,7 +509,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
-  sidekiq
+  sidekiq-pro!
   simple_form
   sorbet
   sorbet-rails
