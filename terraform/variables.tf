@@ -73,3 +73,9 @@ variable "posthog_host" {
   type        = string
   default     = "https://us.i.posthog.com"
 }
+
+variable "sidekiq_pro_credentials" {
+  description = "Sidekiq Pro credentials"
+  type        = string
+  sensitive   = true
+}

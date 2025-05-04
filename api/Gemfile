@@ -13,7 +13,9 @@ gem "pg", "~> 1.1"
 gem "activerecord-import"
 
 # ActiveJob
-gem "sidekiq"
+source "https://gems.contribsys.com/" do
+  gem "sidekiq-pro"
+end
 gem "redis", group: :production
 gem "clockwork", require: false
 

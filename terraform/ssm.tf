@@ -101,6 +101,13 @@ resource "aws_ssm_parameter" "sidekiq_password" {
   value       = random_password.sidekiq_password.result
 }
 
+resource "aws_ssm_parameter" "sidekiq_pro_credentials" {
+  name        = "/${var.app_name}/${var.environment}/sidekiq_pro_credentials"
+  description = "Sidekiq Pro credentials"
+  type        = "SecureString"
+  value       = var.sidekiq_pro_credentials
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32

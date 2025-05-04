@@ -19,6 +19,10 @@ RUN apt-get update -qq && \
 # Set up application
 WORKDIR /app
 
+# Set Sidekiq Pro Bundler credentials
+ARG BUNDLE_GEMS__CONTRIBSYS__COM
+ENV BUNDLE_GEMS__CONTRIBSYS__COM=${BUNDLE_GEMS__CONTRIBSYS__COM}
+
 # Install gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local without 'development test' && \

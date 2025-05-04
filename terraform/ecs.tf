@@ -89,6 +89,10 @@ locals {
     {
       name  = "SIDEKIQ_PASSWORD"
       value = aws_ssm_parameter.sidekiq_password.value
+    },
+    {
+      name  = "BUNDLE_GEMS__CONTRIBSYS__COM"
+      value = aws_ssm_parameter.sidekiq_pro_credentials.value
     }
   ]
 }
