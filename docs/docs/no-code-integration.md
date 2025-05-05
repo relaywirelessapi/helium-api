@@ -4,7 +4,7 @@ title: No-Code Integrations
 
 # No-Code Integration
 
-You don't need to be a developer to use the Helium API! This guide shows you how to integrate with popular no-code tools.
+You don't need to be a developer to use the Relay Helium API! This guide will show you how to integrate with popular no-code tools.
 
 ## Zapier Integration
 
@@ -12,32 +12,32 @@ You don't need to be a developer to use the Helium API! This guide shows you how
 
 1. Sign up for a Zapier account at [zapier.com](https://zapier.com)
 2. Create a new Zap
-3. Search for "Webhooks by Zapier" as your trigger or action
+3. Search for "Webhooks by Zapier" as your trigger or action step
 4. Select "Custom Request" as your **action** type
 
 :::caution
-To use "Custom Request" in "Webhooks by Zapier", make sure you set it as **action** and not trigger. Learn more about Webhooks by Zapier in [Zapier's official guide](https://zapier.com/apps/webhook/integrations)
+To use "Custom Request" in "Webhooks by Zapier", make sure you set it as **action** and not a trigger. Learn more about Webhooks by Zapier in [Zapier's official guide](https://zapier.com/apps/webhook/integrations)
 :::
 
 ### Common Zapier Examples
 
-#### 1. Track IoT Rewards
+#### Track IoT Rewards
 
 **Trigger**: Schedule (Daily)
-**Action**: Webhook to fetch rewards with pagination
+**Action**: Webhook to fetch rewards
 
 Configuration:
 
 ```
-URL: https://api.relaywireless.com/graphql
-Method: POST
+URL: https://api.relaywireless.com/graphql/iot-reward-shares
+Method: GET
 Headers:
-  - Content-Type: application/json
   - Authorization: Bearer YOUR_API_KEY
-Body:
-{
-  "query": "{ iotRewardShares(first: 100, after: null) { nodes { amount hotspotKey startPeriod endPeriod } pageInfo { hasNextPage endCursor } } }"
-}
+  - Accept: application/json
+Params:
+  hotspotKey = {Hotspot ECC key}
+  startPeriod = {YYYY‑MM‑DD}
+  endPeriod = {YYYY‑MM‑DD}
 ```
 
 ### Zapier Tips
