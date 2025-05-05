@@ -60,3 +60,9 @@ Total cost for this query: 55 credits
 
 - 15 credits for `iotBeaconIngestReports` connection (3 children × 5 items)
 - 40 credits for `mobileRewardShares` connection (4 children × 10 items)
+
+## How do REST calls spend Data Credits?
+
+Our REST endpoints are simply friendly wrappers around pre-built GraphQL queries. When you hit a REST URL we run that query for you, so the call costs
+exactly the same number of Data Credits as if you had sent the GraphQL request yourself. Make the call once and check your dashboard to see how many
+credits it used.
