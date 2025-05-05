@@ -1,6 +1,6 @@
 # Rate Limiting
 
-Hey there! To keep our API running smoothly for everyone, we've implemented rate limiting. Here's what you need to know:
+To keep Relay API running smoothly for everyone in Beta, we've implemented rate limiting. Here's what you need to know:
 
 If you're using an API key, you get:
 
