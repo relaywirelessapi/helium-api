@@ -1,12 +1,12 @@
 openapi: 3.1.1
 info:
-  title: Helium API
+  title: Relay Helium REST API
   description: |
-    The Helium API provides access to IOT and Mobile reward share information, as well as reward manifest data.
+    The Relay Helium REST API offers an easy access to Helium Oracle reward data for IoT and Mobile hotspots, including reward manifests. This page outlines the core concepts, response formats, and data models.
 
-    ## Resources
 
-    * https://docs.relaywireless.com
+    > **Relay API is Currently in Beta**  
+    > During this phase, you may encounter some issues, bugs, or imperfections. We're actively working on improving the API and adding more features. Follow Relay on X for the latest updates on our progress.
   version: 1.0.0
   contact:
     name: Relay Wireless
@@ -23,6 +23,8 @@ components:
       scheme: bearer
       description: API key authentication
   schemas:
+    description: |
+      This section defines the JSON schemas used in Relay's REST API — field names, data types, and enum values for every object returned or accepted by the endpoints.
     ErrorResponse:
       type: object
       properties:
@@ -330,7 +332,8 @@ paths:
       tags:
         - Rewards
       summary: Get IOT reward shares
-      description: Retrieves IOT reward share information for a given time period and hotspot
+      description: |
+        Retrieves IOT reward share information for a given time period and hotspot
       operationId: getIotRewardShares
       security:
         - bearerAuth: []
