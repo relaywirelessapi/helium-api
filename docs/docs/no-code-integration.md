@@ -35,9 +35,9 @@ Headers:
   - Authorization: Bearer YOUR_API_KEY
   - Accept: application/json
 Params:
-  hotspotKey = {Hotspot ECC key}
-  startPeriod = {YYYY‑MM‑DD}
-  endPeriod = {YYYY‑MM‑DD}
+  hotspotKey = Hotspot ECC key
+  startPeriod = YYYY‑MM‑DD
+  endPeriod = YYYY‑MM‑DD
 ```
 
 ### Zapier Tips
