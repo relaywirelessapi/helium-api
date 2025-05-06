@@ -51,4 +51,4 @@ Relay API is open-source*. The backend code will be published under the [Relay G
 
 Relay API was built in partnership with the Helium Foundation. The Foundation awarded a grant to Relay to make Helium Oracle data more accessible to the community — removing the need to interact directly with AWS S3 and its complexities.
 
-Read the announcement (link TBD).
+Read the [announcement](https://www.relaywireless.com/blog/introducing-relay-api).
