@@ -333,6 +333,8 @@ paths:
         - Rewards
       summary: Get IOT reward shares
       description: |
+        The Rewards endpoints in the Relay Helium REST API let you retrieve historical hotspot earnings. During the beta, data is limited to the post-Solana migration period. In accordance with HIP-138, each response reports amounts in whichever token was primary for the queried timeframe (IOT, MOBILE, or HNT).
+
         Retrieves IOT reward share information for a given time period and hotspot
       operationId: getIotRewardShares
       security:
