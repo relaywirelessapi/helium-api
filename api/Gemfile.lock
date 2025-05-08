@@ -1,10 +1,4 @@
 GEM
-  remote: https://gems.contribsys.com/
-  specs:
-    sidekiq-pro (8.0.1)
-      sidekiq (>= 8.0.0, < 9)
-
-GEM
   remote: https://rubygems.org/
   specs:
     actioncable (8.0.2)
@@ -385,8 +379,8 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    sorbet (0.5.12039)
-      sorbet-static (= 0.5.12039)
+    sorbet (0.5.12079)
+      sorbet-static (= 0.5.12079)
     sorbet-coerce (0.7.0)
       polyfill (~> 1.8)
       safe_type (~> 1.1, >= 1.1.1)
@@ -397,17 +391,18 @@ GEM
       parser (>= 2.7)
       sorbet-coerce (>= 0.2.6)
       sorbet-runtime (>= 0.5.9892)
-    sorbet-runtime (0.5.12039)
-    sorbet-static (0.5.12039-aarch64-linux)
-    sorbet-static (0.5.12039-universal-darwin)
-    sorbet-static (0.5.12039-x86_64-linux)
-    sorbet-static-and-runtime (0.5.12039)
-      sorbet (= 0.5.12039)
-      sorbet-runtime (= 0.5.12039)
-    spoom (1.6.1)
+    sorbet-runtime (0.5.12079)
+    sorbet-static (0.5.12079-aarch64-linux)
+    sorbet-static (0.5.12079-universal-darwin)
+    sorbet-static (0.5.12079-x86_64-linux)
+    sorbet-static-and-runtime (0.5.12079)
+      sorbet (= 0.5.12079)
+      sorbet-runtime (= 0.5.12079)
+    spoom (1.6.2)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
-      rbi (>= 0.2.3)
+      rbi (>= 0.3.1)
+      rexml (>= 3.2.6)
       sorbet-static-and-runtime (>= 0.5.10187)
       thor (>= 0.19.2)
     stackprof (0.2.27)
@@ -509,7 +504,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
-  sidekiq-pro!
+  sidekiq
   simple_form
   sorbet
   sorbet-rails
