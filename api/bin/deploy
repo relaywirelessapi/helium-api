@@ -23,7 +23,7 @@ if ! aws ecr describe-images --region $AWS_REGION --repository-name $(echo $ECR_
   # Build and push only if image doesn't exist
   echo "Building and pushing new image ${ECR_REPO}:${GIT_SHA}"
   # Use buildx for faster multi-platform builds
-  docker buildx build --platform linux/amd64 --push -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest $API_ROOT
+  docker buildx build --platform linux/amd64 --push -t ${ECR_REPO}:${GIT_SHA} -t ${ECR_REPO}:latest --build-arg BUNDLE_GEMS__CONTRIBSYS__COM=${BUNDLE_GEMS__CONTRIBSYS__COM} $API_ROOT
 else
   echo "Image ${ECR_REPO}:${GIT_SHA} already exists, skipping build and push"
 fi
