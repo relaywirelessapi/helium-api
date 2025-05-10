@@ -63,7 +63,7 @@ module Relay
             field :base_poc_reward, GraphQL::Types::BigInt, null: true, description: "The base POC reward."
             field :boosted_poc_reward, GraphQL::Types::BigInt, null: true, description: "The boosted POC reward."
             field :seniority_timestamp, GraphQL::Types::ISO8601DateTime, null: true, description: "The seniority timestamp."
-            field :coverage_object, String, null: true, description: "The coverage object data."
+            field :coverage_object, Relay::Types::BinaryType, null: true, description: "The coverage object data."
             field :location_trust_score_multiplier, GraphQL::Types::Float, null: true, description: "The location trust score multiplier."
             field :speedtest_multiplier, GraphQL::Types::Float, null: true, description: "The speedtest multiplier."
             field :sp_boosted_hex_status, String, null: true, description: "The service provider boosted hex status."

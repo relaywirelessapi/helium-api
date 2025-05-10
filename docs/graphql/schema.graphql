@@ -5,6 +5,11 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 scalar BigInt
 
 """
+A scalar type that represents binary data, automatically encoded as Base64
+"""
+scalar Binary
+
+"""
 An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
@@ -273,7 +278,7 @@ type MobileRadioRewardV2Share {
   """
   The coverage object data.
   """
-  coverageObject: String
+  coverageObject: Binary
 
   """
   The key of the hotspot.
