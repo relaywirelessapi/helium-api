@@ -20,7 +20,7 @@
     "@graphql-markdown/docusaurus": "^1.27.0",
     "@graphql-tools/graphql-file-loader": "^8.0.19",
     "@mdx-js/react": "^3.0.0",
-    "@scalar/docusaurus": "^0.6.5",
+    "@scalar/docusaurus": "^0.7.2",
     "clsx": "^2.0.0",
     "graphql": "^16.10.0",
     "prism-react-renderer": "^2.3.0",
