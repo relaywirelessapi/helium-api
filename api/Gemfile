@@ -38,9 +38,10 @@ gem "sorbet-rails"
 gem "spoom", group: :development
 gem "tapioca", require: false, group: :development # For generating RBI files
 
-# GraphQL
-gem "graphql"
-gem "graphiql-rails"
+# REST
+gem "blueprinter"
+gem "blueprinter-activerecord"
+gem "kaminari"
 
 # AWS
 gem "aws-sdk-s3"

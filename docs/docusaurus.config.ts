@@ -1,7 +1,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-import type { ScalarOptions } from "@scalar/docusaurus";
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -24,6 +24,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
+          docItemComponent: "@theme/ApiItem",
         },
         blog: false,
         theme: {
@@ -42,14 +43,14 @@ const config: Config = {
       },
       items: [
         {
-          to: "/graphql",
-          label: "GraphQL API",
-          position: "left",
+          type: "doc",
+          docId: "index",
+          label: "Getting Started",
         },
         {
-          to: "/rest",
-          label: "REST API",
-          position: "left",
+          type: "doc",
+          docId: "api/relay-api",
+          label: "API Reference",
         },
       ],
     },
@@ -78,31 +79,28 @@ const config: Config = {
 
   plugins: [
     [
-      "@graphql-markdown/docusaurus",
-      /** @type {import('@graphql-markdown/types').ConfigOptions} */
+      "docusaurus-plugin-openapi-docs",
       {
-        schema: "./graphql/schema.graphql",
-        homepage: "./graphql/index.md",
-        rootPath: "./docs",
-        baseURL: "graphql/schema",
-        loaders: {
-          GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
+        id: "api",
+        docsPluginId: "classic",
+        config: {
+          relay: {
+            specPath: "openapi.yaml",
+            outputDir: "docs/api",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+              sidebarCollapsible: true,
+              sidebarCollapsed: false,
+            },
+            showSchemas: false,
+          } satisfies OpenApiPlugin.Options,
         },
       },
     ],
-    [
-      "@scalar/docusaurus",
-      {
-        label: "REST API",
-        route: "/rest",
-        showNavLink: false,
-        configuration: {
-          hideSearch: true,
-          url: "/openapi.yaml",
-        },
-      } as ScalarOptions,
-    ],
   ],
+
+  themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
 
 export default config;

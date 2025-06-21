@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 
 Sidekiq::Client.reliable_push! unless Rails.env.test?
 
