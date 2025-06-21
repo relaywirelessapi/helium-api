@@ -1055,6 +1055,8 @@ class ActionView::Base
   include ::ActionView::Helpers::RenderingHelper
   include ::ActionView::Helpers
   include ::SimpleForm::ActionViewExtensions::FormHelper
+  include ::Kaminari::Helpers::UrlHelper
+  include ::Kaminari::Helpers::HelperMethods
   extend ::ActionView::Helpers::UrlHelper::ClassMethods
   extend ::ActionView::Helpers::SanitizeHelper::ClassMethods
 
@@ -13163,8 +13165,8 @@ class ActionView::LogSubscriber < ::ActiveSupport::LogSubscriber
   # source://actionview//lib/action_view/log_subscriber.rb#37
   def render_layout(event); end
 
-  # source://actionview//lib/action_view/log_subscriber.rb#26
-  def render_partial(event); end
+  # source://kaminari-actionview/1.2.2/lib/kaminari/actionview/action_view_extension.rb#13
+  def render_partial(*_arg0); end
 
   # source://actionview//lib/action_view/log_subscriber.rb#17
   def render_template(event); end

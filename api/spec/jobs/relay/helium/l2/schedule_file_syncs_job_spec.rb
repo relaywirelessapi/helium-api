@@ -17,7 +17,7 @@ RSpec.describe Relay::Helium::L2::ScheduleFileDefinitionPullsJob do
 
   private
 
-  def stub_file_definition(id:)
+  define_method(:stub_file_definition) do |id:|
     instance_double(Relay::Helium::L2::FileDefinition, id: id)
   end
 end

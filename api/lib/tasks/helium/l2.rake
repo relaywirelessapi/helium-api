@@ -68,18 +68,18 @@ namespace :helium do
 
     private
 
-    def display_definition_details(definition)
+    define_method(:display_definition_details) do |definition|
       puts "Found definition: #{definition.id} (bucket: #{definition.bucket}, prefix: #{definition.s3_prefix})"
     end
 
-    def display_file_processing_results(file)
+    define_method(:display_file_processing_results) do |file|
       puts "File processed successfully!"
       puts "Started at: #{file.started_at}"
       puts "Completed at: #{file.completed_at}"
       puts "Last processed position: #{file.position}"
     end
 
-    def display_definitions_list(definitions = Relay::Helium::L2::FileDefinition.all)
+    define_method(:display_definitions_list) do |definitions = Relay::Helium::L2::FileDefinition.all|
       if definitions.empty?
         puts "No file definitions found"
       else
@@ -90,19 +90,19 @@ namespace :helium do
       end
     end
 
-    def exit_with_definition_not_found_error(error)
+    define_method(:exit_with_definition_not_found_error) do |error|
       puts "Error: #{error.message}"
       display_definitions_list
       exit 1
     end
 
-    def exit_with_error(error)
+    define_method(:exit_with_error) do |error|
       puts "Error: #{error.message}"
       puts error.backtrace.join("\n") if error.backtrace
       exit 1
     end
 
-    def process_s3_file(definition, s3_key)
+    define_method(:process_s3_file) do |definition, s3_key|
       key_parts = s3_key.split("/")
       category = key_parts[0..-2].join("/")
       name = key_parts[-1]
@@ -124,7 +124,7 @@ namespace :helium do
       display_file_processing_results(file)
     end
 
-    def find_latest_s3_file(definition)
+    define_method(:find_latest_s3_file) do |definition|
       file_client = Relay::Helium::L2::FileClient.new
       latest_key = nil
 
@@ -142,7 +142,7 @@ namespace :helium do
       latest_key
     end
 
-    def verify_s3_file_exists(definition, s3_key)
+    define_method(:verify_s3_file_exists) do |definition, s3_key|
       file_client = Relay::Helium::L2::FileClient.new
 
       puts "Checking if file exists in bucket: #{definition.bucket}, key: #{s3_key}..."

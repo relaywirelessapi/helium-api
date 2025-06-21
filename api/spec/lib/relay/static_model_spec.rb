@@ -2,7 +2,7 @@
 
 RSpec.describe Relay::StaticModel do
   class TestStaticModel < Relay::StaticModel
-    def self.all
+    self.define_singleton_method(:all) do
       [
         new(id: "1"),
         new(id: "2"),

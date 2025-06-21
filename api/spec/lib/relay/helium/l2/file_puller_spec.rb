@@ -52,11 +52,11 @@ RSpec.describe Relay::Helium::L2::FilePuller do
 
   private
 
-  def build_file_puller(file_client:)
+  define_method(:build_file_puller) do |file_client:|
     described_class.new(file_client: file_client)
   end
 
-  def stub_file_client(bucket:, prefix:, start_after: nil, s3_objects: [])
+  define_method(:stub_file_client) do |bucket:, prefix:, start_after: nil, s3_objects: []|
     client = instance_double(Relay::Helium::L2::FileClient)
 
     allow_method = allow(client).to receive(:each_object)
@@ -69,7 +69,7 @@ RSpec.describe Relay::Helium::L2::FilePuller do
     client
   end
 
-  def stub_file_definition(bucket:, category:, prefix:, last_pulled_file: nil)
+  define_method(:stub_file_definition) do |bucket:, category:, prefix:, last_pulled_file: nil|
     instance_double(
       Relay::Helium::L2::FileDefinition,
       bucket:,
@@ -81,11 +81,11 @@ RSpec.describe Relay::Helium::L2::FilePuller do
     )
   end
 
-  def stub_oracle_file(category:, name:)
+  define_method(:stub_oracle_file) do |category:, name:|
     instance_double(Relay::Helium::L2::File, category:, name:, s3_key: "#{category}/#{name}")
   end
 
-  def stub_s3_object(key:)
+  define_method(:stub_s3_object) do |key:|
     instance_double(Aws::S3::Types::Object, key:)
   end
 end

@@ -109,15 +109,15 @@ RSpec.describe Relay::Helium::L2::FileClient do
 
   private
 
-  def build_file_client(s3:)
+  define_method(:build_file_client) do |s3:|
     described_class.new(s3:)
   end
 
-  def stub_s3_client
+  define_method(:stub_s3_client) do
     instance_double(Aws::S3::Client)
   end
 
-  def stub_object_list(s3_client, bucket:, prefix:, contents:, is_truncated:, next_continuation_token: nil, start_after: nil, continuation_token: nil)
+  define_method(:stub_object_list) do |s3_client, bucket:, prefix:, contents:, is_truncated:, next_continuation_token: nil, start_after: nil, continuation_token: nil|
     response = instance_double(
       Aws::S3::Types::ListObjectsV2Output,
       contents: contents,

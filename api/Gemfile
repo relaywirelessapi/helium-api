@@ -37,6 +37,7 @@ gem "sorbet-runtime"
 gem "sorbet-rails"
 gem "spoom", group: :development
 gem "tapioca", require: false, group: :development # For generating RBI files
+gem "zeitwerk", "2.7.2" # https://github.com/Shopify/tapioca/issues/2281
 
 # REST
 gem "blueprinter"

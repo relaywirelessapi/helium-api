@@ -7,20 +7,20 @@ RSpec.describe User, type: :model do
   end
 
   describe "#api_usage_limit" do
-    it "returns 100.000" do
-      expect(build_stubbed(:user).api_usage_limit).to eq(100_000)
+    it "returns 100,000" do
+      expect(build_stubbed(:user).api_usage_limit).to eq(10_000)
     end
   end
 
   describe "#api_usage_limit_exceeded_with?" do
     it "returns true if the usage limit will be exceeded" do
-      user = build_stubbed(:user, current_api_usage: 100_000)
+      user = build_stubbed(:user, current_api_usage: 10_000)
 
       expect(user.api_usage_limit_exceeded_with?(1)).to be_truthy
     end
 
     it "returns false if the usage limit will not be exceeded" do
-      user = build_stubbed(:user, current_api_usage: 99_999)
+      user = build_stubbed(:user, current_api_usage: 9_999)
 
       expect(user.api_usage_limit_exceeded_with?(1)).to be_falsey
     end
