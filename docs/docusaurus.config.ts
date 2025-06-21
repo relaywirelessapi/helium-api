@@ -87,6 +87,7 @@ const config: Config = {
           relay: {
             specPath: "static/openapi.yaml",
             outputDir: "docs/api",
+            downloadUrl: "/openapi.yaml",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
