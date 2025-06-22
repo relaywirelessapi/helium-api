@@ -13,7 +13,7 @@ RSpec.describe Relay::Helium::L2::PullFilesForDefinitionJob do
 
   private
 
-  def stub_file_puller(files_for_definitions)
+  define_method(:stub_file_puller) do |files_for_definitions|
     instance_double(Relay::Helium::L2::FilePuller).tap do |puller|
       files_for_definitions.each_pair do |definition, files|
         mock = allow(puller).to receive(:pull_for).with(definition)
@@ -24,7 +24,7 @@ RSpec.describe Relay::Helium::L2::PullFilesForDefinitionJob do
     end
   end
 
-  def stub_file_definition(id: "test-category/test-prefix")
+  define_method(:stub_file_definition) do |id: "test-category/test-prefix"|
     instance_double(Relay::Helium::L2::FileDefinition, id: id).tap do |definition|
       allow(Relay::Helium::L2::FileDefinition).to receive(:find!).with(id).and_return(definition)
     end

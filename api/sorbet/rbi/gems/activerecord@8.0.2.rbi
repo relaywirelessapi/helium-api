@@ -3320,7 +3320,7 @@ class ActiveRecord::Associations::CollectionAssociation < ::ActiveRecord::Associ
   # source://activerecord//lib/active_record/associations/collection_association.rb#117
   def build(attributes = T.unsafe(nil), &block); end
 
-  # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#134
+  # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#134
   def bulk_import(*args, &block); end
 
   # @return [Boolean]
@@ -3410,7 +3410,7 @@ class ActiveRecord::Associations::CollectionAssociation < ::ActiveRecord::Associ
   # source://activerecord//lib/active_record/associations/collection_association.rb#62
   def ids_writer(ids); end
 
-  # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#134
+  # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#134
   def import(*args, &block); end
 
   # @return [Boolean]
@@ -3715,7 +3715,7 @@ class ActiveRecord::Associations::CollectionProxy < ::ActiveRecord::Relation
   # source://activerecord//lib/active_record/associations/collection_proxy.rb#318
   def build(attributes = T.unsafe(nil), &block); end
 
-  # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#127
+  # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#127
   def bulk_import(*args, &block); end
 
   # --
@@ -4261,7 +4261,7 @@ class ActiveRecord::Associations::CollectionProxy < ::ActiveRecord::Relation
   # source://activerecord//lib/active_record/associations/collection_proxy.rb#1137
   def having_clause=(arg); end
 
-  # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#127
+  # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#127
   def import(*args, &block); end
 
   # source://activerecord//lib/active_record/associations/collection_proxy.rb#1137
@@ -8283,7 +8283,6 @@ class ActiveRecord::Base
   include ::ActiveRecord::Suppressor
   include ::ActiveRecord::Normalization
   include ::ActiveRecord::Marshalling::Methods
-  include ::Turbo::Broadcastable
   extend ::ActiveModel::Validations::ClassMethods
   extend ::ActiveModel::Naming
   extend ::ActiveModel::Callbacks
@@ -8344,8 +8343,6 @@ class ActiveRecord::Base
   extend ::ActiveRecord::Suppressor::ClassMethods
   extend ::ActiveRecord::Normalization::ClassMethods
   extend ::OrmAdapter::ToAdapter
-  extend ::Devise::Models
-  extend ::Turbo::Broadcastable::ClassMethods
   extend ::ActiveRecord::Import::Connection
 
   # source://activesupport/8.0.2/lib/active_support/callbacks.rb#69
@@ -8633,9 +8630,7 @@ class ActiveRecord::Base
   # source://activerecord//lib/active_record/inheritance.rb#47
   def store_full_sti_class?; end
 
-  def suppressed_turbo_broadcasts?(&_arg0); end
-
-  # source://activerecord-import/2.1.0/lib/activerecord-import/synchronize.rb#64
+  # source://activerecord-import/2.2.0/lib/activerecord-import/synchronize.rb#64
   def synchronize(instances, key = T.unsafe(nil)); end
 
   # source://activerecord//lib/active_record/model_schema.rb#164
@@ -8906,10 +8901,10 @@ class ActiveRecord::Base
     # source://activerecord//lib/active_record/core.rb#89
     def belongs_to_required_by_default?; end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#530
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#530
     def bulk_import(*args); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#546
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#546
     def bulk_import!(*args); end
 
     # source://activerecord//lib/active_record/integration.rb#16
@@ -9104,19 +9099,19 @@ class ActiveRecord::Base
     # source://activerecord//lib/active_record/model_schema.rb#169
     def implicit_order_column?; end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#530
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#530
     def import(*args); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#546
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#546
     def import!(*args); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#555
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#555
     def import_helper(*args); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#763
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#763
     def import_with_validations(column_names, array_of_attributes, options = T.unsafe(nil)); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#782
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#782
     def import_without_validations_or_callbacks(column_names, array_of_attributes, options = T.unsafe(nil)); end
 
     # source://activemodel/8.0.2/lib/active_model/serializers/json.rb#15
@@ -9329,22 +9324,16 @@ class ActiveRecord::Base
     # source://activerecord//lib/active_record/core.rb#253
     def strict_loading_violation!(owner:, reflection:); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#268
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#268
     def supports_import?(*args); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#275
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#275
     def supports_on_duplicate_key_update?; end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#282
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#282
     def supports_setting_primary_key_of_imported_objects?; end
 
-    # source://activesupport/8.0.2/lib/active_support/core_ext/module/attribute_accessors_per_thread.rb#49
-    def suppressed_turbo_broadcasts; end
-
-    # source://activesupport/8.0.2/lib/active_support/core_ext/module/attribute_accessors_per_thread.rb#108
-    def suppressed_turbo_broadcasts=(obj); end
-
-    # source://activerecord-import/2.1.0/lib/activerecord-import/synchronize.rb#25
+    # source://activerecord-import/2.2.0/lib/activerecord-import/synchronize.rb#25
     def synchronize(instances, keys = T.unsafe(nil)); end
 
     # source://activerecord//lib/active_record/model_schema.rb#164
@@ -9742,34 +9731,34 @@ class ActiveRecord::Base
     # source://activerecord//lib/active_record/model_schema.rb#172
     def _inheritance_column=(value); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#1069
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#1069
     def add_special_rails_stamps(column_names, array_of_attributes, options); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#860
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#860
     def associated_options(options, association); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#993
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#993
     def find_associated_objects_for_import(associated_objects_by_class, model); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#958
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#958
     def import_associations(models, options); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#938
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#938
     def load_association_ids(model); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#983
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#983
     def schema_columns_hash; end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#868
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#868
     def set_attributes_and_mark_clean(models, import_result, timestamps, options); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#1121
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#1121
     def validate_hash_import(hash, required_keys, allow_extra_keys); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#1114
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#1114
     def validations_array_for_column_names_and_attributes(column_names, array_of_attributes); end
 
-    # source://activerecord-import/2.1.0/lib/activerecord-import/import.rb#1032
+    # source://activerecord-import/2.2.0/lib/activerecord-import/import.rb#1032
     def values_sql_for_columns_and_attributes(columns, array_of_attributes); end
   end
 end

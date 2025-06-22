@@ -1,5 +1,5 @@
-# Use Node.js 18 as base image
-FROM node:18-alpine
+# Use Node.js 20 as base image
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -15,7 +15,6 @@ COPY . .
 
 # Expose port 3000 for the Docusaurus server
 EXPOSE 3000 
-
 
 # Start development server
 CMD ["npm", "run", "start", "--", "--host", "0.0.0.0"]

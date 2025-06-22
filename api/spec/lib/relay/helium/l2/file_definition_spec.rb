@@ -33,7 +33,7 @@ RSpec.describe Relay::Helium::L2::FileDefinition do
 
   private
 
-  def build_file_definition(id: "test-id", bucket: "test-bucket", category: "test-category", prefix: "test-prefix", deserializer: stub_deserializer)
+  define_method(:build_file_definition) do |id: "test-id", bucket: "test-bucket", category: "test-category", prefix: "test-prefix", deserializer: stub_deserializer|
     described_class.new(
       id: id,
       bucket: bucket,
@@ -43,7 +43,7 @@ RSpec.describe Relay::Helium::L2::FileDefinition do
     )
   end
 
-  def stub_deserializer
+  define_method(:stub_deserializer) do
     instance_double(Relay::Helium::L2::Deserializers::BaseDeserializer)
   end
 end

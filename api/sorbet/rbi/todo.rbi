@@ -4,7 +4,6 @@
 
 # typed: false
 
-module Sidekiq::Process; end
-module Sidekiq::SortedEntry; end
+module ::PostHog::Client; end
 module Sidekiq::Web; end
 module T::Private::Methods::Signature; end

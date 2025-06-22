@@ -254,22 +254,22 @@ class ActiveJob::Base
   # source://activesupport/8.0.2/lib/active_support/rescuable.rb#15
   def rescue_handlers?; end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#141
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#141
   def sidekiq_options_hash; end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#153
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#153
   def sidekiq_options_hash=(_arg0); end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#141
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#141
   def sidekiq_retries_exhausted_block; end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#153
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#153
   def sidekiq_retries_exhausted_block=(_arg0); end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#141
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#141
   def sidekiq_retry_in_block; end
 
-  # source://sidekiq/8.0.1/lib/sidekiq/job.rb#153
+  # source://sidekiq/8.0.4/lib/sidekiq/job.rb#153
   def sidekiq_retry_in_block=(_arg0); end
 
   class << self
@@ -390,22 +390,22 @@ class ActiveJob::Base
     # source://activejob//lib/active_job/exceptions.rb#11
     def retry_jitter=(value); end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#108
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#108
     def sidekiq_options_hash; end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#116
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#116
     def sidekiq_options_hash=(val); end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#108
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#108
     def sidekiq_retries_exhausted_block; end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#116
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#116
     def sidekiq_retries_exhausted_block=(val); end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#108
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#108
     def sidekiq_retry_in_block; end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#116
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#116
     def sidekiq_retry_in_block=(val); end
 
     private
@@ -488,13 +488,13 @@ class ActiveJob::Base
     # source://activesupport/8.0.2/lib/active_support/class_attribute.rb#17
     def __class_attr_retry_jitter=(new_value); end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#103
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#103
     def __synchronized_sidekiq_options_hash; end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#103
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#103
     def __synchronized_sidekiq_retries_exhausted_block; end
 
-    # source://sidekiq/8.0.1/lib/sidekiq/job.rb#103
+    # source://sidekiq/8.0.4/lib/sidekiq/job.rb#103
     def __synchronized_sidekiq_retry_in_block; end
   end
 end

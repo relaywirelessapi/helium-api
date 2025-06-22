@@ -1,556 +1,839 @@
-openapi: 3.1.1
+openapi: 3.1.0
+x-stoplight:
+  id: 5v6gvgzv53i7e
 info:
-  title: Relay Helium REST API
-  description: |
-    The Relay Helium REST API offers an easy access to Helium Oracle reward data for IoT and Mobile hotspots, including reward manifests. This page outlines the core concepts, response formats, and data models.
-
-
-    > **Relay API is Currently in Beta**  
-    > During this phase, you may encounter some issues, bugs, or imperfections. We're actively working on improving the API and adding more features. Follow Relay on X for the latest updates on our progress.
-  version: 1.0.0
+  title: Relay API
+  version: "1.0"
+  description: A REST API to retrieve on-chain and off-chain data for Helium.
+  license:
+    name: Proprietary - Terms of Service
+    url: "https://www.relaywireless.com/legal/terms-of-service"
   contact:
-    name: Relay Wireless
-    url: https://relaywireless.com
+    name: Relay Team
+    email: team@relaydevice.com
+    url: "https://relaywireless.com"
 servers:
-  - url: https://api.relaywireless.com
-    description: Production API server
-security:
-  - bearerAuth: []
+  - url: "https://api.relaywireless.com/v1"
+    description: ""
+paths:
+  /helium/l2/iot-reward-shares:
+    parameters: []
+    get:
+      summary: List IoT rewards
+      tags:
+        - Rewards
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/pagination-info"
+                    x-stoplight:
+                      id: lywd67q9z92i5
+                  records:
+                    type: array
+                    x-stoplight:
+                      id: 12gzcugjjtnj8
+                    items:
+                      $ref: "#/components/schemas/iot-reward-share"
+                      x-stoplight:
+                        id: hdd4ypib1olm7
+      operationId: get-iot-rewards
+      description: "Retrieves the IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
+      x-stoplight:
+        id: mh9mdw246klh4
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: reward_type
+          description: The reward type to retrieve rewards for.
+    servers: []
+  /helium/l2/mobile-reward-shares:
+    parameters: []
+    get:
+      summary: List Mobile rewards
+      tags:
+        - Rewards
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/pagination-info"
+                    x-stoplight:
+                      id: mob67q9z92i5
+                  records:
+                    type: array
+                    x-stoplight:
+                      id: mobzcugjjtnj8
+                    items:
+                      $ref: "#/components/schemas/mobile-reward-share"
+                      x-stoplight:
+                        id: mobypib1olm7
+      operationId: get-mobile-rewards
+      description: "Retrieves the Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
+      x-stoplight:
+        id: mobmdw246klh4
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve rewards for.
+        - schema:
+            type: string
+          in: query
+          name: reward_type
+          description: The reward type to retrieve rewards for.
+    servers: []
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: API key authentication
   schemas:
-    description: |
-      This section defines the JSON schemas used in Relay's REST API — field names, data types, and enum values for every object returned or accepted by the endpoints.
-    ErrorResponse:
+    pagination-info:
+      title: Pagination Information
+      x-stoplight:
+        id: i87ru3rgvq4no
       type: object
+      required:
+        - count
+        - total_pages
+        - current_page
       properties:
-        data:
+        count:
+          type: integer
+          x-stoplight:
+            id: ql69bgkv0ik08
+          minimum: 0
+          readOnly: true
+        total_pages:
+          type: integer
+          x-stoplight:
+            id: fj1u3txslqhct
+          minimum: 1
+          readOnly: true
+        current_page:
+          type: integer
+          x-stoplight:
+            id: 79bt81jb78i23
+          minimum: 1
+        next_page:
+          type: integer
+          x-stoplight:
+            id: aoikzmt80ozby
+          minimum: 2
+          readOnly: true
+        prev_page:
+          type: integer
+          x-stoplight:
+            id: thvquty4xb74j
+          minimum: 1
+          readOnly: true
+    iot-reward-share:
+      title: IoT Reward Share
+      x-stoplight:
+        id: 69tjvc6qjo1ru
+      type: object
+      required:
+        - id
+        - reward_type
+        - start_period
+        - end_period
+        - reward_manifest
+        - reward_detail
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: wl93g4497vz3y
+          format: uuid
+          readOnly: true
+        reward_type:
+          x-stoplight:
+            id: u40c67m87ut1y
+          enum:
+            - gateway_reward
+            - operational_reward
+            - unallocated_reward
+          readOnly: true
+        start_period:
+          type: string
+          x-stoplight:
+            id: 0miscypl3qsfu
+          format: date-time
+          readOnly: true
+        end_period:
+          type: string
+          x-stoplight:
+            id: h85oetvk57t9l
+          format: date-time
+          readOnly: true
+        reward_manifest:
+          $ref: "#/components/schemas/reward-manifest"
+          x-stoplight:
+            id: osm7lj9q9hinh
+        reward_detail:
+          x-stoplight:
+            id: fudzhepjd8tc7
+          oneOf:
+            - $ref: "#/components/schemas/iot-gateway-reward-detail"
+            - $ref: "#/components/schemas/iot-operational-reward-detail"
+            - $ref: "#/components/schemas/iot-unallocated-reward-detail"
           type: object
-          nullable: true
-        errors:
+    reward-manifest:
+      title: Reward Manifest
+      x-stoplight:
+        id: iwaqn8qw5nv7b
+      type: object
+      required:
+        - id
+        - written_files
+        - start_timestamp
+        - end_timestamp
+        - epoch
+        - price
+        - reward_type
+        - reward_detail
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 93qlo6d9gqkhe
+          format: uuid
+        written_files:
           type: array
+          x-stoplight:
+            id: a4dch2u20v5vs
           items:
+            x-stoplight:
+              id: ereg2vy7e3xai
+            type: string
+            readOnly: true
+          readOnly: true
+        start_timestamp:
+          type: string
+          x-stoplight:
+            id: 98j1103nyoslw
+          format: date-time
+          readOnly: true
+        end_timestamp:
+          type: string
+          x-stoplight:
+            id: l4cyao8t4ctnj
+          format: date-time
+          readOnly: true
+        epoch:
+          type: integer
+          x-stoplight:
+            id: h4fyxaggu2btz
+        price:
+          type: integer
+          x-stoplight:
+            id: 370yn2kp8mafo
+        reward_type:
+          x-stoplight:
+            id: k68lc3yyibgwx
+          enum:
+            - iot
+            - mobile
+          readOnly: true
+        reward_detail:
+          x-stoplight:
+            id: po069f8iaxtew
+          oneOf:
+            - $ref: "#/components/schemas/iot-reward-manifest-detail"
+            - $ref: "#/components/schemas/mobile-reward-manifest-detail"
+          type: object
+    iot-gateway-reward-detail:
+      title: IoT Gateway Reward Detail
+      x-stoplight:
+        id: pud4o9e5ttxr1
+      type: object
+      description: Gateway reward detail
+      required:
+        - hotspot_key
+      properties:
+        hotspot_key:
+          type: string
+          x-stoplight:
+            id: qrnzpzb3m4b63
+          readOnly: true
+        beacon_amount:
+          type: integer
+          x-stoplight:
+            id: i7kmxwp9lls5z
+          minimum: 0
+          readOnly: true
+        witness_amount:
+          type: integer
+          x-stoplight:
+            id: uxmjgpxsd7cjo
+          minimum: 0
+          readOnly: true
+        dc_transfer_amount:
+          type: integer
+          x-stoplight:
+            id: 9zzv45na536ri
+          minimum: 0
+          readOnly: true
+        formatted_beacon_amount:
+          type: string
+          x-stoplight:
+            id: omaxzcmve0rzh
+          readOnly: true
+        formatted_witness_amount:
+          type: string
+          x-stoplight:
+            id: d5qi934ett4px
+          readOnly: true
+        formatted_dc_transfer_amount:
+          type: string
+          x-stoplight:
+            id: wkomxheqgy9ge
+          readOnly: true
+    iot-operational-reward-detail:
+      title: IoT Operational Reward Detail
+      x-stoplight:
+        id: pp4i3zqo8p2m5
+      type: object
+      description: Operational reward detail
+      required:
+        - amount
+      properties:
+        amount:
+          type: integer
+          x-stoplight:
+            id: vmag54bj9bela
+          minimum: 0
+          readOnly: true
+        formatted_amount:
+          type: string
+          x-stoplight:
+            id: 4xd3825mss7br
+          readOnly: true
+    iot-unallocated-reward-detail:
+      title: IoT Unallocated Reward Detail
+      x-stoplight:
+        id: a2ja5mznaycsp
+      type: object
+      description: Unallocated reward detail
+      required:
+        - unallocated_reward_type
+        - amount
+      properties:
+        unallocated_reward_type:
+          x-stoplight:
+            id: gdhfk990n4c6g
+          enum:
+            - unallocated_reward_type_poc
+            - unallocated_reward_type_operation
+            - unallocated_reward_type_oracle
+            - unallocated_reward_type_data
+          readOnly: true
+        amount:
+          type: integer
+          x-stoplight:
+            id: odb5pz58iredi
+          minimum: 0
+          readOnly: true
+        formatted_amount:
+          type: string
+          x-stoplight:
+            id: t3b3dbr1da7w1
+          readOnly: true
+    iot-reward-manifest-detail:
+      title: IoT Reward Manifest Detail
+      x-stoplight:
+        id: bcr3no03ki6k2
+      type: object
+      description: IoT reward manifest detail
+      required:
+        - poc_bones_per_beacon_reward_share
+        - poc_bones_per_witness_reward_share
+        - dc_bones_per_share
+        - token
+      properties:
+        poc_bones_per_beacon_reward_share:
+          type: string
+          x-stoplight:
+            id: mtsln3ea346ka
+          readOnly: true
+        poc_bones_per_witness_reward_share:
+          type: string
+          x-stoplight:
+            id: 3rohxarksa8pa
+          readOnly: true
+        dc_bones_per_share:
+          type: integer
+          x-stoplight:
+            id: tiucl4a1cojxm
+          readOnly: true
+        token:
+          x-stoplight:
+            id: 2swrktxeas35z
+          enum:
+            - iot_reward_token_iot
+            - iot_reward_token_hnt
+          readOnly: true
+    mobile-reward-manifest-detail:
+      title: Mobile Reward Manifest Detail
+      x-stoplight:
+        id: msmzsml3sb7zs
+      type: object
+      description: Mobile reward manifest detail
+      required:
+        - poc_bones_per_reward_share
+        - boosted_poc_bones_per_reward_share
+        - service_provider_promotions
+        - token
+      properties:
+        poc_bones_per_reward_share:
+          type: integer
+          x-stoplight:
+            id: 0xqc2cmjfysug
+          readOnly: true
+        boosted_poc_bones_per_reward_share:
+          type: integer
+          x-stoplight:
+            id: lcemxhlc4wmzv
+          readOnly: true
+        service_provider_promotions:
+          type: array
+          x-stoplight:
+            id: nqgfw9i2uu3ws
+          items:
+            x-stoplight:
+              id: ydyydpkegtgyg
             type: object
+            required:
+              - service_provider
+              - incentive_escrow_fund_bps
+              - promotions
             properties:
-              message:
+              service_provider:
                 type: string
-              locations:
+                x-stoplight:
+                  id: 3qe4hhjy1wor0
+                readOnly: true
+              incentive_escrow_fund_bps:
+                type: integer
+                x-stoplight:
+                  id: nk8ew8xo6inw6
+                readOnly: true
+              promotions:
                 type: array
+                x-stoplight:
+                  id: b93rv62s98blf
                 items:
+                  x-stoplight:
+                    id: xde2pmh8tl0ov
                   type: object
+                  required:
+                    - entity
+                    - start_ts
+                    - end_ts
+                    - shares
                   properties:
-                    line:
+                    entity:
+                      type: string
+                      x-stoplight:
+                        id: p8fkc7j1lh7ce
+                      readOnly: true
+                    start_ts:
+                      type: string
+                      x-stoplight:
+                        id: f0g9y8sp6ys0w
+                      format: date-time
+                      readOnly: true
+                    end_ts:
+                      type: string
+                      x-stoplight:
+                        id: 4zv1z9ibm9kfp
+                      format: date-time
+                      readOnly: true
+                    shares:
                       type: integer
-                    column:
-                      type: integer
-              path:
-                type: array
-                items:
-                  type: string
-    IotRewardSharesResponse:
+                      x-stoplight:
+                        id: 27lwsd7t4gou3
+                readOnly: true
+          readOnly: true
+        token:
+          x-stoplight:
+            id: uin9038dq2q1m
+          enum:
+            - mobile_reward_token_mobile
+            - mobile_reward_token_hnt
+          readOnly: true
+    mobile-reward-share:
+      title: Mobile Reward Share
+      x-stoplight:
+        id: mob6qjo1ru
       type: object
-      properties:
-        data:
-          type: object
-          properties:
-            iotRewardShares:
-              type: object
-              properties:
-                nodes:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/IotRewardShare"
-                pageInfo:
-                  $ref: "#/components/schemas/PageInfo"
-    MobileRewardSharesResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            mobileRewardShares:
-              type: object
-              properties:
-                nodes:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/MobileRewardShare"
-                pageInfo:
-                  $ref: "#/components/schemas/PageInfo"
-    RewardManifestsResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            rewardManifests:
-              type: object
-              properties:
-                nodes:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/RewardManifest"
-                pageInfo:
-                  $ref: "#/components/schemas/PageInfo"
-    IotRewardShare:
-      type: object
+      required:
+        - id
+        - reward_type
+        - start_period
+        - end_period
+        - reward_manifest
+        - reward_detail
       properties:
         id:
           type: string
-        rewardType:
+          x-stoplight:
+            id: mob4497vz3y
+          format: uuid
+          readOnly: true
+        reward_type:
+          x-stoplight:
+            id: mob67m87ut1y
+          enum:
+            - radio_reward
+            - gateway_reward
+            - subscriber_reward
+            - service_provider_reward
+            - unallocated_reward
+            - radio_reward_v2
+            - promotion_reward
+          readOnly: true
+        start_period:
           type: string
-        startPeriod:
-          type: string
+          x-stoplight:
+            id: mobcypl3qsfu
           format: date-time
-        endPeriod:
+          readOnly: true
+        end_period:
           type: string
+          x-stoplight:
+            id: mobetvk57t9l
           format: date-time
-        manifest:
-          $ref: "#/components/schemas/Manifest"
-        rewardDetail:
+          readOnly: true
+        reward_manifest:
+          $ref: "#/components/schemas/reward-manifest"
+          x-stoplight:
+            id: moblj9q9hinh
+        reward_detail:
+          x-stoplight:
+            id: mobhepjd8tc7
+          oneOf:
+            - $ref: "#/components/schemas/mobile-radio-reward-detail"
+            - $ref: "#/components/schemas/mobile-gateway-reward-detail"
+            - $ref: "#/components/schemas/mobile-subscriber-reward-detail"
+            - $ref: "#/components/schemas/mobile-service-provider-reward-detail"
+            - $ref: "#/components/schemas/mobile-unallocated-reward-detail"
+            - $ref: "#/components/schemas/mobile-radio-reward-v2-detail"
+            - $ref: "#/components/schemas/mobile-promotion-reward-detail"
           type: object
-          properties:
-            hotspotKey:
-              type: string
-            beaconAmount:
-              type: string
-            witnessAmount:
-              type: string
-            dcTransferAmount:
-              type: string
-            formattedBeaconAmount:
-              type: string
-            formattedWitnessAmount:
-              type: string
-            formattedDcTransferAmount:
-              type: string
-            amount:
-              type: string
-            formattedAmount:
-              type: string
-            unallocatedRewardType:
-              type: string
-    MobileRewardShare:
+    mobile-radio-reward-detail:
+      title: Mobile Radio Reward Detail
+      x-stoplight:
+        id: mobo9e5ttxr1
       type: object
+      description: Mobile radio reward detail
+      required:
+        - hotspot_key
+        - cbsd_id
       properties:
-        id:
+        hotspot_key:
           type: string
-        rewardType:
+          x-stoplight:
+            id: mobzpzb3m4b63
+          readOnly: true
+        cbsd_id:
           type: string
-        startPeriod:
-          type: string
-          format: date-time
-        endPeriod:
-          type: string
-          format: date-time
-        manifest:
-          $ref: "#/components/schemas/Manifest"
-        rewardDetail:
-          type: object
-          properties:
-            hotspotKey:
-              type: string
-            cbsdId:
-              type: string
-            baseCoveragePointsSum:
-              type: number
-            boostedCoveragePointsSum:
-              type: number
-            baseRewardShares:
-              type: number
-            boostedRewardShares:
-              type: number
-            basePocReward:
-              type: string
-            boostedPocReward:
-              type: string
-            seniorityTimestamp:
-              type: string
-              format: date-time
-            coverageObject:
-              type: string
-            locationTrustScoreMultiplier:
-              type: number
-            speedtestMultiplier:
-              type: number
-            spBoostedHexStatus:
-              type: string
-            oracleBoostedHexStatus:
-              type: string
-            dcTransferReward:
-              type: string
-            formattedDcTransferReward:
-              type: string
-            pocReward:
-              type: string
-            formattedPocReward:
-              type: string
-            entity:
-              type: string
-            matchedAmount:
-              type: string
-            serviceProviderAmount:
-              type: string
-            serviceProviderId:
-              type: string
-            amount:
-              type: string
-            formattedAmount:
-              type: string
-            subscriberId:
-              type: string
-            discoveryLocationAmount:
-              type: string
-            formattedDiscoveryLocationAmount:
-              type: string
-            formattedSubscriberReward:
-              type: string
-            unallocatedRewardType:
-              type: string
-    RewardManifest:
-      type: object
-      properties:
-        id:
-          type: string
-        writtenFiles:
-          type: array
-          items:
-            type: string
-        startTimestamp:
-          type: string
-          format: date-time
-        endTimestamp:
-          type: string
-          format: date-time
-        rewardData:
-          type: object
-          properties:
-            rewardType:
-              type: string
-            pocBonesPerBeaconRewardShare:
-              type: string
-            pocBonesPerWitnessRewardShare:
-              type: string
-            dcBonesPerShare:
-              type: string
-            pocBonesPerRewardShare:
-              type: string
-            boostedPocBonesPerRewardShare:
-              type: string
-            serviceProviderPromotions:
-              type: array
-              items:
-                $ref: "#/components/schemas/ServiceProviderPromotion"
-            token:
-              type: string
-        epoch:
+          x-stoplight:
+            id: mobsd_id234
+          readOnly: true
+        dc_transfer_reward:
           type: integer
-        price:
+          x-stoplight:
+            id: mobmxwp9lls5z
+          minimum: 0
+          readOnly: true
+        formatted_dc_transfer_reward:
           type: string
-    Manifest:
-      type: object
-      properties:
-        id:
-          type: string
-        writtenFiles:
-          type: array
-          items:
-            type: string
-        startTimestamp:
-          type: string
-          format: date-time
-        endTimestamp:
-          type: string
-          format: date-time
-        rewardData:
-          type: object
-          properties:
-            rewardType:
-              type: string
-            pocBonesPerBeaconRewardShare:
-              type: string
-            pocBonesPerWitnessRewardShare:
-              type: string
-            dcBonesPerShare:
-              type: string
-            pocBonesPerRewardShare:
-              type: string
-            boostedPocBonesPerRewardShare:
-              type: string
-            serviceProviderPromotions:
-              type: array
-              items:
-                $ref: "#/components/schemas/ServiceProviderPromotion"
-            token:
-              type: string
-        epoch:
+          x-stoplight:
+            id: mobxzcmve0rzh
+          readOnly: true
+        poc_reward:
           type: integer
-        price:
+          x-stoplight:
+            id: mobqi934ett4px
+          minimum: 0
+          readOnly: true
+        formatted_poc_reward:
           type: string
-    ServiceProviderPromotion:
+          x-stoplight:
+            id: mobkomxheqgy9ge
+          readOnly: true
+    mobile-gateway-reward-detail:
+      title: Mobile Gateway Reward Detail
+      x-stoplight:
+        id: mobgateway123
       type: object
+      description: Mobile gateway reward detail
+      required:
+        - hotspot_key
       properties:
-        serviceProvider:
+        hotspot_key:
           type: string
-        incentiveEscrowFundBps:
+          x-stoplight:
+            id: mobgateway456
+          readOnly: true
+        dc_transfer_reward:
+          type: integer
+          x-stoplight:
+            id: mobgateway789
+          minimum: 0
+          readOnly: true
+        formatted_dc_transfer_reward:
           type: string
-        promotions:
-          type: array
-          items:
-            $ref: "#/components/schemas/Promotion"
-    Promotion:
+          x-stoplight:
+            id: mobgateway012
+          readOnly: true
+    mobile-subscriber-reward-detail:
+      title: Mobile Subscriber Reward Detail
+      x-stoplight:
+        id: mobsub123
       type: object
+      description: Mobile subscriber reward detail
+      required:
+        - subscriber_id
+      properties:
+        subscriber_id:
+          type: string
+          x-stoplight:
+            id: mobsub456
+          readOnly: true
+        discovery_location_amount:
+          type: integer
+          x-stoplight:
+            id: mobsub789
+          minimum: 0
+          readOnly: true
+        formatted_discovery_location_amount:
+          type: string
+          x-stoplight:
+            id: mobsub012
+          readOnly: true
+        formatted_subscriber_reward:
+          type: string
+          x-stoplight:
+            id: mobsub345
+          readOnly: true
+        subscriber_reward:
+          type: integer
+          x-stoplight:
+            id: sg1wr2dbj5jmz
+    mobile-service-provider-reward-detail:
+      title: Mobile Service Provider Reward Detail
+      x-stoplight:
+        id: mobsp123
+      type: object
+      description: Mobile service provider reward detail
+      required:
+        - service_provider_id
+        - amount
+      properties:
+        service_provider_id:
+          type: string
+          x-stoplight:
+            id: mobsp456
+          readOnly: true
+        amount:
+          type: integer
+          x-stoplight:
+            id: mobsp789
+          minimum: 0
+          readOnly: true
+        formatted_amount:
+          type: string
+          x-stoplight:
+            id: mobsp012
+          readOnly: true
+    mobile-unallocated-reward-detail:
+      title: Mobile Unallocated Reward Detail
+      x-stoplight:
+        id: mobuna123
+      type: object
+      description: Mobile unallocated reward detail
+      required:
+        - unallocated_reward_type
+        - amount
+      properties:
+        unallocated_reward_type:
+          x-stoplight:
+            id: mobuna456
+          enum:
+            - unallocated_reward_type_poc
+            - unallocated_reward_type_discovery_location
+            - unallocated_reward_type_mapper
+            - unallocated_reward_type_service_provider
+            - unallocated_reward_type_oracle
+            - unallocated_reward_type_data
+          readOnly: true
+        amount:
+          type: integer
+          x-stoplight:
+            id: mobuna789
+          minimum: 0
+          readOnly: true
+        formatted_amount:
+          type: string
+          x-stoplight:
+            id: n4idnh6qqsyeo
+          readOnly: true
+    mobile-radio-reward-v2-detail:
+      title: Mobile Radio Reward V2 Detail
+      x-stoplight:
+        id: mobv2123
+      type: object
+      description: Mobile radio reward v2 detail
+      required:
+        - hotspot_key
+        - cbsd_id
+      properties:
+        hotspot_key:
+          type: string
+          x-stoplight:
+            id: mobv2456
+          readOnly: true
+        cbsd_id:
+          type: string
+          x-stoplight:
+            id: mobv2789
+          readOnly: true
+        base_coverage_points_sum:
+          type: number
+          x-stoplight:
+            id: mobv2012
+          readOnly: true
+        boosted_coverage_points_sum:
+          type: number
+          x-stoplight:
+            id: mobv2345
+          readOnly: true
+        base_reward_shares:
+          type: number
+          x-stoplight:
+            id: mobv2678
+          readOnly: true
+        boosted_reward_shares:
+          type: number
+          x-stoplight:
+            id: mobv2901
+          readOnly: true
+        base_poc_reward:
+          type: integer
+          x-stoplight:
+            id: mobv2234
+          minimum: 0
+          readOnly: true
+        boosted_poc_reward:
+          type: integer
+          x-stoplight:
+            id: mobv2567
+          minimum: 0
+          readOnly: true
+        seniority_timestamp:
+          type: string
+          x-stoplight:
+            id: mobv2890
+          format: date-time
+          readOnly: true
+        coverage_object:
+          type: string
+          x-stoplight:
+            id: mobv2123cov
+          readOnly: true
+        location_trust_score_multiplier:
+          type: number
+          x-stoplight:
+            id: mobv2456loc
+          readOnly: true
+        speedtest_multiplier:
+          type: number
+          x-stoplight:
+            id: mobv2789spe
+          readOnly: true
+        sp_boosted_hex_status:
+          type: string
+          x-stoplight:
+            id: mobv2012sp
+          readOnly: true
+        oracle_boosted_hex_status:
+          type: string
+          x-stoplight:
+            id: mobv2345or
+          readOnly: true
+    mobile-promotion-reward-detail:
+      title: Mobile Promotion Reward Detail
+      x-stoplight:
+        id: mobprom123
+      type: object
+      description: Mobile promotion reward detail
+      required:
+        - entity
       properties:
         entity:
           type: string
-        startTs:
-          type: string
-          format: date-time
-        endTs:
-          type: string
-          format: date-time
-        shares:
-          type: string
-    PageInfo:
-      type: object
-      properties:
-        hasNextPage:
-          type: boolean
-        hasPreviousPage:
-          type: boolean
-        startCursor:
-          type: string
-        endCursor:
-          type: string
-paths:
-  "/graphql/iot-reward-shares":
-    get:
-      tags:
-        - Rewards
-      summary: Get IOT reward shares
-      description: |
-        The Rewards endpoints in the Relay Helium REST API let you retrieve historical hotspot earnings. During the beta, data is limited to the post-Solana migration period. In accordance with HIP-138, each response reports amounts in whichever token was primary for the queried timeframe (IOT, MOBILE, or HNT).
-
-        Retrieves IOT reward share information for a given time period and hotspot
-      operationId: getIotRewardShares
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: startPeriod
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: Start of the time period
-        - name: endPeriod
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: End of the time period
-        - name: hotspotKey
-          in: query
-          schema:
-            type: string
-          description: Optional hotspot identifier (ECC Key)
-        - name: rewardType
-          in: query
-          schema:
-            type: string
-          description: Optional reward type filter
-        - name: first
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return (for pagination)
-        - name: last
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return from the end (for pagination)
-        - name: after
-          in: query
-          schema:
-            type: string
-          description: Cursor for forward pagination
-        - name: before
-          in: query
-          schema:
-            type: string
-          description: Cursor for backward pagination
-      responses:
-        "200":
-          description: Successful response
-          headers:
-            X-RateLimit-Remaining:
-              description: Number of requests remaining in the current rate limit window
-              schema:
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/IotRewardSharesResponse"
-        "401":
-          description: Unauthorized - Invalid or missing API key
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "429":
-          description: Too Many Requests - Rate limit exceeded
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-  "/graphql/mobile-reward-shares":
-    get:
-      tags:
-        - Rewards
-      summary: Get Mobile reward shares
-      description: Retrieves Mobile reward share information for a given time period and hotspot
-      operationId: getMobileRewardShares
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: startPeriod
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: Start of the time period
-        - name: endPeriod
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: End of the time period
-        - name: hotspotKey
-          in: query
-          schema:
-            type: string
-          description: Optional hotspot identifier
-        - name: rewardType
-          in: query
-          schema:
-            type: string
-          description: Optional reward type filter
-        - name: first
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return (for pagination)
-        - name: last
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return from the end (for pagination)
-        - name: after
-          in: query
-          schema:
-            type: string
-          description: Cursor for forward pagination
-        - name: before
-          in: query
-          schema:
-            type: string
-          description: Cursor for backward pagination
-      responses:
-        "200":
-          description: Successful response
-          headers:
-            X-RateLimit-Remaining:
-              description: Number of requests remaining in the current rate limit window
-              schema:
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MobileRewardSharesResponse"
-        "401":
-          description: Unauthorized - Invalid or missing API key
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "429":
-          description: Too Many Requests - Rate limit exceeded
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-  "/graphql/reward-manifests":
-    get:
-      tags:
-        - Rewards
-      summary: Get reward manifests
-      description: Retrieves reward manifest information for a given time period
-      operationId: getRewardManifests
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: startTimestamp
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: Start of the time period
-        - name: endTimestamp
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          description: End of the time period
-        - name: first
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return (for pagination)
-        - name: last
-          in: query
-          schema:
-            type: integer
-          description: Number of results to return from the end (for pagination)
-        - name: after
-          in: query
-          schema:
-            type: string
-          description: Cursor for forward pagination
-        - name: before
-          in: query
-          schema:
-            type: string
-          description: Cursor for backward pagination
-      responses:
-        "200":
-          description: Successful response
-          headers:
-            X-RateLimit-Remaining:
-              description: Number of requests remaining in the current rate limit window
-              schema:
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RewardManifestsResponse"
-        "401":
-          description: Unauthorized - Invalid or missing API key
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "429":
-          description: Too Many Requests - Rate limit exceeded
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
+          x-stoplight:
+            id: mobprom456
+          readOnly: true
+        service_provider_amount:
+          type: integer
+          x-stoplight:
+            id: mobprom789
+          minimum: 0
+          readOnly: true
+        matched_amount:
+          type: integer
+          x-stoplight:
+            id: mobprom012
+          minimum: 0
+          readOnly: true
+  securitySchemes:
+    Authorization:
+      name: Bearer API_KEY
+      type: apiKey
+      in: header
+security:
+  - Authorization: []
+tags:
+  - name: Rewards
+    description: IoT and Helium Mobile rewards.

@@ -7,11 +7,17 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  post "/graphql", to: "graphql#execute"
-  mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-
-  JSON.parse(File.read(Rails.root.join("config", "data", "persisted-queries.json"))).each_key do |query_id|
-    get "/graphql/#{query_id}", to: "graphql#execute_persisted_query", query_id: query_id, as: "#{query_id.parameterize(separator: '_')}_graphql_query"
+  scope module: :relay do
+    scope module: :api, defaults: { format: :json } do
+      scope path: "v1" do
+        namespace :helium do
+          namespace :l2 do
+            resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares"
+            resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares"
+          end
+        end
+      end
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

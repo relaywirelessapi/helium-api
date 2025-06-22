@@ -24,9 +24,9 @@ module Relay
             id: "beta",
             name: "Beta",
             description: "Free Beta plan for Helium Community enthusiasts.",
-            api_usage_limit: 100_000,
+            api_usage_limit: 10_000,
             features: [
-              "100,000 data credits a month",
+              "10,000 API calls/month",
               "Entire Helium Solana L2 historical data",
               "All beta endpoints"
             ]

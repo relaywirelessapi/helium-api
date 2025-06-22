@@ -51,15 +51,15 @@ RSpec.describe Relay::BatchImporter do
 
   private
 
-  def stub_model_klass(columns: [])
+  define_method(:stub_model_klass) do |columns: []|
     class_spy(ApplicationRecord, column_names: columns)
   end
 
-  def build_importer(deduplicator: stub_deduplicator)
+  define_method(:build_importer) do |deduplicator: stub_deduplicator|
     Relay::BatchImporter.new(deduplicator: deduplicator)
   end
 
-  def stub_deduplicator(deduplication_key: SecureRandom.uuid)
+  define_method(:stub_deduplicator) do |deduplication_key: SecureRandom.uuid|
     instance_double(Relay::Deduplicator).tap do |deduplicator|
       allow(deduplicator).to receive(:calculate_deduplication_key).with(any_args).and_return(deduplication_key)
     end
