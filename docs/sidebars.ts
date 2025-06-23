@@ -37,6 +37,10 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "doc",
+      id: "no-code-integrations",
+    },
+    {
+      type: "doc",
       id: "support",
     },
   ],
