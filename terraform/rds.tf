@@ -37,12 +37,8 @@ resource "aws_db_instance" "postgres" {
 
   auto_minor_version_upgrade = true
   maintenance_window         = "Mon:03:00-Mon:04:00"
-  backup_window              = "02:00-03:00"
-  backup_retention_period    = 14
-  copy_tags_to_snapshot      = true
-  delete_automated_backups   = false
-  skip_final_snapshot        = false
-  final_snapshot_identifier  = "${var.app_name}-final-snapshot"
+  backup_retention_period    = 0
+  skip_final_snapshot        = true
 
   enabled_cloudwatch_logs_exports = ["postgresql", "upgrade"]
 
