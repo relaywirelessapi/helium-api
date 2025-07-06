@@ -1,0 +1,52 @@
+# typed: false
+
+module Relay
+  module Solana
+    module Idl
+      class InstructionDefinition
+        extend T::Sig
+
+        sig { returns(String) }
+        attr_reader :name
+
+        sig { returns(T::Array[Integer]) }
+        attr_reader :discriminator
+
+        sig { returns(T::Array[T::Hash[String, T.untyped]]) }
+        attr_reader :accounts
+
+        sig { returns(T::Array[T::Hash[String, T.untyped]]) }
+        attr_reader :args
+
+        class << self
+          extend T::Sig
+
+          sig { params(data: T::Hash[String, T.untyped]).returns(InstructionDefinition) }
+          def from_data(data)
+            new(
+              name: data.fetch("name"),
+              discriminator: data.fetch("discriminator"),
+              accounts: data.fetch("accounts"),
+              args: data.fetch("args"),
+            )
+          end
+        end
+
+        sig do
+          params(
+            name: String,
+            discriminator: T::Array[Integer],
+            accounts: T::Array[T::Hash[String, T.untyped]],
+            args: T::Array[T::Hash[String, T.untyped]]
+          ).void
+        end
+        def initialize(name:, discriminator:, accounts:, args:)
+          @name = name
+          @discriminator = discriminator
+          @accounts = accounts
+          @args = args
+        end
+      end
+    end
+  end
+end

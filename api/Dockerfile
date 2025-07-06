@@ -14,6 +14,7 @@ RUN apt-get update -qq && \
   curl \
   libpq5 \
   postgresql-client && \
+  libsodium-dev && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
 # Set up application
