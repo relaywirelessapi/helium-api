@@ -7,7 +7,7 @@
 
 # \Module \Base64 provides methods for:
 #
-# - \Encoding a binary string (containing non-ASCII characters)
+# - Encoding a binary string (containing non-ASCII characters)
 #   as a string of printable ASCII characters.
 # - Decoding such an encoded string.
 #
@@ -32,7 +32,7 @@
 #
 #   require 'base64'
 #
-# == \Encoding Character Sets
+# == Encoding Character Sets
 #
 # A \Base64-encoded string consists only of characters from a 64-character set:
 #
@@ -145,7 +145,7 @@
 #   Base64.strict_decode64("MDEyMzQ1Njc=")  # => "01234567"
 #   Base64.strict_decode64("MDEyMzQ1Njc==") # Raises ArgumentError
 #
-# \Method Base64.urlsafe_decode64 allows padding in the encoded string,
+# \Method Base64.urlsafe_decode64 allows padding in +str+,
 # which if present, must be correct:
 # see {Padding}[Base64.html#module-Base64-label-Padding], above:
 #
@@ -190,34 +190,28 @@
 module Base64
   private
 
-  # :call-seq:
-  #   Base64.decode(encoded_string) -> decoded_string
-  #
   # Returns a string containing the decoding of an RFC-2045-compliant
-  # \Base64-encoded string +encoded_string+:
+  # \Base64-encoded string +str+:
   #
   #   s = "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK\n"
   #   Base64.decode64(s) # => "This is line 1\nThis is line 2\n"
   #
-  # Non-\Base64 characters in +encoded_string+ are ignored;
+  # Non-\Base64 characters in +str+ are ignored;
   # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
   # these include newline characters and characters <tt>-</tt> and <tt>/</tt>:
   #
   #   Base64.decode64("\x00\n-_") # => ""
   #
-  # Padding in +encoded_string+ (even if incorrect) is ignored:
+  # Padding in +str+ (even if incorrect) is ignored:
   #
   #   Base64.decode64("MDEyMzQ1Njc")   # => "01234567"
   #   Base64.decode64("MDEyMzQ1Njc=")  # => "01234567"
   #   Base64.decode64("MDEyMzQ1Njc==") # => "01234567"
   #
-  # source://base64//lib/base64.rb#247
+  # source://base64//lib/base64.rb#241
   def decode64(str); end
 
-  # :call-seq:
-  #   Base64.encode64(string) -> encoded_string
-  #
-  # Returns a string containing the RFC-2045-compliant \Base64-encoding of +string+.
+  # Returns a string containing the RFC-2045-compliant \Base64-encoding of +bin+.
   #
   # Per RFC 2045, the returned string may contain the URL-unsafe characters
   # <tt>+</tt> or <tt>/</tt>;
@@ -246,19 +240,16 @@ module Base64
   #   s = "This is line 1\nThis is line 2\n"
   #   Base64.encode64(s) # => "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK\n"
   #
-  # source://base64//lib/base64.rb#222
+  # source://base64//lib/base64.rb#219
   def encode64(bin); end
 
-  # :call-seq:
-  #   Base64.strict_decode64(encoded_string) -> decoded_string
-  #
   # Returns a string containing the decoding of an RFC-2045-compliant
-  # \Base64-encoded string +encoded_string+:
+  # \Base64-encoded string +str+:
   #
   #   s = "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK"
   #   Base64.strict_decode64(s) # => "This is line 1\nThis is line 2\n"
   #
-  # Non-\Base64 characters in +encoded_string+ are not allowed;
+  # Non-\Base64 characters in +str+ not allowed;
   # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
   # these include newline characters and characters <tt>-</tt> and <tt>/</tt>:
   #
@@ -266,19 +257,16 @@ module Base64
   #   Base64.strict_decode64('-')  # Raises ArgumentError
   #   Base64.strict_decode64('_')  # Raises ArgumentError
   #
-  # Padding in +encoded_string+, if present, must be correct:
+  # Padding in +str+, if present, must be correct:
   #
   #   Base64.strict_decode64("MDEyMzQ1Njc")   # Raises ArgumentError
   #   Base64.strict_decode64("MDEyMzQ1Njc=")  # => "01234567"
   #   Base64.strict_decode64("MDEyMzQ1Njc==") # Raises ArgumentError
   #
-  # source://base64//lib/base64.rb#309
+  # source://base64//lib/base64.rb#297
   def strict_decode64(str); end
 
-  # :call-seq:
-  #   Base64.strict_encode64(string) -> encoded_string
-  #
-  # Returns a string containing the RFC-2045-compliant \Base64-encoding of +string+.
+  # Returns a string containing the RFC-2045-compliant \Base64-encoding of +bin+.
   #
   # Per RFC 2045, the returned string may contain the URL-unsafe characters
   # <tt>+</tt> or <tt>/</tt>;
@@ -306,35 +294,29 @@ module Base64
   #   s = "This is line 1\nThis is line 2\n"
   #   Base64.strict_encode64(s) # => "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK"
   #
-  # source://base64//lib/base64.rb#282
+  # source://base64//lib/base64.rb#273
   def strict_encode64(bin); end
 
-  # :call-seq:
-  #   Base64.urlsafe_decode64(encoded_string) -> decoded_string
+  # Returns the decoding of an RFC-4648-compliant \Base64-encoded string +str+:
   #
-  # Returns the decoding of an RFC-4648-compliant \Base64-encoded string +encoded_string+:
-  #
-  # +encoded_string+ may not contain non-Base64 characters;
+  # +str+ may not contain non-Base64 characters;
   # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
   #
   #   Base64.urlsafe_decode64('+')  # Raises ArgumentError.
   #   Base64.urlsafe_decode64('/')  # Raises ArgumentError.
   #   Base64.urlsafe_decode64("\n") # Raises ArgumentError.
   #
-  # Padding in +encoded_string+, if present, must be correct:
+  # Padding in +str+, if present, must be correct:
   # see {Padding}[Base64.html#module-Base64-label-Padding], above:
   #
   #   Base64.urlsafe_decode64("MDEyMzQ1Njc") # => "01234567"
   #   Base64.urlsafe_decode64("MDEyMzQ1Njc=") # => "01234567"
   #   Base64.urlsafe_decode64("MDEyMzQ1Njc==") # Raises ArgumentError.
   #
-  # source://base64//lib/base64.rb#369
+  # source://base64//lib/base64.rb#351
   def urlsafe_decode64(str); end
 
-  # :call-seq:
-  #   Base64.urlsafe_encode64(string) -> encoded_string
-  #
-  # Returns the RFC-4648-compliant \Base64-encoding of +string+.
+  # Returns the RFC-4648-compliant \Base64-encoding of +bin+.
   #
   # Per RFC 4648, the returned string will not contain the URL-unsafe characters
   # <tt>+</tt> or <tt>/</tt>,
@@ -361,38 +343,32 @@ module Base64
   #   Base64.urlsafe_encode64('*' * 46)
   #   # => "KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg=="
   #
-  # source://base64//lib/base64.rb#343
+  # source://base64//lib/base64.rb#328
   def urlsafe_encode64(bin, padding: T.unsafe(nil)); end
 
   class << self
-    # :call-seq:
-    #   Base64.decode(encoded_string) -> decoded_string
-    #
     # Returns a string containing the decoding of an RFC-2045-compliant
-    # \Base64-encoded string +encoded_string+:
+    # \Base64-encoded string +str+:
     #
     #   s = "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK\n"
     #   Base64.decode64(s) # => "This is line 1\nThis is line 2\n"
     #
-    # Non-\Base64 characters in +encoded_string+ are ignored;
+    # Non-\Base64 characters in +str+ are ignored;
     # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
     # these include newline characters and characters <tt>-</tt> and <tt>/</tt>:
     #
     #   Base64.decode64("\x00\n-_") # => ""
     #
-    # Padding in +encoded_string+ (even if incorrect) is ignored:
+    # Padding in +str+ (even if incorrect) is ignored:
     #
     #   Base64.decode64("MDEyMzQ1Njc")   # => "01234567"
     #   Base64.decode64("MDEyMzQ1Njc=")  # => "01234567"
     #   Base64.decode64("MDEyMzQ1Njc==") # => "01234567"
     #
-    # source://base64//lib/base64.rb#247
+    # source://base64//lib/base64.rb#241
     def decode64(str); end
 
-    # :call-seq:
-    #   Base64.encode64(string) -> encoded_string
-    #
-    # Returns a string containing the RFC-2045-compliant \Base64-encoding of +string+.
+    # Returns a string containing the RFC-2045-compliant \Base64-encoding of +bin+.
     #
     # Per RFC 2045, the returned string may contain the URL-unsafe characters
     # <tt>+</tt> or <tt>/</tt>;
@@ -421,19 +397,16 @@ module Base64
     #   s = "This is line 1\nThis is line 2\n"
     #   Base64.encode64(s) # => "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK\n"
     #
-    # source://base64//lib/base64.rb#222
+    # source://base64//lib/base64.rb#219
     def encode64(bin); end
 
-    # :call-seq:
-    #   Base64.strict_decode64(encoded_string) -> decoded_string
-    #
     # Returns a string containing the decoding of an RFC-2045-compliant
-    # \Base64-encoded string +encoded_string+:
+    # \Base64-encoded string +str+:
     #
     #   s = "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK"
     #   Base64.strict_decode64(s) # => "This is line 1\nThis is line 2\n"
     #
-    # Non-\Base64 characters in +encoded_string+ are not allowed;
+    # Non-\Base64 characters in +str+ not allowed;
     # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
     # these include newline characters and characters <tt>-</tt> and <tt>/</tt>:
     #
@@ -441,19 +414,16 @@ module Base64
     #   Base64.strict_decode64('-')  # Raises ArgumentError
     #   Base64.strict_decode64('_')  # Raises ArgumentError
     #
-    # Padding in +encoded_string+, if present, must be correct:
+    # Padding in +str+, if present, must be correct:
     #
     #   Base64.strict_decode64("MDEyMzQ1Njc")   # Raises ArgumentError
     #   Base64.strict_decode64("MDEyMzQ1Njc=")  # => "01234567"
     #   Base64.strict_decode64("MDEyMzQ1Njc==") # Raises ArgumentError
     #
-    # source://base64//lib/base64.rb#309
+    # source://base64//lib/base64.rb#297
     def strict_decode64(str); end
 
-    # :call-seq:
-    #   Base64.strict_encode64(string) -> encoded_string
-    #
-    # Returns a string containing the RFC-2045-compliant \Base64-encoding of +string+.
+    # Returns a string containing the RFC-2045-compliant \Base64-encoding of +bin+.
     #
     # Per RFC 2045, the returned string may contain the URL-unsafe characters
     # <tt>+</tt> or <tt>/</tt>;
@@ -481,35 +451,29 @@ module Base64
     #   s = "This is line 1\nThis is line 2\n"
     #   Base64.strict_encode64(s) # => "VGhpcyBpcyBsaW5lIDEKVGhpcyBpcyBsaW5lIDIK"
     #
-    # source://base64//lib/base64.rb#282
+    # source://base64//lib/base64.rb#273
     def strict_encode64(bin); end
 
-    # :call-seq:
-    #   Base64.urlsafe_decode64(encoded_string) -> decoded_string
+    # Returns the decoding of an RFC-4648-compliant \Base64-encoded string +str+:
     #
-    # Returns the decoding of an RFC-4648-compliant \Base64-encoded string +encoded_string+:
-    #
-    # +encoded_string+ may not contain non-Base64 characters;
+    # +str+ may not contain non-Base64 characters;
     # see {Encoding Character Set}[Base64.html#module-Base64-label-Encoding+Character+Sets] above:
     #
     #   Base64.urlsafe_decode64('+')  # Raises ArgumentError.
     #   Base64.urlsafe_decode64('/')  # Raises ArgumentError.
     #   Base64.urlsafe_decode64("\n") # Raises ArgumentError.
     #
-    # Padding in +encoded_string+, if present, must be correct:
+    # Padding in +str+, if present, must be correct:
     # see {Padding}[Base64.html#module-Base64-label-Padding], above:
     #
     #   Base64.urlsafe_decode64("MDEyMzQ1Njc") # => "01234567"
     #   Base64.urlsafe_decode64("MDEyMzQ1Njc=") # => "01234567"
     #   Base64.urlsafe_decode64("MDEyMzQ1Njc==") # Raises ArgumentError.
     #
-    # source://base64//lib/base64.rb#369
+    # source://base64//lib/base64.rb#351
     def urlsafe_decode64(str); end
 
-    # :call-seq:
-    #   Base64.urlsafe_encode64(string) -> encoded_string
-    #
-    # Returns the RFC-4648-compliant \Base64-encoding of +string+.
+    # Returns the RFC-4648-compliant \Base64-encoding of +bin+.
     #
     # Per RFC 4648, the returned string will not contain the URL-unsafe characters
     # <tt>+</tt> or <tt>/</tt>,
@@ -536,7 +500,7 @@ module Base64
     #   Base64.urlsafe_encode64('*' * 46)
     #   # => "KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKg=="
     #
-    # source://base64//lib/base64.rb#343
+    # source://base64//lib/base64.rb#328
     def urlsafe_encode64(bin, padding: T.unsafe(nil)); end
   end
 end

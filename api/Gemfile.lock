@@ -101,7 +101,8 @@ GEM
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
-    base64 (0.3.0)
+    base58 (0.2.3)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
     bigdecimal (3.2.2)
@@ -143,8 +144,10 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
     drb (2.2.3)
+    ed25519 (1.4.0)
     erb (5.0.1)
     erubi (1.13.1)
+    event_emitter (0.2.6)
     factory_bot (6.5.4)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.0)
@@ -152,6 +155,12 @@ GEM
       railties (>= 6.1.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
+    ffi (1.17.2-aarch64-linux-gnu)
+    ffi (1.17.2-aarch64-linux-musl)
+    ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (4.31.1-aarch64-linux-gnu)
@@ -311,6 +320,8 @@ GEM
     rbi (0.3.6)
       prism (~> 1.0)
       rbs (>= 3.4.4)
+    rbnacl (7.1.2)
+      ffi (~> 1)
     rbs (3.9.4)
       logger
     rdoc (6.14.1)
@@ -402,6 +413,13 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    solana-ruby-web3js (2.1.5)
+      activesupport
+      base58 (~> 0.2.3)
+      base64 (~> 0.2.0)
+      ed25519
+      rbnacl (~> 7.1)
+      websocket-client-simple (~> 0.8.0)
     sorbet (0.5.12196)
       sorbet-static (= 0.5.12196)
     sorbet-coerce (0.7.0)
@@ -474,6 +492,9 @@ GEM
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket (1.2.11)
+    websocket-client-simple (0.8.0)
+      event_emitter
+      websocket
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
@@ -530,6 +551,7 @@ DEPENDENCIES
   sentry-ruby
   sidekiq-pro!
   simple_form
+  solana-ruby-web3js
   sorbet
   sorbet-rails
   sorbet-runtime
