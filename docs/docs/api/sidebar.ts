@@ -8,6 +8,24 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Makers",
+      link: {
+        type: "doc",
+        id: "api/makers",
+      },
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/get-makers",
+          label: "List makers",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Rewards",
       link: {
         type: "doc",

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_27_131718) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_06_122839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
@@ -88,6 +88,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_27_131718) do
     t.string "file_name", null: false
     t.index ["deduplication_key"], name: "idx_on_deduplication_key_ba179087f7", unique: true
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_016ec07462"
+  end
+
+  create_table "helium_l2_makers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "address", null: false
+    t.string "update_authority", null: false
+    t.string "issuing_authority", null: false
+    t.string "name", null: false
+    t.integer "bump_seed", null: false
+    t.string "collection", null: false
+    t.string "merkle_tree", null: false
+    t.integer "collection_bump_seed", null: false
+    t.string "dao", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "helium_l2_mobile_reward_shares", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
