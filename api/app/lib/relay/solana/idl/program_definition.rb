@@ -127,6 +127,29 @@ module Relay
           find_instruction_by_discriminator(discriminator) || raise(ArgumentError, "Instruction with discriminator #{discriminator} not found in IDL")
         end
 
+        sig { params(discriminator: T::Array[Integer]).returns(T.nilable(AccountDefinition)) }
+        def find_account_by_discriminator(discriminator)
+          accounts.find { |account| account.discriminator == discriminator }
+        end
+
+        sig { params(discriminator: T::Array[Integer]).returns(AccountDefinition) }
+        def find_account_by_discriminator!(discriminator)
+          find_account_by_discriminator(discriminator) ||
+            raise(ArgumentError, "Account with discriminator #{discriminator} not found in IDL")
+        end
+
+        sig { params(account_data: String).returns(T.nilable(AccountDefinition)) }
+        def find_account_from_data(account_data)
+          discriminator = extract_account_discriminator(account_data)
+          find_account_by_discriminator(discriminator)
+        end
+
+        sig { params(account_data: String).returns(AccountDefinition) }
+        def find_account_from_data!(account_data)
+          discriminator = extract_account_discriminator(account_data)
+          find_account_by_discriminator(discriminator) || raise(ArgumentError, "Account with discriminator #{discriminator} not found in IDL")
+        end
+
         private
 
         sig { params(instruction_data: String).returns(T::Array[Integer]) }
@@ -134,6 +157,13 @@ module Relay
           raise ArgumentError, "Instruction data too short for discriminator" if instruction_data.length < 8
 
           T.cast(T.must(instruction_data[0, 8]).unpack("C*"), T::Array[Integer])
+        end
+
+        sig { params(account_data: String).returns(T::Array[Integer]) }
+        def extract_account_discriminator(account_data)
+          raise ArgumentError, "Account data too short for discriminator" if account_data.length < 8
+
+          T.cast(T.must(account_data[0, 8]).unpack("C*"), T::Array[Integer])
         end
       end
     end

@@ -20,6 +20,11 @@ module Relay
         client.get_program_accounts(program_id, options)
       end
 
+      sig { params(address: String).returns(T.untyped) }
+      def get_parsed_account_info(address)
+        client.get_parsed_account_info(address)
+      end
+
       sig { params(id: String).returns(T.untyped) }
       def get_asset(id)
         client.request("getAsset", { id: id }).fetch("result")

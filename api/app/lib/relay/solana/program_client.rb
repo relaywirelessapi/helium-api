@@ -21,9 +21,9 @@ module Relay
         @base58_encoder = base58_encoder
       end
 
-      sig { params(account_name: String).returns(T::Array[T::Hash[String, T.untyped]]) }
-      def get_accounts(account_name)
-        account_definition = program.find_account!(account_name)
+      sig { params(type: String).returns(T::Array[T::Hash[String, T.untyped]]) }
+      def get_accounts(type)
+        account_definition = program.find_account!(type)
 
         client.get_program_accounts(
           program.address,
@@ -42,18 +42,23 @@ module Relay
         )
       end
 
-      sig { params(account_name: String, account_data: String).returns(T.untyped) }
-      def deserialize_account(account_name, account_data)
-        account_definition = program.find_account!(account_name)
-        type = program.find_type!(account_name).type
+      sig { params(data: String).returns(T.untyped) }
+      def deserialize_account(data)
+        account_definition = program.find_account_from_data!(data)
+        type_definition = program.find_type!(account_definition.name).type
 
-        account_definition.validate_discriminator!(account_data)
-
-        type.deserialize(
-          account_data,
+        type_definition.deserialize(
+          data,
           offset: 8,
           program: program
         ).first
+      end
+
+      sig { params(address: String).returns(T.untyped) }
+      def get_and_deserialize_account(address)
+        data = client.get_parsed_account_info(address).fetch("account").fetch("value").fetch("data")[0]
+
+        deserialize_account(data)
       end
     end
   end
