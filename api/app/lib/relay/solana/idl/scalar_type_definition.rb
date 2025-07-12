@@ -31,10 +31,10 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           method_name = "deserialize_#{type}"
 
           if respond_to?(method_name, true)

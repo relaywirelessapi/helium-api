@@ -52,10 +52,10 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           raise NotImplementedError, "Type definitions must implement #deserialize"
         end
       end

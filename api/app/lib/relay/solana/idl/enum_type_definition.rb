@@ -29,14 +29,14 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           discriminant, offset = ScalarTypeDefinition.new(type: :u8).deserialize(
             data,
             offset: offset,
-            program_definition: program_definition
+            program: program
           )
 
           if discriminant < 0 || discriminant >= variants.length
@@ -54,7 +54,7 @@ module Relay
             field_value, offset = field.type.deserialize(
               data,
               offset: offset,
-              program_definition: program_definition
+              program: program
             )
 
             variant_data[field.name.to_sym] = field_value

@@ -27,12 +27,12 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
-          type_definition = program_definition.find_type!(name).type
-          type_definition.deserialize(data, offset: offset, program_definition: program_definition)
+        def deserialize(data, offset:, program:)
+          type_definition = program.find_type!(name).type
+          type_definition.deserialize(data, offset: offset, program: program)
         end
       end
     end

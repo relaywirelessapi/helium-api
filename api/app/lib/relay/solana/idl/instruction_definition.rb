@@ -72,10 +72,10 @@ module Relay
           params(
             data: String,
             accounts: T::Array[String],
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns(DeserializedInstruction)
         end
-        def deserialize(data, accounts, program_definition:)
+        def deserialize(data, accounts, program:)
           unless matches_discriminator?(data)
             raise ArgumentError, "Instruction discriminator does not match for '#{name}'. Expected #{discriminator.inspect}, got #{extract_discriminator(data).inspect}"
           end
@@ -83,22 +83,22 @@ module Relay
           args_data = data[8..-1] || ""
 
           DeserializedInstruction.new(
-            args: map_args(args_data, program_definition),
+            args: map_args(args_data, program),
             accounts: map_accounts(accounts)
           )
         end
 
         private
 
-        sig { params(args_data: String, program_definition: ProgramDefinition).returns(T::Hash[Symbol, T.untyped]) }
-        def map_args(args_data, program_definition)
+        sig { params(args_data: String, program: ProgramDefinition).returns(T::Hash[Symbol, T.untyped]) }
+        def map_args(args_data, program)
           offset = 0
 
           args.map do |arg_definition|
             value, offset = arg_definition.type.deserialize(
               args_data,
               offset: offset,
-              program_definition: program_definition
+              program: program
             )
 
             [ arg_definition.name.to_sym, value ]

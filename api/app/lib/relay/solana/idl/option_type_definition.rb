@@ -27,14 +27,14 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           has_value, offset = ScalarTypeDefinition.new(type: :u8).deserialize(
             data,
             offset: offset,
-            program_definition: program_definition
+            program: program
           )
 
           return [ nil, offset ] if has_value == 0
@@ -42,7 +42,7 @@ module Relay
           type.deserialize(
             data,
             offset: offset,
-            program_definition: program_definition
+            program: program
           )
         end
       end

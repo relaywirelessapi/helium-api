@@ -27,14 +27,14 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           length, offset = ScalarTypeDefinition.new(type: :u32).deserialize(
             data,
             offset: offset,
-            program_definition: program_definition
+            program: program
           )
 
           result = []
@@ -43,7 +43,7 @@ module Relay
             value, offset = type.deserialize(
               data,
               offset: offset,
-              program_definition: program_definition
+              program: program
             )
             result << value
           end

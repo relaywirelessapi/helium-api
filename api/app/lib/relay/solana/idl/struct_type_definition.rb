@@ -39,17 +39,17 @@ module Relay
           params(
             data: String,
             offset: Integer,
-            program_definition: ProgramDefinition
+            program: ProgramDefinition
           ).returns([ T.untyped, Integer ])
         end
-        def deserialize(data, offset:, program_definition:)
+        def deserialize(data, offset:, program:)
           result = {}
 
           fields.each do |field|
             field_value, offset = field.type.deserialize(
               data,
               offset: offset,
-              program_definition: program_definition
+              program: program
             )
             result[field.name] = field_value
           end

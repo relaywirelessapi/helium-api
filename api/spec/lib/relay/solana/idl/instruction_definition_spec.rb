@@ -40,7 +40,7 @@ RSpec.describe Relay::Solana::Idl::InstructionDefinition do
             "11111111111111111111111111111111",
             "hemjuPXBpNvggtaUnN1MwT3wrdhttKEfosTcc2P9Pg8"
           ],
-          program_definition: idl
+          program: idl
         )
       }.not_to raise_error
     end
