@@ -93,6 +93,10 @@ locals {
     {
       name  = "BUNDLE_GEMS__CONTRIBSYS__COM"
       value = aws_ssm_parameter.sidekiq_pro_credentials.value
+    },
+    {
+      name  = "WEBHOOK_AUTH_KEYS"
+      value = aws_ssm_parameter.webhook_auth_keys.value
     }
   ]
 }

@@ -44,7 +44,8 @@ resource "aws_iam_role_policy" "ecs_execution_ssm" {
           aws_ssm_parameter.helium_oracles_aws_region.arn,
           aws_ssm_parameter.sentry_dsn.arn,
           aws_ssm_parameter.posthog_api_key.arn,
-          aws_ssm_parameter.posthog_host.arn
+          aws_ssm_parameter.posthog_host.arn,
+          aws_ssm_parameter.webhook_auth_keys.arn
         ]
       }
     ]

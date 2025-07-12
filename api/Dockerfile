@@ -13,7 +13,7 @@ RUN apt-get update -qq && \
   pkg-config \
   curl \
   libpq5 \
-  postgresql-client && \
+  postgresql-client \
   libsodium-dev && \
   rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 

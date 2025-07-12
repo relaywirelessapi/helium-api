@@ -108,6 +108,17 @@ resource "aws_ssm_parameter" "sidekiq_pro_credentials" {
   value       = var.sidekiq_pro_credentials
 }
 
+resource "aws_ssm_parameter" "webhook_auth_keys" {
+  name        = "/${var.app_name}/${var.environment}/webhook_auth_keys"
+  description = "Secret key(s) for authenticating webhooks"
+  type        = "SecureString"
+  value       = random_password.webhook_auth_keys.result
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32
@@ -127,4 +138,9 @@ resource "random_password" "devise_pepper" {
 resource "random_password" "sidekiq_password" {
   length  = 32
   special = false
+}
+
+resource "random_password" "webhook_auth_keys" {
+  length  = 64
+  special = true
 }

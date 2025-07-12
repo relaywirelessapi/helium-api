@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_06_165156) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_12_093857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
@@ -201,6 +201,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_165156) do
     t.string "source", null: false
     t.jsonb "payload", null: false
     t.datetime "processed_at"
+    t.jsonb "metadata", default: {}, null: false
     t.index ["source"], name: "index_webhooks_on_source"
   end
 
