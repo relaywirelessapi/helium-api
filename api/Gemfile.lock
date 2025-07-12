@@ -131,7 +131,11 @@ GEM
       highline (~> 3.0.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
+    crack (1.0.0)
+      bigdecimal
+      rexml
     crass (1.0.6)
+    csv (3.3.5)
     date (3.4.1)
     debug (1.11.0)
       irb (~> 1.10)
@@ -181,7 +185,12 @@ GEM
     google-protobuf (4.31.1-x86_64-linux-musl)
       bigdecimal
       rake (>= 13)
+    hashdiff (1.2.0)
     highline (3.0.1)
+    httparty (0.23.1)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -224,6 +233,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
+    multi_xml (0.7.2)
+      bigdecimal (~> 3.1)
     net-imap (0.5.9)
       date
       net-protocol
@@ -485,12 +496,18 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    vcr (6.3.1)
+      base64
     view_component (3.23.2)
       activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1)
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webmock (3.25.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.11)
     websocket-client-simple (0.8.0)
       event_emitter
@@ -532,6 +549,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   google-protobuf
+  httparty
   importmap-rails
   kaminari
   ostruct
@@ -562,7 +580,9 @@ DEPENDENCIES
   tapioca
   thruster
   turbo-rails
+  vcr
   view_component
+  webmock
   zeitwerk (= 2.7.2)
   zlib
 

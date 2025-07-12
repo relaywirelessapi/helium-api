@@ -2,9 +2,10 @@
 
 FactoryBot.define do
   factory :hotspot, class: "Relay::Helium::L2::Hotspot" do
-    address { Faker::Blockchain::Solana.address }
-    nft_address { Faker::Blockchain::Solana.address }
+    asset_id { Faker::Blockchain::Solana.address }
     ecc_key { Faker::Blockchain::Solana.address }
+    owner { Faker::Blockchain::Solana.address }
+    networks { [ "iot" ] }
     name { Faker::Internet.unique.domain_word }
     association :maker, factory: :helium_l2_maker
 

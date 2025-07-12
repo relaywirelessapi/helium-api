@@ -442,6 +442,20 @@ class Relay::Helium::L2::Hotspot
     sig { returns(T::Boolean) }
     def maker_previously_changed?; end
 
+    sig { returns(T::Array[T.untyped]) }
+    def radio_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def radio_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Relay::Helium::L2::Hotspot` class because it declared `has_many :radios`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Relay::Helium::L2::HotspotRadio::PrivateCollectionProxy) }
+    def radios; end
+
+    sig { params(value: T::Enumerable[::Relay::Helium::L2::HotspotRadio]).void }
+    def radios=(value); end
+
     sig { returns(T.nilable(::Relay::Helium::L2::Maker)) }
     def reload_maker; end
 

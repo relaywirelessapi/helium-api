@@ -44,11 +44,13 @@ module Relay
 
       sig { params(data: String).returns(T.untyped) }
       def deserialize_account(data)
-        account_definition = program.find_account_from_data!(data)
+        decoded_data = Base64.decode64(data)
+
+        account_definition = program.find_account_from_data!(decoded_data)
         type_definition = program.find_type!(account_definition.name).type
 
         type_definition.deserialize(
-          data,
+          decoded_data,
           offset: 8,
           program: program
         ).first
@@ -56,7 +58,7 @@ module Relay
 
       sig { params(address: String).returns(T.untyped) }
       def get_and_deserialize_account(address)
-        data = client.get_parsed_account_info(address).fetch("account").fetch("value").fetch("data")[0]
+        data = client.get_parsed_account_info(address).fetch("value").fetch("data")[0]
 
         deserialize_account(data)
       end

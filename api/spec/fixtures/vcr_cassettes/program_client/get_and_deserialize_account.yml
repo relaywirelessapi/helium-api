@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <SOLANA_RPC_URL>
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["BwLjgfqsGLkryn9pGV5dWcKMrDRfDVTL9H8kQLTuHUiB",{"encoding":"jsonParsed","commitment":"finalized"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 10:00:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 96219d36986aed9f-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '40'
+      Helius-Request-Type:
+      - rpc
+      Helius-Router-Overhead:
+      - '41'
+      Helius-Total-Latency:
+      - '81'
+      X-Via:
+      - fra4
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","id":1,"result":{"context":{"slot":354532670,"apiVersion":"2.2.7"},"value":{"lamports":52700480,"data":["YcRnkrAhR+tqQuUrInAJ9w67etKwdVMwjRUJfgts9IRWY9zf6z9tN7su7C4Z1swzFL9WdACuBPeEkRZTQp9ODTY0+wiPO7/ECAAAAFNlbnNlQ0FQ/oi0fre/OUx8PkP0X30H6ZklRnbZc+ZIoKbBBeMYWXmYc8i4GzFOT4RjYaV/EiQvMk9ZhweK71D/Xnn16Uh2H0P/mnviF/1SHfRrjlN4aHLEuOFkX0x6/yf/2zgF1fVTnjMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","base64"],"owner":"hemjuPXBpNvggtaUnN1MwT3wrdhttKEfosTcc2P9Pg8","executable":false,"rentEpoch":18446744073709551615,"space":260}}}'
+  recorded_at: Sun, 20 Jul 2025 10:00:53 GMT
+recorded_with: VCR 6.3.1

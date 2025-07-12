@@ -25,14 +25,26 @@ module Relay
         client.get_parsed_account_info(address)
       end
 
-      sig { params(id: String).returns(T.untyped) }
-      def get_asset(id)
-        client.request("getAsset", { id: id }).fetch("result")
+      sig { params(params: T::Hash[Symbol, T.untyped]).returns(T.untyped) }
+      def get_asset(params)
+        client.request("getAsset", params).fetch("result")
       end
 
-      sig { params(params: T::Hash[Symbol, T.untyped]).returns(T.untyped) }
+      sig { params(params: T::Hash[Symbol, T.untyped]).returns(T::Enumerator[T.untyped]) }
       def get_assets_by_group(params)
-        client.request("getAssetsByGroup", params).fetch("result")
+        Enumerator.new do |yielder|
+          page = 1
+
+          loop do
+            response = client.request("getAssetsByGroup", params.merge(page: page))
+            items = response.fetch("result").fetch("items", [])
+
+            break if items.empty?
+
+            items.each { |item| yielder << item }
+            page += 1
+          end
+        end
       end
     end
   end
