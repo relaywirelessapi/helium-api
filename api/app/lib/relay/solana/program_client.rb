@@ -45,11 +45,11 @@ module Relay
       sig { params(account_name: String, account_data: String).returns(T.untyped) }
       def deserialize_account(account_name, account_data)
         account_definition = program.find_account!(account_name)
-        type_definition = program.find_type!(account_name).type
+        type = program.find_type!(account_name).type
 
         account_definition.validate_discriminator!(account_data)
 
-        type_definition.deserialize(
+        type.deserialize(
           account_data,
           offset: 8,
           program: program

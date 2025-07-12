@@ -19,7 +19,7 @@ module Relay
             ))
           end
           def from_data(data)
-            type_definition = if data.is_a?(String)
+            type = if data.is_a?(String)
               ScalarTypeDefinition.from_data(data)
             elsif data.is_a?(Hash)
               if data.key?("kind")
@@ -42,7 +42,7 @@ module Relay
               end
             end
 
-            type_definition || raise(ArgumentError, "Unknown type definition for: #{data.inspect}")
+            type || raise(ArgumentError, "Unknown type definition for: #{data.inspect}")
           end
         end
 

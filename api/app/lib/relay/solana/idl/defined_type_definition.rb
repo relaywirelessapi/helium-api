@@ -31,8 +31,8 @@ module Relay
           ).returns([ T.untyped, Integer ])
         end
         def deserialize(data, offset:, program:)
-          type_definition = program.find_type!(name).type
-          type_definition.deserialize(data, offset: offset, program: program)
+          type = program.find_type!(name).type
+          type.deserialize(data, offset: offset, program: program)
         end
       end
     end
