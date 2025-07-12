@@ -55,4 +55,18 @@ RSpec.describe Relay::Helium::L2::WebhookProcessor do
         ]
       ])
     end
+
+    it "dispatches to the proper handler" do
+      payload = JSON.parse(File.read(Rails.root.join("spec/fixtures/helius-webhook.json")))
+      webhook = Relay::Webhooks::Webhook.create!(payload: payload, source: "helius")
+      handler = instance_spy(Relay::Helium::L2::InstructionHandlers::BaseHandler)
+
+      processor = described_class.new(handlers: { update_iot_info_v0: handler })
+      processor.process(webhook)
+
+      expect(handler).to have_received(:handle).with(
+        an_instance_of(Relay::Solana::Idl::InstructionDefinition),
+        an_instance_of(Relay::Solana::Idl::InstructionDefinition::DeserializedInstruction)
+      )
+    end
   end

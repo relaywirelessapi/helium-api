@@ -9,14 +9,14 @@ class Relay::Helium::L2::SyncMakerJob
   class << self
     sig do
       params(
-        account_address: T.untyped,
-        account_data: T.untyped,
+        address: ::String,
+        data: ::String,
         block: T.nilable(T.proc.params(job: Relay::Helium::L2::SyncMakerJob).void)
       ).returns(T.any(Relay::Helium::L2::SyncMakerJob, FalseClass))
     end
-    def perform_later(account_address, account_data, &block); end
+    def perform_later(address, data, &block); end
 
-    sig { params(account_address: T.untyped, account_data: T.untyped).returns(T.untyped) }
-    def perform_now(account_address, account_data); end
+    sig { params(address: ::String, data: ::String).void }
+    def perform_now(address, data); end
   end
 end
