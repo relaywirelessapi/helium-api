@@ -8,18 +8,13 @@ module Relay
       sig { returns(Idl::ProgramDefinition) }
       attr_reader :program_definition
 
-      sig { returns(DeserializerRegistry) }
-      attr_reader :deserializer_registry
-
       sig do
         params(
-          program_definition: Idl::ProgramDefinition,
-          deserializer_registry: DeserializerRegistry
+          program_definition: Idl::ProgramDefinition
         ).void
       end
-      def initialize(program_definition, deserializer_registry: DeserializerRegistry.new)
+      def initialize(program_definition)
         @program_definition = program_definition
-        @deserializer_registry = deserializer_registry
       end
 
       sig { params(instruction_data: String, account_addresses: T::Array[String]).returns(T::Hash[String, T.untyped]) }
@@ -42,11 +37,10 @@ module Relay
         offset = 0
 
         instruction_definition.args.each do |arg_definition|
-          value, offset = deserializer_registry.deserialize(
+          value, offset = arg_definition.type.deserialize(
             args_data,
             offset: offset,
-            program_definition: program_definition,
-            type_definition: arg_definition.type
+            program_definition: program_definition
           )
 
           result << {

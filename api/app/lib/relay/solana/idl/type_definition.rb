@@ -45,6 +45,19 @@ module Relay
             type_definition || raise(ArgumentError, "Unknown type definition for: #{data.inspect}")
           end
         end
+
+        extend T::Sig
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program_definition: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program_definition:)
+          raise NotImplementedError, "Type definitions must implement #deserialize"
+        end
       end
     end
   end

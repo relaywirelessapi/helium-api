@@ -11,17 +11,13 @@ module Relay
       sig { returns(Client) }
       attr_reader :client
 
-      sig { returns(DeserializerRegistry) }
-      attr_reader :deserializer_registry
-
       sig { returns(Base58Encoder) }
       attr_reader :base58_encoder
 
-      sig { params(program_definition: Idl::ProgramDefinition, client: Client, deserializer_registry: DeserializerRegistry, base58_encoder: Base58Encoder).void }
-      def initialize(program_definition, client: Client.new, deserializer_registry: DeserializerRegistry.new, base58_encoder: Base58Encoder.new)
+      sig { params(program_definition: Idl::ProgramDefinition, client: Client, base58_encoder: Base58Encoder).void }
+      def initialize(program_definition, client: Client.new, base58_encoder: Base58Encoder.new)
         @program_definition = program_definition
         @client = client
-        @deserializer_registry = deserializer_registry
         @base58_encoder = base58_encoder
       end
 
@@ -53,11 +49,10 @@ module Relay
 
         account_definition.validate_discriminator!(account_data)
 
-        deserializer_registry.deserialize(
+        type_definition.deserialize(
           account_data,
           offset: 8,
-          program_definition: program_definition,
-          type_definition: type_definition,
+          program_definition: program_definition
         ).first
       end
     end
