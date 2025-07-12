@@ -1049,7 +1049,7 @@ class Selenium::WebDriver::ChildProcess
 
   # @api private
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/child_process.rb#127
+  # source://selenium-webdriver//lib/selenium/webdriver/common/child_process.rb#129
   def kill(pid); end
 
   # @api private
@@ -1064,7 +1064,7 @@ class Selenium::WebDriver::ChildProcess
 
   # @api private
   #
-  # source://selenium-webdriver//lib/selenium/webdriver/common/child_process.rb#131
+  # source://selenium-webdriver//lib/selenium/webdriver/common/child_process.rb#135
   def waitpid2(pid, flags = T.unsafe(nil)); end
 
   class << self
@@ -4763,17 +4763,17 @@ module Selenium::WebDriver::Keys
     # @api private
     # @raise [Error::UnsupportedOperationError]
     #
-    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#114
+    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#123
     def [](key); end
 
     # @api private
     #
-    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#124
+    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#133
     def encode(keys); end
 
     # @api private
     #
-    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#132
+    # source://selenium-webdriver//lib/selenium/webdriver/common/keys.rb#141
     def encode_key(key); end
   end
 end
@@ -5980,13 +5980,13 @@ class Selenium::WebDriver::Proxy
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#74
   def ==(other); end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#142
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#143
   def as_json(*_arg0); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def auto_detect; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#104
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#105
   def auto_detect=(bool); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#74
@@ -6001,58 +6001,58 @@ class Selenium::WebDriver::Proxy
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def http; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#84
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#85
   def http=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def no_proxy; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#89
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#90
   def no_proxy=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def pac; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#99
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#100
   def pac=(url); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def socks; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#109
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#110
   def socks=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def socks_password; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#119
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#120
   def socks_password=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def socks_username; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#114
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#115
   def socks_username=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def socks_version; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#124
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#125
   def socks_version=(value); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def ssl; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#94
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#95
   def ssl=(value); end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#160
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#161
   def to_json(*_arg0); end
 
   # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#43
   def type; end
 
-  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#129
+  # source://selenium-webdriver//lib/selenium/webdriver/common/proxy.rb#130
   def type=(type); end
 
   class << self

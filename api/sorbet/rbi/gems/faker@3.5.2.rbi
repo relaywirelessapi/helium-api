@@ -1935,31 +1935,31 @@ class Faker::Code < ::Faker::Base
 
     private
 
-    # source://faker//lib/faker/default/code.rb#211
+    # source://faker//lib/faker/default/code.rb#212
     def generate_base10_isbn; end
 
-    # source://faker//lib/faker/default/code.rb#257
+    # source://faker//lib/faker/default/code.rb#258
     def generate_base13_ean; end
 
-    # source://faker//lib/faker/default/code.rb#226
+    # source://faker//lib/faker/default/code.rb#227
     def generate_base13_isbn; end
 
-    # source://faker//lib/faker/default/code.rb#243
+    # source://faker//lib/faker/default/code.rb#244
     def generate_base8_ean; end
 
-    # source://faker//lib/faker/default/code.rb#172
+    # source://faker//lib/faker/default/code.rb#173
     def generate_imei; end
 
-    # source://faker//lib/faker/default/code.rb#279
+    # source://faker//lib/faker/default/code.rb#283
     def generate_nric_check_alphabet(values, prefix); end
 
-    # source://faker//lib/faker/default/code.rb#286
+    # source://faker//lib/faker/default/code.rb#290
     def generate_sin_check_digit(digits); end
 
-    # source://faker//lib/faker/default/code.rb#274
+    # source://faker//lib/faker/default/code.rb#278
     def rut_verificator_digit(rut); end
 
-    # source://faker//lib/faker/default/code.rb#237
+    # source://faker//lib/faker/default/code.rb#238
     def sum(values); end
   end
 end
@@ -4325,8 +4325,8 @@ class Faker::Finance < ::Faker::Base
     # Returns a random condominium fiscal code.
     #
     # @example
-    #   Faker::Finance.condominium_fiscal_code #=> "012345678"
-    # @param country [String] Two capital letter country code to use for the vat number.
+    #   Faker::Finance.condominium_fiscal_code #=> "01234567890"
+    # @param country [String] Two capital letter country code to use for the condominium fiscal code number.
     # @return [String]
     #
     # source://faker//lib/faker/default/finance.rb#107
@@ -6991,8 +6991,8 @@ class Faker::Invoice < ::Faker::Base
     # Produces a random amount between values with 2 decimals
     #
     # @example
-    #   Faker::Finance.amount_between #=> 0
-    #   Faker::Finance.amount_between(0, 10) #=> 4.33
+    #   Faker::Invoice.amount_between #=> 0
+    #   Faker::Invoice.amount_between(from: 0, to: 10) #=> 4.33
     # @param from [Integer] Specifies lower limit.
     # @param to [Integer] Specifies upper limit.
     # @return [Integer]
@@ -7508,7 +7508,7 @@ class Faker::Job < ::Faker::Base
   end
 end
 
-# source://faker//lib/faker/default/json.rb#2
+# source://faker//lib/faker/default/json.rb#4
 class Faker::Json < ::Faker::Base
   class << self
     # Produces a random nested JSON formatted string that can take JSON as an additional argument.
@@ -7546,7 +7546,7 @@ class Faker::Json < ::Faker::Base
     # @param options [Hash] Specifies a Faker gem class to use for nested keys and for values, respectably. options_hash = {key: Class.method, value: Class.method}
     # @return [Hash{String => String}]
     #
-    # source://faker//lib/faker/default/json.rb#69
+    # source://faker//lib/faker/default/json.rb#71
     def add_depth_to_json(json: T.unsafe(nil), width: T.unsafe(nil), options: T.unsafe(nil)); end
 
     # Produces a random simple JSON formatted string.
@@ -7563,21 +7563,21 @@ class Faker::Json < ::Faker::Base
     # @param options [Hash] Specifies a Faker gem class to use for keys and for values, respectably. options_hash = {key: Class.method, value: Class.method}
     # @return [Hash{String => String}]
     #
-    # source://faker//lib/faker/default/json.rb#23
+    # source://faker//lib/faker/default/json.rb#25
     def shallow_json(width: T.unsafe(nil), options: T.unsafe(nil)); end
 
     private
 
-    # source://faker//lib/faker/default/json.rb#106
+    # source://faker//lib/faker/default/json.rb#108
     def add_hash(key_array, hash, width, options); end
 
-    # source://faker//lib/faker/default/json.rb#93
+    # source://faker//lib/faker/default/json.rb#95
     def add_hash_to_bottom(hash, key_array, width, options); end
 
-    # source://faker//lib/faker/default/json.rb#116
+    # source://faker//lib/faker/default/json.rb#120
     def build_keys_from_array(key_array); end
 
-    # source://faker//lib/faker/default/json.rb#82
+    # source://faker//lib/faker/default/json.rb#84
     def build_shallow_hash(width, options); end
   end
 end
@@ -9911,7 +9911,7 @@ class Faker::NationalHealthService < ::Faker::Base
     # @param number [Integer] Specifies the NHS number the check digit belongs to.
     # @return [Integer]
     #
-    # source://faker//lib/faker/default/national_health_service.rb#42
+    # source://faker//lib/faker/default/national_health_service.rb#41
     def check_digit(number: T.unsafe(nil)); end
   end
 end
