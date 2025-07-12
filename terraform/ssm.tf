@@ -119,6 +119,17 @@ resource "aws_ssm_parameter" "webhook_auth_keys" {
   }
 }
 
+resource "aws_ssm_parameter" "solana_rpc_url" {
+  name        = "/${var.app_name}/${var.environment}/solana_rpc_url"
+  description = "Solana RPC URL (with API key)"
+  type        = "SecureString"
+  value       = var.solana_rpc_url
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32

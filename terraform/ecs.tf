@@ -97,6 +97,10 @@ locals {
     {
       name  = "WEBHOOK_AUTH_KEYS"
       value = aws_ssm_parameter.webhook_auth_keys.value
+    },
+    {
+      name  = "SOLANA_RPC_URL"
+      value = aws_ssm_parameter.solana_rpc_url.value
     }
   ]
 }

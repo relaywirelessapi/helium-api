@@ -96,3 +96,10 @@ variable "sidekiq_pro_credentials" {
   sensitive   = true
   nullable    = false
 }
+
+variable "solana_rpc_url" {
+  description = "Solana RPC URL (with API key)"
+  type        = string
+  nullable    = false
+  sensitive   = true
+}

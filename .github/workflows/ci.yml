@@ -94,6 +94,7 @@ jobs:
       TF_VAR_posthog_api_key: ${{ secrets.TF_VAR_POSTHOG_API_KEY }}
       TF_VAR_sentry_dsn: ${{ secrets.TF_VAR_SENTRY_DSN }}
       TF_VAR_sidekiq_pro_credentials: ${{ secrets.BUNDLE_GEMS__CONTRIBSYS__COM }}
+      TF_VAR_solana_rpc_url: ${{ secrets.TF_VAR_SOLANA_RPC_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
