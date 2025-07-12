@@ -10,6 +10,8 @@ RSpec.describe Relay::Helium::L2::WebhookProcessor do
 
       expect(webhook.reload.metadata).to eq([
         [
+          nil,
+          nil,
           {
             "args" => {
               "args" => {
