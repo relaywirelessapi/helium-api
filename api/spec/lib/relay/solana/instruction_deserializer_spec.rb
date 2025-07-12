@@ -1,14 +1,13 @@
-RSpec.describe Relay::Solana::InstructionDeserializer do
-  let(:program_definition) { Idl::ProgramDefinition.from_json(File.read("data/idls/helium-entity-manager.json")) }
-  let(:deserializer) { described_class.new(program_definition) }
+# typed: false
 
+RSpec.describe Relay::Solana::InstructionDeserializer do
   describe "#deserialize" do
     it "deserializes an instruction" do
-      idl = Idl::ProgramDefinition.from_file(Rails.root.join("data/idls/mobile-entity-manager.json"))
+      idl = Relay::Solana::Idl::ProgramDefinition.from_file(Rails.root.join("data/idls/mobile-entity-manager.json"))
 
       deserializer = described_class.new(idl)
       result = deserializer.deserialize(
-        ["8495a0e84fa7c2f810000000f0a80200be0e424fafbca0c51c7034ea2000000048656c69756d204d6f62696c6520537562736372696265722023373930313132012800000068747470733a2f2f736f6c2e68656c6c6f68656c69756d2e636f6d2f6170692f6d65746164617461"].pack("H*"),
+        [ "8495a0e84fa7c2f810000000f0a80200be0e424fafbca0c51c7034ea2000000048656c69756d204d6f62696c6520537562736372696265722023373930313132012800000068747470733a2f2f736f6c2e68656c6c6f68656c69756d2e636f6d2f6170692f6d65746164617461" ].pack("H*"),
         account_addresses: [
           "8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5",
           "3e8JftKoDz1GHyuPgGqq2T6Rw7njpqzjDrBRkSucQxJB",

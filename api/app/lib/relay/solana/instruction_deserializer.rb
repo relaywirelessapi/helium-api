@@ -51,7 +51,7 @@ module Relay
 
           result << {
             arg_definition: arg_definition,
-            value: value,
+            value: value
           }
         end
 
@@ -70,7 +70,7 @@ module Relay
 
           {
             account_definition: account_definition,
-            address: address,
+            address: address
           }
         end
       end

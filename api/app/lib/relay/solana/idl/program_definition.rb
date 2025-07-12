@@ -119,14 +119,14 @@ module Relay
         def find_instruction_by_data(instruction_data)
           raise ArgumentError, "Instruction data too short for discriminator" if instruction_data.length < 8
 
-          discriminator = instruction_data[0, 8].unpack("C*")
+          discriminator = T.cast(T.must(instruction_data[0, 8]).unpack("C*"), T::Array[Integer])
           find_instruction_by_discriminator(discriminator)
         end
 
         sig { params(instruction_data: String).returns(InstructionDefinition) }
         def find_instruction_by_data!(instruction_data)
           find_instruction_by_data(instruction_data) || begin
-            discriminator = instruction_data[0, 8].unpack("C*")
+            discriminator = T.must(instruction_data[0, 8]).unpack("C*")
             raise(ArgumentError, "Instruction with discriminator #{discriminator.inspect} not found in IDL")
           end
         end

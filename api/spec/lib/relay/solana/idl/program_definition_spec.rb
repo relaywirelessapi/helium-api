@@ -1,3 +1,5 @@
+# typed: false
+
 RSpec.describe Relay::Solana::Idl::ProgramDefinition do
   # TODO: write proper unit tests for the entire module
 
