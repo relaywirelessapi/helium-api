@@ -22,37 +22,32 @@ module Relay
 
         sig { override.params(webhook: Relay::Webhooks::Webhook).void }
         def process(webhook)
-          metadata = webhook.payload.map do |entry|
-            transaction = entry.fetch("transaction")
-            meta = entry.fetch("meta")
-            message = transaction.fetch("message")
-            instructions = message.fetch("instructions")
+          transactions = webhook.payload.map { |entry| Relay::Solana::Transaction.from_rpc(entry) }
 
-            account_keys = message.fetch("accountKeys")
-            loaded_writable = Array(meta.dig("loadedAddresses", "writable"))
-            loaded_readonly = Array(meta.dig("loadedAddresses", "readonly"))
-            accounts = account_keys + loaded_writable + loaded_readonly
+          metadata = transactions.map do |transaction|
+            transaction.instructions.map do |instruction|
+              program_address = instruction.resolve_program(transaction)
+              account_addresses = instruction.resolve_accounts(transaction)
 
-            instructions.map do |instruction|
-              program_id_index = instruction.fetch("programIdIndex")
-              program_id = accounts[program_id_index]
-              next unless program_id == program.address
+              next unless program_address == program.address
 
-              data = base58_encoder.data_from_base58(instruction.fetch("data"))
-              instruction_def = program.find_instruction_from_data(data)
-              next unless instruction_def
+              data = base58_encoder.data_from_base58(instruction.data)
+              instruction_definition = program.find_instruction_from_data(data)
 
-              instruction_account_indices = instruction.fetch("accounts")
-              instruction_account_keys = instruction_account_indices.map { |i| accounts[i] }
+              next unless instruction_definition
 
-              deserialized_instruction = instruction_def.deserialize(data, instruction_account_keys, program: program)
+              deserialized_instruction = instruction_definition.deserialize(
+                data,
+                account_addresses,
+                program: program
+              )
 
               {
-                instruction: instruction_def.name,
+                instruction: instruction_definition.name,
                 args: deserialized_instruction.args,
                 accounts: deserialized_instruction.accounts
               }
-            end.compact
+            end
           end
 
           webhook.update!(metadata: metadata)

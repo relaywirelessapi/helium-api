@@ -40,5 +40,13 @@ class Tailwindcss::Engine < ::Rails::Engine
   end
 end
 
+# source://tailwindcss-rails//lib/tailwindcss/engines.rb#2
+module Tailwindcss::Engines
+  class << self
+    # source://tailwindcss-rails//lib/tailwindcss/engines.rb#4
+    def bundle; end
+  end
+end
+
 # source://tailwindcss-rails//lib/tailwindcss/version.rb#2
 Tailwindcss::VERSION = T.let(T.unsafe(nil), String)
