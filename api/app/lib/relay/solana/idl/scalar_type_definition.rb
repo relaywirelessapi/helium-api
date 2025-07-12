@@ -18,9 +18,13 @@ module Relay
         sig { returns(Symbol) }
         attr_reader :type
 
-        sig { params(type: Symbol).void }
-        def initialize(type:)
+        sig { returns(Relay::Base58Encoder) }
+        attr_reader :base58_encoder
+
+        sig { params(type: Symbol, base58_encoder: Relay::Base58Encoder).void }
+        def initialize(type:, base58_encoder: Relay::Base58Encoder.new)
           @type = type
+          @base58_encoder = base58_encoder
         end
 
         sig do
@@ -140,11 +144,6 @@ module Relay
           length = T.cast(length_bytes, String).unpack1("V") # little endian u32
           check_bounds(data, new_offset, length)
           [ Base64.strict_encode64(T.cast(data[new_offset, length], String)), new_offset + length ]
-        end
-
-        sig { returns(Relay::Base58Encoder) }
-        def base58_encoder
-          @base58_encoder ||= Relay::Base58Encoder.new
         end
       end
     end
