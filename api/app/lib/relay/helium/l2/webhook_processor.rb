@@ -14,10 +14,29 @@ module Relay
         sig { returns(Relay::Solana::Idl::ProgramDefinition) }
         attr_reader :program
 
-        sig { params(base58_encoder: Base58Encoder, program: Relay::Solana::Idl::ProgramDefinition).void }
-        def initialize(base58_encoder: Base58Encoder.new, program: Relay::Solana::Idl::ProgramDefinition.from_file(HEM_IDL_PATH))
-          @base58_encoder = base58_encoder
+        sig { returns(T::Hash[Symbol, InstructionHandlers::BaseHandler]) }
+        attr_reader :handlers
+
+        sig do
+          params(
+            program: Relay::Solana::Idl::ProgramDefinition,
+            base58_encoder: Base58Encoder,
+            handlers: T::Hash[Symbol, InstructionHandlers::BaseHandler]
+          ).void
+        end
+        def initialize(
+          program: Relay::Solana::Idl::ProgramDefinition.from_file(HEM_IDL_PATH),
+          base58_encoder: Base58Encoder.new,
+          handlers: {
+            initialize_maker_v0: InstructionHandlers::MakerHandler.new,
+            update_maker_v0: InstructionHandlers::MakerHandler.new,
+            set_maker_tree_v0: InstructionHandlers::MakerHandler.new,
+            update_maker_tree_v0: InstructionHandlers::MakerHandler.new
+          }
+        )
           @program = program
+          @base58_encoder = base58_encoder
+          @handlers = handlers
         end
 
         sig { override.params(webhook: Relay::Webhooks::Webhook).void }
@@ -40,6 +59,11 @@ module Relay
                 data,
                 account_addresses,
                 program: program
+              )
+
+              handlers[instruction_definition.name.to_sym]&.handle(
+                instruction_definition,
+                deserialized_instruction
               )
 
               {
