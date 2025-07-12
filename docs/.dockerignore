@@ -1,0 +1,16 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore Docusaurus files.
+/.docusaurus/
+/build/
+
+# Ignore assets.
+/node_modules/
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*

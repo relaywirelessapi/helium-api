@@ -14,6 +14,7 @@ Rails.application.routes.draw do
           namespace :l2 do
             resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares"
             resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares"
+            resources :makers, only: [ :index ]
           end
         end
       end

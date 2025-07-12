@@ -1,0 +1,71 @@
+---
+id: get-makers
+title: "List makers"
+description: "Returns the list of registered hotspot makers."
+sidebar_label: "List makers"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVl1v6jgQ/SuRn9MCAVqap+1K1W7VXd2q7T6sUIWcZEgc/IU9DgSU/75ywi1woVv6BPHHOWdmztjeEqS5JfGU/E0XYCx5D4kBq5W0YEm8JVG/738ysKlhGpmSJCY/nkhIUiURJPpZqjVnKfWzvdL6JVti0wIE9f+w1kBiopISUiQef+mYgcyzCkBKwt1cy66N0mCQdfTtfLwl6yuLSnOWFy0hy0hMCncjV/11aefraEKakCBD7pmeac5kqyZ4lHNlRPufhP+rJFVO+jFUSPlM0xysD9IZAxLb71N13Z59iEwi5GBIeFbvkt/cJfmi6rNFv9UrmGTCCRL3vRSa/ZC8JjEaB82xjksZ5uXADXFt+bJI8YhhcIbhKLZLKW7vEpwMyuR2wqLhMUUTEgnrb+JRxRYbgZO+2iT1EV50RrI2UH0PH4tq6bAerZPbUflFSppm78Q9PjWG1p+g66Goynq4qBfGUo/OEIT9zLDj1W19Nyp0sZyM+oeGFb73vvAny0hIaJYZsN6YTmcUYUYdFsow9AKZtY7J/GhMUgEkJIkTemYBsrZvOYd01xECzILDDA3A0dTscEdG1an3fUQfObJomMw/SZIZQnlXJjdC8CXzYXctSWLiXBvVSZl/hnkhAdusoptiINQgEdYTnACeZOtC5M3NXA5GkU0qM9RnkU+TfiH0BOTtPEplndVZcha6rd2FaBHyvBiNea2SsTuLti/opa0D7Na6MlF2wjf9s5gHVrpQZzIelZsFDsWw5OYs5qEjLwRNR8WEgmGTiE7oF0Jn38+DG0sVRRp4dZOfh/cNcqmjyvV45TAas4zBGbDm3FDTHU0aTHuTPXqgHPBKdHf2J7JXIz0XAyfG1aDyTMd3+AugM9IGWEDAmcVAzQMDObMIBrKgUGi1wqCjuCYh0dRQAegJ4+l7SGCNIC1T0n9vyQJqEh8JCUlFuYPPBDXvvthYqF00LQUWJCa9Ajhzosej3keEFkz1QW0hdV2vTbfkvuu8TXfJx9P35mDFq3+FdAfWL+u2u/4ivwM1YIL758fZ08O/+1OYavYE7bnq01UAzcAQXwcm5125d6f3C3Ba+/0+YjC2y+/guk9+zfl98PLw+uaXBqgCA2gYVBAoeZUWlMmAyixQ8/nuK6NIg7kywZ9tOnwNOEtBWjhQ/2yUNgyQmjq4Ct7ACOsr+QqmYqk/053hXj6itnGvt1qtro3Xu2IGOFh7nSrR45BT3kO/+UrNr+xuc9M98miKB4RdtG9ABQkJCMo8PAIVv7W4GfitHvWE+4S3zaZWFgU9LMhf3o0fhT/K4Hb/6vy+gXd1RVhjT3PKpA+wlbjdOW9KOuf5TEf+dvx4ExfKop/fbhNq4R/Dm8YPLx2YuvNkRQ2jiTfE9L0Jf/pl3xn3aQr6oClOH81HDfHHwxtpmv8AqDv+dQ==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List makers"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/makers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of registered hotspot makers.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"x-stoplight":{"id":"hu6nw0xjsfx28"},"title":"Pagination Information","type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","x-stoplight":{"id":"p3mvjy3kykrsa"},"items":{"x-stoplight":{"id":"5w7y94hphq840"},"title":"maker","type":"object","required":["id","address","update_authority","issuing_authority","name","bump_seed","collection","merkle_tree","collection_bump_seed","dao"],"properties":{"id":{"type":"string","x-stoplight":{"id":"r3ej9jb6mmlqi"},"format":"uuid","readOnly":true},"address":{"type":"string","x-stoplight":{"id":"izw26h1mo1bms"},"readOnly":true},"update_authority":{"type":"string","x-stoplight":{"id":"z6fn142sbvr3p"},"readOnly":true},"issuing_authority":{"type":"string","x-stoplight":{"id":"8en7f2cnydydb"},"readOnly":true},"name":{"type":"string","x-stoplight":{"id":"2tlgh45lyob5u"},"readOnly":true},"bump_seed":{"type":"integer","x-stoplight":{"id":"ei7sujbos8lz0"},"readOnly":true},"collection":{"type":"string","x-stoplight":{"id":"b54jzkt3m3jlr"},"readOnly":true},"merkle_tree":{"type":"string","x-stoplight":{"id":"c4h8aeri82a8a"},"readOnly":true},"collection_bump_seed":{"type":"integer","x-stoplight":{"id":"u5no22pelv6ga"},"readOnly":true},"dao":{"type":"string","x-stoplight":{"id":"zjx5wut25idie"},"readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

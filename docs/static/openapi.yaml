@@ -3,19 +3,54 @@ x-stoplight:
   id: 5v6gvgzv53i7e
 info:
   title: Relay API
-  version: "1.0"
+  version: '1.0'
   description: A REST API to retrieve on-chain and off-chain data for Helium.
   license:
     name: Proprietary - Terms of Service
-    url: "https://www.relaywireless.com/legal/terms-of-service"
+    url: 'https://www.relaywireless.com/legal/terms-of-service'
   contact:
     name: Relay Team
     email: team@relaydevice.com
-    url: "https://relaywireless.com"
+    url: 'https://relaywireless.com'
 servers:
-  - url: "https://api.relaywireless.com/v1"
-    description: ""
+  - url: 'https://api.relaywireless.com/v1'
+    description: ''
 paths:
+  /helium/l2/makers:
+    parameters: []
+    get:
+      summary: List makers
+      tags:
+        - Makers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                    x-stoplight:
+                      id: hu6nw0xjsfx28
+                  objects:
+                    type: array
+                    x-stoplight:
+                      id: p3mvjy3kykrsa
+                    items:
+                      $ref: '#/components/schemas/maker'
+                      x-stoplight:
+                        id: 5w7y94hphq840
+                    readOnly: true
+      operationId: get-makers
+      x-stoplight:
+        id: uw4pfm1um5v1v
+      description: Returns the list of registered hotspot makers.
+    servers: []
   /helium/l2/iot-reward-shares:
     parameters: []
     get:
@@ -23,15 +58,15 @@ paths:
       tags:
         - Rewards
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   meta:
-                    $ref: "#/components/schemas/pagination-info"
+                    $ref: '#/components/schemas/pagination-info'
                     x-stoplight:
                       id: lywd67q9z92i5
                   records:
@@ -39,11 +74,11 @@ paths:
                     x-stoplight:
                       id: 12gzcugjjtnj8
                     items:
-                      $ref: "#/components/schemas/iot-reward-share"
+                      $ref: '#/components/schemas/iot-reward-share'
                       x-stoplight:
                         id: hdd4ypib1olm7
       operationId: get-iot-rewards
-      description: "Retrieves the IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
+      description: 'Retrieves the IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type.'
       x-stoplight:
         id: mh9mdw246klh4
       parameters:
@@ -77,15 +112,15 @@ paths:
       tags:
         - Rewards
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   meta:
-                    $ref: "#/components/schemas/pagination-info"
+                    $ref: '#/components/schemas/pagination-info'
                     x-stoplight:
                       id: mob67q9z92i5
                   records:
@@ -93,11 +128,11 @@ paths:
                     x-stoplight:
                       id: mobzcugjjtnj8
                     items:
-                      $ref: "#/components/schemas/mobile-reward-share"
+                      $ref: '#/components/schemas/mobile-reward-share'
                       x-stoplight:
                         id: mobypib1olm7
       operationId: get-mobile-rewards
-      description: "Retrieves the Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
+      description: 'Retrieves the Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type.'
       x-stoplight:
         id: mobmdw246klh4
       parameters:
@@ -205,16 +240,16 @@ components:
           format: date-time
           readOnly: true
         reward_manifest:
-          $ref: "#/components/schemas/reward-manifest"
+          $ref: '#/components/schemas/reward-manifest'
           x-stoplight:
             id: osm7lj9q9hinh
         reward_detail:
           x-stoplight:
             id: fudzhepjd8tc7
           oneOf:
-            - $ref: "#/components/schemas/iot-gateway-reward-detail"
-            - $ref: "#/components/schemas/iot-operational-reward-detail"
-            - $ref: "#/components/schemas/iot-unallocated-reward-detail"
+            - $ref: '#/components/schemas/iot-gateway-reward-detail'
+            - $ref: '#/components/schemas/iot-operational-reward-detail'
+            - $ref: '#/components/schemas/iot-unallocated-reward-detail'
           type: object
     reward-manifest:
       title: Reward Manifest
@@ -277,8 +312,8 @@ components:
           x-stoplight:
             id: po069f8iaxtew
           oneOf:
-            - $ref: "#/components/schemas/iot-reward-manifest-detail"
-            - $ref: "#/components/schemas/mobile-reward-manifest-detail"
+            - $ref: '#/components/schemas/iot-reward-manifest-detail'
+            - $ref: '#/components/schemas/mobile-reward-manifest-detail'
           type: object
     iot-gateway-reward-detail:
       title: IoT Gateway Reward Detail
@@ -544,20 +579,20 @@ components:
           format: date-time
           readOnly: true
         reward_manifest:
-          $ref: "#/components/schemas/reward-manifest"
+          $ref: '#/components/schemas/reward-manifest'
           x-stoplight:
             id: moblj9q9hinh
         reward_detail:
           x-stoplight:
             id: mobhepjd8tc7
           oneOf:
-            - $ref: "#/components/schemas/mobile-radio-reward-detail"
-            - $ref: "#/components/schemas/mobile-gateway-reward-detail"
-            - $ref: "#/components/schemas/mobile-subscriber-reward-detail"
-            - $ref: "#/components/schemas/mobile-service-provider-reward-detail"
-            - $ref: "#/components/schemas/mobile-unallocated-reward-detail"
-            - $ref: "#/components/schemas/mobile-radio-reward-v2-detail"
-            - $ref: "#/components/schemas/mobile-promotion-reward-detail"
+            - $ref: '#/components/schemas/mobile-radio-reward-detail'
+            - $ref: '#/components/schemas/mobile-gateway-reward-detail'
+            - $ref: '#/components/schemas/mobile-subscriber-reward-detail'
+            - $ref: '#/components/schemas/mobile-service-provider-reward-detail'
+            - $ref: '#/components/schemas/mobile-unallocated-reward-detail'
+            - $ref: '#/components/schemas/mobile-radio-reward-v2-detail'
+            - $ref: '#/components/schemas/mobile-promotion-reward-detail'
           type: object
     mobile-radio-reward-detail:
       title: Mobile Radio Reward Detail
@@ -827,6 +862,74 @@ components:
             id: mobprom012
           minimum: 0
           readOnly: true
+    maker:
+      title: maker
+      x-stoplight:
+        id: vlbhye2jx9s0p
+      type: object
+      required:
+        - id
+        - address
+        - update_authority
+        - issuing_authority
+        - name
+        - bump_seed
+        - collection
+        - merkle_tree
+        - collection_bump_seed
+        - dao
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: r3ej9jb6mmlqi
+          format: uuid
+          readOnly: true
+        address:
+          type: string
+          x-stoplight:
+            id: izw26h1mo1bms
+          readOnly: true
+        update_authority:
+          type: string
+          x-stoplight:
+            id: z6fn142sbvr3p
+          readOnly: true
+        issuing_authority:
+          type: string
+          x-stoplight:
+            id: 8en7f2cnydydb
+          readOnly: true
+        name:
+          type: string
+          x-stoplight:
+            id: 2tlgh45lyob5u
+          readOnly: true
+        bump_seed:
+          type: integer
+          x-stoplight:
+            id: ei7sujbos8lz0
+          readOnly: true
+        collection:
+          type: string
+          x-stoplight:
+            id: b54jzkt3m3jlr
+          readOnly: true
+        merkle_tree:
+          type: string
+          x-stoplight:
+            id: c4h8aeri82a8a
+          readOnly: true
+        collection_bump_seed:
+          type: integer
+          x-stoplight:
+            id: u5no22pelv6ga
+          readOnly: true
+        dao:
+          type: string
+          x-stoplight:
+            id: zjx5wut25idie
+          readOnly: true
   securitySchemes:
     Authorization:
       name: Bearer API_KEY
@@ -835,5 +938,5 @@ components:
 security:
   - Authorization: []
 tags:
+  - name: Makers
   - name: Rewards
-    description: IoT and Helium Mobile rewards.
