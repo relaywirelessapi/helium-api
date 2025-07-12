@@ -22,6 +22,18 @@ module Relay
         def initialize(name:)
           @name = name
         end
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program:)
+          type = program.find_type!(name).type
+          type.deserialize(data, offset: offset, program: program)
+        end
       end
     end
   end

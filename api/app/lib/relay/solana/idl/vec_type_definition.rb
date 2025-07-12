@@ -22,6 +22,34 @@ module Relay
         def initialize(type:)
           @type = type
         end
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program:)
+          length, offset = ScalarTypeDefinition.new(type: :u32).deserialize(
+            data,
+            offset: offset,
+            program: program
+          )
+
+          result = []
+
+          length.times do
+            value, offset = type.deserialize(
+              data,
+              offset: offset,
+              program: program
+            )
+            result << value
+          end
+
+          [ result, offset ]
+        end
       end
     end
   end

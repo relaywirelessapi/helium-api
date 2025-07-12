@@ -29,6 +29,28 @@ module Relay
           @type = type
           @length = length
         end
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program:)
+          result = []
+
+          length.times do
+            value, offset = type.deserialize(
+              data,
+              offset: offset,
+              program: program
+            )
+            result << value
+          end
+
+          [ result, offset ]
+        end
       end
     end
   end

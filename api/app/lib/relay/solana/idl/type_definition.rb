@@ -19,7 +19,7 @@ module Relay
             ))
           end
           def from_data(data)
-            type_definition = if data.is_a?(String)
+            type = if data.is_a?(String)
               ScalarTypeDefinition.from_data(data)
             elsif data.is_a?(Hash)
               if data.key?("kind")
@@ -42,8 +42,21 @@ module Relay
               end
             end
 
-            type_definition || raise(ArgumentError, "Unknown type definition for: #{data.inspect}")
+            type || raise(ArgumentError, "Unknown type definition for: #{data.inspect}")
           end
+        end
+
+        extend T::Sig
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program:)
+          raise NotImplementedError, "Type definitions must implement #deserialize"
         end
       end
     end

@@ -6937,7 +6937,7 @@ module Nokogiri::XML::SAX; end
 # documents.
 #
 # 💡 For more information on entity types, see [Wikipedia's page on
-# DTDs](https://en.wikipedia.org/wiki/Document_type_definition#Entity_declarations).
+# DTDs](https://en.wikipedia.org/wiki/Document_type#Entity_declarations).
 #
 # | Entity type                          | #characters                        | #reference                          |
 # |--------------------------------------|------------------------------------|-------------------------------------|

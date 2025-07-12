@@ -103,6 +103,38 @@ module Relay
         def find_type!(name)
           find_type(name) || raise(ArgumentError, "Type #{name} not found in IDL")
         end
+
+        sig { params(discriminator: T::Array[Integer]).returns(T.nilable(InstructionDefinition)) }
+        def find_instruction_by_discriminator(discriminator)
+          instructions.find { |instruction| instruction.discriminator == discriminator }
+        end
+
+        sig { params(discriminator: T::Array[Integer]).returns(InstructionDefinition) }
+        def find_instruction_by_discriminator!(discriminator)
+          find_instruction_by_discriminator(discriminator) ||
+            raise(ArgumentError, "Instruction with discriminator #{discriminator} not found in IDL")
+        end
+
+        sig { params(instruction_data: String).returns(T.nilable(InstructionDefinition)) }
+        def find_instruction_from_data(instruction_data)
+          discriminator = extract_instruction_discriminator(instruction_data)
+          find_instruction_by_discriminator(discriminator)
+        end
+
+        sig { params(instruction_data: String).returns(InstructionDefinition) }
+        def find_instruction_from_data!(instruction_data)
+          discriminator = extract_instruction_discriminator(instruction_data)
+          find_instruction_by_discriminator(discriminator) || raise(ArgumentError, "Instruction with discriminator #{discriminator} not found in IDL")
+        end
+
+        private
+
+        sig { params(instruction_data: String).returns(T::Array[Integer]) }
+        def extract_instruction_discriminator(instruction_data)
+          raise ArgumentError, "Instruction data too short for discriminator" if instruction_data.length < 8
+
+          T.cast(T.must(instruction_data[0, 8]).unpack("C*"), T::Array[Integer])
+        end
       end
     end
   end

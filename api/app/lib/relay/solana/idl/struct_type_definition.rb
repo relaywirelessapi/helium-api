@@ -34,6 +34,28 @@ module Relay
         def find_field!(name)
           find_field(name) || raise(ArgumentError, "Field #{name} not found")
         end
+
+        sig do
+          params(
+            data: String,
+            offset: Integer,
+            program: ProgramDefinition
+          ).returns([ T.untyped, Integer ])
+        end
+        def deserialize(data, offset:, program:)
+          result = {}
+
+          fields.each do |field|
+            field_value, offset = field.type.deserialize(
+              data,
+              offset: offset,
+              program: program
+            )
+            result[field.name] = field_value
+          end
+
+          [ result, offset ]
+        end
       end
     end
   end

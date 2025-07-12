@@ -19,6 +19,10 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    namespace :webhooks do
+      post "helius" => "webhooks#create", source: "helius"
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

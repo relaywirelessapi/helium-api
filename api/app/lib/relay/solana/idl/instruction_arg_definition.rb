@@ -3,42 +3,36 @@
 module Relay
   module Solana
     module Idl
-      class ErrorDefinition
+      class InstructionArgDefinition
         extend T::Sig
-
-        sig { returns(Integer) }
-        attr_reader :code
 
         sig { returns(String) }
         attr_reader :name
 
-        sig { returns(String) }
-        attr_reader :msg
+        sig { returns(TypeDefinition) }
+        attr_reader :type
 
         class << self
           extend T::Sig
 
-          sig { params(data: T::Hash[String, T.untyped]).returns(ErrorDefinition) }
+          sig { params(data: T::Hash[String, T.untyped]).returns(InstructionArgDefinition) }
           def from_data(data)
             new(
-              code: data.fetch("code"),
               name: data.fetch("name"),
-              msg: data.fetch("msg"),
+              type: TypeDefinition.from_data(data.fetch("type")),
             )
           end
         end
 
         sig do
           params(
-            code: Integer,
             name: String,
-            msg: String
+            type: TypeDefinition
           ).void
         end
-        def initialize(code:, name:, msg:)
-          @code = code
+        def initialize(name:, type:)
           @name = name
-          @msg = msg
+          @type = type
         end
       end
     end

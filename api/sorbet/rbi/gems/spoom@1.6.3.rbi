@@ -3584,7 +3584,7 @@ class Spoom::LSP::Client
   #
   # source://spoom//lib/spoom/sorbet/lsp.rb#150
   sig { params(uri: ::String, line: ::Integer, column: ::Integer).returns(T::Array[::Spoom::LSP::Location]) }
-  def type_definitions(uri, line, column); end
+  def types(uri, line, column); end
 end
 
 # source://spoom//lib/spoom/sorbet/lsp/structures.rb#168
