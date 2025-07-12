@@ -12,10 +12,10 @@ module Relay
         sig { returns(T::Array[Integer]) }
         attr_reader :discriminator
 
-        sig { returns(T::Array[T::Hash[String, T.untyped]]) }
+        sig { returns(T::Array[InstructionAccountDefinition]) }
         attr_reader :accounts
 
-        sig { returns(T::Array[T::Hash[String, T.untyped]]) }
+        sig { returns(T::Array[InstructionArgDefinition]) }
         attr_reader :args
 
         class << self
@@ -26,8 +26,8 @@ module Relay
             new(
               name: data.fetch("name"),
               discriminator: data.fetch("discriminator"),
-              accounts: data.fetch("accounts"),
-              args: data.fetch("args"),
+              accounts: data.fetch("accounts").map { |account_data| InstructionAccountDefinition.from_data(account_data) },
+              args: data.fetch("args").map { |arg_data| InstructionArgDefinition.from_data(arg_data) },
             )
           end
         end
@@ -36,8 +36,8 @@ module Relay
           params(
             name: String,
             discriminator: T::Array[Integer],
-            accounts: T::Array[T::Hash[String, T.untyped]],
-            args: T::Array[T::Hash[String, T.untyped]]
+            accounts: T::Array[InstructionAccountDefinition],
+            args: T::Array[InstructionArgDefinition]
           ).void
         end
         def initialize(name:, discriminator:, accounts:, args:)
