@@ -660,6 +660,51 @@ class Relay::Webhooks::Webhook
     def id_will_change!; end
 
     sig { returns(T.untyped) }
+    def metadata; end
+
+    sig { params(value: T.untyped).returns(T.untyped) }
+    def metadata=(value); end
+
+    sig { returns(T::Boolean) }
+    def metadata?; end
+
+    sig { returns(T.untyped) }
+    def metadata_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def metadata_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def metadata_came_from_user?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def metadata_change; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def metadata_change_to_be_saved; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def metadata_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def metadata_in_database; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def metadata_previous_change; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def metadata_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def metadata_previously_was; end
+
+    sig { returns(T.untyped) }
+    def metadata_was; end
+
+    sig { void }
+    def metadata_will_change!; end
+
+    sig { returns(T.untyped) }
     def payload; end
 
     sig { params(value: T.untyped).returns(T.untyped) }
@@ -766,6 +811,9 @@ class Relay::Webhooks::Webhook
     def restore_id_value!; end
 
     sig { void }
+    def restore_metadata!; end
+
+    sig { void }
     def restore_payload!; end
 
     sig { void }
@@ -785,6 +833,12 @@ class Relay::Webhooks::Webhook
 
     sig { returns(T::Boolean) }
     def saved_change_to_id_value?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def saved_change_to_metadata; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_metadata?; end
 
     sig { returns(T.nilable([T.untyped, T.untyped])) }
     def saved_change_to_payload; end
@@ -854,6 +908,9 @@ class Relay::Webhooks::Webhook
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id_value?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_metadata?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_payload?; end
