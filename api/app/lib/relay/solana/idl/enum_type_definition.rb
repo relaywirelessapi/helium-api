@@ -57,7 +57,7 @@ module Relay
               program: program
             )
 
-            variant_data[field.name.to_sym] = field_value
+            variant_data[field.name] = field_value
           end
 
           [ { variant: variant.name, data: variant_data }, offset ]
