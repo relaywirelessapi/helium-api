@@ -5,7 +5,7 @@ RSpec.describe Relay::Helium::L2::WebhookProcessor do
       payload = JSON.parse(File.read(Rails.root.join("spec/fixtures/helius-webhook.json")))
       webhook = Relay::Webhooks::Webhook.create!(payload: payload, source: "helius")
 
-      processor = described_class.new
+      processor = described_class.new(handlers: {})
       processor.process(webhook)
 
       expect(webhook.reload.metadata).to eq([

@@ -31,7 +31,15 @@ module Relay
             initialize_maker_v0: InstructionHandlers::MakerHandler.new,
             update_maker_v0: InstructionHandlers::MakerHandler.new,
             set_maker_tree_v0: InstructionHandlers::MakerHandler.new,
-            update_maker_tree_v0: InstructionHandlers::MakerHandler.new
+            update_maker_tree_v0: InstructionHandlers::MakerHandler.new,
+            onboard_iot_hotspot_v0: InstructionHandlers::HotspotHandler.new,
+            onboard_data_only_iot_hotspot_v0: InstructionHandlers::HotspotHandler.new,
+            update_iot_info_v0: InstructionHandlers::HotspotHandler.new,
+            onboard_mobile_hotspot_v0: InstructionHandlers::HotspotHandler.new,
+            onboard_data_only_mobile_hotspot_v0: InstructionHandlers::HotspotHandler.new,
+            update_mobile_info_v0: InstructionHandlers::HotspotHandler.new,
+            temp_backfill_mobile_info: InstructionHandlers::HotspotHandler.new,
+            set_entity_active_v0: InstructionHandlers::HotspotHandler.new
           }
         )
           @program = program
