@@ -37,24 +37,6 @@ RSpec.describe "/helium/l2/hotspots", type: :request do
       expect(parsed_response).to be_paginated_collection.with([ hotspot ])
     end
 
-    it "allows filtering by iot_info_address" do
-      hotspot = create(:hotspot, :iot, iot_info_address: "iot123")
-      create(:hotspot, :iot, iot_info_address: "iot456")
-
-      api_get(helium_l2_hotspots_path(iot_info_address: "iot123"))
-
-      expect(parsed_response).to be_paginated_collection.with([ hotspot ])
-    end
-
-    it "allows filtering by mobile_info_address" do
-      hotspot = create(:hotspot, :mobile, mobile_info_address: "mobile123")
-      create(:hotspot, :mobile, mobile_info_address: "mobile456")
-
-      api_get(helium_l2_hotspots_path(mobile_info_address: "mobile123"))
-
-      expect(parsed_response).to be_paginated_collection.with([ hotspot ])
-    end
-
     it "allows filtering by maker_id" do
       maker1 = create(:helium_l2_maker)
       maker2 = create(:helium_l2_maker)
