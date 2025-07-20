@@ -15,35 +15,37 @@ RSpec.describe Relay::Helium::L2::HotspotSyncer, :aggregate_failures do
 
   describe "#sync_hotspot" do
     context "with Mobile hotspots" do
-      it "syncs Mobile information" do
-        asset_id = "8xuTGix1jPvt9vRrtiQdCXSLVkoK7zJ3QmkYvM4j8wbY"
-        maker = create(:helium_l2_maker, collection: "9JpM1VAnjhaPWNFf5iVD8CJWAwpV9ebKGyNoUBmcTWtC")
+      it "syncs WiFi hotspots" do
+        asset_id = "Eb58w6HnPcXRbZyWgSAV7g3fYFnZaoAet8qZNS3yekNL"
+        maker = create(:helium_l2_maker, collection: "8Rap1SUaHABCZ18yVbubn1SQVEQHvBaiwZFeDtTn7u5a")
 
-        VCR.use_cassette("hotspot_syncer/sync_mobile_hotspot") do
+        VCR.use_cassette("hotspot_syncer/sync_mobile_wifi_hotspot") do
           described_class.new.sync_hotspot(asset_id)
         end
 
         expect(Relay::Helium::L2::Hotspot.find_by(asset_id: asset_id)).to have_attributes(
           asset_id: asset_id,
-          name: "Zany Sapphire Tarantula",
-          ecc_key: "112gc4K2Z5GndZYKyWiWBh8HXrVT31QKULcCn8fsSuoncySdTEsE",
-          owner: "2ies7cf1oXPB9fMcdzmmydTXKyhnCXWSaB5sPWi5FYKw",
+          name: "Modern Hotpink Condor",
+          ecc_key: "1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ",
+          owner: "GzGPBGZ6C3UcNypFPwGBvwhpVrnci4z8u9CWgRernFJ5",
           networks: [ "mobile" ],
           maker: maker,
-          mobile_info_address: "6vuUgMCvRiuu6cd7ng7DMbigvcSfCRe1krYVxJvQYENm",
-          mobile_bump_seed: 254,
-          mobile_location: 631713450899951103,
+          mobile_info_address: "AmTbFtT34u6o72xhKQpLGSHVM2yMJLscjtkaHxLTrpvG",
+          mobile_bump_seed: 253,
+          mobile_location: 631210974345730047,
           mobile_is_full_hotspot: true,
           mobile_num_location_asserts: 1,
           mobile_is_active: false,
-          mobile_dc_onboarding_fee_paid: 4000000,
-          mobile_device_type: "cbrs",
-          mobile_antenna: nil,
-          mobile_azimuth: nil,
-          mobile_mechanical_down_tilt: nil,
-          mobile_electrical_down_tilt: nil
+          mobile_dc_onboarding_fee_paid: 0,
+          mobile_device_type: "wifi_indoor",
+          mobile_antenna: 16,
+          mobile_azimuth: 0,
+          mobile_mechanical_down_tilt: 0,
+          mobile_electrical_down_tilt: 0
         )
       end
+
+      pending "syncs CBRS hotspots"
     end
 
     context "with IoT hotspots" do
