@@ -104,21 +104,10 @@ paths:
         - schema:
             type: string
           in: query
-          name: iot_info_address
-          description: Filter by IoT info address.
-        - schema:
-            type: string
-          in: query
-          name: mobile_info_address
-          description: Filter by mobile info address.
-        - schema:
-            type: string
-          in: query
           name: networks
           description: Filter by network type(s). Use comma-separated values for multiple networks (e.g., "iot,mobile").
         - schema:
             type: string
-            format: uuid
           in: query
           name: maker_id
           description: Filter by maker ID.
@@ -284,7 +273,6 @@ components:
         - owner
         - networks
         - name
-        - maker_id
       properties:
         id:
           type: string
@@ -322,12 +310,10 @@ components:
           x-stoplight:
             id: hotname123
           readOnly: true
-        maker_id:
-          type: string
+        maker:
+          $ref: '#/components/schemas/maker'
           x-stoplight:
             id: hotmaker123
-          format: uuid
-          readOnly: true
         iot_info:
           $ref: '#/components/schemas/hotspot-iot-info'
           x-stoplight:
@@ -342,16 +328,6 @@ components:
         id: hotiotinfo123
       type: object
       properties:
-        address:
-          type: string
-          x-stoplight:
-            id: hotiotaddr123
-          readOnly: true
-        bump_seed:
-          type: integer
-          x-stoplight:
-            id: hotiotbump123
-          readOnly: true
         location:
           type: integer
           x-stoplight:
@@ -393,16 +369,6 @@ components:
         id: hotmobileinfo123
       type: object
       properties:
-        address:
-          type: string
-          x-stoplight:
-            id: hotmobileaddr123
-          readOnly: true
-        bump_seed:
-          type: integer
-          x-stoplight:
-            id: hotmobilebump123
-          readOnly: true
         location:
           type: integer
           x-stoplight:

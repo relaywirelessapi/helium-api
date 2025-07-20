@@ -6,8 +6,6 @@ module Relay
       module L2
         class HotspotBlueprint < Blueprinter::Base
           class IotInfoBlueprint < Blueprinter::Base
-            field :iot_info_address, name: :address
-            field :iot_bump_seed, name: :bump_seed
             field :iot_location, name: :location
             field :iot_elevation, name: :elevation
             field :iot_gain, name: :gain
@@ -18,8 +16,6 @@ module Relay
           end
 
           class MobileInfoBlueprint < Blueprinter::Base
-            field :mobile_info_address, name: :address
-            field :mobile_bump_seed, name: :bump_seed
             field :mobile_location, name: :location
             field :mobile_is_full_hotspot, name: :is_full_hotspot
             field :mobile_num_location_asserts, name: :num_location_asserts
@@ -39,12 +35,11 @@ module Relay
           field :owner
           field :networks
           field :name
-          field :maker_id
 
+          association :maker, blueprint: MakerBlueprint
           association :iot_info, blueprint: IotInfoBlueprint do |hotspot|
             hotspot
           end
-
           association :mobile_info, blueprint: MobileInfoBlueprint do |hotspot|
             hotspot
           end

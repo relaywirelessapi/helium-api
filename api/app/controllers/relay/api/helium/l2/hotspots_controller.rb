@@ -27,8 +27,6 @@ module Relay
             relation = relation.where(owner: contract.owner) if contract.owner.present?
             relation = relation.where(asset_id: contract.asset_id) if contract.asset_id.present?
             relation = relation.where(ecc_key: contract.ecc_key) if contract.ecc_key.present?
-            relation = relation.where(iot_info_address: contract.iot_info_address) if contract.iot_info_address.present?
-            relation = relation.where(mobile_info_address: contract.mobile_info_address) if contract.mobile_info_address.present?
 
             if contract.networks.present?
               network_array = contract.networks.split(",").map(&:strip)
