@@ -6,6 +6,7 @@
 
 
 class Relay::Helium::L2::Maker
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -417,6 +418,22 @@ class Relay::Helium::L2::Maker
 
     sig { returns(::Relay::Helium::L2::Maker) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { returns(T::Array[T.untyped]) }
+    def hotspot_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def hotspot_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Relay::Helium::L2::Maker` class because it declared `has_many :hotspots`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Relay::Helium::L2::Hotspot::PrivateCollectionProxy) }
+    def hotspots; end
+
+    sig { params(value: T::Enumerable[::Relay::Helium::L2::Hotspot]).void }
+    def hotspots=(value); end
   end
 
   module GeneratedAssociationRelationMethods

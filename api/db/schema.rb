@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_12_093857) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_12_184100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
@@ -31,6 +31,49 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_093857) do
     t.index ["category", "name"], name: "index_helium_l2_files_on_category_and_name", unique: true
     t.index ["category"], name: "index_helium_l2_files_on_category"
     t.index ["name"], name: "index_helium_l2_files_on_name"
+  end
+
+  create_table "helium_l2_hotspot_radios", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "hotspot_id", null: false
+    t.string "radio_id", null: false
+    t.integer "elevation", null: false
+  end
+
+  create_table "helium_l2_hotspots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "asset_id", null: false
+    t.string "ecc_key", null: false
+    t.string "owner", null: false
+    t.string "networks", null: false, array: true
+    t.string "name", null: false
+    t.uuid "maker_id", null: false
+    t.string "iot_info_address"
+    t.integer "iot_bump_seed"
+    t.bigint "iot_location"
+    t.integer "iot_elevation"
+    t.integer "iot_gain"
+    t.boolean "iot_is_full_hotspot"
+    t.integer "iot_num_location_asserts"
+    t.boolean "iot_is_active"
+    t.integer "iot_dc_onboarding_fee_paid"
+    t.string "mobile_info_address"
+    t.integer "mobile_bump_seed"
+    t.bigint "mobile_location"
+    t.boolean "mobile_is_full_hotspot"
+    t.integer "mobile_num_location_asserts"
+    t.boolean "mobile_is_active"
+    t.integer "mobile_dc_onboarding_fee_paid"
+    t.string "mobile_device_type"
+    t.integer "mobile_antenna"
+    t.integer "mobile_azimuth"
+    t.integer "mobile_mechanical_down_tilt"
+    t.integer "mobile_electrical_down_tilt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_helium_l2_hotspots_on_asset_id", unique: true
+    t.index ["ecc_key"], name: "index_helium_l2_hotspots_on_ecc_key", unique: true
+    t.index ["iot_info_address"], name: "index_helium_l2_hotspots_on_iot_info_address", unique: true
+    t.index ["mobile_info_address"], name: "index_helium_l2_hotspots_on_mobile_info_address", unique: true
+    t.index ["owner"], name: "index_helium_l2_hotspots_on_owner"
   end
 
   create_table "helium_l2_iot_beacon_ingest_reports", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -205,5 +248,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_093857) do
     t.index ["source"], name: "index_webhooks_on_source"
   end
 
+  add_foreign_key "helium_l2_hotspot_radios", "helium_l2_hotspots", column: "hotspot_id", on_delete: :cascade
+  add_foreign_key "helium_l2_hotspots", "helium_l2_makers", column: "maker_id"
   add_foreign_key "helium_l2_reward_manifest_files", "helium_l2_reward_manifests", column: "reward_manifest_id", on_delete: :cascade
 end

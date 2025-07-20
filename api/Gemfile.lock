@@ -84,8 +84,8 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1126.0)
-    aws-sdk-core (3.226.2)
+    aws-partitions (1.1131.0)
+    aws-sdk-core (3.226.3)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -95,7 +95,7 @@ GEM
     aws-sdk-kms (1.106.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.192.0)
+    aws-sdk-s3 (1.193.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -112,7 +112,7 @@ GEM
       blueprinter (~> 1.0)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
-    brakeman (7.0.2)
+    brakeman (7.1.0)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -131,7 +131,11 @@ GEM
       highline (~> 3.0.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
+    crack (1.0.0)
+      bigdecimal
+      rexml
     crass (1.0.6)
+    csv (3.3.5)
     date (3.4.1)
     debug (1.11.0)
       irb (~> 1.10)
@@ -145,7 +149,7 @@ GEM
     diff-lcs (1.6.2)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (5.0.1)
+    erb (5.0.2)
     erubi (1.13.1)
     event_emitter (0.2.6)
     factory_bot (6.5.4)
@@ -181,20 +185,25 @@ GEM
     google-protobuf (4.31.1-x86_64-linux-musl)
       bigdecimal
       rake (>= 13)
+    hashdiff (1.2.0)
     highline (3.0.1)
+    httparty (0.23.1)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.8.0)
+    io-console (0.8.1)
     irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.12.2)
+    json (2.13.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -224,6 +233,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
+    multi_xml (0.7.2)
+      bigdecimal (~> 3.1)
     net-imap (0.5.9)
       date
       net-protocol
@@ -248,7 +259,7 @@ GEM
     nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    ostruct (0.6.2)
+    ostruct (0.6.3)
     parallel (1.27.0)
     parlour (9.1.2)
       commander (~> 5.0)
@@ -266,11 +277,10 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
-    propshaft (1.1.0)
+    propshaft (1.2.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
-      railties (>= 7.0.0)
     psych (5.2.6)
       date
       stringio
@@ -327,9 +337,9 @@ GEM
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
-    redis (5.4.0)
+    redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.0)
+    redis-client (0.25.1)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.1)
@@ -368,7 +378,7 @@ GEM
       rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.45.1)
+    rubocop-ast (1.46.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-performance (1.25.0)
@@ -420,8 +430,8 @@ GEM
       ed25519
       rbnacl (~> 7.1)
       websocket-client-simple (~> 0.8.0)
-    sorbet (0.5.12222)
-      sorbet-static (= 0.5.12222)
+    sorbet (0.5.12353)
+      sorbet-static (= 0.5.12353)
     sorbet-coerce (0.7.0)
       polyfill (~> 1.8)
       safe_type (~> 1.1, >= 1.1.1)
@@ -432,13 +442,13 @@ GEM
       parser (>= 2.7)
       sorbet-coerce (>= 0.2.6)
       sorbet-runtime (>= 0.5.9892)
-    sorbet-runtime (0.5.12222)
-    sorbet-static (0.5.12222-aarch64-linux)
-    sorbet-static (0.5.12222-universal-darwin)
-    sorbet-static (0.5.12222-x86_64-linux)
-    sorbet-static-and-runtime (0.5.12222)
-      sorbet (= 0.5.12222)
-      sorbet-runtime (= 0.5.12222)
+    sorbet-runtime (0.5.12353)
+    sorbet-static (0.5.12353-aarch64-linux)
+    sorbet-static (0.5.12353-universal-darwin)
+    sorbet-static (0.5.12353-x86_64-linux)
+    sorbet-static-and-runtime (0.5.12353)
+      sorbet (= 0.5.12353)
+      sorbet-runtime (= 0.5.12353)
     spoom (1.6.3)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
@@ -469,7 +479,7 @@ GEM
       spoom (>= 1.2.0)
       thor (>= 1.2.0)
       yard-sorbet
-    thor (1.3.2)
+    thor (1.4.0)
     thruster (0.1.14-aarch64-linux)
     thruster (0.1.14-arm64-darwin)
     thruster (0.1.14-x86_64-darwin)
@@ -485,12 +495,18 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    vcr (6.3.1)
+      base64
     view_component (3.23.2)
       activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1)
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webmock (3.25.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.11)
     websocket-client-simple (0.8.0)
       event_emitter
@@ -532,6 +548,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   google-protobuf
+  httparty
   importmap-rails
   kaminari
   ostruct
@@ -562,7 +579,9 @@ DEPENDENCIES
   tapioca
   thruster
   turbo-rails
+  vcr
   view_component
+  webmock
   zeitwerk (= 2.7.2)
   zlib
 

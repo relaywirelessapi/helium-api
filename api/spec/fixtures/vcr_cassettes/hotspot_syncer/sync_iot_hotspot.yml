@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: <SOLANA_RPC_URL>
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAsset","params":{"id":"Hpf4i2K7QqoToQev2V9KbMahCHpNhzjVKPYUQxNNas1w"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 09:35:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9621774bec36ee7e-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers, Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '70'
+      Helius-Request-Type:
+      - das
+      Helius-Router-Overhead:
+      - '43'
+      Helius-Total-Latency:
+      - '113'
+      X-Region:
+      - fra
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","result":{"interface":"V1_NFT","id":"Hpf4i2K7QqoToQev2V9KbMahCHpNhzjVKPYUQxNNas1w","content":{"$schema":"https://schema.metaplex.com/nft1.0.json","json_uri":"https://entities.nft.helium.io/11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF","files":[{"uri":"https://shdw-drive.genesysgo.net/CsDkETHRRR1EcueeN346MJoqzymkkr7RFjMqGpZMzAib/hotspot.png","cdn_uri":"https://cdn.helius-rpc.com/cdn-cgi/image//https://shdw-drive.genesysgo.net/CsDkETHRRR1EcueeN346MJoqzymkkr7RFjMqGpZMzAib/hotspot.png","mime":"image/png"}],"metadata":{"attributes":[{"value":"11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF","trait_type":"ecc_compact"},{"value":true,"trait_type":"rewardable"}],"description":"A
+        hotspot NFT on Helium","name":"creamy-lavender-alligator","symbol":"HOTSPOT","token_standard":"NonFungible"},"links":{"image":"https://shdw-drive.genesysgo.net/CsDkETHRRR1EcueeN346MJoqzymkkr7RFjMqGpZMzAib/hotspot.png"}},"authorities":[{"address":"AngjrikiSwNAqed9GEZrXW9eyyptqiwkWtXgw5hkJ1jM","scopes":["full"]}],"compression":{"eligible":false,"compressed":true,"data_hash":"Bc6ZYTdqtgHP9CFA72Eku6xAQmhz63BbryK8sJcQiZsu","creator_hash":"GuBHQ5zhrHdkADX8ttpGvSYPQB2M6K5Zcj2qq5HogPgQ","asset_hash":"93eY3Gsii2FBWLZ7m7SXmudrnHHJYgZs8sajb53Wpg4C","tree":"E7JbdYSZLvVmqvw6XfEwNQCEAybTF6E1mnrHUXw8hXDV","seq":16421,"leaf_id":16406},"grouping":[{"group_key":"collection","group_value":"FC2daoG1bnBPHGBypxPLb8hU8dtQdx7cYYsU9RR4eYmf"}],"royalty":{"royalty_model":"creators","target":null,"percent":0.0,"basis_points":0,"primary_sale_happened":true,"locked":false},"creators":[{"address":"Fv5hf1Fg58htfC7YEXKNEfkpuogUUQDDTLgjGWxxv48H","share":100,"verified":true}],"ownership":{"frozen":false,"delegated":false,"delegate":null,"ownership_model":"single","owner":"AoKabrzG8tPdPvrn6jNLwP4tiwzpBrTuT6gz1SV6EQCR"},"supply":{"print_max_supply":0,"print_current_supply":0,"edition_nonce":null},"mutable":true,"burnt":false},"id":1}'
+  recorded_at: Sun, 20 Jul 2025 09:35:00 GMT
+- request:
+    method: get
+    uri: https://entities.nft.helium.io/11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 09:35:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - accept-encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Sun, 20 Jul 2025 09:29:14 GMT
+      Cache-Control:
+      - no-store
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '346'
+      Cf-Ray:
+      - 9621774d7b20ee80-MXP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"Creamy Lavender Alligator","description":"A Rewardable NFT
+        on Helium","image":"https://entities.nft.helium.io/v2/assets/hotspot-iot.png","asset_id":"Hpf4i2K7QqoToQev2V9KbMahCHpNhzjVKPYUQxNNas1w","key_to_asset_key":"AEYbQSJvt6TpWRteamZHgmBMZrrayoRo7svwtE68xg6Y","entity_key_b64":"AAB4wc88ZkCapYL/3s5Lg8rZ2wtTQC6A5/Xu7cPILG8uBY7hh/o=","key_serialization":"b58","entity_key_str":"11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF","hotspot_infos":{"iot":{"address":"2dwqoCEmrQZG8VUuSB5RRvfe5WPf6ibn1PKRxc7Gf7m7","street":null,"city":"Mount
+        Vernon","state":"Virginia","country":"United States","is_active":false,"location":"8c2aa86a65157ff","dc_onboarding_fee_paid":"4000000","elevation":"10","gain":"23","created_at":"2025-07-20T00:12:38.202Z","asset":"Hpf4i2K7QqoToQev2V9KbMahCHpNhzjVKPYUQxNNas1w","lat":38.732393,"long":-77.099329},"mobile":{"location":null}},"attributes":[{"trait_type":"ecc_compact","value":"11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF"},{"trait_type":"entity_key_string","value":"11vBaUqP9vfN8qRkMSwVkQqPdGraJCzWxQdX4cbq89WqkTZtpVF"},{"trait_type":"entity_key","value":"AAB4wc88ZkCapYL/3s5Lg8rZ2wtTQC6A5/Xu7cPILG8uBY7hh/o="},{"trait_type":"rewardable","value":true},{"trait_type":"networks","value":["iot"]},{"trait_type":"iot_city","value":"Mount
+        Vernon"},{"trait_type":"iot_state","value":"Virginia"},{"trait_type":"iot_country","value":"United
+        States"},{"trait_type":"iot_lat","value":38.732393},{"trait_type":"iot_long","value":-77.099329}]}'
+  recorded_at: Sun, 20 Jul 2025 09:35:00 GMT
+- request:
+    method: post
+    uri: <SOLANA_RPC_URL>
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["2dwqoCEmrQZG8VUuSB5RRvfe5WPf6ibn1PKRxc7Gf7m7",{"encoding":"jsonParsed","commitment":"finalized"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 09:35:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9621774dfb8fed53-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '43'
+      Helius-Request-Type:
+      - rpc
+      Helius-Router-Overhead:
+      - '58'
+      Helius-Total-Latency:
+      - '101'
+      X-Via:
+      - fra3
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","id":1,"result":{"context":{"slot":354528756,"apiVersion":"2.2.7"},"value":{"lamports":1746960,"data":["edA19cem9k/58FPuhVaUHbucUIrFyzRwdBRXI7vz6CU1U/+YOofbFv4B/1dRpoaqwggBCgAAAAEXAAAAAQcAAAAJPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","base64"],"owner":"hemjuPXBpNvggtaUnN1MwT3wrdhttKEfosTcc2P9Pg8","executable":false,"rentEpoch":18446744073709551615,"space":123}}}'
+  recorded_at: Sun, 20 Jul 2025 09:35:00 GMT
+recorded_with: VCR 6.3.1
