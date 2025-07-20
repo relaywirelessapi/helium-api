@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_12_184100) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_20_151150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
@@ -73,6 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_184100) do
     t.index ["ecc_key"], name: "index_helium_l2_hotspots_on_ecc_key", unique: true
     t.index ["iot_info_address"], name: "index_helium_l2_hotspots_on_iot_info_address", unique: true
     t.index ["mobile_info_address"], name: "index_helium_l2_hotspots_on_mobile_info_address", unique: true
+    t.index ["networks"], name: "index_helium_l2_hotspots_on_networks", using: :gin
     t.index ["owner"], name: "index_helium_l2_hotspots_on_owner"
   end
 

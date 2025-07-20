@@ -8,6 +8,24 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Hotspots",
+      link: {
+        type: "doc",
+        id: "api/hotspots",
+      },
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/get-hotspots",
+          label: "List hotspots",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Makers",
       link: {
         type: "doc",
