@@ -51,6 +51,78 @@ paths:
         id: uw4pfm1um5v1v
       description: Returns the list of registered hotspot makers.
     servers: []
+  /helium/l2/hotspots:
+    parameters: []
+    get:
+      summary: List hotspots
+      tags:
+        - Hotspots
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - records
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                    x-stoplight:
+                      id: hotmeta123
+                  records:
+                    type: array
+                    x-stoplight:
+                      id: hotrecords123
+                    items:
+                      $ref: '#/components/schemas/hotspot'
+                      x-stoplight:
+                        id: hotitem123
+                    readOnly: true
+      operationId: get-hotspots
+      x-stoplight:
+        id: hotop123
+      description: Returns the list of Helium hotspots with optional filtering.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: owner
+          description: Filter by hotspot owner address.
+        - schema:
+            type: string
+          in: query
+          name: asset_id
+          description: Filter by specific asset ID.
+        - schema:
+            type: string
+          in: query
+          name: ecc_key
+          description: Filter by ECC key.
+        - schema:
+            type: string
+          in: query
+          name: iot_info_address
+          description: Filter by IoT info address.
+        - schema:
+            type: string
+          in: query
+          name: mobile_info_address
+          description: Filter by mobile info address.
+        - schema:
+            type: string
+          in: query
+          name: networks
+          description: Filter by network type(s). Use comma-separated values for multiple networks (e.g., "iot,mobile").
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: maker_id
+          description: Filter by maker ID.
+    servers: []
   /helium/l2/iot-reward-shares:
     parameters: []
     get:
@@ -199,6 +271,192 @@ components:
           x-stoplight:
             id: thvquty4xb74j
           minimum: 1
+          readOnly: true
+    hotspot:
+      title: Hotspot
+      x-stoplight:
+        id: hotspot123
+      type: object
+      required:
+        - id
+        - asset_id
+        - ecc_key
+        - owner
+        - networks
+        - name
+        - maker_id
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: hotid123
+          format: uuid
+          readOnly: true
+        asset_id:
+          type: string
+          x-stoplight:
+            id: hotasset123
+          readOnly: true
+        ecc_key:
+          type: string
+          x-stoplight:
+            id: hotecc123
+          readOnly: true
+        owner:
+          type: string
+          x-stoplight:
+            id: hotowner123
+          readOnly: true
+        networks:
+          type: array
+          x-stoplight:
+            id: hotnetworks123
+          items:
+            type: string
+            enum:
+              - iot
+              - mobile
+          readOnly: true
+        name:
+          type: string
+          x-stoplight:
+            id: hotname123
+          readOnly: true
+        maker_id:
+          type: string
+          x-stoplight:
+            id: hotmaker123
+          format: uuid
+          readOnly: true
+        iot_info:
+          $ref: '#/components/schemas/hotspot-iot-info'
+          x-stoplight:
+            id: hotiot123
+        mobile_info:
+          $ref: '#/components/schemas/hotspot-mobile-info'
+          x-stoplight:
+            id: hotmobile123
+    hotspot-iot-info:
+      title: Hotspot IoT Info
+      x-stoplight:
+        id: hotiotinfo123
+      type: object
+      properties:
+        address:
+          type: string
+          x-stoplight:
+            id: hotiotaddr123
+          readOnly: true
+        bump_seed:
+          type: integer
+          x-stoplight:
+            id: hotiotbump123
+          readOnly: true
+        location:
+          type: integer
+          x-stoplight:
+            id: hotiotloc123
+          readOnly: true
+        elevation:
+          type: integer
+          x-stoplight:
+            id: hotiotelev123
+          readOnly: true
+        gain:
+          type: integer
+          x-stoplight:
+            id: hotiotgain123
+          readOnly: true
+        is_full_hotspot:
+          type: boolean
+          x-stoplight:
+            id: hotiotfull123
+          readOnly: true
+        num_location_asserts:
+          type: integer
+          x-stoplight:
+            id: hotiotasserts123
+          readOnly: true
+        is_active:
+          type: boolean
+          x-stoplight:
+            id: hotiotactive123
+          readOnly: true
+        dc_onboarding_fee_paid:
+          type: integer
+          x-stoplight:
+            id: hotiotdc123
+          readOnly: true
+    hotspot-mobile-info:
+      title: Hotspot Mobile Info
+      x-stoplight:
+        id: hotmobileinfo123
+      type: object
+      properties:
+        address:
+          type: string
+          x-stoplight:
+            id: hotmobileaddr123
+          readOnly: true
+        bump_seed:
+          type: integer
+          x-stoplight:
+            id: hotmobilebump123
+          readOnly: true
+        location:
+          type: integer
+          x-stoplight:
+            id: hotmobileloc123
+          readOnly: true
+        is_full_hotspot:
+          type: boolean
+          x-stoplight:
+            id: hotmobilefull123
+          readOnly: true
+        num_location_asserts:
+          type: integer
+          x-stoplight:
+            id: hotmobileasserts123
+          readOnly: true
+        is_active:
+          type: boolean
+          x-stoplight:
+            id: hotmobileactive123
+          readOnly: true
+        dc_onboarding_fee_paid:
+          type: integer
+          x-stoplight:
+            id: hotmobiledc123
+          readOnly: true
+        device_type:
+          type: string
+          x-stoplight:
+            id: hotmobiledevice123
+          enum:
+            - cbrs
+            - wifi_indoor
+            - wifi_outdoor
+            - wifi_data_only
+          readOnly: true
+        antenna:
+          type: integer
+          x-stoplight:
+            id: hotmobileantenna123
+          readOnly: true
+        azimuth:
+          type: integer
+          x-stoplight:
+            id: hotmobileazimuth123
+          readOnly: true
+        mechanical_down_tilt:
+          type: integer
+          x-stoplight:
+            id: hotmobilemech123
+          readOnly: true
+        electrical_down_tilt:
+          type: integer
+          x-stoplight:
+            id: hotmobileelec123
           readOnly: true
     iot-reward-share:
       title: IoT Reward Share
@@ -938,5 +1196,6 @@ components:
 security:
   - Authorization: []
 tags:
+  - name: Hotspots
   - name: Makers
   - name: Rewards

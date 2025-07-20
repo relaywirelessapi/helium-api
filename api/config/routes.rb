@@ -15,6 +15,7 @@ Rails.application.routes.draw do
             resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares"
             resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares"
             resources :makers, only: [ :index ]
+            resources :hotspots, only: [ :index ]
           end
         end
       end
