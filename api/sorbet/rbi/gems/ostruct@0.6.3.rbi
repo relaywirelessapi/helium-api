@@ -133,7 +133,7 @@ class OpenStruct
   #   first_pet == second_pet   # => true
   #   first_pet == third_pet    # => false
   #
-  # source://ostruct//lib/ostruct.rb#423
+  # source://ostruct//lib/ostruct.rb#426
   def ==(other); end
 
   # :call-seq:
@@ -145,7 +145,7 @@ class OpenStruct
   #   person = OpenStruct.new("name" => "John Smith", "age" => 70)
   #   person[:age]   # => 70, same as person.age
   #
-  # source://ostruct//lib/ostruct.rb#303
+  # source://ostruct//lib/ostruct.rb#306
   def [](name); end
 
   # :call-seq:
@@ -158,7 +158,7 @@ class OpenStruct
   #   person[:age] = 42   # equivalent to person.age = 42
   #   person.age          # => 42
   #
-  # source://ostruct//lib/ostruct.rb#318
+  # source://ostruct//lib/ostruct.rb#321
   def []=(name, value); end
 
   # Removes the named field from the object and returns the value the field
@@ -182,10 +182,10 @@ class OpenStruct
   #
   #   person.delete_field('number') { 8675_309 } # => 8675309
   #
-  # source://ostruct//lib/ostruct.rb#371
+  # source://ostruct//lib/ostruct.rb#374
   def delete_field(name, &block); end
 
-  # source://ostruct//lib/ostruct.rb#371
+  # source://ostruct//lib/ostruct.rb#374
   def delete_field!(name, &block); end
 
   # :call-seq:
@@ -203,10 +203,10 @@ class OpenStruct
   #   person.dig(:address, "zip") # => 12345
   #   person.dig(:business_address, "zip") # => nil
   #
-  # source://ostruct//lib/ostruct.rb#340
+  # source://ostruct//lib/ostruct.rb#343
   def dig(name, *names); end
 
-  # source://ostruct//lib/ostruct.rb#340
+  # source://ostruct//lib/ostruct.rb#343
   def dig!(name, *names); end
 
   # :call-seq:
@@ -228,10 +228,10 @@ class OpenStruct
 
   # Provides marshalling support for use by the YAML library.
   #
-  # source://ostruct//lib/ostruct.rb#446
+  # source://ostruct//lib/ostruct.rb#449
   def encode_with(coder); end
 
-  # source://ostruct//lib/ostruct.rb#446
+  # source://ostruct//lib/ostruct.rb#449
   def encode_with!(coder); end
 
   # Compares this object and +other+ for equality.  An OpenStruct is eql? to
@@ -240,37 +240,37 @@ class OpenStruct
   #
   # @return [Boolean]
   #
-  # source://ostruct//lib/ostruct.rb#433
+  # source://ostruct//lib/ostruct.rb#436
   def eql?(other); end
 
-  # source://ostruct//lib/ostruct.rb#269
+  # source://ostruct//lib/ostruct.rb#272
   def freeze; end
 
-  # source://ostruct//lib/ostruct.rb#269
+  # source://ostruct//lib/ostruct.rb#272
   def freeze!; end
 
   # Computes a hash code for this OpenStruct.
   #
-  # source://ostruct//lib/ostruct.rb#439
+  # source://ostruct//lib/ostruct.rb#442
   def hash; end
 
-  # source://ostruct//lib/ostruct.rb#439
+  # source://ostruct//lib/ostruct.rb#442
   def hash!; end
 
   # Provides marshalling support for use by the YAML library.
   #
-  # source://ostruct//lib/ostruct.rb#459
+  # source://ostruct//lib/ostruct.rb#462
   def init_with(coder); end
 
-  # source://ostruct//lib/ostruct.rb#459
+  # source://ostruct//lib/ostruct.rb#462
   def init_with!(coder); end
 
   # Returns a string containing a detailed summary of the keys and values.
   #
-  # source://ostruct//lib/ostruct.rb#388
+  # source://ostruct//lib/ostruct.rb#391
   def inspect; end
 
-  # source://ostruct//lib/ostruct.rb#388
+  # source://ostruct//lib/ostruct.rb#391
   def inspect!; end
 
   # Provides marshalling support for use by the Marshal library.
@@ -281,7 +281,7 @@ class OpenStruct
   # source://ostruct//lib/ostruct.rb#220
   def marshal_dump!; end
 
-  # source://ostruct//lib/ostruct.rb#406
+  # source://ostruct//lib/ostruct.rb#409
   def table; end
 
   # source://ostruct//lib/ostruct.rb#182
@@ -292,15 +292,15 @@ class OpenStruct
 
   # Returns a string containing a detailed summary of the keys and values.
   #
-  # source://ostruct//lib/ostruct.rb#388
+  # source://ostruct//lib/ostruct.rb#391
   def to_s; end
 
-  # source://ostruct//lib/ostruct.rb#388
+  # source://ostruct//lib/ostruct.rb#391
   def to_s!; end
 
   protected
 
-  # source://ostruct//lib/ostruct.rb#406
+  # source://ostruct//lib/ostruct.rb#409
   def table!; end
 
   private
@@ -311,7 +311,7 @@ class OpenStruct
   # source://ostruct//lib/ostruct.rb#152
   def initialize_dup(orig); end
 
-  # source://ostruct//lib/ostruct.rb#251
+  # source://ostruct//lib/ostruct.rb#254
   def is_method_protected!(name); end
 
   #
@@ -320,7 +320,7 @@ class OpenStruct
   # source://ostruct//lib/ostruct.rb#157
   def marshal_load(hash); end
 
-  # source://ostruct//lib/ostruct.rb#274
+  # source://ostruct//lib/ostruct.rb#277
   def method_missing(mid, *args); end
 
   # Used internally to defined properties on the
@@ -340,7 +340,7 @@ class OpenStruct
   #   person[:age] = 42   # equivalent to person.age = 42
   #   person.age          # => 42
   #
-  # source://ostruct//lib/ostruct.rb#318
+  # source://ostruct//lib/ostruct.rb#321
   def set_ostruct_member_value!(name, value); end
 
   # source://ostruct//lib/ostruct.rb#157

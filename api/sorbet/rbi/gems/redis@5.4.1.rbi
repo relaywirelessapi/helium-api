@@ -45,108 +45,108 @@ class Redis
   # @param options [Hash]
   # @return [Redis] a new client instance
   #
-  # source://redis//lib/redis.rb#63
+  # source://redis//lib/redis.rb#65
   def initialize(options = T.unsafe(nil)); end
 
-  # source://redis//lib/redis.rb#98
+  # source://redis//lib/redis.rb#100
   def _client; end
 
   # Disconnect the client as quickly and silently as possible.
   #
-  # source://redis//lib/redis.rb#88
+  # source://redis//lib/redis.rb#90
   def close; end
 
   # Test whether or not the client is connected
   #
   # @return [Boolean]
   #
-  # source://redis//lib/redis.rb#83
+  # source://redis//lib/redis.rb#85
   def connected?; end
 
-  # source://redis//lib/redis.rb#122
+  # source://redis//lib/redis.rb#124
   def connection; end
 
   # Disconnect the client as quickly and silently as possible.
   #
-  # source://redis//lib/redis.rb#88
+  # source://redis//lib/redis.rb#90
   def disconnect!; end
 
-  # source://redis//lib/redis.rb#118
+  # source://redis//lib/redis.rb#120
   def dup; end
 
-  # source://redis//lib/redis.rb#110
+  # source://redis//lib/redis.rb#112
   def id; end
 
-  # source://redis//lib/redis.rb#114
+  # source://redis//lib/redis.rb#116
   def inspect; end
 
-  # source://redis//lib/redis.rb#102
+  # source://redis//lib/redis.rb#104
   def pipelined(exception: T.unsafe(nil)); end
 
   # @yield [_self]
   # @yieldparam _self [Redis] the object that the method was called on
   #
-  # source://redis//lib/redis.rb#94
+  # source://redis//lib/redis.rb#96
   def with; end
 
   # Run code without the client reconnecting
   #
-  # source://redis//lib/redis.rb#78
+  # source://redis//lib/redis.rb#80
   def without_reconnect(&block); end
 
   private
 
-  # source://redis//lib/redis.rb#164
+  # source://redis//lib/redis.rb#166
   def _subscription(method, timeout, channels, block); end
 
-  # source://redis//lib/redis.rb#134
+  # source://redis//lib/redis.rb#136
   def initialize_client(options); end
 
-  # source://redis//lib/redis.rb#158
+  # source://redis//lib/redis.rb#160
   def send_blocking_command(command, timeout, &block); end
 
-  # source://redis//lib/redis.rb#150
+  # source://redis//lib/redis.rb#152
   def send_command(command, &block); end
 
-  # source://redis//lib/redis.rb#146
+  # source://redis//lib/redis.rb#148
   def synchronize; end
 
   class << self
-    # source://redis//lib/redis.rb#14
+    # source://redis//lib/redis.rb#16
     def deprecate!(message); end
 
     # Returns the value of attribute raise_deprecations.
     #
-    # source://redis//lib/redis.rb#12
+    # source://redis//lib/redis.rb#14
     def raise_deprecations; end
 
     # Sets the attribute raise_deprecations
     #
     # @param value the value to set the attribute raise_deprecations to.
     #
-    # source://redis//lib/redis.rb#12
+    # source://redis//lib/redis.rb#14
     def raise_deprecations=(_arg0); end
 
     # Returns the value of attribute silence_deprecations.
     #
-    # source://redis//lib/redis.rb#12
+    # source://redis//lib/redis.rb#14
     def silence_deprecations; end
 
     # Sets the attribute silence_deprecations
     #
     # @param value the value to set the attribute silence_deprecations to.
     #
-    # source://redis//lib/redis.rb#12
+    # source://redis//lib/redis.rb#14
     def silence_deprecations=(_arg0); end
   end
 end
 
-# source://redis//lib/redis.rb#8
+# source://redis//lib/redis.rb#10
 Redis::BASE_PATH = T.let(T.unsafe(nil), String)
 
 # Base error for connection related errors.
 #
-# source://redis//lib/redis/errors.rb#33
+# source://redis//lib/redis/errors.rb#38
 class Redis::BaseConnectionError < ::Redis::BaseError; end
 
 # Base error for all redis-rb errors.
@@ -156,73 +156,76 @@ class Redis::BaseError < ::StandardError; end
 
 # Raised when connection to a Redis server cannot be made.
 #
-# source://redis//lib/redis/errors.rb#37
+# source://redis//lib/redis/errors.rb#42
 class Redis::CannotConnectError < ::Redis::BaseConnectionError; end
 
-# source://redis//lib/redis/client.rb#6
+# source://redis//lib/redis/client.rb#4
 class Redis::Client < ::RedisClient
-  # source://redis//lib/redis/client.rb#95
+  # source://redis//lib/redis/client.rb#102
   def blocking_call_v(timeout, command, &block); end
 
-  # source://redis//lib/redis/client.rb#89
+  # source://redis//lib/redis/client.rb#96
   def call_v(command, &block); end
 
-  # source://redis//lib/redis/client.rb#60
+  # source://redis//lib/redis/client.rb#61
   def db; end
 
-  # source://redis//lib/redis/client.rb#64
+  # source://redis//lib/redis/client.rb#90
+  def ensure_connected(retryable: T.unsafe(nil), &block); end
+
+  # source://redis//lib/redis/client.rb#65
   def host; end
 
-  # source://redis//lib/redis/client.rb#48
+  # source://redis//lib/redis/client.rb#49
   def id; end
 
-  # source://redis//lib/redis/client.rb#120
+  # source://redis//lib/redis/client.rb#127
   def inherit_socket!; end
 
-  # source://redis//lib/redis/client.rb#114
+  # source://redis//lib/redis/client.rb#121
   def multi(watch: T.unsafe(nil)); end
 
-  # source://redis//lib/redis/client.rb#80
+  # source://redis//lib/redis/client.rb#81
   def password; end
 
-  # source://redis//lib/redis/client.rb#72
+  # source://redis//lib/redis/client.rb#73
   def path; end
 
-  # source://redis//lib/redis/client.rb#108
+  # source://redis//lib/redis/client.rb#115
   def pipelined(exception: T.unsafe(nil)); end
 
-  # source://redis//lib/redis/client.rb#68
+  # source://redis//lib/redis/client.rb#69
   def port; end
 
-  # source://redis//lib/redis/client.rb#52
+  # source://redis//lib/redis/client.rb#53
   def server_url; end
 
-  # source://redis//lib/redis/client.rb#56
+  # source://redis//lib/redis/client.rb#57
   def timeout; end
 
-  # source://redis//lib/redis/client.rb#76
+  # source://redis//lib/redis/client.rb#77
   def username; end
 
   class << self
-    # source://redis//lib/redis/client.rb#22
+    # source://redis//lib/redis/client.rb#23
     def config(**kwargs); end
 
-    # source://redis//lib/redis/client.rb#26
+    # source://redis//lib/redis/client.rb#27
     def sentinel(**kwargs); end
 
     # @raise [redis_error]
     #
-    # source://redis//lib/redis/client.rb#30
+    # source://redis//lib/redis/client.rb#31
     def translate_error!(error, mapping: T.unsafe(nil)); end
 
     private
 
-    # source://redis//lib/redis/client.rb#37
+    # source://redis//lib/redis/client.rb#38
     def translate_error_class(error_class, mapping: T.unsafe(nil)); end
   end
 end
 
-# source://redis//lib/redis/client.rb#7
+# source://redis//lib/redis/client.rb#5
 Redis::Client::ERROR_MAPPING = T.let(T.unsafe(nil), Hash)
 
 # Raised by the client when command execution returns an error reply.
@@ -3055,20 +3058,20 @@ end
 # soft-deprecated
 # We added this back for older sidekiq releases
 #
-# source://redis//lib/redis.rb#27
+# source://redis//lib/redis.rb#29
 module Redis::Connection
   class << self
-    # source://redis//lib/redis.rb#29
+    # source://redis//lib/redis.rb#31
     def drivers; end
   end
 end
 
 # Raised when connection to a Redis server is lost.
 #
-# source://redis//lib/redis/errors.rb#41
+# source://redis//lib/redis/errors.rb#46
 class Redis::ConnectionError < ::Redis::BaseConnectionError; end
 
-# source://redis//lib/redis.rb#9
+# source://redis//lib/redis.rb#11
 class Redis::Deprecated < ::StandardError; end
 
 # source://redis//lib/redis/distributed.rb#6
@@ -4115,12 +4118,12 @@ Redis::HashRing::POINTS_PER_SERVER = T.let(T.unsafe(nil), Integer)
 
 # Raised when the connection was inherited by a child process.
 #
-# source://redis//lib/redis/errors.rb#49
+# source://redis//lib/redis/errors.rb#54
 class Redis::InheritedError < ::Redis::BaseConnectionError; end
 
 # Raised when client options are invalid.
 #
-# source://redis//lib/redis/errors.rb#57
+# source://redis//lib/redis/errors.rb#62
 class Redis::InvalidClientOptionError < ::Redis::BaseError; end
 
 # source://redis//lib/redis/pipeline.rb#59
@@ -4150,6 +4153,9 @@ class Redis::MultiFuture < ::Redis::Future
   # source://redis//lib/redis/pipeline.rb#120
   def _set(replies); end
 end
+
+# source://redis//lib/redis/errors.rb#33
+class Redis::NoScriptError < ::Redis::CommandError; end
 
 # source://redis//lib/redis/errors.rb#29
 class Redis::OutOfMemoryError < ::Redis::CommandError; end
@@ -4232,10 +4238,10 @@ end
 
 # Generally raised during Redis failover scenarios
 #
-# source://redis//lib/redis/errors.rb#53
+# source://redis//lib/redis/errors.rb#58
 class Redis::ReadOnlyError < ::Redis::BaseConnectionError; end
 
-# source://redis//lib/redis.rb#37
+# source://redis//lib/redis.rb#39
 Redis::SERVER_URL_OPTIONS = T.let(T.unsafe(nil), Array)
 
 # source://redis//lib/redis/subscribe.rb#4
@@ -4326,12 +4332,12 @@ class Redis::Subscription
   def unsubscribe(&block); end
 end
 
-# source://redis//lib/redis/errors.rb#60
+# source://redis//lib/redis/errors.rb#65
 class Redis::SubscriptionError < ::Redis::BaseError; end
 
 # Raised when performing I/O times out.
 #
-# source://redis//lib/redis/errors.rb#45
+# source://redis//lib/redis/errors.rb#50
 class Redis::TimeoutError < ::Redis::BaseConnectionError; end
 
 # source://redis//lib/redis/version.rb#4

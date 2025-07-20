@@ -8,6 +8,7 @@
 module Process
   extend ::ConnectionPool::ForkTracker
   extend ::RedisClient::PIDCache::CoreExt
+  extend ::FFI::ModernForkTracking
   extend ::ActiveSupport::ForkTracker::CoreExt
 end
 
