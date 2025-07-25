@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   sig { params(complexity: Integer).void }
   def increment_api_usage_by(complexity)
-    if api_usage_reset_at <= API_USAGE_RESET_INTERVAL.ago
+    if Time.zone.now > next_api_usage_reset
       update!(
         current_api_usage: 0,
         api_usage_reset_at: Time.current

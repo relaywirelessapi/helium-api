@@ -34,6 +34,34 @@ RSpec.describe User, type: :model do
 
       expect(user.current_api_usage).to eq(1)
     end
+
+    it "resets usage when past the reset time" do
+      freeze_time do
+        user = create(:user, current_api_usage: 5000)
+        user.update!(api_usage_reset_at: 31.days.ago)
+
+        user.increment_api_usage_by(100)
+
+        expect(user).to have_attributes(
+          current_api_usage: 100,
+          api_usage_reset_at: Time.current
+        )
+      end
+    end
+
+    it "does not reset usage when before the reset time" do
+      freeze_time do
+        user = create(:user, current_api_usage: 5000)
+        user.update!(api_usage_reset_at: 29.days.ago)
+
+        user.increment_api_usage_by(100)
+
+        expect(user).to have_attributes(
+          current_api_usage: 5100,
+          api_usage_reset_at: 29.days.ago
+        )
+      end
+    end
   end
 
   describe "#next_api_usage_reset" do
