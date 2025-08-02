@@ -1,18 +1,25 @@
-# typed: true
+# typed: strict
 
 module Relay
   module Api
     module Errors
       class UsageLimitExceededError < BaseError
+        extend T::Sig
+
         include ActionView::Helpers::NumberHelper
 
-        attr_reader :usage_limit, :usage_resets_at
+        sig { returns(Integer) }
+        attr_reader :usage_limit
 
-        MESSAGE = <<~MESSAGE.gsub("\n", " ").strip
+        sig { returns(Time) }
+        attr_reader :usage_resets_at
+
+        MESSAGE = T.let(<<~MESSAGE.gsub("\n", " ").strip, String)
           You have exhausted your API usage limit of %<usage_limit>s requests/month.
           Your usage resets at %<usage_resets_at>s.
         MESSAGE
 
+        sig { params(usage_limit: Integer, usage_resets_at: Time).void }
         def initialize(usage_limit:, usage_resets_at:)
           super(
             code: "usage_limit_exceeded",

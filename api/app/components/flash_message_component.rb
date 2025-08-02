@@ -1,9 +1,11 @@
-# typed: true
-# frozen_string_literal: true
+# typed: strict
 
 class FlashMessageComponent < ViewComponent::Base
-  VALID_TYPES = [ :notice, :alert, :error ].freeze
+  extend T::Sig
 
+  VALID_TYPES = T.let([ :notice, :alert, :error ], T::Array[Symbol])
+
+  sig { params(type: Symbol, message: String).void }
   def initialize(type:, message:)
     raise ArgumentError, "Invalid flash message type: #{type}" unless VALID_TYPES.include?(type.to_sym)
 

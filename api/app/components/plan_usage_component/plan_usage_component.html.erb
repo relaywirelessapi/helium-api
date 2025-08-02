@@ -1,14 +1,22 @@
-<div class="space-y-8">
+<div class="space-y-4">
   <div>
-    <h3 class="text-base text-gray-500 mb-2">Data Credits</h3>
+    <h3 class="text-base text-gray-500 mb-2">Your API Calls</h3>
+
     <div class="flex items-baseline gap-2">
-      <span class="text-4xl font-semibold"><%= api_calls %></span>
-      <span class="text-2xl text-gray-400">/<%= number_with_delimiter(api_calls_limit) %></span>
+      <div class="text-4xl font-semibold"><%= user.current_api_usage %></div>
+
+      <% if user.api_usage_limit %>
+        <div class="text-2xl text-gray-400">/<%= number_with_delimiter(user.api_usage_limit) %></div>
+      <% else %>
+        <div class="text-2xl text-gray-400">/∞</div>
+      <% end %>
     </div>
   </div>
 
   <div>
-    <h3 class="text-base text-gray-500 mb-2">Historical Data Available from</h3>
-    <div class="text-4xl font-semibold">April 8, 2023</div>
+    <h3 class="text-base text-gray-500 mb-2">Usage Resets On</h3>
+    <div class="flex items-baseline gap-2">
+      <span class="text-4xl font-semibold"><%= user.next_api_usage_reset.strftime("%B %d, %Y") %></span>
+    </div>
   </div>
-</div> 
+</div>

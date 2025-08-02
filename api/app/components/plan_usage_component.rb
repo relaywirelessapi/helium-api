@@ -1,5 +1,4 @@
 # typed: strict
-# frozen_string_literal: true
 
 class PlanUsageComponent < ViewComponent::Base
   extend T::Sig
@@ -13,16 +12,6 @@ class PlanUsageComponent < ViewComponent::Base
 
   sig { returns(User) }
   attr_reader :user
-
-  sig { returns(Integer) }
-  def api_calls
-    user.current_api_usage
-  end
-
-  sig { returns(Integer) }
-  def api_calls_limit
-    user.api_usage_limit
-  end
 
   sig { returns(ActiveSupport::TimeWithZone) }
   def historical_data_from

@@ -1,5 +1,4 @@
 # typed: strict
-# frozen_string_literal: true
 
 module Relay
   module Api
@@ -7,6 +6,8 @@ module Relay
       module L2
         class IotRewardSharesController < ResourceController
           extend T::Sig
+
+          before_action :require_oracle_data_feature!
 
           class IndexContract < ResourceController::IndexContract
             attribute :from, :datetime
@@ -24,13 +25,20 @@ module Relay
 
             relation = Relay::Helium::L2::IotRewardShare.order(end_period: :asc)
 
-            relation = relation.where(end_period: contract.from..contract.to)
+            relation = relation.where(end_period: [ contract.from, current_api_user.lookback_window_start_date ].max..contract.to)
             relation = relation.where(hotspot_key: contract.hotspot_key) if contract.hotspot_key.present?
             relation = relation.where(reward_type: contract.reward_type) if contract.reward_type.present?
 
             relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: IotRewardShareBlueprint)
+          end
+
+          private
+
+          sig { void }
+          def require_oracle_data_feature!
+            require_feature!(Relay::Billing::Features::OracleData)
           end
         end
       end

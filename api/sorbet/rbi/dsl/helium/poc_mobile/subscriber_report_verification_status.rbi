@@ -19,5 +19,6 @@ module Helium::PocMobile::Subscriber_report_verification_status
 end
 
 Helium::PocMobile::Subscriber_report_verification_status::invalid_carrier_key = 2
+Helium::PocMobile::Subscriber_report_verification_status::invalid_reward_override_entity_key = 3
 Helium::PocMobile::Subscriber_report_verification_status::invalid_subscriber_id = 1
 Helium::PocMobile::Subscriber_report_verification_status::valid = 0

@@ -1,10 +1,12 @@
-# typed: false
+# typed: strict
 
 module Relay
   module Billing
     module Features
       class OracleData < Feature
         extend T::Sig
+
+        EARLIEST_DATA_AVAILABLE_FROM = T.let(Date.parse("2023-04-08"), Date)
 
         sig { returns(T.nilable(ActiveSupport::Duration)) }
         attr_reader :lookback_window
@@ -25,35 +27,34 @@ module Relay
 
         sig { override.returns(String) }
         def description
-          details = []
+          details = ""
 
-          if lookback_window.nil?
-            details << "Unlimited historical data access"
+          if lookback_window
+            formatted_lookback_window = T.must(lookback_window).parts.map { |unit, value| "#{value} #{unit.pluralize(value)}" }.join(", ")
+            details += "#{formatted_lookback_window} data lookback"
           else
-            details << "#{format_duration(lookback_window)} historical data"
+            details += "Unlimited data lookback"
           end
+
+          details += " (starting #{lookback_window_start_date.strftime("%B %d, %Y")})"
 
           if aggregate_endpoints
-            details << "aggregate endpoints included"
+            details += " with aggregate endpoints."
           else
-            details << "basic endpoints only"
+            details += " with basic endpoints only."
           end
 
-          "#{details.join(", ")}."
+          details
         end
 
-        private
+        sig { returns(Date) }
+        def lookback_window_start_date
+          window = lookback_window
 
-        sig { params(duration: ActiveSupport::Duration).returns(String) }
-        def format_duration(duration)
-          if duration >= 1.year
-            "#{(duration / 1.year).to_i} year#{duration >= 2.years ? 's' : ''}"
-          elsif duration >= 1.month
-            "#{(duration / 1.month).to_i} month#{duration >= 2.months ? 's' : ''}"
-          elsif duration >= 1.day
-            "#{(duration / 1.day).to_i} day#{duration >= 2.days ? 's' : ''}"
+          if window
+            [ Time.zone.today - window, EARLIEST_DATA_AVAILABLE_FROM ].max
           else
-            duration.inspect
+            EARLIEST_DATA_AVAILABLE_FROM
           end
         end
       end

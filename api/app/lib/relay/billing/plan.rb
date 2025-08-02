@@ -30,7 +30,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: 10_000),
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :community)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.community)
               ]
             ),
             new(
@@ -42,7 +42,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: 10_000),
                 Features::OracleData.new(lookback_window: 30.days, aggregate_endpoints: false),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :community)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.community)
               ]
             ),
             new(
@@ -54,7 +54,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: 105_000),
                 Features::OracleData.new(lookback_window: 90.days, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             ),
             new(
@@ -66,7 +66,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: 305_000),
                 Features::OracleData.new(lookback_window: 1.year, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             ),
             new(
@@ -78,7 +78,7 @@ module Relay
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
                 Features::ApiAccess.new(calls_per_month: 1_205_000),
-                Features::CustomerService.new(tier: :business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             ),
             new(
@@ -90,7 +90,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: 3_005_000),
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             ),
             new(
@@ -102,7 +102,7 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: nil),
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: :business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             )
           ]
@@ -117,6 +117,11 @@ module Relay
       sig { params(klass: T.class_of(Feature)).returns(Feature) }
       def find_feature!(klass)
         find_feature(klass) or raise "Feature #{klass} not found in plan #{name}"
+      end
+
+      sig { params(klass: T.class_of(Feature)).returns(T::Boolean) }
+      def feature?(klass)
+        !!find_feature(klass)
       end
     end
   end

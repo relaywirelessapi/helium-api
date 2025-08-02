@@ -1,9 +1,12 @@
-# typed: true
+# typed: strict
 
 module Relay
   module Api
     module Errors
       class RateLimitExceededError < BaseError
+        extend T::Sig
+
+        sig { void }
         def initialize
           super(
             code: "rate_limit_exceeded",
