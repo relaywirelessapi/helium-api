@@ -15,14 +15,14 @@ class User < ApplicationRecord
     "beta"
   end
 
-  sig { returns(Relay::Plan) }
+  sig { returns(Relay::Billing::Plan) }
   def plan
-    @plan ||= Relay::Plan.find!(plan_id)
+    @plan ||= Relay::Billing::Plan.find!(plan_id)
   end
 
   sig { returns(Integer) }
   def api_usage_limit
-    plan.api_usage_limit
+    plan.find_feature!(Relay::Billing::Features::ApiAccess).calls_per_month
   end
 
   sig { params(complexity: Integer).returns(T::Boolean) }
