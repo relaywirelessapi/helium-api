@@ -10,13 +10,14 @@ class Helium::PocMobile::Subscriber_mapping_activity_req_v1 < Google::Protobuf::
     params(
       carrier_pub_key: T.nilable(String),
       discovery_reward_shares: T.nilable(Integer),
+      reward_override_entity_key: T.nilable(String),
       signature: T.nilable(String),
       subscriber_id: T.nilable(String),
       timestamp: T.nilable(Integer),
       verification_reward_shares: T.nilable(Integer)
     ).void
   end
-  def initialize(carrier_pub_key: nil, discovery_reward_shares: nil, signature: nil, subscriber_id: nil, timestamp: nil, verification_reward_shares: nil); end
+  def initialize(carrier_pub_key: nil, discovery_reward_shares: nil, reward_override_entity_key: nil, signature: nil, subscriber_id: nil, timestamp: nil, verification_reward_shares: nil); end
 
   sig { returns(String) }
   def carrier_pub_key; end
@@ -29,6 +30,9 @@ class Helium::PocMobile::Subscriber_mapping_activity_req_v1 < Google::Protobuf::
 
   sig { void }
   def clear_discovery_reward_shares; end
+
+  sig { void }
+  def clear_reward_override_entity_key; end
 
   sig { void }
   def clear_signature; end
@@ -47,6 +51,12 @@ class Helium::PocMobile::Subscriber_mapping_activity_req_v1 < Google::Protobuf::
 
   sig { params(value: Integer).void }
   def discovery_reward_shares=(value); end
+
+  sig { returns(String) }
+  def reward_override_entity_key; end
+
+  sig { params(value: String).void }
+  def reward_override_entity_key=(value); end
 
   sig { returns(String) }
   def signature; end

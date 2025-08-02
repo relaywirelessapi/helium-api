@@ -9,6 +9,7 @@ class Helium::PocMobile::Radio_usage_stats_req_v1 < Google::Protobuf::AbstractMe
   sig do
     params(
       carrier_mapping_key: T.nilable(String),
+      carrier_transfer_info: T.nilable(T.any(Google::Protobuf::RepeatedField[Helium::PocMobile::Radio_usage_carrier_transfer_info], T::Array[Helium::PocMobile::Radio_usage_carrier_transfer_info])),
       cbsd_id: T.nilable(String),
       disco_mapping_user_count: T.nilable(Integer),
       epoch_end_timestamp: T.nilable(Integer),
@@ -22,13 +23,19 @@ class Helium::PocMobile::Radio_usage_stats_req_v1 < Google::Protobuf::AbstractMe
       timestamp: T.nilable(Integer)
     ).void
   end
-  def initialize(carrier_mapping_key: nil, cbsd_id: nil, disco_mapping_user_count: nil, epoch_end_timestamp: nil, epoch_start_timestamp: nil, hotspot_pubkey: nil, offload_transfer_bytes: nil, offload_user_count: nil, service_provider_transfer_bytes: nil, service_provider_user_count: nil, signature: nil, timestamp: nil); end
+  def initialize(carrier_mapping_key: nil, carrier_transfer_info: T.unsafe(nil), cbsd_id: nil, disco_mapping_user_count: nil, epoch_end_timestamp: nil, epoch_start_timestamp: nil, hotspot_pubkey: nil, offload_transfer_bytes: nil, offload_user_count: nil, service_provider_transfer_bytes: nil, service_provider_user_count: nil, signature: nil, timestamp: nil); end
 
   sig { returns(String) }
   def carrier_mapping_key; end
 
   sig { params(value: String).void }
   def carrier_mapping_key=(value); end
+
+  sig { returns(Google::Protobuf::RepeatedField[Helium::PocMobile::Radio_usage_carrier_transfer_info]) }
+  def carrier_transfer_info; end
+
+  sig { params(value: Google::Protobuf::RepeatedField[Helium::PocMobile::Radio_usage_carrier_transfer_info]).void }
+  def carrier_transfer_info=(value); end
 
   sig { returns(String) }
   def cbsd_id; end
@@ -38,6 +45,9 @@ class Helium::PocMobile::Radio_usage_stats_req_v1 < Google::Protobuf::AbstractMe
 
   sig { void }
   def clear_carrier_mapping_key; end
+
+  sig { void }
+  def clear_carrier_transfer_info; end
 
   sig { void }
   def clear_cbsd_id; end

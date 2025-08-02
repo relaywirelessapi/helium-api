@@ -9,14 +9,18 @@ class Helium::PocMobile::Subscriber_reward < Google::Protobuf::AbstractMessage
   sig do
     params(
       discovery_location_amount: T.nilable(Integer),
+      reward_override_entity_key: T.nilable(String),
       subscriber_id: T.nilable(String),
       verification_mapping_amount: T.nilable(Integer)
     ).void
   end
-  def initialize(discovery_location_amount: nil, subscriber_id: nil, verification_mapping_amount: nil); end
+  def initialize(discovery_location_amount: nil, reward_override_entity_key: nil, subscriber_id: nil, verification_mapping_amount: nil); end
 
   sig { void }
   def clear_discovery_location_amount; end
+
+  sig { void }
+  def clear_reward_override_entity_key; end
 
   sig { void }
   def clear_subscriber_id; end
@@ -29,6 +33,12 @@ class Helium::PocMobile::Subscriber_reward < Google::Protobuf::AbstractMessage
 
   sig { params(value: Integer).void }
   def discovery_location_amount=(value); end
+
+  sig { returns(String) }
+  def reward_override_entity_key; end
+
+  sig { params(value: String).void }
+  def reward_override_entity_key=(value); end
 
   sig { returns(String) }
   def subscriber_id; end
