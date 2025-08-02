@@ -4,28 +4,21 @@
 class PlanDetailsComponent < ViewComponent::Base
   extend T::Sig
 
-  sig { params(plan: Relay::Plan).void }
+  sig { params(plan: Relay::Billing::Plan).void }
   def initialize(plan:)
     @plan = plan
   end
 
   private
 
-  sig { returns(Relay::Plan) }
+  sig { returns(Relay::Billing::Plan) }
   attr_reader :plan
 
   sig { returns(T.nilable(String)) }
-  def plan_name
-    plan.name
-  end
+  def formatted_price
+    return "Contact us" if plan.price_per_month.nil?
+    return "Free" if plan.price_per_month == 0.00
 
-  sig { returns(T.nilable(String)) }
-  def plan_description
-    plan.description
-  end
-
-  sig { returns(T::Array[String]) }
-  def features
-    plan.features
+    "$#{plan.price_per_month}/month"
   end
 end

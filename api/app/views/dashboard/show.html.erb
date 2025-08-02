@@ -2,11 +2,10 @@
 
 <div class="space-y-4">
   <%= render(CardComponent.new(
-    title: "API is in Beta",
-    
+    title: "The Relay API is in beta!",
     color: :amber
   )) do %>
-    <p class="text-gray-600">The Beta API might have issues, bugs, and imperfections. We welcome any feedback in our official Helium Discord channel.</p>
+    <p class="text-gray-600">The API might have issues, bugs, and imperfections. We welcome any feedback in our official Helium Discord channel.</p>
   <% end %>
 
   <%= render(CardComponent.new(title: "Getting Started")) do %>
@@ -34,9 +33,7 @@
   <% end %>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <%= render(CardComponent.new(title: "Plan")) do %>
-      <%= render(PlanDetailsComponent.new(plan: current_user.plan)) %>
-    <% end %>
+    <%= render(PlanDetailsComponent.new(plan: current_user.plan)) %>
 
     <%= render(CardComponent.new(title: "Usage")) do %>
       <%= render(PlanUsageComponent.new(user: current_user)) %>

@@ -8,4 +8,6 @@ bundle exec tapioca annotation
 bundle exec tapioca dsl
 
 echo "Running type checker..."
+bundle exec spoom srb bump --from false --to true || true
+bundle exec spoom srb bump --from true --to strict || true
 bundle exec spoom srb tc
