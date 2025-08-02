@@ -52,7 +52,7 @@
             <% if flash.any? %>
               <div class="mb-6">
                 <% flash.each do |type, message| %>
-                  <%= render FlashMessageComponent.new(type: type, message: message) %>
+                  <%= render FlashMessageComponent.new(type: type.to_sym, message: message) %>
                 <% end %>
               </div>
             <% end %>
