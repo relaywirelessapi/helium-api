@@ -24,7 +24,7 @@ module Relay
 
             relation = Relay::Helium::L2::MobileRewardShare.order(end_period: :asc)
 
-            relation = relation.where(end_period: contract.from..contract.to)
+            relation = relation.where(end_period: [contract.from, current_api_user.lookback_window_start_date].max..contract.to)
             relation = relation.where(hotspot_key: contract.hotspot_key) if contract.hotspot_key.present?
             relation = relation.where(reward_type: contract.reward_type) if contract.reward_type.present?
 

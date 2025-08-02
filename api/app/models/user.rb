@@ -25,6 +25,11 @@ class User < ApplicationRecord
     T.cast(plan.find_feature!(Relay::Billing::Features::ApiAccess), Relay::Billing::Features::ApiAccess).calls_per_month
   end
 
+  sig { returns(Date) }
+  def lookback_window_start_date
+    T.cast(plan.find_feature!(Relay::Billing::Features::OracleData), Relay::Billing::Features::OracleData).lookback_window_start_date
+  end
+
   sig { params(additional_calls: Integer).returns(T::Boolean) }
   def api_usage_limit_exceeded_with?(additional_calls)
     limit = api_usage_limit
