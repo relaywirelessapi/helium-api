@@ -110,7 +110,7 @@ module Relay
           accounts.map.with_index do |account_definition, index|
             address = account_addresses[index]
 
-            [ account_definition.name, address ]
+            [ account_definition.name.to_sym, address ]
           end.to_h
         end
 
