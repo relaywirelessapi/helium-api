@@ -1,11 +1,24 @@
-# typed: true
+# typed: strict
 
 module Relay
   module Api
     module Errors
       class BaseError < StandardError
-        attr_reader :code, :message, :status_code, :doc_url
+        extend T::Sig
 
+        sig { returns(String) }
+        attr_reader :code
+
+        sig { returns(String) }
+        attr_reader :message
+
+        sig { returns(Symbol) }
+        attr_reader :status_code
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :doc_url
+
+        sig { params(code: String, message: String, status_code: Symbol, doc_url: T.nilable(String)).void }
         def initialize(code:, message:, status_code:, doc_url: nil)
           @code = code
           @message = message

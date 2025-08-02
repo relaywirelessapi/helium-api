@@ -1,11 +1,15 @@
-# typed: true
+# typed: strict
 
 module Relay
   module Api
     module Errors
       class InvalidContractError < BaseError
+        extend T::Sig
+
+        sig { returns(T.class_of(ActiveModel::Model)) }
         attr_reader :contract
 
+        sig { params(contract: T.class_of(ActiveModel::Model)).void }
         def initialize(contract)
           super(
             code: "malformed_request",
