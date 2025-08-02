@@ -1,5 +1,4 @@
 # typed: strict
-# frozen_string_literal: true
 
 class PlanDetailsComponent < ViewComponent::Base
   extend T::Sig
