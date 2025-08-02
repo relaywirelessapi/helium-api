@@ -27,16 +27,16 @@
     </div>
   <% end %>
 
-  <%= render(CardComponent.new(title: "API Key")) do %>
-    <p class="text-gray-600 mb-4">This is your API key for accessing the GraphQL API.</p>
-    <%= render(CopiableTextComponent.new(text: current_user.api_key)) %>
-  <% end %>
-
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <%= render(PlanDetailsComponent.new(plan: current_user.plan)) %>
+    <%= render(CardComponent.new(title: "API Key")) do %>
+      <p class="text-gray-600 mb-4">This is your API key for accessing the Relay API.</p>
+      <%= render(CopiableTextComponent.new(text: current_user.api_key)) %>
+    <% end %>
 
     <%= render(CardComponent.new(title: "Usage")) do %>
       <%= render(PlanUsageComponent.new(user: current_user)) %>
     <% end %>
   </div>
+
+  <%= render(PlanDetailsComponent.new(plan: current_user.plan)) %>
 </div> 
