@@ -26,20 +26,20 @@ module Relay
 
             relation = Relay::Helium::L2::IotRewardShare.order(end_period: :asc)
 
-            relation = relation.where(end_period: [contract.from, current_api_user.lookback_window_start_date].max..contract.to)
+            relation = relation.where(end_period: [ contract.from, current_api_user.lookback_window_start_date ].max..contract.to)
             relation = relation.where(hotspot_key: contract.hotspot_key) if contract.hotspot_key.present?
             relation = relation.where(reward_type: contract.reward_type) if contract.reward_type.present?
 
             relation = paginate(relation)
 
+            render json: render_collection(relation, blueprint: IotRewardShareBlueprint)
+          end
 
           private
 
           sig { void }
           def require_oracle_data_feature!
             require_feature!(Relay::Billing::Features::OracleData)
-          end
-            render json: render_collection(relation, blueprint: IotRewardShareBlueprint)
           end
         end
       end
