@@ -20,18 +20,19 @@ class User < ApplicationRecord
     @plan ||= Relay::Billing::Plan.find!(plan_id)
   end
 
-  sig { returns(Integer) }
+  sig { returns(T.nilable(Integer)) }
   def api_usage_limit
-    plan.find_feature!(Relay::Billing::Features::ApiAccess).calls_per_month
+    T.cast(plan.find_feature!(Relay::Billing::Features::ApiAccess), Relay::Billing::Features::ApiAccess).calls_per_month
   end
 
-  sig { params(complexity: Integer).returns(T::Boolean) }
-  def api_usage_limit_exceeded_with?(complexity)
-    current_api_usage + complexity > api_usage_limit
+  sig { params(additional_calls: Integer).returns(T::Boolean) }
+  def api_usage_limit_exceeded_with?(additional_calls)
+    limit = api_usage_limit
+    limit ? current_api_usage + additional_calls > limit : false
   end
 
-  sig { params(complexity: Integer).void }
-  def increment_api_usage_by(complexity)
+  sig { params(additional_calls: Integer).void }
+  def increment_api_usage_by(additional_calls)
     if Time.zone.now > next_api_usage_reset
       update!(
         current_api_usage: 0,
@@ -39,7 +40,7 @@ class User < ApplicationRecord
       )
     end
 
-    increment!(:current_api_usage, complexity)
+    increment!(:current_api_usage, additional_calls)
   end
 
   sig { returns(Time) }

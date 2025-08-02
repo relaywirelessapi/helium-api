@@ -19,7 +19,7 @@ class PlanUsageComponent < ViewComponent::Base
     user.current_api_usage
   end
 
-  sig { returns(Integer) }
+  sig { returns(T.nilable(Integer)) }
   def api_calls_limit
     user.api_usage_limit
   end
