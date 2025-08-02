@@ -118,6 +118,11 @@ module Relay
       def find_feature!(klass)
         find_feature(klass) or raise "Feature #{klass} not found in plan #{name}"
       end
+
+      sig { params(klass: T.class_of(Feature)).returns(T::Boolean) }
+      def feature?(klass)
+        !!find_feature(klass)
+      end
     end
   end
 end

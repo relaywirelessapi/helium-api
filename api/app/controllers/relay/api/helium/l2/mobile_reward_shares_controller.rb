@@ -8,6 +8,8 @@ module Relay
         class MobileRewardSharesController < ResourceController
           extend T::Sig
 
+          before_action :require_oracle_data_feature!
+
           class IndexContract < ResourceController::IndexContract
             attribute :from, :datetime
             attribute :to, :datetime
@@ -31,6 +33,13 @@ module Relay
             relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: MobileRewardShareBlueprint)
+          end
+
+          private
+
+          sig { void }
+          def require_oracle_data_feature!
+            require_feature!(Relay::Billing::Features::OracleData)
           end
         end
       end

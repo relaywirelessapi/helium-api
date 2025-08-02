@@ -8,6 +8,8 @@ module Relay
         class HotspotsController < ResourceController
           extend T::Sig
 
+          before_action :require_hotspot_data_feature!
+
           class IndexContract < ResourceController::IndexContract
             attribute :owner, :string
             attribute :asset_id, :string
@@ -38,6 +40,13 @@ module Relay
             relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: HotspotBlueprint)
+          end
+
+          private
+
+          sig { void }
+          def require_hotspot_data_feature!
+            require_feature!(Relay::Billing::Features::HotspotData)
           end
         end
       end

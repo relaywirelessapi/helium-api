@@ -110,6 +110,10 @@ module Relay
           }
         })
       end
+
+      def require_feature!(feature_klass)
+        raise Errors::FeatureNotAvailableError unless current_api_user.plan.feature?(feature_klass)
+      end
     end
   end
 end
