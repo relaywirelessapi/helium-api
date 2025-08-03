@@ -39,9 +39,9 @@ module Relay
           details += " (starting #{lookback_window_start_date.strftime("%B %d, %Y")})"
 
           if aggregate_endpoints
-            details += " with aggregate endpoints."
+            details += " with aggregate endpoints"
           else
-            details += " with basic endpoints only."
+            details += " with basic endpoints only"
           end
 
           details

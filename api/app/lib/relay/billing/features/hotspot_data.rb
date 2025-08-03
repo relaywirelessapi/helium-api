@@ -13,7 +13,7 @@ module Relay
 
         sig { override.returns(String) }
         def description
-          "Access to all Helium NFT information."
+          "Access to all Helium NFT information"
         end
       end
     end

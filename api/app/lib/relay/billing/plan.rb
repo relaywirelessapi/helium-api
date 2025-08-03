@@ -24,7 +24,7 @@ module Relay
             new(
               id: "beta",
               name: "Beta",
-              description: "Test all Relay API features for free while we’re in beta!",
+              description: "Test all Relay API features for free during beta!",
               price_per_month: 0.00,
               features: [
                 Features::ApiAccess.new(calls_per_month: 10_000),
@@ -36,7 +36,7 @@ module Relay
             new(
               id: "community",
               name: "Community",
-              description: "Perfect for developers getting started with Helium data.",
+              description: "Perfect for developers getting started with on-chain and off-chain Helium data.",
               price_per_month: 0.00,
               features: [
                 Features::ApiAccess.new(calls_per_month: 10_000),
@@ -48,7 +48,7 @@ module Relay
             new(
               id: "starter",
               name: "Starter",
-              description: "Great for small projects and startups.",
+              description: "Great for small projects and growing startups that need basic data access.",
               price_per_month: 29.99,
               features: [
                 Features::ApiAccess.new(calls_per_month: 105_000),
@@ -60,7 +60,7 @@ module Relay
             new(
               id: "enthusiast",
               name: "Enthusiast",
-              description: "Ideal for growing applications and teams.",
+              description: "Ideal for growing businesses that need better rate limits and lookback windows.",
               price_per_month: 59.99,
               features: [
                 Features::ApiAccess.new(calls_per_month: 305_000),
@@ -72,19 +72,18 @@ module Relay
             new(
               id: "professional",
               name: "Professional",
-              description: "Built for production applications with high demands.",
+              description: "Built for production applications that require unlimited data lookback.",
               price_per_month: 199.99,
               features: [
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::ApiAccess.new(calls_per_month: 1_205_000),
                 Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
               ]
             ),
             new(
               id: "business",
               name: "Business",
-              description: "Enterprise-grade features for large-scale operations.",
+              description: "Designed for established businesses that need high-volume access and premium support.",
               price_per_month: 449.99,
               features: [
                 Features::ApiAccess.new(calls_per_month: 3_005_000),
@@ -96,7 +95,7 @@ module Relay
             new(
               id: "enterprise",
               name: "Enterprise",
-              description: "Custom solutions for enterprise customers.",
+              description: "Custom solutions for enterprise customers and teams that can't cope with rate limits.",
               price_per_month: nil,
               features: [
                 Features::ApiAccess.new(calls_per_month: nil),

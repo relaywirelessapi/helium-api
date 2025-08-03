@@ -24,9 +24,9 @@ module Relay
         sig { override.returns(String) }
         def description
           if calls_per_month
-            "#{number_to_delimited(T.must(calls_per_month))} API calls per month."
+            "#{number_to_delimited(T.must(calls_per_month))} API calls per month"
           else
-            "Unlimited API calls per month."
+            "Unlimited API calls per month"
           end
         end
       end
