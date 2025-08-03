@@ -12,11 +12,6 @@ class User < ApplicationRecord
 
   pay_customer default_payment_processor: :stripe
 
-  sig { returns(String) }
-  def plan_id
-    "beta"
-  end
-
   sig { returns(Relay::Billing::Plan) }
   def plan
     @plan ||= Relay::Billing::Plan.find!(plan_id)
@@ -24,12 +19,18 @@ class User < ApplicationRecord
 
   sig { returns(T.nilable(Integer)) }
   def api_usage_limit
-    T.cast(plan.find_feature!(Relay::Billing::Features::ApiAccess), Relay::Billing::Features::ApiAccess).calls_per_month
+    T.cast(
+      plan.find_feature!(Relay::Billing::Features::ApiAccess),
+      Relay::Billing::Features::ApiAccess
+    ).calls_per_month
   end
 
   sig { returns(Date) }
   def lookback_window_start_date
-    T.cast(plan.find_feature!(Relay::Billing::Features::OracleData), Relay::Billing::Features::OracleData).lookback_window_start_date
+    T.cast(
+      plan.find_feature!(Relay::Billing::Features::OracleData),
+      Relay::Billing::Features::OracleData
+    ).lookback_window_start_date
   end
 
   sig { params(additional_calls: Integer).returns(T::Boolean) }
@@ -76,5 +77,14 @@ class User < ApplicationRecord
   sig { params(notification: T.untyped, args: T.untyped).void }
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  sig { returns(String) }
+  def plan_id
+    return "beta" if Rails.env.production?
+
+    return "community" unless payment_processor.subscribed?
+
+    payment_processor.subscription.object.fetch("items").fetch("data").first.fetch("price").fetch("lookup_key").split("-").first
   end
 end
