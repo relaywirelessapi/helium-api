@@ -23,8 +23,12 @@ Rails.application.routes.draw do
 
     namespace :webhooks do
       post "helius" => "webhooks#create", source: "helius"
+      post "stripe" => "webhooks#create", source: "stripe"
     end
   end
+
+  get "/billing" => "dashboard#billing_portal", as: :billing_portal
+  post "/subscribe/:plan_id" => "dashboard#subscribe", as: :subscribe
 
   get "up" => "rails/health#show", as: :rails_health_check
 

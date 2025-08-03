@@ -24,6 +24,7 @@ class ViewComponentsSystemTestController
     include ::Importmap::ImportmapTagsHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
+    include ::Pay::CurrencyHelper
     include ::DeviseHelper
     include ::PreviewHelper
   end

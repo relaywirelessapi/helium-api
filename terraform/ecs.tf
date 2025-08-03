@@ -99,6 +99,18 @@ locals {
       value = aws_ssm_parameter.webhook_auth_keys.value
     },
     {
+      name  = "STRIPE_PUBLIC_KEY"
+      value = aws_ssm_parameter.stripe_public_key.value
+    },
+    {
+      name  = "STRIPE_PRIVATE_KEY"
+      value = aws_ssm_parameter.stripe_private_key.value
+    },
+    {
+      name  = "STRIPE_SIGNING_SECRET"
+      value = aws_ssm_parameter.stripe_signing_secret.value
+    },
+    {
       name  = "SOLANA_RPC_URL"
       value = aws_ssm_parameter.solana_rpc_url.value
     }

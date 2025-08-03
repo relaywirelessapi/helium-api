@@ -103,3 +103,23 @@ variable "solana_rpc_url" {
   nullable    = false
   sensitive   = true
 }
+
+variable "stripe_public_key" {
+  description = "Stripe public key"
+  type        = string
+  nullable    = false
+}
+
+variable "stripe_private_key" {
+  description = "Stripe private key"
+  type        = string
+  nullable    = false
+  sensitive   = true
+}
+
+variable "stripe_signing_secret" {
+  description = "Stripe webhook signing secret"
+  type        = string
+  nullable    = false
+  sensitive   = true
+}

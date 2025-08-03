@@ -21,6 +21,7 @@ class DeviseController
     include ::Importmap::ImportmapTagsHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
+    include ::Pay::CurrencyHelper
     include ::DeviseHelper
     include ::PreviewHelper
     include ::ApplicationController::HelperMethods

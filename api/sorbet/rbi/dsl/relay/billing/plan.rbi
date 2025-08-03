@@ -35,4 +35,10 @@ class Relay::Billing::Plan
 
   sig { params(value: T.nilable(::BigDecimal)).returns(T.nilable(::BigDecimal)) }
   def price_per_month=(value); end
+
+  sig { returns(T.nilable(T::Boolean)) }
+  def visible; end
+
+  sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+  def visible=(value); end
 end

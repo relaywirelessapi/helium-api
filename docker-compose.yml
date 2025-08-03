@@ -48,6 +48,20 @@ services:
       retries: 10
       test: wget --no-verbose --tries=1 --spider http://mailcatcher:1080 || exit 1
 
+  stripe:
+    image: stripe/stripe-cli:latest
+    command: listen --forward-to web:3000/pay/webhooks/stripe
+    env_file:
+      - path: .env
+    depends_on:
+      web:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "stripe", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   web:
     build:
       context: ./api

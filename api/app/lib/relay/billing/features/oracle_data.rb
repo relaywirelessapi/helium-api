@@ -30,7 +30,7 @@ module Relay
           details = ""
 
           if lookback_window
-            formatted_lookback_window = T.must(lookback_window).parts.map { |unit, value| "#{value} #{unit.pluralize(value)}" }.join(", ")
+            formatted_lookback_window = T.must(lookback_window).parts.map { |unit, value| "#{value} #{unit.to_s.pluralize(value)}" }.join(", ")
             details += "#{formatted_lookback_window} data lookback"
           else
             details += "Unlimited data lookback"
@@ -39,9 +39,9 @@ module Relay
           details += " (starting #{lookback_window_start_date.strftime("%B %d, %Y")})"
 
           if aggregate_endpoints
-            details += " with aggregate endpoints."
+            details += " with aggregate endpoints"
           else
-            details += " with basic endpoints only."
+            details += " with basic endpoints only"
           end
 
           details

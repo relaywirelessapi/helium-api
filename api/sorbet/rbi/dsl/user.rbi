@@ -6,6 +6,7 @@
 
 
 class User
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -331,6 +332,71 @@ class User
 
     sig { returns(::User) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Pay::Customer) }
+    def build_payment_processor(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Pay::Customer) }
+    def create_payment_processor(*args, &blk); end
+
+    sig { params(args: T.untyped, blk: T.untyped).returns(::Pay::Customer) }
+    def create_payment_processor!(*args, &blk); end
+
+    sig { returns(T::Array[T.untyped]) }
+    def pay_charge_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def pay_charge_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :pay_charges, through: :pay_customers`.
+    # 🔗 [Rails guide for `has_many_through` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
+    sig { returns(::Pay::Charge::PrivateCollectionProxy) }
+    def pay_charges; end
+
+    sig { params(value: T::Enumerable[::Pay::Charge]).void }
+    def pay_charges=(value); end
+
+    sig { returns(T::Array[T.untyped]) }
+    def pay_customer_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def pay_customer_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :pay_customers`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Pay::Customer::PrivateCollectionProxy) }
+    def pay_customers; end
+
+    sig { params(value: T::Enumerable[::Pay::Customer]).void }
+    def pay_customers=(value); end
+
+    sig { returns(T::Array[T.untyped]) }
+    def pay_subscription_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def pay_subscription_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :pay_subscriptions, through: :pay_customers`.
+    # 🔗 [Rails guide for `has_many_through` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
+    sig { returns(::Pay::Subscription::PrivateCollectionProxy) }
+    def pay_subscriptions; end
+
+    sig { params(value: T::Enumerable[::Pay::Subscription]).void }
+    def pay_subscriptions=(value); end
+
+    sig { returns(T.nilable(::Pay::Customer)) }
+    def payment_processor; end
+
+    sig { params(value: T.nilable(::Pay::Customer)).void }
+    def payment_processor=(value); end
+
+    sig { returns(T.nilable(::Pay::Customer)) }
+    def reload_payment_processor; end
+
+    sig { void }
+    def reset_payment_processor; end
   end
 
   module GeneratedAssociationRelationMethods
