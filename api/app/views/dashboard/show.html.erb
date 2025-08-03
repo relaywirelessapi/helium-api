@@ -38,5 +38,28 @@
     <% end %>
   </div>
 
-  <%= render(PlanDetailsComponent.new(plan: current_user.plan)) %>
-</div> 
+  <% if current_user.email.ends_with?("@relaywireless.com") || current_user.email.ends_with?("@relaydevice.com") %>
+    <div class="space-y-4">
+      <div class="text-2xl font-bold">Billing</div>
+
+      <%= render FlashMessageComponent.new(type: :info) do %>
+        If you need to change your payment method or access your invoices, you can do it through the <%= link_to "billing portal", billing_portal_path, class: "underline hover:no-underline" %>.
+      <% end %>
+
+      <% if current_user.subscription_pending_cancellation? %>
+        <%= render FlashMessageComponent.new(type: :alert) do %>
+          Your subscription has been canceled. You will continue to have access to your plan until the end of your billing cycle on 
+          <%= current_user.payment_processor.subscription.current_period_end.to_date.strftime("%B %d, %Y") %>.
+        <% end %>
+      <% end %>    
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <% Relay::Billing::Plan.all.select(&:visible).each do |plan| %>
+          <div class="flex-shrink-0">
+            <%= render(PlanComponent.new(plan: plan, current_user: current_user)) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

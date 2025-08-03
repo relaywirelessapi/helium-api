@@ -56,6 +56,14 @@ class User < ApplicationRecord
     api_usage_reset_at + API_USAGE_RESET_INTERVAL
   end
 
+  sig { returns(T::Boolean) }
+  def subscription_pending_cancellation?
+    subscription = payment_processor.subscription
+    return false unless subscription
+
+    payment_processor.subscription.active? && payment_processor.subscription.cancelled?
+  end
+
   private
 
   sig { void }
