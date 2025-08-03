@@ -40,10 +40,10 @@ module Relay
             data: String,
             offset: Integer,
             program: ProgramDefinition
-          ).returns([ T.untyped, Integer ])
+          ).returns([ T::Hash[String, T.untyped], Integer ])
         end
         def deserialize(data, offset:, program:)
-          result = {}
+          result = T.let({}, T::Hash[String, T.untyped])
 
           fields.each do |field|
             field_value, offset = field.type.deserialize(
@@ -51,6 +51,7 @@ module Relay
               offset: offset,
               program: program
             )
+
             result[field.name] = field_value
           end
 

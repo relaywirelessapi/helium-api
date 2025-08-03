@@ -4,7 +4,7 @@ RSpec.describe Relay::Helium::L2::InstructionHandlers::HotspotHandler do
   describe "#handle" do
     it "syncs the hotspot using iot_info account" do
       hotspot_syncer = stub_hotspot_syncer
-      program_client = stub_program_client("iot_info_address" => { asset: "asset_id_123" })
+      program_client = stub_program_client("iot_info_address" => { "asset" => "asset_id_123" })
 
       handler = described_class.new(hotspot_syncer:, program_client:)
       handler.handle(stub_instruction_definition, stub_deserialized_instruction(accounts: { iot_info: "iot_info_address" }))
@@ -14,7 +14,7 @@ RSpec.describe Relay::Helium::L2::InstructionHandlers::HotspotHandler do
 
     it "syncs the hotspot using mobile_info account" do
       hotspot_syncer = stub_hotspot_syncer
-      program_client = stub_program_client("mobile_info_address" => { asset: "asset_id_456" })
+      program_client = stub_program_client("mobile_info_address" => { "asset" => "asset_id_456" })
 
       handler = described_class.new(hotspot_syncer:, program_client:)
       handler.handle(stub_instruction_definition, stub_deserialized_instruction(accounts: { mobile_info: "mobile_info_address" }))
@@ -24,7 +24,7 @@ RSpec.describe Relay::Helium::L2::InstructionHandlers::HotspotHandler do
 
     it "syncs the hotspot using info account" do
       hotspot_syncer = stub_hotspot_syncer
-      program_client = stub_program_client("info_address" => { asset: "asset_id_789" })
+      program_client = stub_program_client("info_address" => { "asset" => "asset_id_789" })
 
       handler = described_class.new(hotspot_syncer:, program_client:)
       handler.handle(stub_instruction_definition, stub_deserialized_instruction(accounts: { info: "info_address" }))

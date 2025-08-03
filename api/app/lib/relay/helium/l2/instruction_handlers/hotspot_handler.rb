@@ -38,7 +38,7 @@ module Relay
 
             info_account = program_client.get_and_deserialize_account(info_address)
 
-            hotspot_syncer.sync_hotspot(info_account.fetch(:asset))
+            hotspot_syncer.sync_hotspot(info_account.fetch("asset"))
           end
         end
       end
