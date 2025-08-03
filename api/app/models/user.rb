@@ -64,6 +64,11 @@ class User < ApplicationRecord
     payment_processor.subscription.active? && payment_processor.subscription.cancelled?
   end
 
+  sig { returns(Relay::FeatureGater) }
+  def feature_gater
+    @feature_gater ||= T.let(Relay::FeatureGater.new(self), T.nilable(Relay::FeatureGater))
+  end
+
   private
 
   sig { void }
@@ -89,7 +94,7 @@ class User < ApplicationRecord
 
   sig { returns(String) }
   def plan_id
-    return "beta" if Rails.env.production?
+    return "beta" unless feature_gater.enabled?(:billing)
 
     return "community" unless payment_processor.subscribed?
 
