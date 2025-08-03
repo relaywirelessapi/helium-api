@@ -111,6 +111,10 @@ locals {
       value = aws_ssm_parameter.stripe_signing_secret.value
     },
     {
+      name  = "STRIPE_WEBHOOK_RECEIVE_TEST_EVENTS"
+      value = "true"
+    },
+    {
       name  = "SOLANA_RPC_URL"
       value = aws_ssm_parameter.solana_rpc_url.value
     }
