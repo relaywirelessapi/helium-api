@@ -6,9 +6,6 @@
         <%= formatted_price %>
       <% end %>
     </div>
-    <% if plan.price_per_month.present? && !plan.free? %>
-      <div class="text-xs text-gray-500 mb-4">billed monthly</div>
-    <% end %>
     <p class="text-gray-600 text-lg"><%= plan.description %></p>
   </div>
 
