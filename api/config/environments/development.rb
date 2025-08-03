@@ -74,7 +74,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: "mailcatcher", port: 1025 }
 
-  # Allow all ngrok hosts for development.
-  config.hosts << /.*\.ngrok\.io/
-  config.hosts << /.*\.ngrok-free\.app/
+  # Allow all ngrok and Docker hosts in development.
+  config.hosts << /\A.*\.ngrok\.(io|ngrok-free\.app)\z/
+  config.hosts << /\Aweb(:3000)?\z/
 end

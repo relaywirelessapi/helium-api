@@ -130,6 +130,39 @@ resource "aws_ssm_parameter" "solana_rpc_url" {
   }
 }
 
+resource "aws_ssm_parameter" "stripe_public_key" {
+  name        = "/${var.app_name}/${var.environment}/stripe_public_key"
+  description = "Stripe public key"
+  type        = "String"
+  value       = var.stripe_public_key
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
+resource "aws_ssm_parameter" "stripe_private_key" {
+  name        = "/${var.app_name}/${var.environment}/stripe_private_key"
+  description = "Stripe private key"
+  type        = "SecureString"
+  value       = var.stripe_private_key
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
+resource "aws_ssm_parameter" "stripe_signing_secret" {
+  name        = "/${var.app_name}/${var.environment}/stripe_signing_secret"
+  description = "Stripe webhook signing secret"
+  type        = "SecureString"
+  value       = var.stripe_signing_secret
+
+  tags = {
+    Environment = var.environment
+  }
+}
+
 # Generate random passwords for the parameters
 resource "random_password" "db_password" {
   length  = 32

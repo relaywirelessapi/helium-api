@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   API_USAGE_RESET_INTERVAL = 30.days
 
+  pay_customer default_payment_processor: :stripe
+
   sig { returns(String) }
   def plan_id
     "beta"

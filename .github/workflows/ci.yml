@@ -95,6 +95,9 @@ jobs:
       TF_VAR_sentry_dsn: ${{ secrets.TF_VAR_SENTRY_DSN }}
       TF_VAR_sidekiq_pro_credentials: ${{ secrets.BUNDLE_GEMS__CONTRIBSYS__COM }}
       TF_VAR_solana_rpc_url: ${{ secrets.TF_VAR_SOLANA_RPC_URL }}
+      TF_VAR_stripe_public_key: ${{ secrets.TF_VAR_STRIPE_PUBLIC_KEY }}
+      TF_VAR_stripe_private_key: ${{ secrets.TF_VAR_STRIPE_PRIVATE_KEY }}
+      TF_VAR_stripe_signing_secret: ${{ secrets.TF_VAR_STRIPE_SIGNING_SECRET }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
