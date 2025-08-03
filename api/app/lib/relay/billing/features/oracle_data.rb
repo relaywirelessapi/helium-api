@@ -30,7 +30,7 @@ module Relay
           details = ""
 
           if lookback_window
-            formatted_lookback_window = T.must(lookback_window).parts.map { |unit, value| "#{value} #{unit.pluralize(value)}" }.join(", ")
+            formatted_lookback_window = T.must(lookback_window).parts.map { |unit, value| "#{value} #{unit.to_s.pluralize(value)}" }.join(", ")
             details += "#{formatted_lookback_window} data lookback"
           else
             details += "Unlimited data lookback"
