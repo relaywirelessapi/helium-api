@@ -34,36 +34,38 @@
         style: :secondary,
         full_width: true,
         href: "mailto:team@relaydevice.com",
-        size: :s,
-        data: { turbo_method: :post }
+        size: :s
       ) %>
     <% elsif plan.upgrade?(current_plan) %>
-      <%= render ButtonComponent.new(
-        text: current_user.subscription_pending_cancellation? ? "Upgrade and Resume" : "Upgrade",
-        style: :primary,
-        full_width: true,
-        href: subscribe_path(plan.id),
-        size: :s,
-        data: { turbo_method: :post }
-      ) %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: current_user.subscription_pending_cancellation? ? "Upgrade and Resume" : "Upgrade",
+          style: :primary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
     <% elsif plan.downgrade?(current_plan) && (!plan.free? || !current_subscription.cancelled?) %>
-      <%= render ButtonComponent.new(
-        text: current_user.subscription_pending_cancellation? ? "Downgrade and Resume" : "Downgrade",
-        style: :secondary,
-        full_width: true,
-        href: subscribe_path(plan.id),
-        size: :s,
-        data: { turbo_method: :post }
-      ) %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: current_user.subscription_pending_cancellation? ? "Downgrade and Resume" : "Downgrade",
+          style: :secondary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
     <% elsif current_plan? && current_user.subscription_pending_cancellation? %>
-      <%= render ButtonComponent.new(
-        text: "Resume Subscription",
-        style: :primary,
-        full_width: true,
-        href: subscribe_path(plan.id),
-        size: :s,
-        data: { turbo_method: :post }
-      ) %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: "Resume Subscription",
+          style: :primary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
     <% end %>
   </div>
 </div>
