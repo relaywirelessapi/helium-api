@@ -40,7 +40,6 @@ class DashboardController < ApplicationController
           price: plan.stripe_price.id,
           quantity: 1
         } ],
-        payment_method_collection: "if_required",
         success_url: root_url,
         cancel_url: root_url
       )
