@@ -12,6 +12,25 @@ class User < ApplicationRecord
 
   pay_customer default_payment_processor: :stripe
 
+  class << self
+    extend T::Sig
+
+    sig { returns(T.nilable(String)) }
+    attr_reader :stubbed_plan_id
+
+    sig { params(plan_id: String).void }
+    def with_stubbed_plan(plan_id)
+      raise "User#with_stubbed_plan can only be called in tests" unless Rails.env.test?
+
+      begin
+        @stubbed_plan_id = plan_id
+        yield
+      ensure
+        @stubbed_plan_id = nil
+      end
+    end
+  end
+
   sig { returns(Relay::Billing::Plan) }
   def plan
     @plan ||= Relay::Billing::Plan.find!(plan_id)
@@ -94,6 +113,8 @@ class User < ApplicationRecord
 
   sig { returns(String) }
   def plan_id
+    return self.class.stubbed_plan_id if self.class.stubbed_plan_id
+
     return "beta" unless feature_gater.enabled?(:billing)
 
     return "community" unless payment_processor.subscribed?

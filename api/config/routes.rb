@@ -12,8 +12,16 @@ Rails.application.routes.draw do
       scope path: "v1" do
         namespace :helium do
           namespace :l2 do
-            resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares"
-            resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares"
+            resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares" do
+              collection do
+                get :totals
+              end
+            end
+            resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares" do
+              collection do
+                get :totals
+              end
+            end
             resources :makers, only: [ :index ]
             resources :hotspots, only: [ :index ]
           end

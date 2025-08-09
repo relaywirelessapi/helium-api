@@ -1,0 +1,71 @@
+---
+id: get-mobile-reward-totals
+title: "Get Mobile reward totals"
+description: "Retrieves aggregated totals for Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled."
+sidebar_label: "Get Mobile reward totals"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV01v2zgQ/SsET7uAbGdz1GmzbdAWxSJBkj0sAsOgpZHEliLV4ciO1/B/XwwpfzuprS72UF9sicPhmzczb+ilJFV6mT7LB5grzL0cJxLBN8568DJdyuurK/7KwWeoG9LOylTKRGbOEljiNdU0RmeK10ZfPBsspc8qqBX/Ik0GZCr/dFNtQMRzxJMjZbxM5MvAk2uMLqvgS+cylXUwHVCwGXSuVomkRcOe3PQLZCSTA1A3ZYlQKoJcxJ2icCi6Y7ELj6P71mqEnIMOdpM8mxAq6wvASbSTSbfUuOzwlW+nfOr02DjXPnMzwMXEuEjHRNWutbTdCzjTGUwadDOdAx6u14qyCvL163EiG3QNIOmYjFfx8lokR1uCEvAsZvOMWa211XVby/SKyVH5nTULmRK2cMhwSJp4/06sj+9oFSpD571QxogQgrblhvHVCS77wW1cL7z3d+8uwnmc4H5wt376oN7uvgj86zXYs0TW/vrEsNks1mBEBHNmIl7plp7paHqlIWIQawwXBXDQzv1wd076gO+2noU5fhLJchNS9YmhlECDDk607FAdie8DEGqYgRfqDBkOr5Qo9QysIF2DQGVLSIQL/pQxC4bp5gyRnCi0IUAxXYjKkW8cia+wEMrm695gXofiIUq7F1SBuEOVGXivSIkCFLUIYq6p2uITYPPGaUtegFVTA/nwrIS4UEiNQlUDAfL03Jt3McWeUNuSLTXz863lHkqkVTWvFujqvVl0MokViCmU2lqmwRUhrJyRB7aYGOxo3/CwYXwoV8nFsMidBQps/r/A6ZI9+QqLo4JjHLvF8N+fHr1Mgu2p03dK77unjxMJLwTWa2djwXBM6V61JXKmTAtvVB27qYEq17Wm5DKkSqZyVIHRbT0y16P9dvWVQvCjTdeynsWaHfND1qKmRQB001LlUP+jYojP49WOxSNTF+8gB3bLNV1/gEJAcXP/afL59m+5ua2pRn8O+QscV6ByHoiB88LtXhAfwKgF72cmAH1k+rfh1fFNTzzcPj6x6R7xzg6ySmkbhMEVRfeUBwlwKD4GjrjJjc7AethBf4+uQQ2kcCEG4gmw9lzij1H+ZSJbNAyfqPHpaDSfz4fIeOcawYD3w8zVIwOlMiPizQNXDLrZwfXFt2WV0c6BMdonUKwDUCvN7glU/XvwmwNvZa9HZx+dG9hsnKda7SbkA9C+7IrT2r3c3uV/Hhnvio/ghUaNUdpyFgKPy65nnmXsGS6Ha5nIU32zvpiHv0WV88Tblsup8vAXmtWKX0fV4A7KtQ/ny7RQxh8q5y7Nv3Qh5r+KHxT5VyKN6tJNmU5WZBDB3iB7if6b8MK06QnuQvl/E8f+mPkBQBdMhDcB7U+eLaAxP6BmREGgk7WcbgfKTZZBszNLjv+c7w2RD7dPcrX6Fw3urDM=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mobile reward totals"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/mobile-reward-shares/totals"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves aggregated totals for Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"from","required":true,"description":"The beginning of the date range to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"to","required":true,"description":"The end of the date range to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"hotspot_key","description":"The hotspot key to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"reward_type","description":"The reward type to retrieve reward totals for."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"title":"Mobile Reward Totals","x-stoplight":{"id":"mobile-totals-schema"},"type":"object","description":"Aggregated totals for Mobile rewards","required":["total_dc_transfer_reward","total_poc_reward","total_subscriber_reward","total_discovery_location_amount","total_service_provider_amount","total_matched_amount"],"properties":{"total_dc_transfer_reward":{"type":"integer","x-stoplight":{"id":"mobile-totals-dc"},"minimum":0,"readOnly":true,"description":"Total DC transfer reward across all matching rewards"},"total_poc_reward":{"type":"integer","x-stoplight":{"id":"mobile-totals-poc"},"minimum":0,"readOnly":true,"description":"Total POC reward across all matching rewards"},"total_subscriber_reward":{"type":"integer","x-stoplight":{"id":"mobile-totals-subscriber"},"minimum":0,"readOnly":true,"description":"Total subscriber reward across all matching rewards"},"total_discovery_location_amount":{"type":"integer","x-stoplight":{"id":"mobile-totals-discovery"},"minimum":0,"readOnly":true,"description":"Total discovery location amount across all matching rewards"},"total_service_provider_amount":{"type":"integer","x-stoplight":{"id":"mobile-totals-sp"},"minimum":0,"readOnly":true,"description":"Total service provider amount across all matching rewards"},"total_matched_amount":{"type":"integer","x-stoplight":{"id":"mobile-totals-matched"},"minimum":0,"readOnly":true,"description":"Total matched amount across all matching rewards"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
