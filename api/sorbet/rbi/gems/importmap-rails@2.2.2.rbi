@@ -31,20 +31,24 @@ module Importmap::ImportmapTagsHelper
   def javascript_importmap_tags(entry_point = T.unsafe(nil), importmap: T.unsafe(nil)); end
   def javascript_inline_importmap_tag(importmap_json = T.unsafe(nil)); end
   def javascript_module_preload_tag(*paths); end
+
+  private
+
+  def _generate_preload_tags(items); end
 end
 
 # source://importmap-rails//lib/importmap/map.rb#3
 class Importmap::Map
   # @return [Map] a new instance of Map
   #
-  # source://importmap-rails//lib/importmap/map.rb#8
+  # source://importmap-rails//lib/importmap/map.rb#14
   def initialize; end
 
   # Returns an instance of ActiveSupport::EventedFileUpdateChecker configured to clear the cache of the map
   # when the directories passed on initialization via `watches:` have changes. This is used in development
   # and test to ensure the map caches are reset when javascript files are changed.
   #
-  # source://importmap-rails//lib/importmap/map.rb#75
+  # source://importmap-rails//lib/importmap/map.rb#185
   def cache_sweeper(watches: T.unsafe(nil)); end
 
   # Returns a SHA1 digest of the import map json that can be used as a part of a page etag to
@@ -56,7 +60,7 @@ class Importmap::Map
   #     etag { Rails.application.importmap.digest(resolver: helpers) if request.format&.html? }
   #   end
   #
-  # source://importmap-rails//lib/importmap/map.rb#68
+  # source://importmap-rails//lib/importmap/map.rb#178
   def digest(resolver:); end
 
   # Returns the value of attribute directories.
@@ -64,19 +68,105 @@ class Importmap::Map
   # source://importmap-rails//lib/importmap/map.rb#4
   def directories; end
 
-  # source://importmap-rails//lib/importmap/map.rb#13
+  # source://importmap-rails//lib/importmap/map.rb#20
   def draw(path = T.unsafe(nil), &block); end
+
+  # Enables automatic integrity hash calculation for all pinned modules.
+  #
+  # When enabled, integrity values are included in the importmap JSON for all
+  # pinned modules. For local assets served by the Rails asset pipeline,
+  # integrity hashes are automatically calculated when +integrity: true+ is
+  # specified. For modules with explicit integrity values, those values are
+  # included as provided. This provides Subresource Integrity (SRI) protection
+  # to ensure JavaScript modules haven't been tampered with.
+  #
+  # Clears the importmap cache when called to ensure fresh integrity hashes
+  # are generated.
+  #
+  # ==== Examples
+  #
+  #   # config/importmap.rb
+  #   enable_integrity!
+  #
+  #   # These will now auto-calculate integrity hashes
+  #   pin "application"                   # integrity: true by default
+  #   pin "admin", to: "admin.js"         # integrity: true by default
+  #   pin_all_from "app/javascript/lib"   # integrity: true by default
+  #
+  #   # Manual control still works
+  #   pin "no_integrity", integrity: false
+  #   pin "custom_hash", integrity: "sha384-abc123..."
+  #
+  # ==== Notes
+  #
+  # * Integrity calculation is disabled by default and must be explicitly enabled
+  # * Requires asset pipeline support for integrity calculation (Sprockets or Propshaft 1.2+)
+  # * For Propshaft, you must configure +config.assets.integrity_hash_algorithm+
+  # * External CDN packages should provide their own integrity hashes
+  #
+  # source://importmap-rails//lib/importmap/map.rb#67
+  def enable_integrity!; end
 
   # Returns the value of attribute packages.
   #
   # source://importmap-rails//lib/importmap/map.rb#4
   def packages; end
 
-  # source://importmap-rails//lib/importmap/map.rb#28
-  def pin(name, to: T.unsafe(nil), preload: T.unsafe(nil)); end
+  # source://importmap-rails//lib/importmap/map.rb#72
+  def pin(name, to: T.unsafe(nil), preload: T.unsafe(nil), integrity: T.unsafe(nil)); end
 
-  # source://importmap-rails//lib/importmap/map.rb#33
-  def pin_all_from(dir, under: T.unsafe(nil), to: T.unsafe(nil), preload: T.unsafe(nil)); end
+  # source://importmap-rails//lib/importmap/map.rb#77
+  def pin_all_from(dir, under: T.unsafe(nil), to: T.unsafe(nil), preload: T.unsafe(nil), integrity: T.unsafe(nil)); end
+
+  # Returns a hash of resolved module paths to their corresponding package objects for all pinned packages
+  # that are marked for preloading. The hash keys are the resolved asset paths, and the values are the
+  # +MappedFile+ objects containing package metadata including name, path, preload setting, and integrity.
+  #
+  # The +resolver+ must respond to +path_to_asset+, such as +ActionController::Base.helpers+ or
+  # +ApplicationController.helpers+. You'll want to use the resolver that has been configured for the
+  # +asset_host+ you want these resolved paths to use.
+  #
+  # ==== Parameters
+  #
+  # [+resolver+]
+  #   An object that responds to +path_to_asset+ for resolving asset paths.
+  #
+  # [+entry_point+]
+  #   The entry point name or array of entry point names to determine which packages should be preloaded.
+  #   Defaults to +"application"+. Packages with +preload: true+ are always included regardless of entry point.
+  #   Packages with specific entry point names (e.g., +preload: "admin"+) are only included when that entry
+  #   point is specified.
+  #
+  # [+cache_key+]
+  #   A custom cache key to vary the cache used by this method for different cases, such as resolving
+  #   for different asset hosts. Defaults to +:preloaded_module_packages+.
+  #
+  # ==== Returns
+  #
+  # A hash where:
+  # * Keys are resolved asset paths (strings)
+  # * Values are +MappedFile+ objects with +name+, +path+, +preload+, and +integrity+ attributes
+  #
+  # Missing assets are gracefully handled and excluded from the returned hash.
+  #
+  # ==== Examples
+  #
+  #   # Get all preloaded packages for the default "application" entry point
+  #   packages = importmap.preloaded_module_packages(resolver: ApplicationController.helpers)
+  #   # => { "/assets/application-abc123.js" => #<struct name="application", path="application.js", preload=true, integrity=nil>,
+  #   #      "https://cdn.skypack.dev/react" => #<struct name="react", path="https://cdn.skypack.dev/react", preload=true, integrity="sha384-..."> }
+  #
+  #   # Get preloaded packages for a specific entry point
+  #   packages = importmap.preloaded_module_packages(resolver: helpers, entry_point: "admin")
+  #
+  #   # Get preloaded packages for multiple entry points
+  #   packages = importmap.preloaded_module_packages(resolver: helpers, entry_point: ["application", "admin"])
+  #
+  #   # Use a custom cache key for different asset hosts
+  #   packages = importmap.preloaded_module_packages(resolver: helpers, cache_key: "cdn_host")
+  #
+  # source://importmap-rails//lib/importmap/map.rb#137
+  def preloaded_module_packages(resolver:, entry_point: T.unsafe(nil), cache_key: T.unsafe(nil)); end
 
   # Returns an array of all the resolved module paths of the pinned packages. The `resolver` must respond to
   # `path_to_asset`, such as `ActionController::Base.helpers` or `ApplicationController.helpers`. You'll want to use the
@@ -84,7 +174,7 @@ class Importmap::Map
   # resolve for different asset hosts, you can pass in a custom `cache_key` to vary the cache used by this method for
   # the different cases.
   #
-  # source://importmap-rails//lib/importmap/map.rb#43
+  # source://importmap-rails//lib/importmap/map.rb#87
   def preloaded_module_paths(resolver:, entry_point: T.unsafe(nil), cache_key: T.unsafe(nil)); end
 
   # Returns a JSON hash (as a string) of all the resolved module paths of the pinned packages in the import map format.
@@ -93,51 +183,68 @@ class Importmap::Map
   # want these resolved paths to use. In case you need to resolve for different asset hosts, you can pass in a custom
   # `cache_key` to vary the cache used by this method for the different cases.
   #
-  # source://importmap-rails//lib/importmap/map.rb#54
+  # source://importmap-rails//lib/importmap/map.rb#162
   def to_json(resolver:, cache_key: T.unsafe(nil)); end
 
   private
 
-  # source://importmap-rails//lib/importmap/map.rb#165
+  # source://importmap-rails//lib/importmap/map.rb#316
   def absolute_root_of(path); end
 
-  # source://importmap-rails//lib/importmap/map.rb#90
+  # source://importmap-rails//lib/importmap/map.rb#235
+  def build_import_map(packages, resolver:); end
+
+  # source://importmap-rails//lib/importmap/map.rb#242
+  def build_integrity_hash(packages, resolver:); end
+
+  # source://importmap-rails//lib/importmap/map.rb#200
   def cache_as(name); end
 
-  # source://importmap-rails//lib/importmap/map.rb#98
+  # source://importmap-rails//lib/importmap/map.rb#208
   def clear_cache; end
 
-  # source://importmap-rails//lib/importmap/map.rb#129
+  # source://importmap-rails//lib/importmap/map.rb#275
   def expand_directories_into(paths); end
 
-  # source://importmap-rails//lib/importmap/map.rb#125
+  # source://importmap-rails//lib/importmap/map.rb#271
   def expanded_packages_and_directories; end
 
-  # source://importmap-rails//lib/importmap/map.rb#121
+  # source://importmap-rails//lib/importmap/map.rb#267
   def expanded_preloading_packages_and_directories(entry_point:); end
 
-  # source://importmap-rails//lib/importmap/map.rb#161
+  # source://importmap-rails//lib/importmap/map.rb#312
   def find_javascript_files_in_tree(path); end
 
-  # source://importmap-rails//lib/importmap/map.rb#143
+  # source://importmap-rails//lib/importmap/map.rb#294
   def module_name_from(filename, mapping); end
 
-  # source://importmap-rails//lib/importmap/map.rb#157
+  # source://importmap-rails//lib/importmap/map.rb#308
   def module_path_from(filename, mapping); end
 
   # @return [Boolean]
   #
-  # source://importmap-rails//lib/importmap/map.rb#102
+  # source://importmap-rails//lib/importmap/map.rb#212
   def rescuable_asset_error?(error); end
 
-  # source://importmap-rails//lib/importmap/map.rb#106
+  # source://importmap-rails//lib/importmap/map.rb#222
+  def resolve_asset_path(path, resolver:); end
+
+  # source://importmap-rails//lib/importmap/map.rb#216
   def resolve_asset_paths(paths, resolver:); end
+
+  # source://importmap-rails//lib/importmap/map.rb#256
+  def resolve_integrity_value(integrity, path, resolver:); end
+
+  class << self
+    # source://importmap-rails//lib/importmap/map.rb#8
+    def pin_line_regexp_for(package); end
+  end
 end
 
-# source://importmap-rails//lib/importmap/map.rb#6
+# source://importmap-rails//lib/importmap/map.rb#12
 class Importmap::Map::InvalidFile < ::StandardError; end
 
-# source://importmap-rails//lib/importmap/map.rb#87
+# source://importmap-rails//lib/importmap/map.rb#197
 class Importmap::Map::MappedDir < ::Struct
   # Returns the value of attribute dir
   #
@@ -149,6 +256,17 @@ class Importmap::Map::MappedDir < ::Struct
   # @param value [Object] the value to set the attribute dir to.
   # @return [Object] the newly set value
   def dir=(_); end
+
+  # Returns the value of attribute integrity
+  #
+  # @return [Object] the current value of integrity
+  def integrity; end
+
+  # Sets the attribute integrity
+  #
+  # @param value [Object] the value to set the attribute integrity to.
+  # @return [Object] the newly set value
+  def integrity=(_); end
 
   # Returns the value of attribute path
   #
@@ -192,8 +310,19 @@ class Importmap::Map::MappedDir < ::Struct
   end
 end
 
-# source://importmap-rails//lib/importmap/map.rb#88
+# source://importmap-rails//lib/importmap/map.rb#198
 class Importmap::Map::MappedFile < ::Struct
+  # Returns the value of attribute integrity
+  #
+  # @return [Object] the current value of integrity
+  def integrity; end
+
+  # Sets the attribute integrity
+  #
+  # @param value [Object] the value to set the attribute integrity to.
+  # @return [Object] the newly set value
+  def integrity=(_); end
+
   # Returns the value of attribute name
   #
   # @return [Object] the current value of name
@@ -235,6 +364,9 @@ class Importmap::Map::MappedFile < ::Struct
     def new(*_arg0); end
   end
 end
+
+# source://importmap-rails//lib/importmap/map.rb#6
+Importmap::Map::PIN_REGEX = T.let(T.unsafe(nil), Regexp)
 
 # source://importmap-rails//lib/importmap/reloader.rb#4
 class Importmap::Reloader
