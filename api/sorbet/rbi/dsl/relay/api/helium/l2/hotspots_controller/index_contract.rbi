@@ -18,11 +18,11 @@ class Relay::Api::Helium::L2::HotspotsController::IndexContract
   sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
   def ecc_key=(value); end
 
-  sig { returns(T.nilable(::String)) }
-  def iot_info_address; end
+  sig { returns(T.nilable(::Integer)) }
+  def iot_location; end
 
-  sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
-  def iot_info_address=(value); end
+  sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+  def iot_location=(value); end
 
   sig { returns(T.nilable(::String)) }
   def maker_id; end
@@ -30,11 +30,11 @@ class Relay::Api::Helium::L2::HotspotsController::IndexContract
   sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
   def maker_id=(value); end
 
-  sig { returns(T.nilable(::String)) }
-  def mobile_info_address; end
+  sig { returns(T.nilable(::Integer)) }
+  def mobile_location; end
 
-  sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
-  def mobile_info_address=(value); end
+  sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+  def mobile_location=(value); end
 
   sig { returns(T.nilable(::String)) }
   def networks; end

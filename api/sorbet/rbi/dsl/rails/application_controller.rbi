@@ -26,7 +26,6 @@ class Rails::ApplicationController
     include ::ApplicationHelper
     include ::Pay::CurrencyHelper
     include ::DeviseHelper
-    include ::PreviewHelper
   end
 
   class HelperProxy < ::ActionView::Base

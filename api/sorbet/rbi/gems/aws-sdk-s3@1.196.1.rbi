@@ -8,28 +8,28 @@
 # source://aws-sdk-s3//lib/aws-sdk-s3/customizations.rb#3
 module Aws
   class << self
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#93
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#93
     def config; end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#96
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#96
     def config=(config); end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#155
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#155
     def eager_autoload!(*args); end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#148
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#148
     def empty_connection_pools!; end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#105
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#105
     def partition(partition_name); end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#110
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#110
     def partitions; end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#86
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#86
     def shared_config; end
 
-    # source://aws-sdk-core/3.226.3/lib/aws-sdk-core.rb#125
+    # source://aws-sdk-core/3.229.0/lib/aws-sdk-core.rb#125
     def use_bundled_cert!; end
   end
 end
@@ -415,7 +415,7 @@ class Aws::S3::Bucket
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # @return [BucketLifecycle]
@@ -897,7 +897,7 @@ class Aws::S3::BucketAcl
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketAcl}.
@@ -1127,7 +1127,7 @@ class Aws::S3::BucketCors
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketCors}.
@@ -1324,7 +1324,7 @@ class Aws::S3::BucketLifecycle
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketLifecycle}.
@@ -1547,7 +1547,7 @@ class Aws::S3::BucketLifecycleConfiguration
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketLifecycleConfiguration}.
@@ -1808,7 +1808,7 @@ class Aws::S3::BucketLogging
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketLogging}.
@@ -2026,7 +2026,7 @@ class Aws::S3::BucketNotification
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Describes the Lambda functions to invoke and the events for which to
@@ -2288,7 +2288,7 @@ class Aws::S3::BucketPolicy
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketPolicy}.
@@ -2542,7 +2542,7 @@ class Aws::S3::BucketRequestPayment
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketRequestPayment}.
@@ -2737,7 +2737,7 @@ class Aws::S3::BucketTagging
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketTagging}.
@@ -2943,7 +2943,7 @@ class Aws::S3::BucketVersioning
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {BucketVersioning}.
@@ -3177,7 +3177,7 @@ class Aws::S3::BucketWebsite
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # The name of the index document for the website (for example
@@ -3377,7 +3377,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @overload initialize
   # @return [Client] a new instance of Client
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#570
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#577
   def initialize(*args); end
 
   # This operation aborts a multipart upload. After a multipart upload is
@@ -3501,13 +3501,13 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::AbortMultipartUploadOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AbortMultipartUpload AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#781
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#788
   def abort_multipart_upload(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # @api private
   # @param params [{}]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21717
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21724
   def build_request(operation_name, params = T.unsafe(nil)); end
 
   # Completes a multipart upload by assembling previously uploaded parts.
@@ -3781,7 +3781,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::CompleteMultipartUploadOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CompleteMultipartUpload AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#1277
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#1284
   def complete_multipart_upload(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -4124,7 +4124,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::CopyObjectOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CopyObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2368
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2375
   def copy_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -4370,7 +4370,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::CreateBucketOutput#bucket_arn #bucket_arn} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2727
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2734
   def create_bucket(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Creates an S3 Metadata V2 metadata configuration for a general purpose
@@ -4479,7 +4479,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucketMetadataConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2852
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2859
   def create_bucket_metadata_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # We recommend that you create your S3 Metadata configurations by using
@@ -4565,7 +4565,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucketMetadataTableConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2954
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#2961
   def create_bucket_metadata_table_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -4957,7 +4957,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::CreateMultipartUploadOutput#checksum_type #checksum_type} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateMultipartUpload AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#3936
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#3943
   def create_multipart_upload(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Creates a session that establishes temporary security credentials to
@@ -5162,7 +5162,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::CreateSessionOutput#credentials #credentials} => Types::SessionCredentials
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateSession AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4238
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4245
   def create_session(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Deletes the S3 bucket. All objects (including all object versions and
@@ -5239,7 +5239,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucket AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4348
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4355
   def delete_bucket(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5292,7 +5292,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketAnalyticsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4414
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4421
   def delete_bucket_analytics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5340,7 +5340,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketCors AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4474
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4481
   def delete_bucket_cors(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # This implementation of the DELETE action resets the default encryption
@@ -5413,7 +5413,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4579
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4586
   def delete_bucket_encryption(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5473,7 +5473,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketIntelligentTieringConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4652
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4659
   def delete_bucket_intelligent_tiering_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5525,7 +5525,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketInventoryConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4717
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4724
   def delete_bucket_inventory_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Deletes the lifecycle configuration from the specified bucket. Amazon
@@ -5618,7 +5618,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketLifecycle AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4827
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4834
   def delete_bucket_lifecycle(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Deletes an S3 Metadata configuration from a general purpose bucket.
@@ -5678,7 +5678,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketMetadataConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4897
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4904
   def delete_bucket_metadata_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # We recommend that you delete your S3 Metadata configurations by using
@@ -5745,7 +5745,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketMetadataTableConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4974
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#4981
   def delete_bucket_metadata_table_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5801,7 +5801,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketMetricsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5044
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5051
   def delete_bucket_metrics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5841,7 +5841,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketOwnershipControls AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5094
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5101
   def delete_bucket_ownership_controls(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Deletes the policy of a specified bucket.
@@ -5938,7 +5938,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketPolicy AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5224
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5231
   def delete_bucket_policy(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -5996,7 +5996,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketReplication AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5294
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5301
   def delete_bucket_replication(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6040,7 +6040,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5350
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5357
   def delete_bucket_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6095,7 +6095,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketWebsite AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5418
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5425
   def delete_bucket_website(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Removes an object from a bucket. The behavior depends on the bucket's
@@ -6274,7 +6274,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::DeleteObjectOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5735
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5742
   def delete_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6354,7 +6354,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::DeleteObjectTaggingOutput#version_id #version_id} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjectTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5861
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#5868
   def delete_object_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # This operation enables you to delete multiple objects from a bucket
@@ -6598,7 +6598,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::DeleteObjectsOutput#errors #errors} => Array&lt;Types::Error&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjects AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6244
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6251
   def delete_objects(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6644,7 +6644,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeletePublicAccessBlock AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6301
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6308
   def delete_public_access_block(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6712,7 +6712,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketAccelerateConfigurationOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAccelerateConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6397
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6404
   def get_bucket_accelerate_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -6796,7 +6796,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketAclOutput#grants #grants} => Array&lt;Types::Grant&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAcl AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6506
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6513
   def get_bucket_acl(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6868,7 +6868,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketAnalyticsConfigurationOutput#analytics_configuration #analytics_configuration} => Types::AnalyticsConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAnalyticsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6592
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6599
   def get_bucket_analytics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -6961,7 +6961,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketCorsOutput#cors_rules #cors_rules} => Array&lt;Types::CORSRule&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketCors AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6712
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6719
   def get_bucket_cors(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Returns the default encryption configuration for an Amazon S3 bucket.
@@ -7042,7 +7042,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketEncryptionOutput#server_side_encryption_configuration #server_side_encryption_configuration} => Types::ServerSideEncryptionConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6826
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6833
   def get_bucket_encryption(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -7118,7 +7118,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketIntelligentTieringConfigurationOutput#intelligent_tiering_configuration #intelligent_tiering_configuration} => Types::IntelligentTieringConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketIntelligentTieringConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6916
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6923
   def get_bucket_intelligent_tiering_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -7187,7 +7187,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketInventoryConfigurationOutput#inventory_configuration #inventory_configuration} => Types::InventoryConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketInventoryConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#6999
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7006
   def get_bucket_inventory_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # For an updated version of this API, see
@@ -7292,7 +7292,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketLifecycleOutput#rules #rules} => Array&lt;Types::Rule&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycle AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7117
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7124
   def get_bucket_lifecycle(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Returns the lifecycle configuration information set on the bucket. For
@@ -7460,7 +7460,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketLifecycleConfigurationOutput#transition_default_minimum_object_size #transition_default_minimum_object_size} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycleConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7303
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7310
   def get_bucket_lifecycle_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -7530,7 +7530,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketLocationOutput#location_constraint #location_constraint} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLocation AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7400
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7407
   def get_bucket_location(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -7591,7 +7591,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketLoggingOutput#logging_enabled #logging_enabled} => Types::LoggingEnabled
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLogging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7472
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7479
   def get_bucket_logging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Retrieves the S3 Metadata configuration for a general purpose bucket.
@@ -7671,7 +7671,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketMetadataConfigurationOutput#get_bucket_metadata_configuration_result #get_bucket_metadata_configuration_result} => Types::GetBucketMetadataConfigurationResult
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketMetadataConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7563
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7570
   def get_bucket_metadata_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # We recommend that you retrieve your S3 Metadata configurations by
@@ -7749,7 +7749,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketMetadataTableConfigurationOutput#get_bucket_metadata_table_configuration_result #get_bucket_metadata_table_configuration_result} => Types::GetBucketMetadataTableConfigurationResult
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketMetadataTableConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7652
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7659
   def get_bucket_metadata_table_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -7819,7 +7819,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketMetricsConfigurationOutput#metrics_configuration #metrics_configuration} => Types::MetricsConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketMetricsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7738
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7745
   def get_bucket_metrics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -7921,7 +7921,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::NotificationConfigurationDeprecated#cloud_function_configuration #cloud_function_configuration} => Types::CloudFunctionConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotification AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7869
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7876
   def get_bucket_notification(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8010,7 +8010,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::NotificationConfiguration#event_bridge_configuration #event_bridge_configuration} => Types::EventBridgeConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotificationConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7984
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#7991
   def get_bucket_notification_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8070,7 +8070,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketOwnershipControlsOutput#ownership_controls #ownership_controls} => Types::OwnershipControls
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketOwnershipControls AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8056
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8063
   def get_bucket_ownership_controls(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Returns the policy of a specified bucket.
@@ -8185,7 +8185,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketPolicyOutput#policy #policy} => IO
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicy AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8221
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8228
   def get_bucket_policy(params = T.unsafe(nil), options = T.unsafe(nil), &block); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8238,7 +8238,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketPolicyStatusOutput#policy_status #policy_status} => Types::PolicyStatus
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicyStatus AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8286
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8293
   def get_bucket_policy_status(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8348,7 +8348,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketReplicationOutput#replication_configuration #replication_configuration} => Types::ReplicationConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketReplication AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8409
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8416
   def get_bucket_replication(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8400,7 +8400,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketRequestPaymentOutput#payer #payer} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketRequestPayment AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8475
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8482
   def get_bucket_request_payment(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8473,7 +8473,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketTaggingOutput#tag_set #tag_set} => Array&lt;Types::Tag&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8561
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8568
   def get_bucket_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8537,7 +8537,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketVersioningOutput#mfa_delete #mfa_delete} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketVersioning AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8638
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8645
   def get_bucket_versioning(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -8616,7 +8616,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetBucketWebsiteOutput#routing_rules #routing_rules} => Array&lt;Types::RoutingRule&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketWebsite AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8730
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#8737
   def get_bucket_website(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Retrieves an object from Amazon S3.
@@ -8999,7 +8999,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectOutput#object_lock_legal_hold_status #object_lock_legal_hold_status} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9398
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9405
   def get_object(params = T.unsafe(nil), options = T.unsafe(nil), &block); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9130,7 +9130,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectAclOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9584
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9591
   def get_object_acl(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Retrieves all of the metadata from an object without returning the
@@ -9392,7 +9392,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectAttributesOutput#object_size #object_size} => Integer
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAttributes AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9971
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#9978
   def get_object_attributes(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9439,7 +9439,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectLegalHoldOutput#legal_hold #legal_hold} => Types::ObjectLockLegalHold
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectLegalHold AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10069
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10076
   def get_object_legal_hold(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9483,7 +9483,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectLockConfigurationOutput#object_lock_configuration #object_lock_configuration} => Types::ObjectLockConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectLockConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10141
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10148
   def get_object_lock_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9531,7 +9531,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectRetentionOutput#retention #retention} => Types::ObjectLockRetention
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectRetention AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10240
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10247
   def get_object_retention(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9640,7 +9640,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectTaggingOutput#tag_set #tag_set} => Array&lt;Types::Tag&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10411
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10418
   def get_object_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9707,7 +9707,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetObjectTorrentOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTorrent AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10512
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10519
   def get_object_torrent(params = T.unsafe(nil), options = T.unsafe(nil), &block); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -9770,7 +9770,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::GetPublicAccessBlockOutput#public_access_block_configuration #public_access_block_configuration} => Types::PublicAccessBlockConfiguration
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetPublicAccessBlock AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10587
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10594
   def get_public_access_block(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # You can use this operation to determine if a bucket exists and if you
@@ -9890,7 +9890,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::HeadBucketOutput#access_point_alias #access_point_alias} => Boolean
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10771
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#10778
   def head_bucket(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # The `HEAD` operation retrieves metadata from an object without
@@ -10209,7 +10209,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::HeadObjectOutput#object_lock_legal_hold_status #object_lock_legal_hold_status} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11307
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11314
   def head_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -10295,7 +10295,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListBucketAnalyticsConfigurationsOutput#analytics_configuration_list #analytics_configuration_list} => Array&lt;Types::AnalyticsConfiguration&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketAnalyticsConfigurations AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11408
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11415
   def list_bucket_analytics_configurations(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -10378,7 +10378,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListBucketIntelligentTieringConfigurationsOutput#intelligent_tiering_configuration_list #intelligent_tiering_configuration_list} => Array&lt;Types::IntelligentTieringConfiguration&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketIntelligentTieringConfigurations AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11506
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11513
   def list_bucket_intelligent_tiering_configurations(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -10463,7 +10463,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListBucketInventoryConfigurationsOutput#next_continuation_token #next_continuation_token} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketInventoryConfigurations AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11608
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11615
   def list_bucket_inventory_configurations(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -10548,7 +10548,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListBucketMetricsConfigurationsOutput#metrics_configuration_list #metrics_configuration_list} => Array&lt;Types::MetricsConfiguration&gt;
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketMetricsConfigurations AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11710
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11717
   def list_bucket_metrics_configurations(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -10651,7 +10651,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListBucketsOutput#prefix #prefix} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBuckets AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11862
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11869
   def list_buckets(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Returns a list of all Amazon S3 directory buckets owned by the
@@ -10726,7 +10726,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListDirectoryBucketsOutput#continuation_token #continuation_token} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListDirectoryBuckets AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11951
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#11958
   def list_directory_buckets(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -11025,7 +11025,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListMultipartUploadsOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListMultipartUploads AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12413
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12420
   def list_multipart_uploads(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -11200,7 +11200,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListObjectVersionsOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12669
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12676
   def list_object_versions(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -11354,7 +11354,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListObjectsOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12921
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#12928
   def list_objects(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Returns some or all (up to 1,000) of the objects in a bucket with each
@@ -11561,7 +11561,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListObjectsV2Output#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectsV2 AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13271
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13278
   def list_objects_v2(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will stop
@@ -11783,7 +11783,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::ListPartsOutput#checksum_type #checksum_type} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListParts AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13613
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13620
   def list_parts(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -11855,7 +11855,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAccelerateConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13712
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#13719
   def put_bucket_accelerate_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -12108,7 +12108,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14024
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14031
   def put_bucket_acl(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -12230,7 +12230,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAnalyticsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14160
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14167
   def put_bucket_analytics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -12362,7 +12362,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketCors AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14340
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14347
   def put_bucket_cors(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # This operation configures default encryption and Amazon S3 Bucket Keys
@@ -12531,7 +12531,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14574
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14581
   def put_bucket_encryption(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -12647,7 +12647,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketIntelligentTieringConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14705
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14712
   def put_bucket_intelligent_tiering_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -12784,7 +12784,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketInventoryConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14857
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#14864
   def put_bucket_inventory_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -12910,7 +12910,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycle AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15012
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15019
   def put_bucket_lifecycle(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Creates a new lifecycle configuration for the bucket or replaces an
@@ -13148,7 +13148,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutBucketLifecycleConfigurationOutput#transition_default_minimum_object_size #transition_default_minimum_object_size} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycleConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15306
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15313
   def put_bucket_lifecycle_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -13314,7 +13314,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLogging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15507
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15514
   def put_bucket_logging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -13402,7 +13402,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketMetricsConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15611
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15618
   def put_bucket_metrics_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -13455,7 +13455,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotification AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15697
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15704
   def put_bucket_notification(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -13620,7 +13620,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotificationConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15881
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15888
   def put_bucket_notification_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -13671,7 +13671,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketOwnershipControls AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15967
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#15974
   def put_bucket_ownership_controls(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
@@ -13786,7 +13786,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketPolicy AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16174
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16181
   def put_bucket_policy(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -13980,7 +13980,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketReplication AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16412
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16419
   def put_bucket_replication(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -14036,7 +14036,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketRequestPayment AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16509
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16516
   def put_bucket_request_payment(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -14146,7 +14146,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16660
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16667
   def put_bucket_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -14242,7 +14242,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketVersioning AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16801
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16808
   def put_bucket_versioning(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -14385,7 +14385,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketWebsite AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16985
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#16992
   def put_bucket_website(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # End of support notice: Beginning October 1, 2025, Amazon S3 will
@@ -14802,7 +14802,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18028
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18035
   def put_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15052,7 +15052,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectAclOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18403
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18410
   def put_object_acl(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15100,7 +15100,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectLegalHoldOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectLegalHold AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18524
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18531
   def put_object_legal_hold(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15165,7 +15165,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectLockConfigurationOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectLockConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18643
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18650
   def put_object_lock_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15219,7 +15219,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectRetentionOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectRetention AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18774
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18781
   def put_object_retention(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15337,7 +15337,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::PutObjectTaggingOutput#version_id #version_id} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectTagging AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18975
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#18982
   def put_object_tagging(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15403,7 +15403,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutPublicAccessBlock AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19083
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19090
   def put_public_access_block(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Renames an existing object in a directory bucket that uses the S3
@@ -15496,7 +15496,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RenameObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19256
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19263
   def rename_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -15803,7 +15803,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::RestoreObjectOutput#restore_output_path #restore_output_path} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RestoreObject AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19640
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#19647
   def restore_object(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -16137,7 +16137,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SelectObjectContent AWS API Documentation
   # @yield [event_stream_handler]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20043
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20050
   def select_object_content(params = T.unsafe(nil), options = T.unsafe(nil), &block); end
 
   # Enables or disables a live inventory table for an S3 Metadata
@@ -16218,7 +16218,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UpdateBucketMetadataInventoryTableConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20160
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20167
   def update_bucket_metadata_inventory_table_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Enables or disables journal table record expiration for an S3 Metadata
@@ -16277,7 +16277,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UpdateBucketMetadataJournalTableConfiguration AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20237
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20244
   def update_bucket_metadata_journal_table_configuration(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Uploads a part in a multipart upload.
@@ -16561,7 +16561,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::UploadPartOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20708
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#20715
   def upload_part(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Uploads a part by copying data from an existing object as data source.
@@ -16872,7 +16872,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   #   * {Types::UploadPartCopyOutput#request_charged #request_charged} => String
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPartCopy AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21289
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21296
   def upload_part_copy(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # Polls an API operation until a resource enters a desired state.
@@ -16964,13 +16964,13 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Boolean] Returns `true` if the waiter was successful.
   # @yield [w.waiter]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21826
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21833
   def wait_until(waiter_name, params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21834
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21841
   def waiter_names; end
 
   # <note markdown="1"> This operation is not supported for directory buckets.
@@ -17127,7 +17127,7 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
   # @see http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/WriteGetObjectResponse AWS API Documentation
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21708
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21715
   def write_get_object_response(params = T.unsafe(nil), options = T.unsafe(nil)); end
 
   private
@@ -17135,21 +17135,21 @@ class Aws::S3::Client < ::Seahorse::Client::Base
   # @param waiter_name [Symbol]
   # @param options [Hash] ({})
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21842
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21849
   def waiter(waiter_name, options = T.unsafe(nil)); end
 
-  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21851
+  # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21858
   def waiters; end
 
   class << self
     # @api private
     #
-    # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21866
+    # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21873
     def errors_module; end
 
     # @api private
     #
-    # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21863
+    # source://aws-sdk-s3//lib/aws-sdk-s3/client.rb#21870
     def identifier; end
   end
 end
@@ -20728,7 +20728,7 @@ class Aws::S3::Encryption::Client
   # @param options [Hash] a customizable set of options
   # @return [Client] a new instance of Client
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def initialize(*args, &block); end
 
   # source://forwardable/1.3.3/forwardable.rb#231
@@ -24435,158 +24435,156 @@ end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#11
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#10
 class Aws::S3::FileDownloader
   # @api private
   # @return [FileDownloader] a new instance of FileDownloader
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#17
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#15
   def initialize(options = T.unsafe(nil)); end
 
   # @api private
   # @return [Client]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#22
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#20
   def client; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#24
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#22
   def download(destination, options = T.unsafe(nil)); end
 
   private
 
   # @api private
+  # @raise [ArgumentError]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#120
-  def batches(chunks, mode); end
-
-  # @api private
-  #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#110
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#89
   def compute_chunk(file_size); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#87
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#79
   def compute_mode(file_size, count, etag); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#97
-  def construct_chunks(file_size); end
-
-  # @api private
-  #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#152
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#118
   def download_in_threads(pending, total_size); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#67
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#151
+  def extract_range(value); end
+
+  # @api private
+  #
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#58
   def multipart_download; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#145
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#111
   def multithreaded_get_by_parts(n_parts, total_size, etag); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#125
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#95
   def multithreaded_get_by_ranges(file_size, etag); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#201
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#175
   def single_part_progress; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#189
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#165
   def single_request; end
 
   # @api private
+  # @raise [ArgumentError]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#61
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#52
   def validate!; end
 
   # @api private
+  # @raise [MultipartDownloadError]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#183
-  def write(resp); end
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#155
+  def validate_range(actual, expected); end
+
+  # @api private
+  #
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#161
+  def write(body, range); end
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#14
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#13
 Aws::S3::FileDownloader::MAX_PARTS = T.let(T.unsafe(nil), Integer)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#13
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#12
 Aws::S3::FileDownloader::MIN_CHUNK_SIZE = T.let(T.unsafe(nil), Integer)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#237
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#212
 class Aws::S3::FileDownloader::MultipartProgress
   # @api private
   # @return [MultipartProgress] a new instance of MultipartProgress
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#238
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#213
   def initialize(parts, total_size, progress_callback); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#245
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#220
   def call(part_number, bytes_received, total); end
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#207
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#182
 class Aws::S3::FileDownloader::Part < ::Struct
   include ::Aws::Structure
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#212
+# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#187
 class Aws::S3::FileDownloader::PartList
   include ::Enumerable
 
   # @api private
   # @return [PartList] a new instance of PartList
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#214
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#189
   def initialize(parts = T.unsafe(nil)); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#227
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#202
   def clear!; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#231
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#206
   def each(&block); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#219
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#194
   def shift; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#223
+  # source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#198
   def size; end
 end
-
-# @api private
-#
-# source://aws-sdk-s3//lib/aws-sdk-s3/file_downloader.rb#15
-Aws::S3::FileDownloader::THREAD_COUNT = T.let(T.unsafe(nil), Integer)
 
 # A utility class that provides an IO-like interface to a portion of a file
 # on disk.
@@ -24837,6 +24835,11 @@ end
 # source://aws-sdk-s3//lib/aws-sdk-s3/legacy_signer.rb#15
 Aws::S3::LegacySigner::SIGNED_QUERYSTRING_PARAMS = T.let(T.unsafe(nil), Set)
 
+# Raised when multipart download fails to complete.
+#
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_download_error.rb#6
+class Aws::S3::MultipartDownloadError < ::StandardError; end
+
 # @api private
 #
 # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#9
@@ -24847,13 +24850,13 @@ class Aws::S3::MultipartFileUploader
   # @param options [Hash] a customizable set of options
   # @return [MultipartFileUploader] a new instance of MultipartFileUploader
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#39
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#31
   def initialize(options = T.unsafe(nil)); end
 
   # @api private
   # @return [Client]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#45
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#37
   def client; end
 
   # @api private
@@ -24862,104 +24865,100 @@ class Aws::S3::MultipartFileUploader
   # @option options
   # @param source [String, Pathname, File, Tempfile] The file to upload.
   # @param options [Hash] a customizable set of options
+  # @raise [ArgumentError]
   # @return [Seahorse::Client::Response] - the CompleteMultipartUploadResponse
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#54
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#46
   def upload(source, options = T.unsafe(nil)); end
 
   private
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#90
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#83
   def abort_upload(upload_id, options, errors); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#128
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#113
   def checksum_key?(key); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#145
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#129
   def complete_opts(options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#70
-  def complete_upload(upload_id, parts, options); end
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#60
+  def complete_upload(upload_id, parts, source, options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#202
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#179
   def compute_default_part_size(source_size); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#106
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#95
   def compute_parts(upload_id, source, options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#136
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#121
   def create_opts(options); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#132
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#117
   def has_checksum_key?(keys); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#66
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#56
   def initiate_upload(options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#206
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#183
   def part_size(total_size, part_size, offset); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#164
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#144
   def upload_in_threads(pending, completed, options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#154
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#137
   def upload_part_opts(options); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#79
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#72
   def upload_parts(upload_id, source, options); end
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#31
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#23
 Aws::S3::MultipartFileUploader::CHECKSUM_KEYS = T.let(T.unsafe(nil), Set)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#23
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#19
 Aws::S3::MultipartFileUploader::COMPLETE_OPTIONS = T.let(T.unsafe(nil), Set)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#19
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#17
 Aws::S3::MultipartFileUploader::CREATE_OPTIONS = T.let(T.unsafe(nil), Set)
 
 # @api private
 #
 # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#13
-Aws::S3::MultipartFileUploader::FILE_TOO_SMALL = T.let(T.unsafe(nil), String)
-
-# @api private
-#
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#15
 Aws::S3::MultipartFileUploader::MAX_PARTS = T.let(T.unsafe(nil), Integer)
 
 # 5MB
@@ -24971,69 +24970,69 @@ Aws::S3::MultipartFileUploader::MIN_PART_SIZE = T.let(T.unsafe(nil), Integer)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#249
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#224
 class Aws::S3::MultipartFileUploader::MultipartProgress
   # @api private
   # @return [MultipartProgress] a new instance of MultipartProgress
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#250
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#225
   def initialize(parts, progress_callback); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#256
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#231
   def call(part_number, bytes_read); end
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#215
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#192
 class Aws::S3::MultipartFileUploader::PartList
   # @api private
   # @return [PartList] a new instance of PartList
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#217
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#193
   def initialize(parts = T.unsafe(nil)); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#230
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#206
   def clear!; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#238
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#214
   def part_sizes; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#222
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#198
   def push(part); end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#226
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#202
   def shift; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#234
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#210
   def size; end
 
   # @api private
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#242
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#218
   def to_a; end
 end
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#17
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#15
 Aws::S3::MultipartFileUploader::THREAD_COUNT = T.let(T.unsafe(nil), Integer)
 
 # @api private
 #
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#27
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_file_uploader.rb#21
 Aws::S3::MultipartFileUploader::UPLOAD_PART_OPTIONS = T.let(T.unsafe(nil), Set)
 
 # @api private
@@ -25283,7 +25282,7 @@ class Aws::S3::MultipartUpload
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Date and time at which the multipart upload was initiated.
@@ -25487,15 +25486,16 @@ end
 # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload.rb#686
 class Aws::S3::MultipartUpload::Collection < ::Aws::Resources::Collection; end
 
-# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload_error.rb#5
+# Raise when multipart upload fails to complete.
+#
+# source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload_error.rb#6
 class Aws::S3::MultipartUploadError < ::StandardError
   # @return [MultipartUploadError] a new instance of MultipartUploadError
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload_error.rb#7
-  def initialize(message, errors); end
+  # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload_error.rb#8
+  def initialize(message, errors = T.unsafe(nil)); end
 
-  # @return [Array<StandardError>] The list of errors encountered
-  #   when uploading or aborting the upload.
+  # @return [Array<StandardError>] The list of errors encountered when uploading or aborting the upload.
   #
   # source://aws-sdk-s3//lib/aws-sdk-s3/multipart_upload_error.rb#14
   def errors; end
@@ -25659,7 +25659,7 @@ class Aws::S3::MultipartUploadPart
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Date and time at which the part was uploaded.
@@ -26235,7 +26235,7 @@ class Aws::S3::Object
   #     # small files (< 5MB) are downloaded in a single API call
   #     obj.download_file('/path/to/file')
   #
-  # Files larger than 5MB are downloaded using multipart method
+  # Files larger than 5MB are downloaded using multipart method:
   #
   #     # large files are split into parts
   #     # and the parts are downloaded in parallel
@@ -26245,8 +26245,8 @@ class Aws::S3::Object
   #
   #     # bytes and part_sizes are each an array with 1 entry per part
   #     # part_sizes may not be known until the first bytes are retrieved
-  #     progress = Proc.new do |bytes, part_sizes, file_size|
-  #       puts bytes.map.with_index { |b, i| "Part #{i+1}: #{b} / #{part_sizes[i]}"}.join(' ') + "Total: #{100.0 * bytes.sum / file_size}%" }
+  #     progress = proc do |bytes, part_sizes, file_size|
+  #       puts bytes.map.with_index { |b, i| "Part #{i + 1}: #{b} / #{part_sizes[i]}" }.join(' ') + "Total: #{100.0 * bytes.sum / file_size}%"
   #     end
   #     obj.download_file('/path/to/file', progress_callback: progress)
   #
@@ -26258,14 +26258,13 @@ class Aws::S3::Object
   # @option options
   # @option options
   # @param destination [String] Where to download the file to.
-  # @param options [Hash] Additional options for {Client#get_object} and #{Client#head_object}
-  #   may be provided.
-  # @return [Boolean] Returns `true` when the file is downloaded without
-  #   any errors.
+  # @param options [Hash] Additional options for {Client#get_object} and #{Client#head_object} may be provided.
+  # @raise [MultipartDownloadError] Raised when an object validation fails outside of service errors.
+  # @return [Boolean] Returns `true` when the file is downloaded without any errors.
   # @see Client#get_object
   # @see Client#head_object
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object.rb#552
+  # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object.rb#530
   def download_file(destination, options = T.unsafe(nil)); end
 
   # An entity tag (ETag) is an opaque identifier assigned by a web server
@@ -26414,7 +26413,7 @@ class Aws::S3::Object
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # @example Request syntax with placeholder values
@@ -27164,8 +27163,7 @@ class Aws::S3::Object
   #     # small files are uploaded in a single API call
   #     obj.upload_file('/path/to/file')
   #
-  # Files larger than or equal to `:multipart_threshold` are uploaded
-  # using the Amazon S3 multipart upload APIs.
+  # Files larger than or equal to `:multipart_threshold` are uploaded using the Amazon S3 multipart upload APIs.
   #
   #     # large files are automatically split into parts
   #     # and the parts are uploaded in parallel
@@ -27181,40 +27179,33 @@ class Aws::S3::Object
   # You can provide a callback to monitor progress of the upload:
   #
   #     # bytes and totals are each an array with 1 entry per part
-  #     progress = Proc.new do |bytes, totals|
-  #       puts bytes.map.with_index { |b, i| "Part #{i+1}: #{b} / #{totals[i]}"}.join(' ') + "Total: #{100.0 * bytes.sum / totals.sum }%" }
+  #     progress = proc do |bytes, totals|
+  #       puts bytes.map.with_index { |b, i| "Part #{i+1}: #{b} / #{totals[i]}"}.join(' ') + "Total: #{100.0 * bytes.sum / totals.sum }%"
   #     end
   #     obj.upload_file('/path/to/file', progress_callback: progress)
   #
   # @option options
   # @option options
   # @option options
-  # @param source [String, Pathname, File, Tempfile] A file on the local
-  #   file system that will be uploaded as this object. This can either be
-  #   a String or Pathname to the file, an open File object, or an open
-  #   Tempfile object. If you pass an open File or Tempfile object, then
-  #   you are responsible for closing it after the upload completes. When
-  #   using an open Tempfile, rewind it before uploading or else the object
+  # @param source [String, Pathname, File, Tempfile] A file on the local file system that will be uploaded as
+  #   this object. This can either be a String or Pathname to the file, an open File object, or an open
+  #   Tempfile object. If you pass an open File or Tempfile object, then you are responsible for closing it
+  #   after the upload completes. When using an open Tempfile, rewind it before uploading or else the object
   #   will be empty.
-  # @param options [Hash] Additional options for {Client#put_object}
-  #   when file sizes below the multipart threshold. For files larger than
-  #   the multipart threshold, options for {Client#create_multipart_upload},
-  #   {Client#complete_multipart_upload},
-  #   and {Client#upload_part} can be provided.
-  # @raise [MultipartUploadError] If an object is being uploaded in
-  #   parts, and the upload can not be completed, then the upload is
-  #   aborted and this error is raised.  The raised error has a `#errors`
-  #   method that returns the failures that caused the upload to be
-  #   aborted.
-  # @return [Boolean] Returns `true` when the object is uploaded
-  #   without any errors.
+  # @param options [Hash] Additional options for {Client#put_object} when file sizes below the multipart threshold.
+  #   For files larger than the multipart threshold, options for {Client#create_multipart_upload},
+  #   {Client#complete_multipart_upload}, and {Client#upload_part} can be provided.
+  # @raise [MultipartUploadError] If an object is being uploaded in parts, and the upload can not be completed,
+  #   then the upload is aborted and this error is raised.  The raised error has a `#errors` method that
+  #   returns the failures that caused the upload to be aborted.
+  # @return [Boolean] Returns `true` when the object is uploaded without any errors.
   # @see Client#put_object
   # @see Client#create_multipart_upload
   # @see Client#complete_multipart_upload
   # @see Client#upload_part
   # @yield [response]
   #
-  # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object.rb#470
+  # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object.rb#459
   def upload_file(source, options = T.unsafe(nil)); end
 
   # Uploads a stream in a streaming fashion to the current object in S3.
@@ -27427,7 +27418,7 @@ class Aws::S3::Object::Collection < ::Aws::Resources::Collection
   # source://aws-sdk-s3//lib/aws-sdk-s3/object.rb#3600
   def batch_delete!(options = T.unsafe(nil)); end
 
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def delete(*args, &block); end
 
   # source://aws-sdk-s3//lib/aws-sdk-s3/object.rb#3600
@@ -27480,7 +27471,7 @@ class Aws::S3::ObjectAcl
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Loads, or reloads {#data} for the current {ObjectAcl}.
@@ -28118,10 +28109,8 @@ class Aws::S3::ObjectSummary
   def deprecated_identifiers; end
 
   # @param destination [String] Where to download the file to.
-  # @param options [Hash] Additional options for {Client#get_object} and #{Client#head_object}
-  #   may be provided.
-  # @return [Boolean] Returns `true` when the file is downloaded without
-  #   any errors.
+  # @param options [Hash] Additional options for {Client#get_object} and #{Client#head_object} may be provided.
+  # @return [Boolean] Returns `true` when the file is downloaded without any errors.
   # @see Object#download_file
   #
   # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object_summary.rb#79
@@ -28215,7 +28204,7 @@ class Aws::S3::ObjectSummary
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # @example Request syntax with placeholder values
@@ -28619,20 +28608,15 @@ class Aws::S3::ObjectSummary
   # source://aws-sdk-s3//lib/aws-sdk-s3/object_summary.rb#114
   def storage_class; end
 
-  # @param source [String, Pathname, File, Tempfile] A file on the local
-  #   file system that will be uploaded as this object. This can either be
-  #   a String or Pathname to the file, an open File object, or an open
-  #   Tempfile object. If you pass an open File or Tempfile object, then
-  #   you are responsible for closing it after the upload completes. When
-  #   using an open Tempfile, rewind it before uploading or else the object
+  # @param source [String, Pathname, File, Tempfile] A file on the local file system that will be uploaded as
+  #   this object. This can either be a String or Pathname to the file, an open File object, or an open
+  #   Tempfile object. If you pass an open File or Tempfile object, then you are responsible for closing it
+  #   after the upload completes. When using an open Tempfile, rewind it before uploading or else the object
   #   will be empty.
-  # @param options [Hash] Additional options for {Client#put_object}
-  #   when file sizes below the multipart threshold. For files larger than
-  #   the multipart threshold, options for {Client#create_multipart_upload},
-  #   {Client#complete_multipart_upload},
-  #   and {Client#upload_part} can be provided.
-  # @return [Boolean] Returns `true` when the object is uploaded
-  #   without any errors.
+  # @param options [Hash] Additional options for {Client#put_object} when file sizes below the multipart threshold.
+  #   For files larger than the multipart threshold, options for {Client#create_multipart_upload},
+  #   {Client#complete_multipart_upload}, and {Client#upload_part} can be provided.
+  # @return [Boolean] Returns `true` when the object is uploaded without any errors.
   # @see Object#upload_file
   #
   # source://aws-sdk-s3//lib/aws-sdk-s3/customizations/object_summary.rb#64
@@ -28790,7 +28774,7 @@ class Aws::S3::ObjectSummary::Collection < ::Aws::Resources::Collection
   # source://aws-sdk-s3//lib/aws-sdk-s3/object_summary.rb#3007
   def batch_delete!(options = T.unsafe(nil)); end
 
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def delete(*args, &block); end
 
   # source://aws-sdk-s3//lib/aws-sdk-s3/object_summary.rb#3007
@@ -28984,7 +28968,7 @@ class Aws::S3::ObjectVersion
   # @api private
   # @deprecated
   #
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def identifiers(*args, &block); end
 
   # Specifies whether the object is (true) or is not (false) the latest
@@ -29188,7 +29172,7 @@ class Aws::S3::ObjectVersion::Collection < ::Aws::Resources::Collection
   # source://aws-sdk-s3//lib/aws-sdk-s3/object_version.rb#943
   def batch_delete!(options = T.unsafe(nil)); end
 
-  # source://aws-sdk-core/3.226.3/lib/aws-sdk-core/deprecations.rb#65
+  # source://aws-sdk-core/3.229.0/lib/aws-sdk-core/deprecations.rb#65
   def delete(*args, &block); end
 
   # source://aws-sdk-s3//lib/aws-sdk-s3/object_version.rb#943

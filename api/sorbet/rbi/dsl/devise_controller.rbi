@@ -23,7 +23,6 @@ class DeviseController
     include ::ApplicationHelper
     include ::Pay::CurrencyHelper
     include ::DeviseHelper
-    include ::PreviewHelper
     include ::ApplicationController::HelperMethods
 
     sig { returns(T.untyped) }

@@ -293,12 +293,12 @@ class Propshaft::Error < ::StandardError; end
 module Propshaft::Helper
   # Returns a sorted and unique array of logical paths for all stylesheets in the load path.
   #
-  # source://propshaft//lib/propshaft/helper.rb#103
+  # source://propshaft//lib/propshaft/helper.rb#107
   def all_stylesheets_paths; end
 
   # Returns a sorted and unique array of logical paths for all stylesheets in app/assets/**/*.css.
   #
-  # source://propshaft//lib/propshaft/helper.rb#108
+  # source://propshaft//lib/propshaft/helper.rb#112
   def app_stylesheets_paths; end
 
   # Computes the Subresource Integrity (SRI) hash for the given asset path.
@@ -332,8 +332,8 @@ module Propshaft::Helper
   #   # => <script src="/assets/application-abc123.js"
   #   #           integrity="sha256-xyz789..."></script>
   #
-  # source://propshaft//lib/propshaft/helper.rb#98
-  def javascript_include_tag(*sources, **options); end
+  # source://propshaft//lib/propshaft/helper.rb#100
+  def javascript_include_tag(*sources); end
 
   # Enhanced +stylesheet_link_tag+ with integrity support and bulk inclusion options.
   #
@@ -357,7 +357,7 @@ module Propshaft::Helper
   #   stylesheet_link_tag :app    # Only app/assets stylesheets
   #
   # source://propshaft//lib/propshaft/helper.rb#73
-  def stylesheet_link_tag(*sources, **options); end
+  def stylesheet_link_tag(*sources); end
 
   private
 
@@ -366,7 +366,7 @@ module Propshaft::Helper
   # This method handles the common logic for both +stylesheet_link_tag+ and
   # +javascript_include_tag+, including SRI hash generation and HTML tag creation.
   #
-  # source://propshaft//lib/propshaft/helper.rb#117
+  # source://propshaft//lib/propshaft/helper.rb#121
   def _build_asset_tags(sources, options, asset_type); end
 
   # Determines whether integrity hashes should be computed for assets.
@@ -376,12 +376,12 @@ module Propshaft::Helper
   #
   # @return [Boolean]
   #
-  # source://propshaft//lib/propshaft/helper.rb#131
+  # source://propshaft//lib/propshaft/helper.rb#135
   def _compute_integrity?(options); end
 
   # Ensures the asset path includes the appropriate file extension.
   #
-  # source://propshaft//lib/propshaft/helper.rb#153
+  # source://propshaft//lib/propshaft/helper.rb#157
   def _path_with_extname(path, options); end
 
   # Checks if the current context is secure enough for Subresource Integrity.
@@ -392,7 +392,7 @@ module Propshaft::Helper
   #
   # @return [Boolean]
   #
-  # source://propshaft//lib/propshaft/helper.rb#148
+  # source://propshaft//lib/propshaft/helper.rb#152
   def _secure_subresource_integrity_context?; end
 end
 
@@ -529,6 +529,19 @@ class Propshaft::Manifest
   # source://propshaft//lib/propshaft/manifest.rb#133
   def [](logical_path); end
 
+  # Removes a manifest entry by its logical path.
+  #
+  # ==== Parameters
+  #
+  # * +logical_path+ - The logical path of the asset to remove
+  #
+  # ==== Returns
+  #
+  # The removed manifest entry, or +nil+ if not found.
+  #
+  # source://propshaft//lib/propshaft/manifest.rb#146
+  def delete(logical_path); end
+
   # Adds a manifest entry to the manifest.
   #
   # ==== Parameters
@@ -568,7 +581,7 @@ class Propshaft::Manifest
   #
   # The JSON representation of the manifest.
   #
-  # source://propshaft//lib/propshaft/manifest.rb#145
+  # source://propshaft//lib/propshaft/manifest.rb#158
   def to_json; end
 
   # Transforms the values of all manifest entries using the given block.
@@ -584,14 +597,14 @@ class Propshaft::Manifest
   #
   # A new hash with the same keys but transformed values.
   #
-  # source://propshaft//lib/propshaft/manifest.rb#163
+  # source://propshaft//lib/propshaft/manifest.rb#176
   def transform_values(&block); end
 
   private
 
   # Returns the value of attribute integrity_hash_algorithm.
   #
-  # source://propshaft//lib/propshaft/manifest.rb#168
+  # source://propshaft//lib/propshaft/manifest.rb#181
   def integrity_hash_algorithm; end
 
   class << self
