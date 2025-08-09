@@ -142,7 +142,9 @@ resource "aws_iam_policy" "helium_oracles_s3" {
         ]
         Resource = [
           "arn:aws:s3:::foundation-poc-data-requester-pays",
-          "arn:aws:s3:::foundation-poc-data-requester-pays/*"
+          "arn:aws:s3:::foundation-poc-data-requester-pays/*",
+          "arn:aws:s3:::foundation-helium-l1-archive-requester-pays",
+          "arn:aws:s3:::foundation-helium-l1-archive-requester-pays/*"
         ]
       }
     ]
