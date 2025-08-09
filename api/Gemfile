@@ -58,6 +58,7 @@ gem "ostruct"
 # L2 Helium data
 gem "google-protobuf"
 gem "zlib"
+gem "h3"
 
 # Sentry
 gem "sentry-ruby"

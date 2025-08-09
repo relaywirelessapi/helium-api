@@ -15,6 +15,8 @@ module Relay
             attribute :ecc_key, :string
             attribute :networks, :string
             attribute :maker_id, :string
+            attribute :iot_location, :integer
+            attribute :mobile_location, :integer
           end
 
           sig { void }
@@ -26,13 +28,10 @@ module Relay
             relation = relation.where(owner: contract.owner) if contract.owner.present?
             relation = relation.where(asset_id: contract.asset_id) if contract.asset_id.present?
             relation = relation.where(ecc_key: contract.ecc_key) if contract.ecc_key.present?
-
-            if contract.networks.present?
-              network_array = contract.networks.split(",").map(&:strip)
-              relation = relation.where("networks && ARRAY[?]::varchar[]", network_array)
-            end
-
             relation = relation.where(maker_id: contract.maker_id) if contract.maker_id.present?
+            relation = relation.by_networks(contract.networks.split(",")) if contract.networks.present?
+            relation = relation.by_iot_location(contract.iot_location) if contract.iot_location.present?
+            relation = relation.by_mobile_location(contract.mobile_location) if contract.mobile_location.present?
 
             relation = paginate(relation)
 

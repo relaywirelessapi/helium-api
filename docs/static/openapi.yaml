@@ -95,7 +95,7 @@ paths:
             type: string
           in: query
           name: asset_id
-          description: Filter by specific asset ID.
+          description: Filter by asset ID.
         - schema:
             type: string
           in: query
@@ -111,6 +111,16 @@ paths:
           in: query
           name: maker_id
           description: Filter by maker ID.
+        - schema:
+            type: integer
+          in: query
+          name: iot_location
+          description: Filter by IoT location (provide a decimal H3 cell index).
+        - schema:
+            type: integer
+          in: query
+          name: mobile_location
+          description: Filter by Mobile location (provide a decimal H3 cell index).
     servers: []
   /helium/l2/iot-reward-shares:
     parameters: []
