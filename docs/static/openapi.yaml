@@ -176,6 +176,47 @@ paths:
           name: reward_type
           description: The reward type to retrieve rewards for.
     servers: []
+  /helium/l2/iot-reward-shares/totals:
+    parameters: []
+    get:
+      summary: Get IoT reward totals
+      tags:
+        - Rewards
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/iot-reward-totals'
+      operationId: get-iot-reward-totals
+      description: 'Retrieves aggregated totals for IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.'
+      x-stoplight:
+        id: iot-totals-op
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: reward_type
+          description: The reward type to retrieve reward totals for.
+    servers: []
   /helium/l2/mobile-reward-shares:
     parameters: []
     get:
@@ -229,6 +270,47 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve rewards for.
+    servers: []
+  /helium/l2/mobile-reward-shares/totals:
+    parameters: []
+    get:
+      summary: Get Mobile reward totals
+      tags:
+        - Rewards
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobile-reward-totals'
+      operationId: get-mobile-reward-totals
+      description: 'Retrieves aggregated totals for Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.'
+      x-stoplight:
+        id: mobile-totals-op
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve reward totals for.
+        - schema:
+            type: string
+          in: query
+          name: reward_type
+          description: The reward type to retrieve reward totals for.
     servers: []
 components:
   schemas:
@@ -1096,6 +1178,102 @@ components:
             id: mobprom012
           minimum: 0
           readOnly: true
+    iot-reward-totals:
+      title: IoT Reward Totals
+      x-stoplight:
+        id: iot-totals-schema
+      type: object
+      description: Aggregated totals for IoT rewards
+      required:
+        - total_beacon_amount
+        - total_witness_amount
+        - total_dc_transfer_amount
+        - total_amount
+      properties:
+        total_beacon_amount:
+          type: integer
+          x-stoplight:
+            id: iot-totals-beacon
+          minimum: 0
+          readOnly: true
+          description: Total beacon amount across all matching rewards
+        total_witness_amount:
+          type: integer
+          x-stoplight:
+            id: iot-totals-witness
+          minimum: 0
+          readOnly: true
+          description: Total witness amount across all matching rewards
+        total_dc_transfer_amount:
+          type: integer
+          x-stoplight:
+            id: iot-totals-dc
+          minimum: 0
+          readOnly: true
+          description: Total DC transfer amount across all matching rewards
+        total_amount:
+          type: integer
+          x-stoplight:
+            id: iot-totals-amount
+          minimum: 0
+          readOnly: true
+          description: Total amount across all matching rewards
+    mobile-reward-totals:
+      title: Mobile Reward Totals
+      x-stoplight:
+        id: mobile-totals-schema
+      type: object
+      description: Aggregated totals for Mobile rewards
+      required:
+        - total_dc_transfer_reward
+        - total_poc_reward
+        - total_subscriber_reward
+        - total_discovery_location_amount
+        - total_service_provider_amount
+        - total_matched_amount
+      properties:
+        total_dc_transfer_reward:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-dc
+          minimum: 0
+          readOnly: true
+          description: Total DC transfer reward across all matching rewards
+        total_poc_reward:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-poc
+          minimum: 0
+          readOnly: true
+          description: Total POC reward across all matching rewards
+        total_subscriber_reward:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-subscriber
+          minimum: 0
+          readOnly: true
+          description: Total subscriber reward across all matching rewards
+        total_discovery_location_amount:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-discovery
+          minimum: 0
+          readOnly: true
+          description: Total discovery location amount across all matching rewards
+        total_service_provider_amount:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-sp
+          minimum: 0
+          readOnly: true
+          description: Total service provider amount across all matching rewards
+        total_matched_amount:
+          type: integer
+          x-stoplight:
+            id: mobile-totals-matched
+          minimum: 0
+          readOnly: true
+          description: Total matched amount across all matching rewards
     maker:
       title: maker
       x-stoplight:

@@ -60,8 +60,20 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/get-iot-reward-totals",
+          label: "Get IoT reward totals",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/get-mobile-rewards",
           label: "List Mobile rewards",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-mobile-reward-totals",
+          label: "Get Mobile reward totals",
           className: "api-method get",
         },
       ],

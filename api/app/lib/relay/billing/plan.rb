@@ -11,46 +11,6 @@ module Relay
       attribute :features, array: true, default: []
       attribute :visible, :boolean, default: false
 
-      sig { returns(T::Boolean) }
-      def free?
-        price_per_month == 0.00
-      end
-
-      sig { returns(T::Boolean) }
-      def custom_pricing?
-        price_per_month.nil?
-      end
-
-      sig { params(other_plan: Plan).returns(T::Boolean) }
-      def upgrade?(other_plan)
-        this_price_per_month = price_per_month
-        other_price_per_month = other_plan.price_per_month
-
-        return false if this_price_per_month.nil? || other_price_per_month.nil?
-
-        this_price_per_month > other_price_per_month
-      end
-
-      sig { params(other_plan: Plan).returns(T::Boolean) }
-      def downgrade?(other_plan)
-        this_price_per_month = price_per_month
-        other_price_per_month = other_plan.price_per_month
-
-        return false if this_price_per_month.nil? || other_price_per_month.nil?
-
-        this_price_per_month < other_price_per_month
-      end
-
-      sig { returns(String) }
-      def stripe_price_lookup_key
-         "#{id}-monthly"
-      end
-
-      sig { returns(T.nilable(Stripe::Price)) }
-      def stripe_price
-        Stripe::Price.list(lookup_keys: [ stripe_price_lookup_key ]).first
-      end
-
       class << self
         extend T::Sig
 
@@ -150,6 +110,46 @@ module Relay
             )
           ]
         end
+      end
+
+      sig { returns(T::Boolean) }
+      def free?
+        price_per_month == 0.00
+      end
+
+      sig { returns(T::Boolean) }
+      def custom_pricing?
+        price_per_month.nil?
+      end
+
+      sig { params(other_plan: Plan).returns(T::Boolean) }
+      def upgrade?(other_plan)
+        this_price_per_month = price_per_month
+        other_price_per_month = other_plan.price_per_month
+
+        return false if this_price_per_month.nil? || other_price_per_month.nil?
+
+        this_price_per_month > other_price_per_month
+      end
+
+      sig { params(other_plan: Plan).returns(T::Boolean) }
+      def downgrade?(other_plan)
+        this_price_per_month = price_per_month
+        other_price_per_month = other_plan.price_per_month
+
+        return false if this_price_per_month.nil? || other_price_per_month.nil?
+
+        this_price_per_month < other_price_per_month
+      end
+
+      sig { returns(String) }
+      def stripe_price_lookup_key
+         "#{id}-monthly"
+      end
+
+      sig { returns(T.nilable(Stripe::Price)) }
+      def stripe_price
+        Stripe::Price.list(lookup_keys: [ stripe_price_lookup_key ]).first
       end
 
       sig { params(klass: T.class_of(Feature)).returns(T.nilable(Feature)) }
