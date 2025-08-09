@@ -11,8 +11,6 @@ class ButtonComponent < ViewComponent::Base
     @full_width = full_width
     @size = size
     @options = options
-
-    super
   end
 
   private
