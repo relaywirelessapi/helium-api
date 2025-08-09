@@ -10,11 +10,138 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_09_085918) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_09_144207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "h3"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "helium_l1_accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "address", null: false
+    t.bigint "balance", default: 0, null: false
+    t.integer "nonce", default: 0, null: false
+    t.bigint "dc_balance", default: 0, null: false
+    t.integer "dc_nonce", default: 0, null: false
+    t.bigint "security_balance", default: 0, null: false
+    t.integer "security_nonce", default: 0, null: false
+    t.bigint "first_block", null: false
+    t.bigint "last_block", null: false
+    t.bigint "staked_balance", default: 0, null: false
+    t.bigint "mobile_balance", default: 0, null: false
+    t.bigint "iot_balance", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_helium_l1_accounts_on_address", unique: true
+    t.index ["first_block"], name: "index_helium_l1_accounts_on_first_block"
+    t.index ["last_block"], name: "index_helium_l1_accounts_on_last_block"
+  end
+
+  create_table "helium_l1_dc_burns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "block", null: false
+    t.string "transaction_hash", null: false
+    t.string "actor_address", null: false
+    t.string "type", null: false
+    t.bigint "amount", null: false
+    t.bigint "oracle_price", null: false
+    t.bigint "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_address"], name: "index_helium_l1_dc_burns_on_actor_address"
+    t.index ["block"], name: "index_helium_l1_dc_burns_on_block"
+    t.index ["time"], name: "index_helium_l1_dc_burns_on_time"
+    t.index ["transaction_hash"], name: "index_helium_l1_dc_burns_on_transaction_hash"
+    t.index ["type"], name: "index_helium_l1_dc_burns_on_type"
+  end
+
+  create_table "helium_l1_gateways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "address", null: false
+    t.string "owner_address", null: false
+    t.string "location"
+    t.bigint "last_poc_challenge"
+    t.string "last_poc_onion_key_hash"
+    t.jsonb "witnesses", default: {}
+    t.bigint "first_block", null: false
+    t.bigint "last_block", null: false
+    t.integer "nonce", default: 0, null: false
+    t.string "name", null: false
+    t.datetime "first_timestamp", null: false
+    t.decimal "reward_scale", precision: 10, scale: 2
+    t.integer "elevation", default: 0, null: false
+    t.integer "gain", default: 12, null: false
+    t.string "location_hex"
+    t.string "mode", default: "full", null: false
+    t.string "payer_address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_helium_l1_gateways_on_address", unique: true
+    t.index ["first_block"], name: "index_helium_l1_gateways_on_first_block"
+    t.index ["last_block"], name: "index_helium_l1_gateways_on_last_block"
+    t.index ["mode"], name: "index_helium_l1_gateways_on_mode"
+    t.index ["name"], name: "index_helium_l1_gateways_on_name"
+    t.index ["owner_address"], name: "index_helium_l1_gateways_on_owner_address"
+    t.index ["payer_address"], name: "index_helium_l1_gateways_on_payer_address"
+  end
+
+  create_table "helium_l1_packets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "block", null: false
+    t.string "transaction_hash", null: false
+    t.bigint "time", null: false
+    t.string "gateway_address", null: false
+    t.integer "num_packets", null: false
+    t.integer "num_dcs", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["block"], name: "index_helium_l1_packets_on_block"
+    t.index ["gateway_address"], name: "index_helium_l1_packets_on_gateway_address"
+    t.index ["time"], name: "index_helium_l1_packets_on_time"
+    t.index ["transaction_hash"], name: "index_helium_l1_packets_on_transaction_hash"
+  end
+
+  create_table "helium_l1_rewards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "block", null: false
+    t.string "transaction_hash", null: false
+    t.bigint "time", null: false
+    t.string "account_address", null: false
+    t.string "gateway_address", null: false
+    t.bigint "amount", null: false
+    t.string "type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_address"], name: "index_helium_l1_rewards_on_account_address"
+    t.index ["block"], name: "index_helium_l1_rewards_on_block"
+    t.index ["gateway_address"], name: "index_helium_l1_rewards_on_gateway_address"
+    t.index ["time"], name: "index_helium_l1_rewards_on_time"
+    t.index ["transaction_hash"], name: "index_helium_l1_rewards_on_transaction_hash"
+    t.index ["type"], name: "index_helium_l1_rewards_on_type"
+  end
+
+  create_table "helium_l1_transaction_actors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "actor_address", null: false
+    t.string "actor_role", null: false
+    t.string "transaction_hash", null: false
+    t.bigint "block", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_address"], name: "index_helium_l1_transaction_actors_on_actor_address"
+    t.index ["actor_role"], name: "index_helium_l1_transaction_actors_on_actor_role"
+    t.index ["block"], name: "index_helium_l1_transaction_actors_on_block"
+    t.index ["transaction_hash", "actor_address"], name: "idx_on_transaction_hash_actor_address_aba6890821", unique: true
+    t.index ["transaction_hash"], name: "index_helium_l1_transaction_actors_on_transaction_hash"
+  end
+
+  create_table "helium_l1_transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "block", null: false
+    t.string "transaction_hash", null: false
+    t.string "type", null: false
+    t.jsonb "fields", default: {}, null: false
+    t.bigint "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["block"], name: "index_helium_l1_transactions_on_block"
+    t.index ["time"], name: "index_helium_l1_transactions_on_time"
+    t.index ["transaction_hash"], name: "index_helium_l1_transactions_on_transaction_hash", unique: true
+    t.index ["type"], name: "index_helium_l1_transactions_on_type"
+  end
 
   create_table "helium_l2_files", primary_key: ["category", "name"], force: :cascade do |t|
     t.string "definition_id", null: false
