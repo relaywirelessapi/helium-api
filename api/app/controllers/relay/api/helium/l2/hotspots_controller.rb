@@ -13,8 +13,6 @@ module Relay
             attribute :owner, :string
             attribute :asset_id, :string
             attribute :ecc_key, :string
-            attribute :iot_info_address, :string
-            attribute :mobile_info_address, :string
             attribute :networks, :string
             attribute :maker_id, :string
           end
