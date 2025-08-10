@@ -8,6 +8,8 @@ class User < ApplicationRecord
   before_create :refresh_api_key
   before_create :set_initial_api_usage_reset_at
 
+  after_create_commit :create_payment_processor_user
+
   API_USAGE_RESET_INTERVAL = 30.days
 
   pay_customer default_payment_processor: :stripe
@@ -120,5 +122,10 @@ class User < ApplicationRecord
     return "community" unless payment_processor.subscribed?
 
     payment_processor.subscription.object.fetch("items").fetch("data").first.fetch("price").fetch("lookup_key").split("-").first
+  end
+
+  sig { void }
+  def create_payment_processor_user
+    Relay::Billing::CreatePaymentProcessorUserJob.perform_later(self)
   end
 end
