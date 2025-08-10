@@ -6,6 +6,14 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "enqueues payment processor user creation" do
+    user = build(:user)
+
+    expect {
+      user.save!
+    }.to have_enqueued_job(Relay::Billing::CreatePaymentProcessorUserJob).with(user)
+  end
+
   describe "#plan" do
     context "when in production" do
       it "always returns the Beta plan" do
