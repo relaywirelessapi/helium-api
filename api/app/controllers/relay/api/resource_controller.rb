@@ -70,7 +70,7 @@ module Relay
         return unless current_api_user&.api_usage_limit_exceeded_with?(1)
 
         raise Errors::UsageLimitExceededError.new(
-          usage_limit: current_api_user.plan.api_usage_limit,
+          usage_limit: current_api_user.api_usage_limit,
           usage_resets_at: current_api_user.next_api_usage_reset
         )
       end
