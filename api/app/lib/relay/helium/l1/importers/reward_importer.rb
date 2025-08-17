@@ -9,7 +9,7 @@ module Relay
 
           sig { override.returns(String) }
           def prefix
-            "blockchain-etl-export/reward_inventory/"
+            "blockchain-etl-export/rewards/"
           end
 
           sig { override.returns(T.class_of(ApplicationRecord)) }
@@ -21,7 +21,15 @@ module Relay
           def parse_row(row)
             return if row[0] == "block"
 
-            raise NotImplementedError
+            {
+              block: row[0].to_i,
+              transaction_hash: row[1],
+              time: row[2].to_i,
+              account_address: row[3],
+              gateway_address: row[4],
+              amount: row[5].to_i,
+              type: row[6]
+            }
           end
         end
       end
