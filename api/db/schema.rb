@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_09_144207) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_17_171947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "h3"
   enable_extension "pg_catalog.plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_09_144207) do
     t.index ["time"], name: "index_helium_l1_dc_burns_on_time"
     t.index ["transaction_hash"], name: "index_helium_l1_dc_burns_on_transaction_hash"
     t.index ["type"], name: "index_helium_l1_dc_burns_on_type"
+  end
+
+  create_table "helium_l1_files", force: :cascade do |t|
+    t.string "file_type", null: false
+    t.string "file_name", null: false
+    t.datetime "processed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["file_type", "file_name"], name: "index_helium_l1_files_on_file_type_and_file_name", unique: true
   end
 
   create_table "helium_l1_gateways", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
