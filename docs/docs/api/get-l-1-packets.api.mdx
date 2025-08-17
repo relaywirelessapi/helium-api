@@ -1,0 +1,71 @@
+---
+id: get-l-1-packets
+title: "List L1 packets"
+description: "Returns the list of Helium L1 packets with optional filtering by gateway, transaction hash, block and time range. Requires the HotspotData feature."
+sidebar_label: "List L1 packets"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV11P60YQ/SurfWolhyRAC9dPpSrtRdz2IqAPFUJoYo/thfWu2R2HhMj/vZq1c5OQkBvSlz4R2ztzzpz5WmaSIPcyvpOfUau6FF+G8j6SDn1ljUcv45k8HAz4T4o+caoiZY2M5ddLGcnEGkJD/BWqSqsE+Gv/0fORmfRJgSXwL5pWKGNpR4+YkGT/z7VymDJwiQQy6r55Rq+crdCRauHDd/ahSLOTK8iVCUDiwmTWleG3jOSk58lWWuVFYKRSGUt1euLqI5ePn4+NlU20lUlia8PvyBLohwpy9Bxk7RwaCs/r7FqbRYjKEObo3qHzrH/+NMqfxgP1NDhlOqUyqqxLGQ+YCqRfjZ7KmFyNzSqPXRGyx2F9RBOvn4uEVhCGGxBWYtsV4uTTiE6Hj6OTU3V4tArRRNLg5IP+wKqn15JOB/Z1NF3xd7iBcuVw/DH/VIyfa5oeT0Ynx4/fkaRpFpW48A/OwVRGUhGWfrkWvwzFFSRPGKpmS2WpVEZypG3yxAcdGA8JV+1DAb7gV6pEGckcCF9g+gBp6tBz8Zm6fKgCwvwpTTb0CMf5ja0np0wuI9k2h4xlXQcCa1q2jDbpuF6Lb0lvwFs34rB2cv828l28L2uzE8hcvh0Ocx2svWra8qjQhZFzwcWVI/X0sLfI0eqYvEaqnfGCChRaeRI2E98mreisxIuiQthgA1pkShNy0GI0FZ0wkVhKgOAERCJkT4BJBessHJgcD8R1W3Yt5GdLvrL0GxCIDIFqhwcykhU4KJHQ8eTfMKc7zZtIKg7iuUbH5W+A07mhSldj/j3wXyIvupMHsok+jLahW96DeyvRO3jzpL8DOG/T91Ba2U1djtDtFVHmbLnm/892JonaqEnIpycoK5FZ12a3LYr9FLTraDDZH+07+oXZ/BbwCnLsNAso1WKJ/5BiBrWmWAx/3BMR3cNG1L9aQJuJMLlFhQEZlzAPf4pECZNYDAcDhr+P+MJR2K63Q7NQIWPZL0Lb9vWwv2h2j27cdtE9PyS1UzQNPXVWU2Gdem0vJ/HdfbN04oYDbCf3m3OzeUy/Ijh04uzq4uHy/J/FeoFKXWLYRRxggZCyLkGYzC6vpmvUMGV7GUnm2CoyPBisqXQmrs9vbvmoICscklM4RmFNLylAmTBhbJZ1T2mYJdZ1Y4zHiVYJGo9L7K+crZxCAjcVPXGLrvSchRt0Y5VwnmqnmT5R5eN+/+Xl5cAx3xflUPOkSGzZ15iD7hMb92zW851x0947IaElwDbaWwTuLCxBsXtCKH8JflNkU/a6hr2GG9SsrKcSlhPyhaf3Yma/VXG2uAz/T4d+V0CEE+pXGpRhJYMWs67G72Rb45zSYaj8NtT7SBbWEx+YzUbg8W+nm4Zft43I9Z4qDyPNt50MtMct6mxZD++QfMLpxrUzBl3z6TA09iGwvjC2Mtiwiv4zhdVtshV+vpj2xNx1w2zl0O2ufSnsuHa2Z8HuT2DnNbSVQbdr9uTw8aW0ncxi+S0I3fODU8wo7J5ovim4VVu7syTBipas1v6DX9mFf5zfyqb5F96/jmQ=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 packets"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/packets"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 packets with optional filtering by gateway, transaction hash, block and time range. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"gateway_address","description":"Filter by gateway address."},{"schema":{"type":"string"},"in":"query","name":"transaction_hash","description":"Filter by transaction hash."},{"schema":{"type":"integer"},"in":"query","name":"block","description":"Filter by block number."},{"schema":{"type":"string"},"in":"query","name":"from","description":"Minimum unix timestamp for time filter."},{"schema":{"type":"string"},"in":"query","name":"to","description":"Maximum unix timestamp for time filter."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 Packet","type":"object","required":["id","block","transaction_hash","time","gateway_address","num_packets","num_dcs"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"block":{"type":"integer","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"time":{"type":"integer","readOnly":true},"gateway_address":{"type":"string","readOnly":true},"num_packets":{"type":"integer","readOnly":true},"num_dcs":{"type":"integer","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

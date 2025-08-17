@@ -8,28 +8,64 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Hotspots",
+      label: "Helium L1",
       link: {
         type: "doc",
-        id: "api/hotspots",
+        id: "api/helium-l-1",
       },
       collapsible: true,
       collapsed: false,
       items: [
         {
           type: "doc",
-          id: "api/get-hotspots",
-          label: "List hotspots",
+          id: "api/get-l-1-accounts",
+          label: "List L1 accounts",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-transactions",
+          label: "List L1 transactions",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-transaction-actors",
+          label: "List L1 transaction actors",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-dc-burns",
+          label: "List L1 DC burns",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-gateways",
+          label: "List L1 gateways",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-packets",
+          label: "List L1 packets",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-rewards",
+          label: "List L1 rewards",
           className: "api-method get",
         },
       ],
     },
     {
       type: "category",
-      label: "Makers",
+      label: "Helium L2",
       link: {
         type: "doc",
-        id: "api/makers",
+        id: "api/helium-l-2",
       },
       collapsible: true,
       collapsed: false,
@@ -40,18 +76,12 @@ const sidebar: SidebarsConfig = {
           label: "List makers",
           className: "api-method get",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Rewards",
-      link: {
-        type: "doc",
-        id: "api/rewards",
-      },
-      collapsible: true,
-      collapsed: false,
-      items: [
+        {
+          type: "doc",
+          id: "api/get-hotspots",
+          label: "List hotspots",
+          className: "api-method get",
+        },
         {
           type: "doc",
           id: "api/get-iot-rewards",
@@ -74,24 +104,6 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/get-mobile-reward-totals",
           label: "Get Mobile reward totals",
-          className: "api-method get",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Accounts",
-      link: {
-        type: "doc",
-        id: "api/accounts",
-      },
-      collapsible: true,
-      collapsed: false,
-      items: [
-        {
-          type: "doc",
-          id: "api/get-l-1-accounts",
-          label: "List L1 accounts",
           className: "api-method get",
         },
       ],

@@ -21,7 +21,7 @@ paths:
     get:
       summary: List makers
       tags:
-        - Makers
+        - Helium L2
       responses:
         '200':
           description: OK
@@ -67,7 +67,7 @@ paths:
     get:
       summary: List hotspots
       tags:
-        - Hotspots
+        - Helium L2
       responses:
         '200':
           description: OK
@@ -148,7 +148,7 @@ paths:
     get:
       summary: List IoT rewards
       tags:
-        - Rewards
+        - Helium L2
       responses:
         '200':
           description: ''
@@ -212,7 +212,7 @@ paths:
     get:
       summary: Get IoT reward totals
       tags:
-        - Rewards
+        - Helium L2
       responses:
         '200':
           description: ''
@@ -253,7 +253,7 @@ paths:
     get:
       summary: List Mobile rewards
       tags:
-        - Rewards
+        - Helium L2
       responses:
         '200':
           description: ''
@@ -317,7 +317,7 @@ paths:
     get:
       summary: Get Mobile reward totals
       tags:
-        - Rewards
+        - Helium L2
       responses:
         '200':
           description: ''
@@ -358,7 +358,7 @@ paths:
     get:
       summary: List L1 accounts
       tags:
-        - Accounts
+        - Helium L1
       responses:
         '200':
           description: OK
@@ -393,6 +393,399 @@ paths:
           in: query
           name: address
           description: Filter by account address.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/transactions:
+    parameters: []
+    get:
+      summary: List L1 transactions
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-transaction'
+                    readOnly: true
+      operationId: get-l1-transactions
+      description: Returns the list of Helium L1 blockchain transactions with optional filtering by hash, type, block and time range. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: transaction_hash
+          description: Filter by transaction hash.
+        - schema:
+            type: string
+          in: query
+          name: type
+          description: Filter by transaction type.
+        - schema:
+            type: integer
+          in: query
+          name: block
+          description: Filter by block number.
+        - schema:
+            type: string
+          in: query
+          name: from
+          description: Minimum unix timestamp for time filter.
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Maximum unix timestamp for time filter.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/transaction-actors:
+    parameters: []
+    get:
+      summary: List L1 transaction actors
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-transaction-actor'
+                    readOnly: true
+      operationId: get-l1-transaction-actors
+      description: Returns the list of Helium L1 transaction actors with optional filtering by actor address, role, transaction hash and block. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: actor_address
+          description: Filter by actor address.
+        - schema:
+            type: string
+          in: query
+          name: actor_role
+          description: Filter by actor role.
+        - schema:
+            type: string
+          in: query
+          name: transaction_hash
+          description: Filter by transaction hash.
+        - schema:
+            type: integer
+          in: query
+          name: block
+          description: Filter by block number.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/dc-burns:
+    parameters: []
+    get:
+      summary: List L1 DC burns
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-dc-burn'
+                    readOnly: true
+      operationId: get-l1-dc-burns
+      description: Returns the list of Helium L1 DC burns with optional filtering by actor address, transaction hash, type, block and time range. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: actor_address
+          description: Filter by actor address.
+        - schema:
+            type: string
+          in: query
+          name: transaction_hash
+          description: Filter by transaction hash.
+        - schema:
+            type: string
+          in: query
+          name: type
+          description: Filter by burn type.
+        - schema:
+            type: integer
+          in: query
+          name: block
+          description: Filter by block number.
+        - schema:
+            type: string
+          in: query
+          name: from
+          description: Minimum unix timestamp for time filter.
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Maximum unix timestamp for time filter.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/gateways:
+    parameters: []
+    get:
+      summary: List L1 gateways
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-gateway'
+                    readOnly: true
+      operationId: get-l1-gateways
+      description: Returns the list of Helium L1 gateways with optional filtering by address, owner, payer, mode, name, and location hex. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: address
+          description: Filter by gateway address.
+        - schema:
+            type: string
+          in: query
+          name: owner_address
+          description: Filter by owner address.
+        - schema:
+            type: string
+          in: query
+          name: payer_address
+          description: Filter by payer address.
+        - schema:
+            type: string
+          in: query
+          name: mode
+          description: Filter by mode.
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: Filter by name.
+        - schema:
+            type: string
+          in: query
+          name: location_hex
+          description: Filter by H3 location hex.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/packets:
+    parameters: []
+    get:
+      summary: List L1 packets
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-packet'
+                    readOnly: true
+      operationId: get-l1-packets
+      description: Returns the list of Helium L1 packets with optional filtering by gateway, transaction hash, block and time range. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: gateway_address
+          description: Filter by gateway address.
+        - schema:
+            type: string
+          in: query
+          name: transaction_hash
+          description: Filter by transaction hash.
+        - schema:
+            type: integer
+          in: query
+          name: block
+          description: Filter by block number.
+        - schema:
+            type: string
+          in: query
+          name: from
+          description: Minimum unix timestamp for time filter.
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Maximum unix timestamp for time filter.
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: "Page number for pagination (default: 1)."
+        - schema:
+            type: integer
+          in: query
+          name: per_page
+          description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/rewards:
+    parameters: []
+    get:
+      summary: List L1 rewards
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - meta
+                  - objects
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/pagination-info'
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/l1-reward'
+                    readOnly: true
+      operationId: get-l1-rewards
+      description: Returns the list of Helium L1 rewards with optional filtering by account address, gateway address, transaction hash, type, block and time range. Requires the HotspotData feature.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: account_address
+          description: Filter by account address.
+        - schema:
+            type: string
+          in: query
+          name: gateway_address
+          description: Filter by gateway address.
+        - schema:
+            type: string
+          in: query
+          name: transaction_hash
+          description: Filter by transaction hash.
+        - schema:
+            type: string
+          in: query
+          name: type
+          description: Filter by reward type.
+        - schema:
+            type: integer
+          in: query
+          name: block
+          description: Filter by block number.
+        - schema:
+            type: string
+          in: query
+          name: from
+          description: Minimum unix timestamp for time filter.
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Maximum unix timestamp for time filter.
         - schema:
             type: integer
           in: query
@@ -1544,6 +1937,242 @@ components:
           minimum: 0
           readOnly: true
           description: The IoT token balance of the account
+    l1-transaction:
+      title: L1 Transaction
+      type: object
+      required:
+        - id
+        - block
+        - transaction_hash
+        - type
+        - fields
+        - time
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        block:
+          type: integer
+          readOnly: true
+        transaction_hash:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        fields:
+          type: object
+          readOnly: true
+        time:
+          type: integer
+          readOnly: true
+    l1-transaction-actor:
+      title: L1 Transaction Actor
+      type: object
+      required:
+        - id
+        - actor_address
+        - actor_role
+        - transaction_hash
+        - block
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        actor_address:
+          type: string
+          readOnly: true
+        actor_role:
+          type: string
+          readOnly: true
+        transaction_hash:
+          type: string
+          readOnly: true
+        block:
+          type: integer
+          readOnly: true
+    l1-dc-burn:
+      title: L1 DC Burn
+      type: object
+      required:
+        - id
+        - block
+        - transaction_hash
+        - actor_address
+        - type
+        - amount
+        - oracle_price
+        - time
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        block:
+          type: integer
+          readOnly: true
+        transaction_hash:
+          type: string
+          readOnly: true
+        actor_address:
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        amount:
+          type: integer
+          readOnly: true
+        oracle_price:
+          type: integer
+          readOnly: true
+        time:
+          type: integer
+          readOnly: true
+    l1-gateway:
+      title: L1 Gateway
+      type: object
+      required:
+        - id
+        - address
+        - owner_address
+        - payer_address
+        - first_block
+        - last_block
+        - nonce
+        - name
+        - mode
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        address:
+          type: string
+          readOnly: true
+        owner_address:
+          type: string
+          readOnly: true
+        payer_address:
+          type: string
+          readOnly: true
+        location:
+          type: string
+          readOnly: true
+        location_hex:
+          type: string
+          readOnly: true
+        last_poc_challenge:
+          type: integer
+          readOnly: true
+        last_poc_onion_key_hash:
+          type: string
+          readOnly: true
+        witnesses:
+          type: object
+          readOnly: true
+        first_block:
+          type: integer
+          readOnly: true
+        last_block:
+          type: integer
+          readOnly: true
+        nonce:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        first_timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        reward_scale:
+          type: number
+          readOnly: true
+        elevation:
+          type: integer
+          readOnly: true
+        gain:
+          type: integer
+          readOnly: true
+        mode:
+          type: string
+          readOnly: true
+    l1-packet:
+      title: L1 Packet
+      type: object
+      required:
+        - id
+        - block
+        - transaction_hash
+        - time
+        - gateway_address
+        - num_packets
+        - num_dcs
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        block:
+          type: integer
+          readOnly: true
+        transaction_hash:
+          type: string
+          readOnly: true
+        time:
+          type: integer
+          readOnly: true
+        gateway_address:
+          type: string
+          readOnly: true
+        num_packets:
+          type: integer
+          readOnly: true
+        num_dcs:
+          type: integer
+          readOnly: true
+    l1-reward:
+      title: L1 Reward
+      type: object
+      required:
+        - id
+        - block
+        - transaction_hash
+        - time
+        - account_address
+        - gateway_address
+        - amount
+        - type
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        block:
+          type: integer
+          readOnly: true
+        transaction_hash:
+          type: string
+          readOnly: true
+        time:
+          type: integer
+          readOnly: true
+        account_address:
+          type: string
+          readOnly: true
+        gateway_address:
+          type: string
+          readOnly: true
+        amount:
+          type: integer
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
   securitySchemes:
     Authorization:
       name: Bearer API_KEY
@@ -1552,7 +2181,5 @@ components:
 security:
   - Authorization: []
 tags:
-  - name: Hotspots
-  - name: Makers
-  - name: Rewards
-  - name: Accounts
+  - name: Helium L1
+  - name: Helium L2

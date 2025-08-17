@@ -1,0 +1,71 @@
+---
+id: get-l-1-rewards
+title: "List L1 rewards"
+description: "Returns the list of Helium L1 rewards with optional filtering by account address, gateway address, transaction hash, type, block and time range. Requires the HotspotData feature."
+sidebar_label: "List L1 rewards"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVWE1z2zYQ/SsYnNoZypKctHZ4qjtN20zSxuO4h07G41mRSxI2CNDAUh/R8L93FqSjD0qKrJx6skkC+94+7O6DvZQEuZfxZ/knalWX4sNY3kXSoa+s8ehlvJTnoxH/SNEnTlWkrJGx/PheRjKxhtAQf4Wq0ioB/jp88LxkKX1SYAn8Gy0qlLG0kwdMSHL8p1o5TBm4RAIZdd88o1fOVuhItfDhO8dQpDnINeTKBCDxzmTWleF3Gcn5wJOttMqLwEilMpbq8sLVr1w+fXptrGyig0wSWxt+R5ZA31eQo+cka+fQUHjus2v3rFJUhjBHt4fOk/75zSR/nI7U4+iS6ZTKqLIuZTxiKpB+NHohY3I1Nps8jkXIHsb1K5p7/VQktIEw3oGwkduxEBdvJnQ5fphcXKrzV5sQTSQNzl8YD6x6/FLS5ch+mSw24p3voFw5nL4sPhXTp5oWr+eTi9cP35CkaVaVuIoPzsFCRlIRln69Fj+MxQ3OwKXycGUpXjDRNnnkhQ6Mh4Sr9r4AX/ArVaKMJCShnO4hTR16Lr4cCGewWHsD5XOVMl6vHjnjr7w9OWVyGcm2TWQs6zpQ6anactulaL8qt+nvwOtv4gSPCr+twTHRt1U6Zk+n43EphxXfDMrF03vVtDVVoQtz6h1XZI400OOBC6XDh7o5W2+Qame8oAKFVp6EzcTX8Sy6XWKmqBA27AEtMqUJmZaYLESnoej0iEQn0OrF2iEKPsRIcG6RCHUgwKSCT0w4MDmeiZu2lFtGf1rylaXfgEBkCFQ7PJORrMBBiYSO3WTH7O9EayKpOMenGh23lIEydFiv8jcl+T2ktyO3M9lEL0brd9U+tC3hTkLb0e/74LaP5TQ8XrQfo62fcN57wj93wp74z3NsH0BbQ6YuJ+hOSiBztuzF/6sd2qI2ah6K0xOUlcisa0u1bYDTBLN9NJifjvYN/YJ5bQNeQ46dZgGlWt1yfkgxg1pTLMY/noiI7n4n6t8toM1EsDZRYUDGNczznyJRwjwW49GI4e8ivpEVtptjofOpkLEcFmFEDfV4uBpsHt20HQl3/JDUTtEiDIirmgrr1Jf29hZ/vmvWVnziBFtD21q3fM7pVwSHTlxdv7t///bflf9Cpd5jMGtOsEBIWZcgTGbXvfsGNSx4v4wkc2wVGZ+NeipdiZu3n255qSArHJJTOEVhzSApQJkwLm2WdU9pGIzWdSObZ6NWCRqPa+yvna2cQgK3EANxi670fAqf0E1VwudUO830iSofD4ez2ezMMd+Zcqh5ECW2HGrMQQ+JNw9sNvDd5qa9mENCa4BttrcI3FlYguLwhFD+EuKmyFs5ag+7hxvUrKynEtYP5AM71cqftlVcrv5a+H8aXFdfhHMaVhqUYaGDVMuuBT7LtgX4xMfhetAqcRfJwnriBcvlBDz+43TT8Ou2T7kdUuVhovm2mIH2eEC8A1a4h+QjLnZa7BR0zavDTDmFQM8dDxLou+53E+j75UEGO5z4uyls2Olh9NaXvxtx018PQj5b9YmYx3ruQQ6dm59K4UgjPqy8PZ3A0cZ8kEHnvidyeLlNHyazug6sCN3xg1PMKLhx9OydPJ3afVdJghWt7er902fjdvDH21vZNP8BYWNRnA==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 rewards"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/rewards"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 rewards with optional filtering by account address, gateway address, transaction hash, type, block and time range. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"account_address","description":"Filter by account address."},{"schema":{"type":"string"},"in":"query","name":"gateway_address","description":"Filter by gateway address."},{"schema":{"type":"string"},"in":"query","name":"transaction_hash","description":"Filter by transaction hash."},{"schema":{"type":"string"},"in":"query","name":"type","description":"Filter by reward type."},{"schema":{"type":"integer"},"in":"query","name":"block","description":"Filter by block number."},{"schema":{"type":"string"},"in":"query","name":"from","description":"Minimum unix timestamp for time filter."},{"schema":{"type":"string"},"in":"query","name":"to","description":"Maximum unix timestamp for time filter."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 Reward","type":"object","required":["id","block","transaction_hash","time","account_address","gateway_address","amount","type"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"block":{"type":"integer","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"time":{"type":"integer","readOnly":true},"account_address":{"type":"string","readOnly":true},"gateway_address":{"type":"string","readOnly":true},"amount":{"type":"integer","readOnly":true},"type":{"type":"string","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
