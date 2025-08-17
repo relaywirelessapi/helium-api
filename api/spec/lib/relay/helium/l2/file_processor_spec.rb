@@ -87,7 +87,7 @@ RSpec.describe Relay::Helium::L2::FileProcessor do
 
 
   define_method(:stub_file_client) do
-    instance_double(Relay::Helium::L2::FileClient).tap do |client|
+    instance_double(Relay::Helium::FileClient).tap do |client|
       allow(client).to receive(:get_object)
     end
   end

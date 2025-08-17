@@ -9,11 +9,11 @@ module Relay
         class RewardManifestDeserializer < BaseDeserializer
           extend T::Sig
 
-          sig { returns(Relay::Deduplicator) }
+          sig { returns(Relay::Importing::RecordDeduplicator) }
           attr_reader :deduplicator
 
-          sig { params(deduplicator: Relay::Deduplicator).void }
-          def initialize(deduplicator: Relay::Deduplicator.new)
+          sig { params(deduplicator: Relay::Importing::RecordDeduplicator).void }
+          def initialize(deduplicator: Relay::Importing::RecordDeduplicator.new)
             @deduplicator = deduplicator
           end
 

@@ -1,6 +1,6 @@
 # typed: false
 
-RSpec.describe Relay::Helium::L2::FileClient do
+RSpec.describe Relay::Helium::FileClient do
   describe "#each_object" do
     context "when no start_after is provided" do
       it "lists objects with the correct parameters" do
