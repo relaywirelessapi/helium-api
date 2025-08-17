@@ -11,6 +11,16 @@ Rails.application.routes.draw do
     scope module: :api, defaults: { format: :json } do
       scope path: "v1" do
         namespace :helium do
+          namespace :l1 do
+            resources :accounts, only: [ :index ]
+            resources :transactions, only: [ :index ]
+            resources :transaction_actors, only: [ :index ], path: "transaction-actors"
+            resources :dc_burns, only: [ :index ], path: "dc-burns"
+            resources :gateways, only: [ :index ]
+            resources :packets, only: [ :index ]
+            resources :rewards, only: [ :index ]
+          end
+
           namespace :l2 do
             resources :iot_reward_shares, only: [ :index ], path: "iot-reward-shares" do
               collection do

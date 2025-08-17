@@ -1,0 +1,71 @@
+---
+id: get-l-1-transactions
+title: "List L1 transactions"
+description: "Returns the list of Helium L1 blockchain transactions with optional filtering by hash, type, block and time range. Requires the HotspotData feature."
+sidebar_label: "List L1 transactions"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV99T4zYQ/lc0empnHBIDLZyfSqe0x0DvGKAPHYZhFHttC2TJkdYhIeP/vbOSc0lIyIXcS5+I7d39vv20P8SMoygcT+75Z1CyqdhVzB8ibsHVRjtwPJnxw8GA/mTgUitrlEbzhH+95BFPjUbQSF9FXSuZCvraf3JkMuMuLaES9AunNfCEm+ETpMgp/qiRFjICrgAFj7pvjtBra2qwKAO8/04xJCoKci0KqT0Qu9C5sZX/zSM+6Tk0tZJF6RnJjCdcnp7Y5sgW49GxNryNtjJJTaPpHRoU6rEWBThKsrEWNPrndXbBZ5Gi1AgF2HfojNSvn4bF83ggnwenRKeSWlZNxZMBURHZV62mPEHbQLvKY1eE/ClujnDi1KhMcQUh3oCwktuuECefhngaPw1PTuXh0SpEG3ENkw/GE0Y+v1Z4OjCvw+lKvMMNlGsL44/Fx3I8anB6PBmeHD99R5K2XVTiIr6wVkx5xCVC5ZZr8Spmd1ZoJ9KuBreVl8x4xIfKpM9kuHB7LIUr574RzyWojAoPZbWh4Cilb8QcWqkLcvJ9wBPeNB5mTbaAu0my9bJ7S20D3rqTN9jBsEtv41B4G5ME2IEyHdraqzacZQ3Wz4cLqoQCsKfi3lKCpPPqYLsBbKx2DEtgSjpkJmffZiPzMqalkJotR2EvEktmfAyhWC4VAgnAhlNGEkaMcoiCOxM6Y5Qbs0IXcMBuQpEEzM8GXW3wD4GC5SCwsXDAI14LKypAsDSsN4zWTvA24pKyGDVgqWK1IAk3Vdtq1n96xkR3ydRTP+Bt9HG8UMq7YJDpOxjzA38HZN5K76EEsXVTDcHulUVuTbUW/+8wPFij5cSfokNR1Sw3NpxpOPv9VDPraGKyP9p39PND9C3gtSig08yj1Itt+1MGuWgUJiz+eU9EsI8bUb8EQJMzP2JZDR4ZljAPf4lYJSYJiwcDgn+I6GZQmq6vfYtgyRPeL3239lXcf9PoDuw4NNADPaSNlTj17XTWYGmsfA1XieT+oV2yuKUsw/B9YzebJ/Y7CAuWnV1fPF6e/7vYA6KWl+A3B2VZgshIHK9ObpYXyQ0oMSV/HnHiGGSJDwZrUp2xm/PbOzJlaJgFtBLGwIzuhbFEw8XkefeU+TFibDfCaJIomYJ2sMT+2praSkBhp6zH7sBWjo7iFuxYpnRYjVVEH7F2Sb//8vJyYInvi7SgwLmD1FR9BYVQfSTnnsl7rnNuwy1RpLgEGLK9A0HtBZWQFB5BVL/5uBmQK0Vdw17D9WrWxmEllg/kiib3Vcy2jfrZ4v76f536XRkhTLBfKyE16ekVmXXlfs9DudPBxqv3Cn+XLo1DsprNhsLBP1a1Lb0OjUmln0knhopuKLlQDrZotG1HvEP1Gaabt89YqIbM/Rj5UQphhWynEBbSD8Ou7pStkPP1tCfmrntmK4dug+1LYcfls115sz+BnZfRVgbdxtmTw8dX03YyixW4IPRAD1YSI798ovmqoAYNfmdpCjUuea39w72yEf86v+Nt+x9ZLHGn
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 transactions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/transactions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 blockchain transactions with optional filtering by hash, type, block and time range. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"transaction_hash","description":"Filter by transaction hash."},{"schema":{"type":"string"},"in":"query","name":"type","description":"Filter by transaction type."},{"schema":{"type":"integer"},"in":"query","name":"block","description":"Filter by block number."},{"schema":{"type":"string"},"in":"query","name":"from","description":"Minimum unix timestamp for time filter."},{"schema":{"type":"string"},"in":"query","name":"to","description":"Maximum unix timestamp for time filter."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 Transaction","type":"object","required":["id","block","transaction_hash","type","fields","time"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"block":{"type":"integer","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"type":{"type":"string","readOnly":true},"fields":{"type":"object","readOnly":true},"time":{"type":"integer","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

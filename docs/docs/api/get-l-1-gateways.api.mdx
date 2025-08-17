@@ -1,0 +1,71 @@
+---
+id: get-l-1-gateways
+title: "List L1 gateways"
+description: "Returns the list of Helium L1 gateways with optional filtering by address, owner, payer, mode, name, and location hex. Requires the HotspotData feature."
+sidebar_label: "List L1 gateways"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNWN9v2zYQ/lcIPm2AHNtJt6R6WoZ1bdFiDdLsYSgCg5ZOEhOKVMiTbcXQ/14cJdeSf9WJX/bkyLy777vT3X10lhxF6nj4jX8AJcucfR7z+4BbcIXRDhwPl/x8NKKPGFxkZYHSaB7yL594wCOjETTSqSgKJSNBp8MHRyZL7qIMckF/YVUAD7mZPkCEnOI/ldJCTMA5oOBBe+YIvbCmAIuygffnFEOioiA3IpXaA7GPOjE293/zgC8GDk2hZJp5RjLmIZdXl7a8sOns6Y02vA4OMolMqek7NCjUpBApOEqytBY0+udtdo3POkWpEVKwe+g8qd/fTtPH2Ug+jq6ITi61zMuchyOiIuIvWlU8RFtC3edxLELyMC4vcOHUUxZhD2G8A6GX27EQl2+neDV+mF5eyfOLPkQdcA2LF8YTRj4+53g1Ms/TqhfvfAflwsLsZfExmz2VWL1ZTC/fPPykJHW97sR1fGGtqHjAJULuur34eczeC4S5Pz3UWjLmARdxbMFRT5m5BjtZPxei6j0n0jqcTJWJHnnAleg8aKMjoE+R00du4h1dSXn/YO/QSp1SVD8sPORl6fls1XZFYIfvlm0/hWM8+kke46FMs1FeZDzJYHGcA5W1MNEkyoRSoPe01H4/ownuEapJJlx2FOZcogbnegPdaZgN624bHE/tBfZNMx1nSv12TIoNaZQ5OBR5cbARY4EwINNdgSzMhY0nLhKqi6zLfLqbIiiYbfbLgYxSIY+09EP289zresdXdbNTCrCe2kfaSCngQI0HabM6aOD74noLWFrtGGbAlHTITMJ+6DNbubG5xIwZ7yQUS6RCIGJsWrF2ygLmxzRgfvYCRokEjF5lwISO2WpmWAaLM3bbLKwG94NBVxj8S6BgCQgsLZz5TWVFDgiWLg07JL6tTR1wKi5/KsFWq20VdjZgP+G/PXci3ia3SuCM18GLUTa36z4sb3cS0ube3ofk7U5C8i24H4COXxW3lZF9cen4VXF723h//A8X/R7cDbUazb1vId3O4UakwJpdwRJjWbG+Nv4SQyJKhSEb//pKRLCTnaj/NIAmYf6uwArwyNDBPP8tYLlYhGw8GhH8fUBX3My0i8HPGGY85MPMj/xQjYedTeHAzprpu6eHqLQSKz+L1yVmxsrndgV+u687Fl8pw0Z2NuyWq6T+BGHBsuubj5NP7/5bX2hEIT+Bv/5QhhmImArjK5OY7m3oFpSoyJ8HnDg2JRmfjbbKdM1u3329I1OGhllAK2EGzOhBlAmp/W4ySdI+xX4HGdvuQFpDSkagHXTY31hTWAkobMUG7A5s7ug1fAU7k/7CVFpF9BELFw6H8/n8zBLfubSgaCojkw8VpEINkZwHJhm41rlufuqICDuATbZ3IHIecMiFpPAIIv/Dx42BXCnqFvYWrq9mYRzmovtCPtPq7yz8zTIu1z/A/s+S0bYRwgKHhSLRrduKLNtW/8abVqcXO+akzG3C9wHPjEOyWC6nwsG/VtU1fd0MJLV9LJ2YKrpmJ0I5OFCjAyqzh+UjVD3VmglVkpVfGq8B3pCcg7CbMnYy+IYKHQTfVLaTwRuFOojZatzJUI1oHYRqZe9kqC39Ooi6IYqvRD9a2X7ygtMTKvBynTtMZq2na0L39GAlMfJqFqy0h6a+8buOIiiw47X1b6ievL5/d8fr+juWZn+H
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 gateways"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/gateways"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 gateways with optional filtering by address, owner, payer, mode, name, and location hex. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"address","description":"Filter by gateway address."},{"schema":{"type":"string"},"in":"query","name":"owner_address","description":"Filter by owner address."},{"schema":{"type":"string"},"in":"query","name":"payer_address","description":"Filter by payer address."},{"schema":{"type":"string"},"in":"query","name":"mode","description":"Filter by mode."},{"schema":{"type":"string"},"in":"query","name":"name","description":"Filter by name."},{"schema":{"type":"string"},"in":"query","name":"location_hex","description":"Filter by H3 location hex."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 Gateway","type":"object","required":["id","address","owner_address","payer_address","first_block","last_block","nonce","name","mode"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"address":{"type":"string","readOnly":true},"owner_address":{"type":"string","readOnly":true},"payer_address":{"type":"string","readOnly":true},"location":{"type":"string","readOnly":true},"location_hex":{"type":"string","readOnly":true},"last_poc_challenge":{"type":"integer","readOnly":true},"last_poc_onion_key_hash":{"type":"string","readOnly":true},"witnesses":{"type":"object","readOnly":true},"first_block":{"type":"integer","readOnly":true},"last_block":{"type":"integer","readOnly":true},"nonce":{"type":"integer","readOnly":true},"name":{"type":"string","readOnly":true},"first_timestamp":{"type":"string","format":"date-time","readOnly":true},"reward_scale":{"type":"number","readOnly":true},"elevation":{"type":"integer","readOnly":true},"gain":{"type":"integer","readOnly":true},"mode":{"type":"string","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

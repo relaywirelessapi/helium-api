@@ -1,0 +1,71 @@
+---
+id: get-l-1-dc-burns
+title: "List L1 DC burns"
+description: "Returns the list of Helium L1 DC burns with optional filtering by actor address, transaction hash, type, block and time range. Requires the HotspotData feature."
+sidebar_label: "List L1 DC burns"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVWFFv2zYQ/isEnzZAju2kW1I9LV27tWi3Bkn2MARBQEsniwlFKseTY8fQfx+Okms7sl3HfdpTLIm877uPd/cRmUtSYy/jG/kRjK4K8WUobyOJ4EtnPXgZz+XxYMB/UvAJ6pK0szKWXz/LSCbOEljir6osjU4Uf+3fe14ylz7JoVD8i2YlyFi60T0kJDn+Y6URUgYugJSM2m+e0Ut0JSDpBj585xiaDAe5UGNtA5D4ZDOHRfgtIznteXKl0eM8MNKpjKU+O8XqBMeTxzfWyTraySRxleV35EiZu1KNwXOSFSJYCs9dds2eZYraEowBt9B5NL++HY0fJgP9MDhjOoW2uqgKGQ+Yikq/WjOTMWEF9TqPfRGy+2F1QlNvHvOE1hCGGxDWctsX4vTtiM6G96PTM318sg5RR9LC9JXxlNMPzwWdDdzzaLYW73gD5RJh8rr4lE8eK5q9mY5O39x/R5K6XlbiMr5CVDMZSU1Q+NVa/DIU738X7yrk+ttVWjqVkRwZlzzwQlTWq4TL9i5XPpeRVAk5vFNpiuD9IlYkVdGWpEOVGLgrUSf8nnSxoRY522+cPaG2YxnJpkVkLKsqsOgo2tDapGa3Il8y34DX2bSe2z47mgX7hC62tl9n7ZqE+2XLKu+xkoum86puaqkEDPPpE1fiGKhnhr006Y0qtHzO60P1EojfC8pBGO1JuEx8m8tcaWGbeNKUCxc2KSMybQhYIDGaiaC1aLWOxMp5CT6vSHAukQhHLpRNBecoUNkxHInLpmAb/I+OfOnovSIlMlBUIRzJSJYKVQEEyKaxYcS3Z1VHUnNGjxUgd45VRWikF2W+nv4fIZNOGkeyjl6NtKHHtoG9FOkwvKZht2HwwQXttwRf1NaW6IvJsTV8OE9bFSPAg+hn6IpO/L+aOSkqq6ehUDypohSZw6Zsmso7TC7XRVPTw9G+o1/wi5eAF2oMrWYBpVxeLH5KIVOVoVgMfz4QEfBuI+rfDaDLRHATUUJAhhXM418iUahpLIaDAcPfRnwJyl07QkIXUi5j2c/DcOibYX9lpnjASdOft/yQVKhpFrr1vKLcoX5ubkzxzW29suKKM2yM5MW6+SKpd6AQUJxffLr7/OHfpeWpUn+GYJCcYQ4qZWGCMplb9ctLMGrG+2UkmWMjyfBo0JHpXFx+uLrmpYKcQCDUMAHhbC/JlbZhdrksa5/SMKUcttOSB5XRCVgPK+wv0JWogRTORE9cAxaej+EKcNK4aoWG6ROVPu73n56ejpD5PmkEw3MocUXfwFiZPvHmnst6vt1cN5dhldAKYJPtNShuLSiU5vAEqvgtxE2Bt3LUDnYHN6hZOk+FWj2QL2wSK9bwUsb58or+fzCXtpwIptQvjdKWdQ3KzNuSv5FNyfMBDznbRdnfRjJ3nnjFfD5SHv5BU9f8umlMLv9UezUyfCHLlPGwQ6utTrSF4wPMNrjbRJmK14YBcgh415l24m/wvB+msGJcu7Eb//txvDUn2wm5MMUDMfd1t50cWt88lMKelrdbeXc4gb0tcCeD1ucO5PB6Q9xNZmm8S0K3/ICaGQXbixYmxWOh2XeeJFDSyq7OfzTWfPjPD9eyrv8D9FDneA==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 DC burns"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/dc-burns"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 DC burns with optional filtering by actor address, transaction hash, type, block and time range. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"actor_address","description":"Filter by actor address."},{"schema":{"type":"string"},"in":"query","name":"transaction_hash","description":"Filter by transaction hash."},{"schema":{"type":"string"},"in":"query","name":"type","description":"Filter by burn type."},{"schema":{"type":"integer"},"in":"query","name":"block","description":"Filter by block number."},{"schema":{"type":"string"},"in":"query","name":"from","description":"Minimum unix timestamp for time filter."},{"schema":{"type":"string"},"in":"query","name":"to","description":"Maximum unix timestamp for time filter."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 DC Burn","type":"object","required":["id","block","transaction_hash","actor_address","type","amount","oracle_price","time"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"block":{"type":"integer","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"actor_address":{"type":"string","readOnly":true},"type":{"type":"string","readOnly":true},"amount":{"type":"integer","readOnly":true},"oracle_price":{"type":"integer","readOnly":true},"time":{"type":"integer","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

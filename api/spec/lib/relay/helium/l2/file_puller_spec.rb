@@ -57,7 +57,7 @@ RSpec.describe Relay::Helium::L2::FilePuller do
   end
 
   define_method(:stub_file_client) do |bucket:, prefix:, start_after: nil, s3_objects: []|
-    client = instance_double(Relay::Helium::L2::FileClient)
+    client = instance_double(Relay::Helium::FileClient)
 
     allow_method = allow(client).to receive(:each_object)
       .with(bucket: bucket, prefix: prefix, start_after: start_after)

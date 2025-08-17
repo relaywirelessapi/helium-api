@@ -125,7 +125,7 @@ namespace :helium do
     end
 
     define_method(:find_latest_s3_file) do |definition|
-      file_client = Relay::Helium::L2::FileClient.new
+      file_client = Relay::Helium::FileClient.new
       latest_key = nil
 
       puts "Searching for latest file in bucket: #{definition.bucket}, prefix: #{definition.s3_prefix}..."
@@ -143,7 +143,7 @@ namespace :helium do
     end
 
     define_method(:verify_s3_file_exists) do |definition, s3_key|
-      file_client = Relay::Helium::L2::FileClient.new
+      file_client = Relay::Helium::FileClient.new
 
       puts "Checking if file exists in bucket: #{definition.bucket}, key: #{s3_key}..."
 

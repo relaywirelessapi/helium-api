@@ -12,11 +12,11 @@ module Relay
           sig { returns(Relay::Base58Encoder) }
           attr_reader :base58_encoder
 
-          sig { returns(Relay::BatchImporter) }
+          sig { returns(Relay::Importing::BatchImporter) }
           attr_reader :batch_importer
 
-          sig { params(base58_encoder: Relay::Base58Encoder, batch_importer: Relay::BatchImporter).void }
-          def initialize(base58_encoder: Relay::Base58Encoder.new, batch_importer: Relay::BatchImporter.new)
+          sig { params(base58_encoder: Relay::Base58Encoder, batch_importer: Relay::Importing::BatchImporter).void }
+          def initialize(base58_encoder: Relay::Base58Encoder.new, batch_importer: Relay::Importing::BatchImporter.new)
             @base58_encoder = base58_encoder
             @batch_importer = batch_importer
           end
