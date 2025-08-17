@@ -78,6 +78,24 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Accounts",
+      link: {
+        type: "doc",
+        id: "api/accounts",
+      },
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/get-l-1-accounts",
+          label: "List L1 accounts",
+          className: "api-method get",
+        },
+      ],
+    },
   ],
 };
 

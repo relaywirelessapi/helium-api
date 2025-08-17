@@ -180,7 +180,7 @@ namespace :helium do
 
       # Check if the file has headers by examining the first row
       has_headers = false
-      File.open(csv_file.path, 'r') do |file|
+      File.open(csv_file.path, "r") do |file|
         first_line = file.gets
         if first_line
           first_row = CSV.parse_line(first_line)
