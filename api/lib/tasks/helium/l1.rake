@@ -24,23 +24,6 @@ namespace :helium do
       IMPORTER_KLASSES.keys
     end
 
-    desc "Test all L1 importers by attempting to import the first file for each in a transaction that gets reverted"
-    task test_importers: :environment do
-      ActiveRecord::Base.transaction do
-        puts "Testing all L1 importers..."
-        puts
-
-        IMPORTER_KLASSES.each do |file_type, importer_class|
-          Rake::Task["helium:l1:import"].invoke(file_type, "data_xaa.csv.gz")
-          Rake::Task["helium:l1:import"].reenable
-          puts
-        end
-
-        puts "Test complete! Rolling back DB transaction..."
-        raise ActiveRecord::Rollback
-      end
-    end
-
     desc "Import all Helium L1 data of a specific type from S3 bucket"
     task :import_all, [ :file_type ] => :environment do |_t, args|
       file_type = args[:file_type]
