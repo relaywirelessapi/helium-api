@@ -19,4 +19,22 @@ RSpec.describe "/helium/l1/gateways", type: :request do
       expect(parsed_response).to be_paginated_collection.with([ matching ])
     end
   end
+
+  describe "GET /:id" do
+    it "allows retrieving gateways by ID" do
+      gateway = create(:helium_l1_gateway)
+
+      api_get(helium_l1_gateway_path(gateway.id))
+
+      expect(parsed_response).to include("id" => gateway.id)
+    end
+
+    it "allows retrieving gateways by address" do
+      gateway = create(:helium_l1_gateway, address: "11111111111111111111111111111111")
+
+      api_get(helium_l1_gateway_path("11111111111111111111111111111111"))
+
+      expect(parsed_response).to include("id" => gateway.id)
+    end
+  end
 end

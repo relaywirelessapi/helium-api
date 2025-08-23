@@ -12,11 +12,11 @@ Rails.application.routes.draw do
       scope path: "v1" do
         namespace :helium do
           namespace :l1 do
-            resources :accounts, only: [ :index ]
-            resources :transactions, only: [ :index ]
+            resources :accounts, only: [ :index, :show ]
+            resources :transactions, only: [ :index, :show ]
             resources :transaction_actors, only: [ :index ], path: "transaction-actors"
             resources :dc_burns, only: [ :index ], path: "dc-burns"
-            resources :gateways, only: [ :index ]
+            resources :gateways, only: [ :index, :show ]
             resources :packets, only: [ :index ]
             resources :rewards, only: [ :index ]
           end
