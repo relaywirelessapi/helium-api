@@ -24,6 +24,19 @@ module Relay
             render json: render_collection(relation, blueprint: AccountBlueprint)
           end
 
+          sig { void }
+          def show
+            search_term = params.fetch(:id)
+
+            if search_term.match?(/\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i)
+              account = Relay::Helium::L1::Account.find(search_term)
+            else
+              account = Relay::Helium::L1::Account.find_by!(address: search_term)
+            end
+
+            render json: AccountBlueprint.render(account)
+          end
+
           private
 
           sig { void }

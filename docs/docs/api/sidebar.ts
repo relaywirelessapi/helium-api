@@ -24,8 +24,20 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/get-l-1-account",
+          label: "Get L1 account",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/get-l-1-transactions",
           label: "List L1 transactions",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-transaction",
+          label: "Get L1 transaction",
           className: "api-method get",
         },
         {
@@ -44,6 +56,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/get-l-1-gateways",
           label: "List L1 gateways",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-l-1-gateway",
+          label: "Get L1 gateway",
           className: "api-method get",
         },
         {

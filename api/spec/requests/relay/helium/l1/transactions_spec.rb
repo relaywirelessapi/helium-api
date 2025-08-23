@@ -19,4 +19,22 @@ RSpec.describe "/helium/l1/transactions", type: :request do
       expect(parsed_response).to be_paginated_collection.with([ matching ])
     end
   end
+
+  describe "GET /:id" do
+    it "allows retrieving transactions by ID" do
+      transaction = create(:helium_l1_transaction)
+
+      api_get(helium_l1_transaction_path(transaction.id))
+
+      expect(parsed_response).to include("id" => transaction.id)
+    end
+
+    it "allows retrieving transactions by transaction hash" do
+      transaction = create(:helium_l1_transaction, transaction_hash: "11111111111111111111111111111111")
+
+      api_get(helium_l1_transaction_path("11111111111111111111111111111111"))
+
+      expect(parsed_response).to include("id" => transaction.id)
+    end
+  end
 end

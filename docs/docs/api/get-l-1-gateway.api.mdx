@@ -1,0 +1,71 @@
+---
+id: get-l-1-gateway
+title: "Get L1 gateway"
+description: "Returns a specific L1 gateway by ID or address. Requires the HotspotData feature."
+sidebar_label: "Get L1 gateway"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVk1v4zYQ/SvEnLqAHMfFnnRq2gTZIAF2kY9DkQbGWBxZ3FCkQo7sqIb+ezGSspHtNHUOC9QXmdYbznvDN0NvgHEZIb2HL2RNXaqrGTwkEChW3kWKkG7g1+NjeWiKWTAVG+8gha+XkEDmHZNjeYtVZU2G8nb6PQpkAzErqET5xoYtQQpXM3WOTGtsIAFuKvnNL75TxiBJn2oTSAsboyEB1DpQjJCAXzsK89d1hc3WOjch8nxhffYICVgcLZx3GckTS3mUXpMorIKvKLDpJRrdsewJRQ7GLWVXH0pkSKGuOz6BUH91toGUQ03tK8E3Yvew2xIOidgWeUiE9f0JfAg8L+j5sAApa+WzeVagteSWNAozjmlJ4d047yTdIzXzAmNxUM61YUdxMOK+YXbQYxscTu0D+N5Mh0HFb4dI7EmzKSkyltW7RtTINBHoWxsFWmPQ85ihHWd2dbl4myJZWu365R1FSzQHIrsm+2/t3SeBz8ef9+fLMCaU86xyXzv9oXGzY5TtZqcQfHiLHj1jWXVzaj97+8JWduryXmhIYUk8sbPJ8sdQ21ZxTVwHFxWqWFFmcpOpq5ka0GrRqItT5YMaevxIXfcjMCouSH3xHCvPp8iockKuAx11sy9gSUxBxvZm8Fk/MOV8oEIutqap1DrZr84gu93lfFuQMpocm9xQUD7vyAycj9Qf6NSC0r/cRN3dXZymSvC1M0/1O2GCPulF9gHDbTMI30ND+5BASVz4ocidbi4ghWnRhU7tbDrA43RjdAsJRAqrviwPssjqYLjpinRSc+GD+Xtw+/1DO0LcSGV6a+zgflT3d8JAQZ18u5hfnv35endhZS6peal8QagpgLjEuNyPL75rsthIPCQgHPtSz46O9yxzoq7Pbm4FqtirQBwMrUh5N8kKNE6h08rn+bDSnTl8GAoq/rAmIxdpxP5b8FUwxBgaNVG3FMqu4jcUVqa7G+tghT5zFdPpdL1eHwXhuzaBrPgy8+XU0hLtlCV44vNJHILbvi0x41HCXu0tYSldVaKR7Zmw/K3bV5OEyq57uffydtWsfOQSxwdyTjzqpN0ibl5HxU9pweH0mZ55WlkZi+0gZDPY9B56m8p5zEBmZ29VSCA1Wv6AFD6y4DabBUa6C7Zt5eenmkLTO3iFweBC7HO/AW2ifNeQ5mgjvSP4l0GB/qT+F638L+V66SAnp7dCW8sKEnikph9n7UObvLSUVKB/cZJlVPEoZO8m2Bod52e30Lb/ALKCwrU=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get L1 gateway"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/gateways/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a specific L1 gateway by ID or address. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":"The identifier of the gateway. Can be:\n- UUID: The unique identifier of the gateway\n- Address: The Helium address of the gateway\n"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"title":"L1 Gateway","type":"object","required":["id","address","owner_address","payer_address","first_block","last_block","nonce","name","mode"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"address":{"type":"string","readOnly":true},"owner_address":{"type":"string","readOnly":true},"payer_address":{"type":"string","readOnly":true},"location":{"type":"string","readOnly":true},"location_hex":{"type":"string","readOnly":true},"last_poc_challenge":{"type":"integer","readOnly":true},"last_poc_onion_key_hash":{"type":"string","readOnly":true},"witnesses":{"type":"object","readOnly":true},"first_block":{"type":"integer","readOnly":true},"last_block":{"type":"integer","readOnly":true},"nonce":{"type":"integer","readOnly":true},"name":{"type":"string","readOnly":true},"first_timestamp":{"type":"string","format":"date-time","readOnly":true},"reward_scale":{"type":"number","readOnly":true},"elevation":{"type":"integer","readOnly":true},"gain":{"type":"integer","readOnly":true},"mode":{"type":"string","readOnly":true}}}}}},"404":{"description":"Gateway not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string","example":"Gateway not found"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

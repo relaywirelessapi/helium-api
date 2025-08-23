@@ -475,6 +475,41 @@ paths:
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
     servers: []
+  /helium/l1/accounts/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: |
+          The identifier of the account. Can be:
+          - UUID: The unique identifier of the account
+          - Address: The Helium address of the account
+    get:
+      summary: Get L1 account
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/l1-account'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Account not found"
+      operationId: get-l1-account
+      description: Returns a specific L1 account by ID or address. Requires the HotspotData feature.
+    servers: []
   /helium/l1/transactions:
     parameters: []
     get:
@@ -537,6 +572,41 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/transactions/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: |
+          The identifier of the transaction. Can be:
+          - UUID: The unique identifier of the transaction
+          - Transaction Hash: The Helium transaction hash
+    get:
+      summary: Get L1 transaction
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/l1-transaction'
+        '404':
+          description: Transaction not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Transaction not found"
+      operationId: get-l1-transaction
+      description: Returns a specific L1 transaction by ID or transaction hash. Requires the HotspotData feature.
     servers: []
   /helium/l1/transaction-actors:
     parameters: []
@@ -731,6 +801,41 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l1/gateways/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: |
+          The identifier of the gateway. Can be:
+          - UUID: The unique identifier of the gateway
+          - Address: The Helium address of the gateway
+    get:
+      summary: Get L1 gateway
+      tags:
+        - Helium L1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/l1-gateway'
+        '404':
+          description: Gateway not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Gateway not found"
+      operationId: get-l1-gateway
+      description: Returns a specific L1 gateway by ID or address. Requires the HotspotData feature.
     servers: []
   /helium/l1/packets:
     parameters: []

@@ -37,6 +37,19 @@ module Relay
             render json: render_collection(relation, blueprint: TransactionBlueprint)
           end
 
+          sig { void }
+          def show
+            search_term = params.fetch(:id)
+
+            if search_term.match?(/\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i)
+              transaction = Relay::Helium::L1::Transaction.find(search_term)
+            else
+              transaction = Relay::Helium::L1::Transaction.find_by!(transaction_hash: search_term)
+            end
+
+            render json: TransactionBlueprint.render(transaction)
+          end
+
           private
 
           sig { void }
