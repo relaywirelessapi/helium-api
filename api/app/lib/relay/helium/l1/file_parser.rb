@@ -29,19 +29,15 @@ module Relay
 
         sig { params(bucket: String, key: String, block: T.proc.params(row: T::Array[String]).void).void }
         def parse(bucket, key, &block)
-          Tempfile.create([ "l1_data_compressed", ".csv.gz" ]) do |compressed_tempfile|
-            compressed_tempfile.binmode
+          response = file_client.get_object(
+            bucket: bucket,
+            key: key,
+          )
 
-            file_client.get_object(
-              bucket: bucket,
-              key: key,
-              response_target: compressed_tempfile.path
-            )
-
-            Zlib::GzipReader.open(compressed_tempfile.path) do |gz|
-              CSV.new(gz).each(&block)
-            end
-          end
+          gz = Zlib::GzipReader.new(T.unsafe(response).body)
+          CSV.new(gz).each(&block)
+        ensure
+          gz&.close
         end
       end
     end

@@ -49,8 +49,8 @@ module Relay
         end
       end
 
-      sig { params(bucket: String, key: String, response_target: T.any(Pathname, String)).returns(Seahorse::Client::Response) }
-      def get_object(bucket:, key:, response_target:)
+      sig { params(bucket: String, key: String, response_target: T.nilable(T.any(Pathname, String))).returns(Seahorse::Client::Response) }
+      def get_object(bucket:, key:, response_target: nil)
         s3.get_object(
           bucket: bucket,
           key: key,
