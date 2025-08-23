@@ -66,8 +66,12 @@ RSpec.describe Relay::Helium::L1::FileParser do
       files.each do |(bucket, key), body|
         allow(client).to receive(:get_object).with(
           bucket: bucket,
-          key: key
-        ).and_return(double(Seahorse::Client::Response, body: StringIO.new(body)))
+          key: key,
+          response_target: anything
+        ) do |args|
+          File.write(args[:response_target], body)
+          double(Seahorse::Client::Response, body: StringIO.new(body))
+        end
       end
     end
   end

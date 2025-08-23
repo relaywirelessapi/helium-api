@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_23_084328) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_23_102340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "h3"
   enable_extension "pg_catalog.plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_084328) do
     t.integer "gain", default: 12, null: false
     t.string "location_hex"
     t.string "mode", default: "full", null: false
-    t.string "payer_address", null: false
+    t.string "payer_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_helium_l1_gateways_on_address", unique: true
