@@ -9,14 +9,25 @@ module Relay
 
           before_action :require_hotspot_data_feature!
 
+          class IndexContract < ResourceController::IndexContract
+            attribute :actor_address, :string
+            attribute :transaction_hash, :string
+            attribute :actor_role, :string
+            attribute :block, :integer
+          end
+
           sig { void }
           def index
-            relation = paginate(Relay::Helium::L1::TransactionActor.all)
+            contract = build_and_validate_contract(IndexContract)
 
-            relation = relation.where(actor_address: params[:actor_address]) if params[:actor_address].present?
-            relation = relation.where(transaction_hash: params[:transaction_hash]) if params[:transaction_hash].present?
-            relation = relation.where(actor_role: params[:actor_role]) if params[:actor_role].present?
-            relation = relation.where(block: params[:block]) if params[:block].present?
+            relation = Relay::Helium::L1::TransactionActor.all
+
+            relation = relation.where(actor_address: contract.actor_address) if contract.actor_address.present?
+            relation = relation.where(transaction_hash: contract.transaction_hash) if contract.transaction_hash.present?
+            relation = relation.where(actor_role: contract.actor_role) if contract.actor_role.present?
+            relation = relation.where(block: contract.block) if contract.block.present?
+
+            relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: TransactionActorBlueprint)
           end

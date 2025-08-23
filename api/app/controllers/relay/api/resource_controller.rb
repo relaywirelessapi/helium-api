@@ -3,7 +3,7 @@
 module Relay
   module Api
     class ResourceController < ApplicationController
-      class IndexContract
+      class IndexContract < Relay::Api::Contract
         include ActiveModel::Model
         include ActiveModel::Attributes
 

@@ -6,10 +6,10 @@ module Relay
       class InvalidContractError < BaseError
         extend T::Sig
 
-        sig { returns(T.class_of(ActiveModel::Model)) }
+        sig { returns(T.class_of(Relay::Api::Contract)) }
         attr_reader :contract
 
-        sig { params(contract: T.class_of(ActiveModel::Model)).void }
+        sig { params(contract: T.class_of(Relay::Api::Contract)).void }
         def initialize(contract)
           super(
             code: "malformed_request",

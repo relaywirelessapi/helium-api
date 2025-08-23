@@ -9,16 +9,29 @@ module Relay
 
           before_action :require_hotspot_data_feature!
 
+          class IndexContract < ResourceController::IndexContract
+            attribute :address, :string
+            attribute :owner_address, :string
+            attribute :payer_address, :string
+            attribute :mode, :string
+            attribute :name, :string
+            attribute :location_hex, :string
+          end
+
           sig { void }
           def index
-            relation = paginate(Relay::Helium::L1::Gateway.all)
+            contract = build_and_validate_contract(IndexContract)
 
-            relation = relation.where(address: params[:address]) if params[:address].present?
-            relation = relation.where(owner_address: params[:owner_address]) if params[:owner_address].present?
-            relation = relation.where(payer_address: params[:payer_address]) if params[:payer_address].present?
-            relation = relation.where(mode: params[:mode]) if params[:mode].present?
-            relation = relation.where(name: params[:name]) if params[:name].present?
-            relation = relation.where(location_hex: params[:location_hex]) if params[:location_hex].present?
+            relation = Relay::Helium::L1::Gateway.all
+
+            relation = relation.where(address: contract.address) if contract.address.present?
+            relation = relation.where(owner_address: contract.owner_address) if contract.owner_address.present?
+            relation = relation.where(payer_address: contract.payer_address) if contract.payer_address.present?
+            relation = relation.where(mode: contract.mode) if contract.mode.present?
+            relation = relation.where(name: contract.name) if contract.name.present?
+            relation = relation.where(location_hex: contract.location_hex) if contract.location_hex.present?
+
+            relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: GatewayBlueprint)
           end

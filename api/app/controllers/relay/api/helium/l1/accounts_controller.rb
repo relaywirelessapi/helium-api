@@ -9,11 +9,17 @@ module Relay
 
           before_action :require_hotspot_data_feature!
 
+          class IndexContract < ResourceController::IndexContract
+            attribute :address, :string
+          end
+
           sig { void }
           def index
-            relation = paginate(Relay::Helium::L1::Account.all)
+            contract = build_and_validate_contract(IndexContract)
 
-            relation = relation.where(address: params[:address]) if params[:address].present?
+            relation = Relay::Helium::L1::Account.all
+            relation = relation.where(address: contract.address) if contract.address.present?
+            relation = paginate(relation)
 
             render json: render_collection(relation, blueprint: AccountBlueprint)
           end
