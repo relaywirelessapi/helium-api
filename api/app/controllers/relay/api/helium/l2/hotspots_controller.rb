@@ -38,6 +38,19 @@ module Relay
             render json: render_collection(relation, blueprint: HotspotBlueprint)
           end
 
+          sig { void }
+          def show
+            search_term = params.fetch(:id)
+
+            if search_term.match?(/\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i)
+              hotspot = Relay::Helium::L2::Hotspot.find(search_term)
+            else
+              hotspot = Relay::Helium::L2::Hotspot.find_by!("asset_id = :search_term OR ecc_key = :search_term", search_term: search_term)
+            end
+
+            render json: HotspotBlueprint.render(hotspot)
+          end
+
           private
 
           sig { void }

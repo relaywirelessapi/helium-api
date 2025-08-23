@@ -78,8 +78,20 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/get-maker",
+          label: "Get maker",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/get-hotspots",
           label: "List hotspots",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-hotspot",
+          label: "Get hotspot",
           className: "api-method get",
         },
         {
