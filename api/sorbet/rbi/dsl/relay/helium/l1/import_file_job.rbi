@@ -9,13 +9,13 @@ class Relay::Helium::L1::ImportFileJob
   class << self
     sig do
       params(
-        file: T.untyped,
+        file: ::Relay::Helium::L1::File,
         block: T.nilable(T.proc.params(job: Relay::Helium::L1::ImportFileJob).void)
       ).returns(T.any(Relay::Helium::L1::ImportFileJob, FalseClass))
     end
     def perform_later(file, &block); end
 
-    sig { params(file: T.untyped).returns(T.untyped) }
+    sig { params(file: ::Relay::Helium::L1::File).void }
     def perform_now(file); end
   end
 end
