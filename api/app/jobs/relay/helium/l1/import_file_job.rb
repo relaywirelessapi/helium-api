@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 
 module Relay
   module Helium
@@ -8,6 +8,7 @@ module Relay
 
         queue_as :default
 
+        sig { params(file: Relay::Helium::L1::File).void }
         def perform(file)
           return if file.processed_at.present?
 

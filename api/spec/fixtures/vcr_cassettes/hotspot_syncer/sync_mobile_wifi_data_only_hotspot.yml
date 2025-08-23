@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<SOLANA_RPC_URL>"
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAsset","params":{"id":"DJx6oeStikrNaccNgNHCXLD85Neya3DgW2uNVWL6DK7o"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 23 Aug 2025 08:45:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 973955b4ba2b4bf0-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers, Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '77'
+      Helius-Request-Type:
+      - das
+      Helius-Router-Overhead:
+      - '57'
+      Helius-Total-Latency:
+      - '134'
+      X-Region:
+      - fra
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","result":{"interface":"V1_NFT","id":"DJx6oeStikrNaccNgNHCXLD85Neya3DgW2uNVWL6DK7o","content":{"$schema":"https://schema.metaplex.com/nft1.0.json","json_uri":"https://entities.nft.helium.io/v2/hotspot/5qHK6Bu4pfFd22qeEH4jFcJ5N4v3jUehwzHQuF1gBujW","files":[{"uri":"https://entities.nft.helium.io/v2/assets/hotspot-iot.png","cdn_uri":"https://cdn.helius-rpc.com/cdn-cgi/image//https://entities.nft.helium.io/v2/assets/hotspot-iot.png","mime":"image/png"}],"metadata":{"attributes":[{"value":"13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP","trait_type":"ecc_compact"},{"value":"13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP","trait_type":"entity_key_string"},{"value":"AAF2wRgmhjxtuyyMc002RMtTiQTrc9QpZ+9jhepdG5u/W8V9VhI=","trait_type":"entity_key"},{"value":true,"trait_type":"rewardable"},{"value":[],"trait_type":"networks"}],"description":"A
+        Rewardable NFT on Helium","name":"soaring-magenta-scallop","symbol":"HOTSPOT","token_standard":"NonFungible"},"links":{"image":"https://entities.nft.helium.io/v2/assets/hotspot-iot.png"}},"authorities":[{"address":"G4eKEw3jT1JvfR49PYPwUgCz7kFUyjag3mXGYWu7YKtv","scopes":["full"]}],"compression":{"eligible":false,"compressed":true,"data_hash":"G51zWmgWiz88g3acdxih7iPwp6xmmGPu1vhEfe1xJiXv","creator_hash":"EWLW6zerYfp9rufbqhat1Cqe7yf63zRfGVakyGwzt9EU","asset_hash":"UwGqs15y1AfLhCgMGRWCbsJdwMLTgRNK3GxFFhQyfib","tree":"J53f1jfy6QGU8U3qty2MwyNPk68AoybUkigeukDTj356","seq":6626,"leaf_id":6271},"grouping":[{"group_key":"collection","group_value":"GQ8CN2jaNaBfqddfJoSTmT5VhrbhezbjvaFb7etVfjsj"}],"royalty":{"royalty_model":"creators","target":null,"percent":0.0,"basis_points":0,"primary_sale_happened":true,"locked":false},"creators":[{"address":"Fv5hf1Fg58htfC7YEXKNEfkpuogUUQDDTLgjGWxxv48H","share":100,"verified":true},{"address":"5qHK6Bu4pfFd22qeEH4jFcJ5N4v3jUehwzHQuF1gBujW","share":0,"verified":true}],"ownership":{"frozen":false,"delegated":false,"delegate":null,"ownership_model":"single","owner":"fiNQ4fuWSV8f8UwWjszNiYg24EUv3wAGfTDGpJw73M8"},"supply":{"print_max_supply":0,"print_current_supply":0,"edition_nonce":null},"mutable":true,"burnt":false},"id":1}'
+  recorded_at: Sat, 23 Aug 2025 08:45:37 GMT
+- request:
+    method: get
+    uri: https://entities.nft.helium.io/v2/hotspot/5qHK6Bu4pfFd22qeEH4jFcJ5N4v3jUehwzHQuF1gBujW
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 23 Aug 2025 08:45:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - accept-encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-store
+      Last-Modified:
+      - Sat, 23 Aug 2025 08:41:39 GMT
+      Age:
+      - '237'
+      Cf-Cache-Status:
+      - HIT
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 973955b629a290fa-MXP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"Soaring Magenta Scallop","description":"A Rewardable NFT on
+        Helium","image":"https://entities.nft.helium.io/v2/assets/hotspot-iot.png","asset_id":"DJx6oeStikrNaccNgNHCXLD85Neya3DgW2uNVWL6DK7o","key_to_asset_key":"5qHK6Bu4pfFd22qeEH4jFcJ5N4v3jUehwzHQuF1gBujW","entity_key_b64":"AAF2wRgmhjxtuyyMc002RMtTiQTrc9QpZ+9jhepdG5u/W8V9VhI=","key_serialization":"b58","entity_key_str":"13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP","hotspot_infos":{"iot":{"location":null},"mobile":{"address":"7nPGivJdueDq4PoBWofpP4dCxFMAzYYUKH8nxRKqAtXd","asset":"DJx6oeStikrNaccNgNHCXLD85Neya3DgW2uNVWL6DK7o","street":"McDonald''s","city":"New
+        York","state":"NY","country":"United States","is_active":false,"device_type":"wifiDataOnly","location":"8c2a100d27631ff","dc_onboarding_fee_paid":"200000","created_at":"2025-08-06T01:04:15.218Z","lat":40.73643,"long":-73.995897}},"attributes":[{"trait_type":"ecc_compact","value":"13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP"},{"trait_type":"entity_key_string","value":"13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP"},{"trait_type":"entity_key","value":"AAF2wRgmhjxtuyyMc002RMtTiQTrc9QpZ+9jhepdG5u/W8V9VhI="},{"trait_type":"rewardable","value":true},{"trait_type":"networks","value":["mobile"]},{"trait_type":"mobile_city","value":"New
+        York"},{"trait_type":"mobile_state","value":"NY"},{"trait_type":"mobile_country","value":"United
+        States"},{"trait_type":"mobile_lat","value":40.73643},{"trait_type":"mobile_long","value":-73.995897}]}'
+  recorded_at: Sat, 23 Aug 2025 08:45:37 GMT
+- request:
+    method: post
+    uri: "<SOLANA_RPC_URL>"
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["7nPGivJdueDq4PoBWofpP4dCxFMAzYYUKH8nxRKqAtXd",{"encoding":"jsonParsed","commitment":"finalized"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 23 Aug 2025 08:45:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 973955b6ac84ed5f-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '50'
+      Helius-Request-Type:
+      - rpc
+      Helius-Router-Overhead:
+      - '41'
+      Helius-Total-Latency:
+      - '91'
+      X-Via:
+      - fra3
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","id":1,"result":{"context":{"slot":361941289,"apiVersion":"2.2.7"},"value":{"lamports":1781760,"data":["ech00Snx5Li25WsxWCnCPBkwiFiDPfjP+vGl+1GfArO1TBmawzUYYv8B/zF20gChwggAAQAAQA0DAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","base64"],"owner":"hemjuPXBpNvggtaUnN1MwT3wrdhttKEfosTcc2P9Pg8","executable":false,"rentEpoch":18446744073709551615,"space":128}}}'
+  recorded_at: Sat, 23 Aug 2025 08:45:37 GMT
+recorded_with: VCR 6.3.1

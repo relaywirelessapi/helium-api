@@ -10,79 +10,79 @@ module RSpec
   extend ::RSpec::Support::Warnings
 
   class << self
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#70
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#70
     def clear_examples; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#85
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#85
     def configuration; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#49
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#49
     def configuration=(_arg0); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#97
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#97
     def configure; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#194
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#194
     def const_missing(name); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def context(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#122
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#122
     def current_example; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#128
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#128
     def current_example=(example); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#154
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#154
     def current_scope; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#134
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#134
     def current_scope=(scope); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def describe(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def example_group(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def fcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def fdescribe(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def feature(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def ffeature(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#58
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#58
     def reset; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.13.5/lib/rspec/core/shared_example_group.rb#110
     def shared_context(name, *args, &block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.13.5/lib/rspec/core/shared_example_group.rb#110
     def shared_examples(name, *args, &block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.13.5/lib/rspec/core/shared_example_group.rb#110
     def shared_examples_for(name, *args, &block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#160
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#160
     def world; end
 
-    # source://rspec-core/3.13.4/lib/rspec/core.rb#49
+    # source://rspec-core/3.13.5/lib/rspec/core.rb#49
     def world=(_arg0); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def xcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def xdescribe(*args, &example_group_block); end
 
-    # source://rspec-core/3.13.4/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.13.5/lib/rspec/core/dsl.rb#42
     def xfeature(*args, &example_group_block); end
   end
 end
@@ -259,11 +259,11 @@ RSpec::Support::AllExceptionsExceptOnesWeMustNotRescue::AVOID_RESCUING = T.let(T
 #
 # @api private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#268
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#293
 class RSpec::Support::BlockSignature < ::RSpec::Support::MethodSignature
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#270
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#295
   def classify_parameters; end
 end
 
@@ -621,12 +621,12 @@ RSpec::Support::KERNEL_METHOD_METHOD = T.let(T.unsafe(nil), UnboundMethod)
 #
 # @private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#395
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#420
 class RSpec::Support::LooseSignatureVerifier < ::RSpec::Support::MethodSignatureVerifier
   private
 
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#398
-  def split_args(*args); end
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#423
+  def split_args(args); end
 end
 
 # If a matcher is used in a signature in place of keyword arguments, all
@@ -638,30 +638,30 @@ end
 #
 # @private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#415
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#440
 class RSpec::Support::LooseSignatureVerifier::SignatureWithKeywordArgumentsMatcher
   # @return [SignatureWithKeywordArgumentsMatcher] a new instance of SignatureWithKeywordArgumentsMatcher
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#416
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#441
   def initialize(signature); end
 
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#436
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#461
   def has_kw_args_in?(args); end
 
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#424
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#449
   def invalid_kw_args_from(_kw_args); end
 
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#420
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#445
   def missing_kw_args_from(_kw_args); end
 
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#428
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#453
   def non_kw_args_arity_description; end
 
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#432
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#457
   def valid_non_kw_args?(*args); end
 end
 
@@ -679,13 +679,13 @@ class RSpec::Support::MethodSignature
 
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#98
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#123
   def arbitrary_kw_args?; end
 
   # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#38
   def classify_arity(arity = T.unsafe(nil)); end
 
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#106
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#131
   def classify_parameters; end
 
   # Without considering what the last arg is, could it
@@ -693,15 +693,12 @@ class RSpec::Support::MethodSignature
   #
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#92
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#117
   def could_contain_kw_args?(args); end
 
   # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#51
   def description; end
 
-  # If the last argument is Hash, Ruby will treat only symbol keys as keyword arguments
-  # the rest will be grouped in another Hash and passed as positional argument.
-  #
   # @return [Boolean]
   #
   # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#84
@@ -730,7 +727,7 @@ class RSpec::Support::MethodSignature
 
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#102
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#127
   def unlimited_args?; end
 
   # @return [Boolean]
@@ -739,7 +736,7 @@ class RSpec::Support::MethodSignature
   def valid_non_kw_args?(positional_arg_count, optional_max_arg_count = T.unsafe(nil)); end
 end
 
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#162
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#187
 RSpec::Support::MethodSignature::INFINITY = T.let(T.unsafe(nil), Float)
 
 # Encapsulates expectations about the number of arguments and
@@ -747,70 +744,70 @@ RSpec::Support::MethodSignature::INFINITY = T.let(T.unsafe(nil), Float)
 #
 # @api private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#219
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#244
 class RSpec::Support::MethodSignatureExpectation
   # @api private
   # @return [MethodSignatureExpectation] a new instance of MethodSignatureExpectation
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#220
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#245
   def initialize; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#247
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#272
   def empty?; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#231
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#256
   def expect_arbitrary_keywords; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#231
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#256
   def expect_arbitrary_keywords=(_arg0); end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#231
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#256
   def expect_unlimited_arguments; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#231
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#256
   def expect_unlimited_arguments=(_arg0); end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#229
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#254
   def keywords; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#254
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#279
   def keywords=(values); end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#229
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#254
   def max_count; end
 
   # @api private
   # @raise [ArgumentError]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#233
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#258
   def max_count=(number); end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#229
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#254
   def min_count; end
 
   # @api private
   # @raise [ArgumentError]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#240
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#265
   def min_count=(number); end
 end
 
@@ -818,48 +815,48 @@ end
 #
 # @api private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#280
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#305
 class RSpec::Support::MethodSignatureVerifier
   # @api private
   # @return [MethodSignatureVerifier] a new instance of MethodSignatureVerifier
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#283
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#308
   def initialize(signature, args = T.unsafe(nil)); end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#326
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#351
   def error_message; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#281
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#306
   def kw_args; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#281
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#306
   def max_non_kw_args; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#281
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#306
   def min_non_kw_args; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#281
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#306
   def non_kw_args; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#318
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#343
   def valid?; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#290
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#315
   def with_expectation(expectation); end
 
   private
@@ -867,34 +864,34 @@ class RSpec::Support::MethodSignatureVerifier
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#357
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#382
   def arbitrary_kw_args?; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#353
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#378
   def invalid_kw_args; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#349
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#374
   def missing_kw_args; end
 
   # @api private
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#365
-  def split_args(*args); end
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#390
+  def split_args(args); end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#361
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#386
   def unlimited_args?; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#345
+  # source://rspec-support//lib/rspec/support/method_signature_verifier.rb#370
   def valid_non_kw_args?; end
 end
 
@@ -1620,7 +1617,7 @@ end
 #
 # @private
 #
-# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#389
+# source://rspec-support//lib/rspec/support/method_signature_verifier.rb#414
 RSpec::Support::StrictSignatureVerifier = RSpec::Support::MethodSignatureVerifier
 
 # source://rspec-support//lib/rspec/support/version.rb#5
