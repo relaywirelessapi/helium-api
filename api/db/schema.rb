@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_17_171947) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_23_084328) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "h3"
   enable_extension "pg_catalog.plpgsql"
@@ -182,7 +182,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_17_171947) do
     t.string "owner", null: false
     t.string "networks", null: false, array: true
     t.string "name", null: false
-    t.uuid "maker_id", null: false
+    t.uuid "maker_id"
     t.string "iot_info_address"
     t.integer "iot_bump_seed"
     t.bigint "iot_location"

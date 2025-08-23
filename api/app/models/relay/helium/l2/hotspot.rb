@@ -11,7 +11,7 @@ module Relay
 
         self.table_name = "helium_l2_hotspots"
 
-        belongs_to :maker, inverse_of: :hotspots
+        belongs_to :maker, inverse_of: :hotspots, optional: true
         has_many :radios, class_name: "Relay::Helium::L2::HotspotRadio", inverse_of: :hotspot
 
         validates :networks, inclusion: { in: NETWORKS }

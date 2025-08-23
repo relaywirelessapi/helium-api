@@ -46,6 +46,34 @@ RSpec.describe Relay::Helium::L2::HotspotSyncer, :aggregate_failures do
       end
 
       pending "syncs CBRS hotspots"
+
+      it "syncs WiFi data-only hotspots" do
+        asset_id = "DJx6oeStikrNaccNgNHCXLD85Neya3DgW2uNVWL6DK7o"
+
+        VCR.use_cassette("hotspot_syncer/sync_mobile_wifi_data_only_hotspot") do
+          described_class.new.sync_hotspot(asset_id)
+        end
+
+        expect(Relay::Helium::L2::Hotspot.find_by(asset_id: asset_id)).to have_attributes(
+          asset_id: asset_id,
+          name: "Soaring Magenta Scallop",
+          ecc_key: "13r3bWVoucyyVFmw7E6DYi7ynS4QPWVYsK8W9TaKHnjA3Z5YYMP",
+          owner: "fiNQ4fuWSV8f8UwWjszNiYg24EUv3wAGfTDGpJw73M8",
+          networks: [ "mobile" ],
+          mobile_info_address: "7nPGivJdueDq4PoBWofpP4dCxFMAzYYUKH8nxRKqAtXd",
+          mobile_bump_seed: 255,
+          mobile_location: 631243922688324095,
+          mobile_is_full_hotspot: false,
+          mobile_num_location_asserts: 1,
+          mobile_is_active: false,
+          mobile_dc_onboarding_fee_paid: 200000,
+          mobile_device_type: "wifi_data_only",
+          mobile_antenna: nil,
+          mobile_azimuth: nil,
+          mobile_mechanical_down_tilt: nil,
+          mobile_electrical_down_tilt: nil
+        )
+      end
     end
 
     context "with IoT hotspots" do
