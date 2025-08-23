@@ -24,7 +24,7 @@ module Relay
         end
         def initialize(
           bucket: "foundation-helium-l1-archive-requester-pays",
-          batch_size: 10000,
+          batch_size: 1000,
           file_parser: FileParser.new
         )
           @bucket = T.let(bucket, String)

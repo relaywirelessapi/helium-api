@@ -76,4 +76,30 @@ RSpec.describe "/helium/l2/hotspots", type: :request do
       expect(parsed_response).to be_paginated_collection.with([ hotspot ])
     end
   end
+
+  describe "GET /:id" do
+    it "allows retrieving hotspots by ID" do
+      hotspot = create(:hotspot)
+
+      api_get(helium_l2_hotspot_path(hotspot.id))
+
+      expect(parsed_response).to include("id" => hotspot.id)
+    end
+
+    it "allows retrieving hotspots by asset ID" do
+      hotspot = create(:hotspot, asset_id: "asset123")
+
+      api_get(helium_l2_hotspot_path("asset123"))
+
+      expect(parsed_response).to include("id" => hotspot.id)
+    end
+
+    it "allows retrieving hotspots by ECC key" do
+      hotspot = create(:hotspot, ecc_key: "ecc123")
+
+      api_get(helium_l2_hotspot_path("ecc123"))
+
+      expect(parsed_response).to include("id" => hotspot.id)
+    end
+  end
 end

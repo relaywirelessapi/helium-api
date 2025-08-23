@@ -32,8 +32,8 @@ Rails.application.routes.draw do
                 get :totals
               end
             end
-            resources :makers, only: [ :index ]
-            resources :hotspots, only: [ :index ]
+            resources :makers, only: [ :index, :show ]
+            resources :hotspots, only: [ :index, :show ]
           end
         end
       end

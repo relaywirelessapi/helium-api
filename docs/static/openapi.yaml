@@ -62,6 +62,41 @@ paths:
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
     servers: []
+  /helium/l2/makers/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: |
+          The identifier of the maker. Can be:
+          - UUID: The unique identifier of the maker
+          - Address: The Solana address of the maker
+    get:
+      summary: Get maker
+      tags:
+        - Helium L2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/maker'
+        '404':
+          description: Maker not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Maker not found"
+      operationId: get-maker
+      description: Returns a specific maker by ID, UUID, or Solana address.
+    servers: []
   /helium/l2/hotspots:
     parameters: []
     get:
@@ -142,6 +177,42 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
+    servers: []
+  /helium/l2/hotspots/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: |
+          The identifier of the hotspot. Can be:
+          - UUID: The unique identifier of the hotspot
+          - Asset ID: The Solana asset ID of the hotspot
+          - ECC Key: The ECC key of the hotspot
+    get:
+      summary: Get hotspot
+      tags:
+        - Helium L2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hotspot'
+        '404':
+          description: Hotspot not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Hotspot not found"
+      operationId: get-hotspot
+      description: Returns a specific hotspot by ID, UUID, asset ID, or ECC key.
     servers: []
   /helium/l2/iot-reward-shares:
     parameters: []

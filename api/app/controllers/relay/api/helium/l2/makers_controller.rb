@@ -16,6 +16,19 @@ module Relay
             render json: render_collection(relation, blueprint: MakerBlueprint)
           end
 
+          sig { void }
+          def show
+            search_term = params.fetch(:id)
+
+            if search_term.match?(/\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i)
+              maker = Relay::Helium::L2::Maker.find(search_term)
+            else
+              maker = Relay::Helium::L2::Maker.find_by!("address = :search_term", search_term: search_term)
+            end
+
+            render json: MakerBlueprint.render(maker)
+          end
+
           private
 
           sig { void }

@@ -1,0 +1,71 @@
+---
+id: get-maker
+title: "Get maker"
+description: "Returns a specific maker by ID, UUID, or Solana address."
+sidebar_label: "Get maker"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVk1v4zYQ/SvEnLqAHDuKnc3q1LQNtkFa7CIfhyIbGJQ4suhQJENSdhRB/70Yyd7YsdN60UN9sCVr5vG9x5mhGgh85iG5h99Ryapkf8TwEIFDb4326CFpIB6N6Eegz5y0QRoNCXy5gggyowPqQE+5tUpmnJ4O555CGvBZgSWnqyCDQkig5I/oIILngQ/GKjkrumQpIIGFSosa4/nzJz+y0EYQaks5Jp1jFoBIPVXSoSC2UkAEXAiH3kMElRU84JRXoTBOhhoikN5XUs+2/tO8RIggrUo79Yiik6AUZp2oCEp0jwqnwSFuPZpuZghuyCLrjEUXZO8RKWjWjH1wUs/ekelOcP5pnp6WpXqSJDM3ruQBEqiqTpVDLr5oVUMSXIXtq8wDF5Avy/i0OC7NcVp6WmAHcMetA5FfTnN9PI59unAndi/yrukHQp+h/pjHma5FLdK90N3eHYgWBzUrxhNVm3RS7UV73dBXSKkDzt4tT5QffTVPjT9TL6O9mBuldCDPdDKevzyGk/JkrtxezM2KPBA0GxdnHJ08i/kZ/xei0x/3oZpoE8cW1eJ0th+eGuTQipo/T5ZViCdSSNwD1n0iGI/GuxPoT5olTJvAclNp8UPj6M1k2e5ldM64fQrwmZe2m2Nv127XTAmnW/WS5M0wDNYjb5v8NYbKac848xYzmcuMdYEsrdnlbxG7u6Nv49iNUVxztpoBR0SWO15iQEdju1n1RT8QJUFbHoqtaUlORrvqV7Lat9RuC2RSoA4yl+iYyVkosGd3xH7lmqWYfNODjmLCKLrS8ql6N4liz3v6ffi2pDex0D5Q1YfCrAzsFIcCEhgW3RE1VPGwC/bDRooWIvDoFr0dD3STVf3kuW/gvJ9DL7zXdv/QbkTckCP9lr+J++7qL8gdOnb+9XJ6dfEXfD+TuJVXWK8dL5ALdED7L3VuNg+8a1S8pnyIgDj2Fh8fjXYq4pxdX9zcUigLhjkMTuICmdGDrOBSM64FM3m+uhM8cJYbx/pjm+pCyQy1xw32X52xTmLgrmYDdouu7Ny+QbeQGZ1wlVNEPwTrk+FwuVweOeK7lA4VVVtmyqHCGVfDQMkDkw/8Krnt241nYWPBXu0t8pK6peSS4APy8ucOVyClEurO2jvrdm5a40PJNzfkMwa2t6Oa1+7/L8212t+Az2FoFZeahHZUm1UZ3kNfhuR4TO8MXSlCBIkU9F5QGB8oqmlS7vHOqbalv58qdHVfoQvuJE+pPO4bENLTtYAk58rjP6j66XrV0R/Y/9yi79i07g1NjbHgqqI7iOAR635AtQ9ttG4W0t4/OM8ytGEjZWd2b42Ezxe30LZ/A+YIqsQ=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get maker"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/makers/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a specific maker by ID, UUID, or Solana address.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":"The identifier of the maker. Can be:\n- UUID: The unique identifier of the maker\n- Address: The Solana address of the maker\n"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"title":"maker","x-stoplight":{"id":"vlbhye2jx9s0p"},"type":"object","required":["id","address","update_authority","issuing_authority","name","bump_seed","collection","merkle_tree","collection_bump_seed","dao"],"properties":{"id":{"type":"string","x-stoplight":{"id":"r3ej9jb6mmlqi"},"format":"uuid","readOnly":true},"address":{"type":"string","x-stoplight":{"id":"izw26h1mo1bms"},"readOnly":true},"update_authority":{"type":"string","x-stoplight":{"id":"z6fn142sbvr3p"},"readOnly":true},"issuing_authority":{"type":"string","x-stoplight":{"id":"8en7f2cnydydb"},"readOnly":true},"name":{"type":"string","x-stoplight":{"id":"2tlgh45lyob5u"},"readOnly":true},"bump_seed":{"type":"integer","x-stoplight":{"id":"ei7sujbos8lz0"},"readOnly":true},"collection":{"type":"string","x-stoplight":{"id":"b54jzkt3m3jlr"},"readOnly":true},"merkle_tree":{"type":"string","x-stoplight":{"id":"c4h8aeri82a8a"},"readOnly":true},"collection_bump_seed":{"type":"integer","x-stoplight":{"id":"u5no22pelv6ga"},"readOnly":true},"dao":{"type":"string","x-stoplight":{"id":"zjx5wut25idie"},"readOnly":true}}}}}},"404":{"description":"Maker not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string","example":"Maker not found"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
