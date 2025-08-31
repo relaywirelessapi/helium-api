@@ -21,6 +21,8 @@ module Relay
             through: :reward_manifest_file,
             source: :reward_manifest
           )
+
+          before_create :refresh_reward_manifest_metadata
         end
 
         private
@@ -43,6 +45,15 @@ module Relay
             )
             nil
           end
+        end
+
+        def refresh_reward_manifest_metadata
+          self.reward_manifest_metadata = reward_manifest&.metadata
+        end
+
+        def refresh_reward_manifest_metadata!
+          refresh_reward_manifest_metadata
+          save!
         end
       end
     end
