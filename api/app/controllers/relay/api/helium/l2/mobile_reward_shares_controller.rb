@@ -38,7 +38,14 @@ module Relay
               sum(subscriber_reward) as total_subscriber_reward,
               sum(discovery_location_amount) as total_discovery_location_amount,
               sum(service_provider_amount) as total_service_provider_amount,
-              sum(matched_amount) as total_matched_amount
+              sum(matched_amount) as total_matched_amount,
+              sum(
+                CASE
+                  WHEN dc_transfer_reward IS NULL OR (reward_manifest_metadata->>'price') IS NULL
+                  THEN 0
+                  ELSE (dc_transfer_reward::decimal / (reward_manifest_metadata->>'price')::decimal / #{Relay::Helium::L2::MobileRewardShare::DOLLARS_PER_OFFLOADED_GB})
+                END
+              ) as total_offloaded_data_gbs
             SQL
 
             totals = ActiveRecord::Base.connection.execute(relation.select(columns).to_sql).first
@@ -49,7 +56,8 @@ module Relay
               total_subscriber_reward: totals.fetch("total_subscriber_reward").to_i,
               total_discovery_location_amount: totals.fetch("total_discovery_location_amount").to_i,
               total_service_provider_amount: totals.fetch("total_service_provider_amount").to_i,
-              total_matched_amount: totals.fetch("total_matched_amount").to_i
+              total_matched_amount: totals.fetch("total_matched_amount").to_i,
+              total_offloaded_data_gbs: totals.fetch("total_offloaded_data_gbs").to_f
             }
           end
 

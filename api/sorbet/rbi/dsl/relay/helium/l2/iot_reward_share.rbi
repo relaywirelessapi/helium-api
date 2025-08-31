@@ -1138,6 +1138,9 @@ class Relay::Helium::L2::IotRewardShare
     def restore_id_value!; end
 
     sig { void }
+    def restore_reward_manifest_metadata!; end
+
+    sig { void }
     def restore_reward_type!; end
 
     sig { void }
@@ -1148,6 +1151,51 @@ class Relay::Helium::L2::IotRewardShare
 
     sig { void }
     def restore_witness_amount!; end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata; end
+
+    sig { params(value: T.untyped).returns(T.untyped) }
+    def reward_manifest_metadata=(value); end
+
+    sig { returns(T::Boolean) }
+    def reward_manifest_metadata?; end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def reward_manifest_metadata_came_from_user?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def reward_manifest_metadata_change; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def reward_manifest_metadata_change_to_be_saved; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def reward_manifest_metadata_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata_in_database; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def reward_manifest_metadata_previous_change; end
+
+    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    def reward_manifest_metadata_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata_previously_was; end
+
+    sig { returns(T.untyped) }
+    def reward_manifest_metadata_was; end
+
+    sig { void }
+    def reward_manifest_metadata_will_change!; end
 
     sig { returns(T.nilable(::String)) }
     def reward_type; end
@@ -1253,6 +1301,12 @@ class Relay::Helium::L2::IotRewardShare
 
     sig { returns(T::Boolean) }
     def saved_change_to_id_value?; end
+
+    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    def saved_change_to_reward_manifest_metadata; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_reward_manifest_metadata?; end
 
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_reward_type; end
@@ -1407,6 +1461,9 @@ class Relay::Helium::L2::IotRewardShare
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id_value?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_reward_manifest_metadata?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_reward_type?; end

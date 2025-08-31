@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_23_102340) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_31_175905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "h3"
   enable_extension "pg_catalog.plpgsql"
@@ -246,6 +246,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_102340) do
     t.string "deduplication_key", null: false
     t.string "file_category", null: false
     t.string "file_name", null: false
+    t.jsonb "reward_manifest_metadata"
     t.index ["deduplication_key"], name: "index_helium_l2_iot_reward_shares_on_deduplication_key", unique: true
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_b2d1df30e4"
     t.index ["hotspot_key"], name: "index_helium_l2_iot_reward_shares_on_hotspot_key"
@@ -320,6 +321,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_102340) do
     t.string "file_category", null: false
     t.string "file_name", null: false
     t.datetime "seniority_timestamp"
+    t.jsonb "reward_manifest_metadata"
     t.index ["deduplication_key"], name: "index_helium_l2_mobile_reward_shares_on_deduplication_key", unique: true
     t.index ["file_category", "file_name"], name: "idx_on_file_category_file_name_2579294e1e"
     t.index ["hotspot_key"], name: "index_helium_l2_mobile_reward_shares_on_hotspot_key"

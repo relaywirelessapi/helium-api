@@ -1,0 +1,22 @@
+Copyright (c) 2025 Relay International Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use, copy, modify, merge, publish, and distribute the Software for personal, educational, or research purposes only, subject to the following conditions:
+
+- Non-Commercial Use Only:
+  - Commercial use of the Software is strictly prohibited. “Commercial use” includes, but is not limited to:
+    - Selling or offering services that rely on the Software,
+    - Deploying the Software within any company or organization for internal business purposes,
+    - Integrating the Software into products or services offered for a fee.
+  - For commercial licensing inquiries, please contact elijah@relaywireless.com.
+- Exclusive Commercial Rights:
+  - Relay International Inc. retains the exclusive right to use, license, and sell the Software for any commercial purpose.
+- Attribution:
+  - Any redistribution or modification of the Software must include this license and the following notice: “Based on Relay Helium API, © Relay International Inc. Licensed for non-commercial use only.”
+- Trademarks:
+  - The names “Relay,” “Relaywireless,” “Relay Wireless,” “Relay API” and related branding may not be used without prior written permission from Relay International Inc.
+- Termination:
+  - This license is automatically terminated if the above conditions are violated.
+
+Disclaimer:
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
