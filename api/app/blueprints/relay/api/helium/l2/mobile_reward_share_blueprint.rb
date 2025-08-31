@@ -12,12 +12,14 @@ module Relay
             field :formatted_dc_transfer_reward
             field :poc_reward
             field :formatted_poc_reward
+            field :offloaded_data_gbs
           end
 
           class GatewayRewardDetailBlueprint < Blueprinter::Base
             field :hotspot_key
             field :dc_transfer_reward
             field :formatted_dc_transfer_reward
+            field :offloaded_data_gbs
           end
 
           class SubscriberRewardDetailBlueprint < Blueprinter::Base

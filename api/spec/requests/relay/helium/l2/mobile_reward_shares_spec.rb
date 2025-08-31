@@ -102,7 +102,8 @@ RSpec.describe "/helium/l2/mobile-reward-shares", type: :request do
         "total_subscriber_reward" => 75,
         "total_discovery_location_amount" => 200,
         "total_service_provider_amount" => 90,
-        "total_matched_amount" => 120
+        "total_matched_amount" => 120,
+        "total_offloaded_data_gbs" => 0.0
       })
     end
   end
