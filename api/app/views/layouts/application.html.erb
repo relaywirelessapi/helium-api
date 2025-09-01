@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title><%= content_for(:title) ? "#{content_for(:title)} | Relay API" : "Relay API" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <%# Social sharing metadata %>
+    <meta property="og:title" content="Easy-to-use API for Helium Data | Relay API">
+    <meta property="og:description" content="Open-source, free, public, GraphQL API for Helium Oracle data. Get information about any hotspot, sync earnings, discover activity, and much more. Try it today for free.">
+    <meta name="description" content="Open-source, free, public, GraphQL API for Helium Oracle data. Get information about any hotspot, sync earnings, discover activity, and much more. Try it today for free.">
+    
+    <%# Favicon %>
+    <link rel="icon" type="image/svg+xml" href="<%= asset_path('logo.svg') %>">
+    
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= Sentry.get_trace_propagation_meta.html_safe %>
+
+    <% if ENV.fetch("POSTHOG_API_KEY", nil).present? && ENV.fetch("POSTHOG_HOST", nil).present? %>
+      <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('<%= ENV.fetch("POSTHOG_API_KEY") %>', {api_host: '<%= ENV.fetch("POSTHOG_HOST") %>'})
+        <% if current_user %>
+        posthog.identify(
+          '<%= current_user.id %>',
+          { email: '<%= current_user.email %>' }
+        );
+        <% end %>
+      </script>
+    <% end %>
+  </head>
+
+  <body class="h-full <%= "bg-gray-50" if user_signed_in? %>">
+    <div class="min-h-full">
+      <% if user_signed_in? %>
+        <%= render NavbarComponent.new %>
+      <% end %>
+
+      <div class="py-6">
+        <main class="<%= "flex items-center justify-center min-h-[calc(100vh-theme(spacing.16))]" unless user_signed_in? %>">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+            <% if flash.any? %>
+              <div class="mb-6">
+                <% flash.each do |type, message| %>
+                  <%= render FlashMessageComponent.new(type: type.to_sym, message: message) %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<SOLANA_RPC_URL>"
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAsset","params":{"id":"Eb58w6HnPcXRbZyWgSAV7g3fYFnZaoAet8qZNS3yekNL"}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 16:37:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9623e1ab197d1f0c-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers, Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '164'
+      Helius-Request-Type:
+      - das
+      Helius-Router-Overhead:
+      - '47'
+      Helius-Total-Latency:
+      - '211'
+      X-Region:
+      - fra
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","result":{"interface":"V1_NFT","id":"Eb58w6HnPcXRbZyWgSAV7g3fYFnZaoAet8qZNS3yekNL","content":{"$schema":"https://schema.metaplex.com/nft1.0.json","json_uri":"https://entities.nft.helium.io/v1/DpmnCM3QhpmFcKgSQ9zYiA4eEJHLGSrCV1iYWd9Jyxuo","files":[{"uri":"https://shdw-drive.genesysgo.net/6tcnBSybPG7piEDShBcrVtYJDPSvGrDbVvXmXKpzBvWP/mobile-hotspot.png","cdn_uri":"https://cdn.helius-rpc.com/cdn-cgi/image//https://shdw-drive.genesysgo.net/6tcnBSybPG7piEDShBcrVtYJDPSvGrDbVvXmXKpzBvWP/mobile-hotspot.png","mime":"image/png"}],"metadata":{"attributes":[{"value":"1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ","trait_type":"ecc_compact"},{"value":"1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ","trait_type":"entity_key_string"},{"value":"AAQBAwEAqVv6So7itswkMn4dzF7I8y/aeE5+Wi2sfmnfN6UGn9Lrcr/WcaoGOCur9DMfvBR23gpg1MHWvS/hjJbLqkpUCDg2UKu1qIdCSVxq2BScgvSmcHLVfizr+xoc4Kb+iM66LwwSFgiIsNBtDAQiJyApdhVTHXHCobcjM8BNEhO14EDqhilfq2i3gdJtWqCezR6szlix5eZJP6H4hhCh3PqDz+8Bp4L3HoigASRVtALDTpMzcJch7WDTqFcMegp0hTAk4kSFA2XzgP8a++Ku+ivdn1hOYg6yKp23wjlBE0FhIKk96hxOCyhyQ5mMoG3KIOFLXSeb0cV0F18bGrSM108/RQEAAVtWiXs=","trait_type":"entity_key"},{"value":true,"trait_type":"rewardable"},{"value":[],"trait_type":"networks"}],"description":"A
+        Rewardable NFT on Helium","name":"modern-hotpink-condor","symbol":"HOTSPOT","token_standard":"NonFungible"},"links":{"image":"https://shdw-drive.genesysgo.net/6tcnBSybPG7piEDShBcrVtYJDPSvGrDbVvXmXKpzBvWP/mobile-hotspot.png"}},"authorities":[{"address":"8GX15CMH2TtRpv2kMrmbVgMQvWSEDPBCF6ucGU6Y71Ph","scopes":["full"]}],"compression":{"eligible":false,"compressed":true,"data_hash":"9ddK5UatUHCpd2LMdx7ewcht6QPR5etRXTfxDqitqA5Y","creator_hash":"GWxvpTNTNZoJQqxhAK5Xmqdj71UQg9rZABnkXtZPjW8F","asset_hash":"F6HHp971yz2SZRWscXNoK4nAFPaAb7zmd1sHuL8GK8Zw","tree":"GHYFhNyiqSPxu3q2a5ENs42iV1zRCfcjCiE7TmzNxni3","seq":2015,"leaf_id":1876},"grouping":[{"group_key":"collection","group_value":"8Rap1SUaHABCZ18yVbubn1SQVEQHvBaiwZFeDtTn7u5a"}],"royalty":{"royalty_model":"creators","target":null,"percent":0.0,"basis_points":0,"primary_sale_happened":true,"locked":false},"creators":[{"address":"Fv5hf1Fg58htfC7YEXKNEfkpuogUUQDDTLgjGWxxv48H","share":100,"verified":true},{"address":"DpmnCM3QhpmFcKgSQ9zYiA4eEJHLGSrCV1iYWd9Jyxuo","share":0,"verified":true}],"ownership":{"frozen":false,"delegated":false,"delegate":null,"ownership_model":"single","owner":"GzGPBGZ6C3UcNypFPwGBvwhpVrnci4z8u9CWgRernFJ5"},"supply":{"print_max_supply":0,"print_current_supply":0,"edition_nonce":null},"mutable":true,"burnt":false},"id":1}'
+  recorded_at: Sun, 20 Jul 2025 16:37:09 GMT
+- request:
+    method: get
+    uri: https://entities.nft.helium.io/v1/DpmnCM3QhpmFcKgSQ9zYiA4eEJHLGSrCV1iYWd9Jyxuo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 16:37:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - accept-encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Sun, 20 Jul 2025 16:23:49 GMT
+      Cache-Control:
+      - no-store
+      Cf-Cache-Status:
+      - HIT
+      Cf-Ray:
+      - 9623e1ad28e9ed4b-MXP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"Modern Hotpink Condor","description":"A Rewardable NFT on
+        Helium","image":"https://entities.nft.helium.io/v2/assets/hotspot-mobile.png","asset_id":"Eb58w6HnPcXRbZyWgSAV7g3fYFnZaoAet8qZNS3yekNL","key_to_asset_key":"DpmnCM3QhpmFcKgSQ9zYiA4eEJHLGSrCV1iYWd9Jyxuo","entity_key_b64":"AAQBAwEAqVv6So7itswkMn4dzF7I8y/aeE5+Wi2sfmnfN6UGn9Lrcr/WcaoGOCur9DMfvBR23gpg1MHWvS/hjJbLqkpUCDg2UKu1qIdCSVxq2BScgvSmcHLVfizr+xoc4Kb+iM66LwwSFgiIsNBtDAQiJyApdhVTHXHCobcjM8BNEhO14EDqhilfq2i3gdJtWqCezR6szlix5eZJP6H4hhCh3PqDz+8Bp4L3HoigASRVtALDTpMzcJch7WDTqFcMegp0hTAk4kSFA2XzgP8a++Ku+ivdn1hOYg6yKp23wjlBE0FhIKk96hxOCyhyQ5mMoG3KIOFLXSeb0cV0F18bGrSM108/RQEAAVtWiXs=","key_serialization":"b58","entity_key_str":"1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ","hotspot_infos":{"iot":{"location":null},"mobile":{"address":"AmTbFtT34u6o72xhKQpLGSHVM2yMJLscjtkaHxLTrpvG","asset":"Eb58w6HnPcXRbZyWgSAV7g3fYFnZaoAet8qZNS3yekNL","street":"Callan
+        Boulevard","city":"Daly City","state":"California","country":"United States","is_active":false,"device_type":"wifiIndoor","location":"8c28309703497ff","dc_onboarding_fee_paid":"0","created_at":"2023-12-30T03:58:09.507Z","lat":37.664021,"long":-122.467938}},"attributes":[{"trait_type":"ecc_compact","value":"1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ"},{"trait_type":"entity_key_string","value":"1trSuseYprxtYN77nxFTxLexhjWSck6yVusstkFJ8bHddYzymzJT23XGY4cU2XhviFyNKTzmBF8JyySXzxjh39ovfx4CU5uCLSoPSXdXjH6HyDTv7wMgGQuTcWhfzRx2VFBZYeG9QSWLuyGdAGpbwozPvGYFUhpb3j548sXt1efQacq9DH2oU1RkHXg7vejL2vchMDHg7gvK27G2qxt4fsoVgZvZKm9ttce11pKg8666Q3eLvwBG61iCf1WenSXGZU8wPgAAyiJkfNifa5afZQa5ZCYYjijX7uLyaqgJSbdwPdtGbHPpNVZa7p3eChquxFhQvYg4BufvDFKeQrBV8CDLU8y2ErA9wzxkux7dyM4ZFQ"},{"trait_type":"entity_key","value":"AAQBAwEAqVv6So7itswkMn4dzF7I8y/aeE5+Wi2sfmnfN6UGn9Lrcr/WcaoGOCur9DMfvBR23gpg1MHWvS/hjJbLqkpUCDg2UKu1qIdCSVxq2BScgvSmcHLVfizr+xoc4Kb+iM66LwwSFgiIsNBtDAQiJyApdhVTHXHCobcjM8BNEhO14EDqhilfq2i3gdJtWqCezR6szlix5eZJP6H4hhCh3PqDz+8Bp4L3HoigASRVtALDTpMzcJch7WDTqFcMegp0hTAk4kSFA2XzgP8a++Ku+ivdn1hOYg6yKp23wjlBE0FhIKk96hxOCyhyQ5mMoG3KIOFLXSeb0cV0F18bGrSM108/RQEAAVtWiXs="},{"trait_type":"rewardable","value":true},{"trait_type":"networks","value":["mobile"]},{"trait_type":"mobile_city","value":"Daly
+        City"},{"trait_type":"mobile_state","value":"California"},{"trait_type":"mobile_country","value":"United
+        States"},{"trait_type":"mobile_lat","value":37.664021},{"trait_type":"mobile_long","value":-122.467938}]}'
+  recorded_at: Sun, 20 Jul 2025 16:37:09 GMT
+- request:
+    method: post
+    uri: "<SOLANA_RPC_URL>"
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["AmTbFtT34u6o72xhKQpLGSHVM2yMJLscjtkaHxLTrpvG",{"encoding":"jsonParsed","commitment":"finalized"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 16:37:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9623e1af6af2ee76-MXP
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, OPTIONS
+      Helius-Origin-Latency:
+      - '49'
+      Helius-Request-Type:
+      - rpc
+      Helius-Router-Overhead:
+      - '42'
+      Helius-Total-Latency:
+      - '91'
+      X-Via:
+      - fra4
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","id":1,"result":{"context":{"slot":354592804,"apiVersion":"2.2.7"},"value":{"lamports":1886160,"data":["ech00Snx5LjJ4lrh/afiKDd8kvDKLicmvEjHeTfXkb3TUkdaBNnFKf0B/5c0cAmDwggBAQAAAAAAAAAAAAABAQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=","base64"],"owner":"hemjuPXBpNvggtaUnN1MwT3wrdhttKEfosTcc2P9Pg8","executable":false,"rentEpoch":18446744073709551615,"space":143}}}'
+  recorded_at: Sun, 20 Jul 2025 16:37:09 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "sans-serif";
+  --color-primary: #0039FF;
+}
+
+body {
+  font-size: 18px;
+}

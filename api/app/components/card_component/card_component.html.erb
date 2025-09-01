@@ -1,0 +1,15 @@
+<div class="<%= class_names(
+  "rounded-lg border",
+  {
+    "bg-white border-gray-200" => @color == :white,
+    "bg-amber-50 border-amber-200" => @color == :amber,
+  },
+  @class_names,
+) %>">
+  <div class="px-4 py-5 sm:p-6">
+    <% if @title %>
+      <h2 class="text-2xl mb-4"><%= @title %></h2>
+    <% end %>
+    <%= content %>
+  </div>
+</div> 

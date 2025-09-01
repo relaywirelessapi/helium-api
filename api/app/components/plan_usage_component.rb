@@ -1,0 +1,20 @@
+# typed: strict
+
+class PlanUsageComponent < ViewComponent::Base
+  extend T::Sig
+
+  sig { params(user: User).void }
+  def initialize(user:)
+    @user = user
+  end
+
+  private
+
+  sig { returns(User) }
+  attr_reader :user
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def historical_data_from
+    user.api_usage_reset_at
+  end
+end

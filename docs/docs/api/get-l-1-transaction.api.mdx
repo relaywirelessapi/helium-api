@@ -1,0 +1,71 @@
+---
+id: get-l-1-transaction
+title: "Get L1 transaction"
+description: "Returns a specific L1 transaction by ID or transaction hash. Requires the HotspotData feature."
+sidebar_label: "Get L1 transaction"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVcFu40YM/ZUBTy0gW3GxJ52aNsEmSIBdJM6hyBoLWqKs2ZVmFA7lrCvo3wtKci3babs9FKgv1kh8w8fHx5kWBDcBkme4odI2lblfwCoCplB7FyhA0sJPFxf6l1FI2dZivYMEPtxBBKl3Qk70K9Z1aVPUr/GXoCEthLSgCvVJrJQECdwvzJLRBUz7bSKQXa3v/foLpQKa+KWxTJkyshlEsC59+lUDD7DPBYZij40gt1RmQde2IiVfs6+JxQ7sbdYTGPIEYes2CvJcoUACTdOnYcLsgyt3kAg31O3zHpDWCW2I3wo9o/ZGvnNQH/AdgWN5h9CJVqd7qgDfQbn/RfDu4t15XyftMc6LyX3jsn/V6hOWx90gZs9v1U3fsKp7j7zNoNuz1t363LcZJLAhmZWLmRyZ6riiB5KGXTBoQk2pzW1q7hdmgjDrnbm9Mp6PXmon5+Zh8GMwUpC58RJqL1coaHJCaZjmWiEyViTEOkctOKx69VU1qwRqlOLI2tqE6FyyUYvutIBlQcZm5MTmltj4vCcz4To3v6Iza0o+uZl5erq9SoxiGmdfmn+AKmIq+A2GYkCP58GpJJ8cdKsIKpLCjw3oJZACEoiLHhSXi3iCC3Frsw4iCMTbQaWVLtKGrex6zS4bKTzb33Eo+XnVTSIeVajBPidxf4r9CyETm8uPt5/vrn87nCtY2zva7RtREGbEoC6yLvfTg+mBStwpHiJQjoPyi/nFmZ0uzcP141JDjXjDJGxpS8a7WVqgdQZdZnyej6us94rnUU61S2lTcoEm7D+yr9mSIO/MzCyJq6CteiTe2lSPuIZLpS9ShySOX19f56x8Xy1TSSHMU1/FJW2wjEXBM5/PwgjuhtHFVCYJh2qXhJVOXoVWtxfC6ud+34wUqrue5T7L26tZ+yAVThvynuRkyk6FbA9Hyn8/oqMdhL5JXJdonerSV9aO3n2GwbvaoMXxfaN3S2IzvVoKH0Rj23aNgZ647Dp9/dIQ7wZbb5EtrtVTzy1kNuhzBkmOZaC/UeCHsYrsR/N/G/e/UG8/YU7Ha4tloyuI4CvthtOvW3XRfuRUjOHDZZpSLRPI2W1ydLy8v15C1/0BZYP8dA==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get L1 transaction"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/transactions/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a specific L1 transaction by ID or transaction hash. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":"The identifier of the transaction. Can be:\n- UUID: The unique identifier of the transaction\n- Transaction Hash: The Helium transaction hash\n"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"title":"L1 Transaction","type":"object","required":["id","block","transaction_hash","type","fields","time"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"block":{"type":"integer","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"type":{"type":"string","readOnly":true},"fields":{"type":"object","readOnly":true},"time":{"type":"integer","readOnly":true}}}}}},"404":{"description":"Transaction not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string","example":"Transaction not found"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

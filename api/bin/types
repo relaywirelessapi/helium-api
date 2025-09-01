@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "Generating type definitions..."
+bundle exec tapioca gem
+bundle exec tapioca annotation
+bundle exec tapioca dsl
+
+echo "Running type checker..."
+bundle exec spoom srb bump --from false --to true || true
+bundle exec spoom srb bump --from true --to strict || true
+bundle exec spoom srb tc

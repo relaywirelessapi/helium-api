@@ -1,0 +1,71 @@
+---
+id: get-iot-reward-totals
+title: "Get IoT reward totals"
+description: "Retrieves aggregated totals for IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled."
+sidebar_label: "Get IoT reward totals"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV01v4zYQ/SsETy0g22mOOjXdDbbBFthF4h6KwDDG0ljiLkVqh6M4ruH/XgypOLKdj4236KG+2JQ4M28eZ97QG81QBZ3f6t/Rmq5Rf5zrWaYJQ+tdwKDzjT4/O5OvEkNBpmXjnc61znThHaNjeQdta00B8m7yJciGjQ5FjQ3ILzZsUef6yk/VNa6ASjX1DDboTN+PAvvWmqqOjkypc208jzhuGPVOtpnmdSs+/OILFqyzAzgXVUVYAWOpkqVaelISkGJACUX4rTOEpWQbN80XCIV3c2h858Rneroy7DCEw8dlMWcCF5ZIh6/65SzTLfkWiU1i7qko8jilYhxjhfQ6CcmBkNAYZ5qu0fmZpAPlJ2fXOmfq8JCQSLBKliqFVlCQD0GBtaoBLmrjqh0922eyPwFu7+EUvL3pmwA/cS4ngC6LU/C+f6ceYr8J8+k4e8sTsH4PvvTJtBRx7OYrCV8hjwRC2tYjOWrBa2QyeIdBwWvNGNegKnOHTrFpUBG4CjPlozOwdi0A/UrAsVdLYxlJLdaq9hxaz+orrhW4sneohMWxuk4NHhTXqD4RFBbfA4NaInBHKNVVP4JT6MrWG8dBoYOFxXL8Ov2+FepbIGiQkUQ595QunWZgMq6SnUaY+dYhrXWmHTTydkm+2ZOjJ8+sRrXAyjgnHPhlzKkU2JEqYYV6wnck7Lge6232ZljsvwsUuvI/gdOf9Pwrro9KTXAMK+Hfj568zOPep6IP6u7V6LNM4z2jC8a7VDCSU75Xapm+A9vhcyUnPhrk2vftqKUGuda5ntRxbk/s+WTQoqEGwjDZdWpAukvVOpNF0ZHhdYRy0XHtyfwNKbnb2Xaw40ZIS6PsYN/mgajfEAhJXXy+mn+8/Evv5jS05mM8uchujVAi6W1ke+mHl4JrtLAWe+EAKSSOfxmfHc94dX15M5Wte5R7NypqMC7qgV8u+1UZO9+TShcb6W1rCnQBB+g/k2/JIAOt1UhNkZogxX2DdGcKOfmOrMBnbkM+maxWqzEJ3pUhtBjCuPDNxGIFdsJiPPLLUeiNt+mGBAUPAqZspwiiANiAEfeM0Pwa/ZYopuL1KPZR3Mhm6wM3MDyQD8gDqVVPi/Xm8fL2P9HtvuwY73nSWjDxuhQZ3PStcqtTq0ghnEthHrbLw3UuyEWu9oHFZrNZQMA/yW638jjJhDROaUIMrvMl2HAolUOCf+rzK39WP6jqz6SZ5KQfK72O6Kh6J4M8SeVfhBfHy4ng3qj3L+LYnys/AOgNI+BFQPuj5hHQTBZkBFHU5exBRR8nyEVRYDsYHsf/w/YGx4fLqd5u/wETPuZF
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get IoT reward totals"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/iot-reward-shares/totals"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves aggregated totals for IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"from","required":true,"description":"The beginning of the date range to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"to","required":true,"description":"The end of the date range to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"hotspot_key","description":"The hotspot key to retrieve reward totals for."},{"schema":{"type":"string"},"in":"query","name":"reward_type","description":"The reward type to retrieve reward totals for."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"title":"IoT Reward Totals","x-stoplight":{"id":"iot-totals-schema"},"type":"object","description":"Aggregated totals for IoT rewards","required":["total_beacon_amount","total_witness_amount","total_dc_transfer_amount","total_amount"],"properties":{"total_beacon_amount":{"type":"integer","x-stoplight":{"id":"iot-totals-beacon"},"minimum":0,"readOnly":true,"description":"Total beacon amount across all matching rewards"},"total_witness_amount":{"type":"integer","x-stoplight":{"id":"iot-totals-witness"},"minimum":0,"readOnly":true,"description":"Total witness amount across all matching rewards"},"total_dc_transfer_amount":{"type":"integer","x-stoplight":{"id":"iot-totals-dc"},"minimum":0,"readOnly":true,"description":"Total DC transfer amount across all matching rewards"},"total_amount":{"type":"integer","x-stoplight":{"id":"iot-totals-amount"},"minimum":0,"readOnly":true,"description":"Total amount across all matching rewards"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: get-l-1-account
+title: "Get L1 account"
+description: "Returns a specific L1 account by ID or address. Requires the HotspotData feature."
+sidebar_label: "Get L1 account"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV1FP4zgQ/ivWPIGU0va0T5FOOg7QLmLvdgXl4cQi5MYT4iWxgz0pdKv899M4CaQtu4Wgkw4JNbHnG3/zeTyerIDkrYf4Cj5hrqtCfJ7CdQQOfWmNRw/xCn6bTPhHoU+cLklbAzF8OYMIEmsIDfGsLMtcJ5Jnx989m6zAJxkWkp9IU44Qw+epOEwSWxmCCB5HnmyZ69sseNAKYsinI9kYjFp0HQEtSwbb+XdMGOjwvtIOFdPWCiKQSjn0HiKYy1yaBCECY5tfldw8D6rkphv3mFRO07I3+zTU2aTaebqZ5za5gwhy2XvxJO9Q9cCFnescewPa0tPbdQSlsyU60o2mHOyqC8yT0+Z2tyJasRqpdYUkiKGqQvAOpfpi8iXE5CqMNvbp0uj7CoVWaEinGp1IrROUoWi9sstOv7dT6pD1Lh6zDMVTiomgYpJJbUTrQdh0k1Un3jMrbQhv0e2m1UHrCAptdFEVEE9eRfHvmWjBG4yENmJuDXqxNw1mv4vpZBJNmv9map8XbJJnAOkG+GbK5KTxMuEREVy8tMO9UzCAmUqGK3osSYojh0qTF3vHR/s/0bdlOVg9lQwVcI3hq9Tcqh0D+HY+hivbeRBk79D8QtaNuvYesgMl3qD6KpH7xXcA5QAfNfA38w3gpkoJUxVzdOIhQ4eCMu2fKoIsS5R8D9Vrl8MAsoweypWxO6k+SH4mvQibt3F5DUmI4OEduRvwvyi3weX6lTqAZuNhOM2/An7nAetf9QNYavuOG+vUznbwC38RfJh82G7j2m5MGEsitZVRb+rqNvqy9RYHnbPupZYCH2VRhnZwe/W6Y8uewrqnLNYt0uhZMNjU4RypcsYLKXyJiU51wk1Gl/vzpTg9FtZ1rcaBOG8aSB90+mTJl5bCLZCipMrhAQcjnSyQ0HF3vAIji7CnLJDmNUtJ2Vov2mzQljpt2PVLe9frytY37UAcSSPmGH8zI3F5eXocC7avtpq5dRhbHzZBNoC243q5x/pmoL6OoEDKbCtyiJsyiGGcBeg4n45bcz9eaVWHNtktGlmun++WINJhRZl1+odsYry6rnsWF6xMkxobdk/q/snl1InDr6c3Zyf/wFPnL0t9hstO+QylQgecJdqktv99cY65XDIeImCOjdTTg8lWyhyK85OLGZsKssIhOY0LFNaM2rbUKGHTtH1TITmsawXl/Mh1gsZjj/1XZ0unkaRbipGYoSuC4hfoFjp8EVQuZ/pEpY/H44eHhwPHfB+0w5zzMrHFOMdbmY+JwSObjnwLrptjKRPqLdhEO0NZ8KkqpGb3hLL4I/hVyFD2urX21rpBzdJ6KmR/Qz4i9U7Spoir51LxnxzBdvcJH2lc5lIbliEEsmrT9AqaNOX9mPKHYJuqEEGsFX92ZdYT261Wc+nx0uV1zcP3Fbplk8EL6bScc/pcrUBpz88K4lTmfrPg9gPeayNQ++J/cZR/Ild3ggwfn4XMK36DCO5w2ZSz+rqOuiPFCjQTh0mCJfUgWzfBWun4eDKDuv4XvxKfQQ==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get L1 account"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/accounts/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a specific L1 account by ID or address. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":"The identifier of the account. Can be:\n- UUID: The unique identifier of the account\n- Address: The Helium address of the account\n"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"title":"L1 Account","x-stoplight":{"id":"l1-account-schema"},"type":"object","required":["id","address","balance","nonce","dc_balance","dc_nonce","security_balance","security_nonce","first_block","last_block","staked_balance","mobile_balance","iot_balance"],"properties":{"id":{"type":"string","x-stoplight":{"id":"l1-account-id"},"format":"uuid","readOnly":true,"description":"Unique identifier for the account"},"address":{"type":"string","x-stoplight":{"id":"l1-account-address"},"readOnly":true,"description":"The Helium L1 blockchain address of the account"},"balance":{"type":"integer","x-stoplight":{"id":"l1-account-balance"},"minimum":0,"readOnly":true,"description":"The HNT balance of the account in bones (1 HNT = 100,000,000 bones)"},"nonce":{"type":"integer","x-stoplight":{"id":"l1-account-nonce"},"minimum":0,"readOnly":true,"description":"The transaction nonce for the account"},"dc_balance":{"type":"integer","x-stoplight":{"id":"l1-account-dc-balance"},"minimum":0,"readOnly":true,"description":"The Data Credits (DC) balance of the account"},"dc_nonce":{"type":"integer","x-stoplight":{"id":"l1-account-dc-nonce"},"minimum":0,"readOnly":true,"description":"The Data Credits transaction nonce for the account"},"security_balance":{"type":"integer","x-stoplight":{"id":"l1-account-security-balance"},"minimum":0,"readOnly":true,"description":"The security token balance of the account"},"security_nonce":{"type":"integer","x-stoplight":{"id":"l1-account-security-nonce"},"minimum":0,"readOnly":true,"description":"The security token transaction nonce for the account"},"first_block":{"type":"integer","x-stoplight":{"id":"l1-account-first-block"},"minimum":0,"readOnly":true,"description":"The first block number where this account appeared"},"last_block":{"type":"integer","x-stoplight":{"id":"l1-account-last-block"},"minimum":0,"readOnly":true,"description":"The last block number where this account was active"},"staked_balance":{"type":"integer","x-stoplight":{"id":"l1-account-staked-balance"},"minimum":0,"readOnly":true,"description":"The staked HNT balance of the account"},"mobile_balance":{"type":"integer","x-stoplight":{"id":"l1-account-mobile-balance"},"minimum":0,"readOnly":true,"description":"The Mobile token balance of the account"},"iot_balance":{"type":"integer","x-stoplight":{"id":"l1-account-iot-balance"},"minimum":0,"readOnly":true,"description":"The IoT token balance of the account"}}}}}},"404":{"description":"Account not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string","example":"Account not found"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

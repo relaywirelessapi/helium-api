@@ -1,0 +1,71 @@
+<div class="rounded-3xl p-8 border-1 xl:p-10 flex flex-col h-full <%= current_plan? ? 'border-indigo-500 bg-indigo-50' : 'border-gray-200 bg-white' %>">
+  <div class="text-sm text-gray-500">
+    <% if plan.custom_pricing? %>
+      Custom
+    <% elsif plan.free? %>
+      Free
+    <% else %>
+      $<%= plan.price_per_month %>/month
+    <% end %>
+  </div>
+
+  <div class="flex items-center gap-2 mt-1">
+    <h3 class="text-lg/8 font-semibold text-gray-900"><%= plan.name %></h3>
+  </div>
+
+  <div class="text-sm/6 text-gray-600"><%= plan.description %></div>
+  <hr class="my-6 border-gray-200"/>
+  
+  <ul role="list" class="space-y-3 text-sm/6 text-gray-600">
+    <% plan.features.each do |feature| %>
+      <li class="flex gap-x-3">
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-indigo-600">
+          <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+        <%= feature.description %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mt-auto pt-6">
+    <% if plan.custom_pricing? %>
+      <%= render ButtonComponent.new(
+        text: "Contact Us",
+        style: :secondary,
+        full_width: true,
+        href: "mailto:team@relaydevice.com",
+        size: :s
+      ) %>
+    <% elsif plan.upgrade?(current_plan) %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: current_user.subscription_pending_cancellation? ? "Upgrade and Resume" : "Upgrade",
+          style: :primary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
+    <% elsif plan.downgrade?(current_plan) && (!plan.free? || !current_subscription.cancelled?) %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: current_user.subscription_pending_cancellation? ? "Downgrade and Resume" : "Downgrade",
+          style: :secondary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
+    <% elsif current_plan? && current_user.subscription_pending_cancellation? %>
+      <%= form_with url: subscribe_path(plan.id), method: :post, data: { turbo: false }, class: "w-full" do |form| %>
+        <%= render ButtonComponent.new(
+          text: "Resume Subscription",
+          style: :primary,
+          full_width: true,
+          size: :s,
+          type: "submit"
+        ) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

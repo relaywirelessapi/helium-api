@@ -1,0 +1,117 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  BUNDLE_GEMS__CONTRIBSYS__COM: ${{secrets.BUNDLE_GEMS__CONTRIBSYS__COM}}
+
+jobs:
+  lint-ruby:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        linter: [brakeman, rubocop, sorbet]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp api/.env.example api/.env
+
+      - name: Run ${{ matrix.linter }}
+        run: |
+          if [ "${{ matrix.linter }}" = "brakeman" ]; then
+            docker compose run --rm --no-deps web bin/brakeman --no-pager
+          elif [ "${{ matrix.linter }}" = "rubocop" ]; then
+            docker compose run --rm --no-deps web bin/rubocop -f github
+          elif [ "${{ matrix.linter }}" = "sorbet" ]; then
+            docker compose run --rm --no-deps web bundle exec spoom srb tc
+          fi
+
+  lint-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp api/.env.example api/.env
+
+      - name: Audit JS dependencies
+        run: docker compose run --rm --no-deps web bin/importmap audit
+
+  test-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp api/.env.example api/.env
+
+      - name: Prepare the database
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
+
+      - name: Run RSpec
+        run: docker compose run --rm web bundle exec rspec
+
+  lint-tf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Cache Terraform
+        uses: actions/cache@v3
+        with:
+          path: |
+            terraform/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
+
+      - name: Validate Terraform
+        run: |
+          terraform -chdir=terraform init -backend=false
+          terraform -chdir=terraform validate
+
+  deploy:
+    needs: [lint-ruby, lint-js, lint-tf, test-ruby]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+      TF_VAR_posthog_api_key: ${{ secrets.TF_VAR_POSTHOG_API_KEY }}
+      TF_VAR_sentry_dsn: ${{ secrets.TF_VAR_SENTRY_DSN }}
+      TF_VAR_sidekiq_pro_credentials: ${{ secrets.BUNDLE_GEMS__CONTRIBSYS__COM }}
+      TF_VAR_solana_rpc_url: ${{ secrets.TF_VAR_SOLANA_RPC_URL }}
+      TF_VAR_stripe_public_key: ${{ secrets.TF_VAR_STRIPE_PUBLIC_KEY }}
+      TF_VAR_stripe_private_key: ${{ secrets.TF_VAR_STRIPE_PRIVATE_KEY }}
+      TF_VAR_stripe_signing_secret: ${{ secrets.TF_VAR_STRIPE_SIGNING_SECRET }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Cache Terraform
+        uses: actions/cache@v3
+        with:
+          path: terraform/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('terraform/**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
+
+      - name: Deploy to ECS
+        run: api/bin/deploy

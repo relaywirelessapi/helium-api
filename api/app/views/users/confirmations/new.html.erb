@@ -1,0 +1,22 @@
+<% content_for :title, "Confirm Account" %>
+
+<%= render(FormContainerComponent.new(title: "Confirm your account")) do %>
+  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.full_error :confirmation_token %>
+
+    <div class="space-y-6">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                  input_html: { autocomplete: "email" } %>
+
+      <%= render(ButtonComponent.new(text: "Send instructions", style: :primary, type: "submit")) %>
+    </div>
+  <% end %>
+
+  <p class="mt-10 text-center text-sm/6 text-gray-500">
+    Account already confirmed?
+    <%= link_to "Log in", new_session_path(resource_name), class: "font-semibold hover:text-primary transition-colors" %>
+  </p>
+<% end %>

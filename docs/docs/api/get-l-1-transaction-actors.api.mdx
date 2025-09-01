@@ -1,0 +1,71 @@
+---
+id: get-l-1-transaction-actors
+title: "List L1 transaction actors"
+description: "Returns the list of Helium L1 transaction actors with optional filtering by actor address, role, transaction hash and block. Requires the HotspotData feature."
+sidebar_label: "List L1 transaction actors"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV9FO60YQ/ZXVPLWSQxKgheunUpX2IlAvAvpQoQht7HG8sPaa3XFIiPzvV7M2JCZOGnJf+kTsnZlzZnbmjFkAyYmD8B6+olZlJq6GMArAoitM7tBBuIDDwYD/xOgiqwpSJocQvl1CAJHJCXPiU1kUWkWST/uPjk0W4KIUM8m/aF4ghGDGjxgRcPznUlmMGThDkhA0Z47RC2sKtKRqeH/OMRRpDnItJyr3QOIiT4zN/G8IYNZzZAqtJqlnpGIIQZ2e2PLITqbPx7mBKtjKJDJlzu/IkNQPhZyg4yRLazEn/7zOrvZZpqhywgnaDXSe9a9fxpOn6UA9DU6ZTqZylZUZhAOmIuNvuZ5DSLbEqs1jV4TkcVge0czp5zSiFsKwA6GV264QJ1/GdDp8HJ+cqsOjNkQVQI6zT8aTRj29ZnQ6MK/jeSveYQflwuL0c/EpnT6XND+ejU+OH/+jJFW17MRlfGmtnEMAijBzq714NRR3VuZORr4fzyIyzGJbk6kYApBs+CDj2KJz78/WaGTvZcSHVLoUAhhrEz2tNx+n907SkVX5BAKoZwJCKEsPtlbCNnpHhA0ent8u5msZ7OJU59h1qR13tPaqqq+uQOvl4IIvfoLU08PeCpueT4Qr3lazG6TS5k5QikIrR8Ik4l0QxUoAUQcQL4pSYby71CJRmpDzEuN5bSGa6gaCixa0QnBFhMxj4TM+EDd1d9ToXw25wtAfkqRIUFJp8QACKKSVGRJa1uoOZW3KWgWgOJ/nEi03bC4z378f2q2d/J+e/Rr1A6iCPZGaRt4Ow0Z7YXTMxyakj2XfgPfWahsA687cjOLPRV5mY7T7IXg9+whwLSfYRBWJsaJYLr6fYkxkqSkUw5/3RET70In6dw1oEuHVThTokXEF8/CXQGRyForhYMDwo4CXdGqamfPtSimE0E/9DPX1sN85hA7ttG7pET9EpVU09w1+VlJqrHqtd3t4P6pWLG4511oBP9gt3tL7HaVFK86uLx4uz/9dSrIs1CV6KedcU5Qxl8jXKDGryn6DWs7ZHwJgjnVxhgeDtYKdiZvz2zs2FWSERbIKpyhM3otSqXI/6SZJmqfYD7axjbzwbGsVYe5whf21NYVVSNLORU/coc0cX8gt2qmK+MpKq5k+UeHCfv/l5eXAMt8XZVHz6EYm62ucSN0ndu6ZpOca56r+bJMRrQDW2d6hzCAAzKTi8IQy+83HjZFdOeoa9hqur2ZhHGVy9UKuWFU7tfRjQRfLz8r/vy43bUU4o36hpcq5vr5Ci2YI7qEeAr7oYXu7vw3CKIDUOGLbxWIsHf5jdVXx63poeSBi5eRY8ydEIrXDLTXbKOcb2D7hvGNFTKUu2daLy/7gtcjvgNysjB+GXVf8reAdu+SHKbTXwVb4t82yJ+bOG2IriWYN7Mnh8/tiO5nlXloSGvGDVczI74LgTbl5Mmq/syjCgla81v4hba2pv87voKq+AznCJ6c=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List L1 transaction actors"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l1/transaction-actors"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the list of Helium L1 transaction actors with optional filtering by actor address, role, transaction hash and block. Requires the HotspotData feature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"actor_address","description":"Filter by actor address."},{"schema":{"type":"string"},"in":"query","name":"actor_role","description":"Filter by actor role."},{"schema":{"type":"string"},"in":"query","name":"transaction_hash","description":"Filter by transaction hash."},{"schema":{"type":"integer"},"in":"query","name":"block","description":"Filter by block number."},{"schema":{"type":"integer"},"in":"query","name":"page","description":"Page number for pagination (default: 1)."},{"schema":{"type":"integer"},"in":"query","name":"per_page","description":"Number of items per page (default: 25, max: 100)."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","required":["meta","objects"],"properties":{"meta":{"title":"Pagination Information","x-stoplight":{"id":"i87ru3rgvq4no"},"type":"object","required":["count","total_pages","current_page"],"properties":{"count":{"type":"integer","x-stoplight":{"id":"ql69bgkv0ik08"},"minimum":0,"readOnly":true},"total_pages":{"type":"integer","x-stoplight":{"id":"fj1u3txslqhct"},"minimum":1,"readOnly":true},"current_page":{"type":"integer","x-stoplight":{"id":"79bt81jb78i23"},"minimum":1},"next_page":{"type":"integer","x-stoplight":{"id":"aoikzmt80ozby"},"minimum":2,"readOnly":true},"prev_page":{"type":"integer","x-stoplight":{"id":"thvquty4xb74j"},"minimum":1,"readOnly":true}}},"objects":{"type":"array","items":{"title":"L1 Transaction Actor","type":"object","required":["id","actor_address","actor_role","transaction_hash","block"],"properties":{"id":{"type":"string","format":"uuid","readOnly":true},"actor_address":{"type":"string","readOnly":true},"actor_role":{"type":"string","readOnly":true},"transaction_hash":{"type":"string","readOnly":true},"block":{"type":"integer","readOnly":true}}},"readOnly":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
