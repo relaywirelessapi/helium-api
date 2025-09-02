@@ -3,18 +3,18 @@ x-stoplight:
   id: 5v6gvgzv53i7e
 info:
   title: Relay API
-  version: '1.0'
+  version: "1.0"
   description: A REST API to retrieve on-chain and off-chain data for Helium.
   license:
     name: Proprietary - Terms of Service
-    url: 'https://www.relaywireless.com/legal/terms-of-service'
+    url: "https://www.relaywireless.com/legal/terms-of-service"
   contact:
     name: Relay Team
     email: team@relaydevice.com
-    url: 'https://relaywireless.com'
+    url: "https://relaywireless.com"
 servers:
-  - url: 'https://api.relaywireless.com/v1'
-    description: ''
+  - url: "https://api.relaywireless.com/v1"
+    description: ""
 paths:
   /helium/l2/makers:
     parameters: []
@@ -23,7 +23,7 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -34,7 +34,7 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                     x-stoplight:
                       id: hu6nw0xjsfx28
                   objects:
@@ -42,7 +42,7 @@ paths:
                     x-stoplight:
                       id: p3mvjy3kykrsa
                     items:
-                      $ref: '#/components/schemas/maker'
+                      $ref: "#/components/schemas/maker"
                       x-stoplight:
                         id: 5w7y94hphq840
                     readOnly: true
@@ -78,13 +78,13 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/maker'
-        '404':
+                $ref: "#/components/schemas/maker"
+        "404":
           description: Maker not found
           content:
             application/json:
@@ -104,7 +104,7 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -115,7 +115,7 @@ paths:
                   - records
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                     x-stoplight:
                       id: hotmeta123
                   records:
@@ -123,7 +123,7 @@ paths:
                     x-stoplight:
                       id: hotrecords123
                     items:
-                      $ref: '#/components/schemas/hotspot'
+                      $ref: "#/components/schemas/hotspot"
                       x-stoplight:
                         id: hotitem123
                     readOnly: true
@@ -195,13 +195,13 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/hotspot'
-        '404':
+                $ref: "#/components/schemas/hotspot"
+        "404":
           description: Hotspot not found
           content:
             application/json:
@@ -221,15 +221,15 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                     x-stoplight:
                       id: lywd67q9z92i5
                   records:
@@ -237,11 +237,11 @@ paths:
                     x-stoplight:
                       id: 12gzcugjjtnj8
                     items:
-                      $ref: '#/components/schemas/iot-reward-share'
+                      $ref: "#/components/schemas/iot-reward-share"
                       x-stoplight:
                         id: hdd4ypib1olm7
       operationId: get-iot-rewards
-      description: 'Retrieves the IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type.'
+      description: "Retrieves the IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
       x-stoplight:
         id: mh9mdw246klh4
       parameters:
@@ -285,14 +285,14 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/iot-reward-totals'
+                $ref: "#/components/schemas/iot-reward-totals"
       operationId: get-iot-reward-totals
-      description: 'Retrieves aggregated totals for IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.'
+      description: "Retrieves aggregated totals for IoT rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled."
       x-stoplight:
         id: iot-totals-op
       parameters:
@@ -326,15 +326,15 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                     x-stoplight:
                       id: mob67q9z92i5
                   records:
@@ -342,11 +342,11 @@ paths:
                     x-stoplight:
                       id: mobzcugjjtnj8
                     items:
-                      $ref: '#/components/schemas/mobile-reward-share'
+                      $ref: "#/components/schemas/mobile-reward-share"
                       x-stoplight:
                         id: mobypib1olm7
       operationId: get-mobile-rewards
-      description: 'Retrieves the Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type.'
+      description: "Retrieves the Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type."
       x-stoplight:
         id: mobmdw246klh4
       parameters:
@@ -390,14 +390,14 @@ paths:
       tags:
         - Helium L2
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/mobile-reward-totals'
+                $ref: "#/components/schemas/mobile-reward-totals"
       operationId: get-mobile-reward-totals
-      description: 'Retrieves aggregated totals for Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled.'
+      description: "Retrieves aggregated totals for Mobile rewards for a given time range, optionally allowing to filter by hotspot key and reward type. Requires the OracleData feature with aggregate endpoints enabled."
       x-stoplight:
         id: mobile-totals-op
       parameters:
@@ -431,7 +431,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -442,7 +442,7 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                     x-stoplight:
                       id: l1-accounts-meta
                   objects:
@@ -450,7 +450,7 @@ paths:
                     x-stoplight:
                       id: l1-accounts-objects
                     items:
-                      $ref: '#/components/schemas/l1-account'
+                      $ref: "#/components/schemas/l1-account"
                       x-stoplight:
                         id: l1-accounts-item
                     readOnly: true
@@ -491,13 +491,13 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/l1-account'
-        '404':
+                $ref: "#/components/schemas/l1-account"
+        "404":
           description: Account not found
           content:
             application/json:
@@ -517,7 +517,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -528,11 +528,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-transaction'
+                      $ref: "#/components/schemas/l1-transaction"
                     readOnly: true
       operationId: get-l1-transactions
       description: Returns the list of Helium L1 blockchain transactions with optional filtering by hash, type, block and time range. Requires the HotspotData feature.
@@ -589,13 +589,13 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/l1-transaction'
-        '404':
+                $ref: "#/components/schemas/l1-transaction"
+        "404":
           description: Transaction not found
           content:
             application/json:
@@ -615,7 +615,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -626,11 +626,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-transaction-actor'
+                      $ref: "#/components/schemas/l1-transaction-actor"
                     readOnly: true
       operationId: get-l1-transaction-actors
       description: Returns the list of Helium L1 transaction actors with optional filtering by actor address, role, transaction hash and block. Requires the HotspotData feature.
@@ -673,7 +673,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -684,11 +684,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-dc-burn'
+                      $ref: "#/components/schemas/l1-dc-burn"
                     readOnly: true
       operationId: get-l1-dc-burns
       description: Returns the list of Helium L1 DC burns with optional filtering by actor address, transaction hash, type, block and time range. Requires the HotspotData feature.
@@ -741,7 +741,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -752,11 +752,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-gateway'
+                      $ref: "#/components/schemas/l1-gateway"
                     readOnly: true
       operationId: get-l1-gateways
       description: Returns the list of Helium L1 gateways with optional filtering by address, owner, payer, mode, name, and location hex. Requires the HotspotData feature.
@@ -818,13 +818,13 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/l1-gateway'
-        '404':
+                $ref: "#/components/schemas/l1-gateway"
+        "404":
           description: Gateway not found
           content:
             application/json:
@@ -844,7 +844,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -855,11 +855,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-packet'
+                      $ref: "#/components/schemas/l1-packet"
                     readOnly: true
       operationId: get-l1-packets
       description: Returns the list of Helium L1 packets with optional filtering by gateway, transaction hash, block and time range. Requires the HotspotData feature.
@@ -907,7 +907,7 @@ paths:
       tags:
         - Helium L1
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -918,11 +918,11 @@ paths:
                   - objects
                 properties:
                   meta:
-                    $ref: '#/components/schemas/pagination-info'
+                    $ref: "#/components/schemas/pagination-info"
                   objects:
                     type: array
                     items:
-                      $ref: '#/components/schemas/l1-reward'
+                      $ref: "#/components/schemas/l1-reward"
                     readOnly: true
       operationId: get-l1-rewards
       description: Returns the list of Helium L1 rewards with optional filtering by account address, gateway address, transaction hash, type, block and time range. Requires the HotspotData feature.
@@ -1064,15 +1064,15 @@ components:
             id: hotname123
           readOnly: true
         maker:
-          $ref: '#/components/schemas/maker'
+          $ref: "#/components/schemas/maker"
           x-stoplight:
             id: hotmaker123
         iot_info:
-          $ref: '#/components/schemas/hotspot-iot-info'
+          $ref: "#/components/schemas/hotspot-iot-info"
           x-stoplight:
             id: hotiot123
         mobile_info:
-          $ref: '#/components/schemas/hotspot-mobile-info'
+          $ref: "#/components/schemas/hotspot-mobile-info"
           x-stoplight:
             id: hotmobile123
     hotspot-iot-info:
@@ -1217,16 +1217,16 @@ components:
           format: date-time
           readOnly: true
         reward_manifest:
-          $ref: '#/components/schemas/reward-manifest'
+          $ref: "#/components/schemas/reward-manifest"
           x-stoplight:
             id: osm7lj9q9hinh
         reward_detail:
           x-stoplight:
             id: fudzhepjd8tc7
           oneOf:
-            - $ref: '#/components/schemas/iot-gateway-reward-detail'
-            - $ref: '#/components/schemas/iot-operational-reward-detail'
-            - $ref: '#/components/schemas/iot-unallocated-reward-detail'
+            - $ref: "#/components/schemas/iot-gateway-reward-detail"
+            - $ref: "#/components/schemas/iot-operational-reward-detail"
+            - $ref: "#/components/schemas/iot-unallocated-reward-detail"
           type: object
     reward-manifest:
       title: Reward Manifest
@@ -1289,8 +1289,8 @@ components:
           x-stoplight:
             id: po069f8iaxtew
           oneOf:
-            - $ref: '#/components/schemas/iot-reward-manifest-detail'
-            - $ref: '#/components/schemas/mobile-reward-manifest-detail'
+            - $ref: "#/components/schemas/iot-reward-manifest-detail"
+            - $ref: "#/components/schemas/mobile-reward-manifest-detail"
           type: object
     iot-gateway-reward-detail:
       title: IoT Gateway Reward Detail
@@ -1556,20 +1556,20 @@ components:
           format: date-time
           readOnly: true
         reward_manifest:
-          $ref: '#/components/schemas/reward-manifest'
+          $ref: "#/components/schemas/reward-manifest"
           x-stoplight:
             id: moblj9q9hinh
         reward_detail:
           x-stoplight:
             id: mobhepjd8tc7
           oneOf:
-            - $ref: '#/components/schemas/mobile-radio-reward-detail'
-            - $ref: '#/components/schemas/mobile-gateway-reward-detail'
-            - $ref: '#/components/schemas/mobile-subscriber-reward-detail'
-            - $ref: '#/components/schemas/mobile-service-provider-reward-detail'
-            - $ref: '#/components/schemas/mobile-unallocated-reward-detail'
-            - $ref: '#/components/schemas/mobile-radio-reward-v2-detail'
-            - $ref: '#/components/schemas/mobile-promotion-reward-detail'
+            - $ref: "#/components/schemas/mobile-radio-reward-detail"
+            - $ref: "#/components/schemas/mobile-gateway-reward-detail"
+            - $ref: "#/components/schemas/mobile-subscriber-reward-detail"
+            - $ref: "#/components/schemas/mobile-service-provider-reward-detail"
+            - $ref: "#/components/schemas/mobile-unallocated-reward-detail"
+            - $ref: "#/components/schemas/mobile-radio-reward-v2-detail"
+            - $ref: "#/components/schemas/mobile-promotion-reward-detail"
           type: object
     mobile-radio-reward-detail:
       title: Mobile Radio Reward Detail
@@ -1613,6 +1613,12 @@ components:
           x-stoplight:
             id: mobkomxheqgy9ge
           readOnly: true
+        offloaded_data_gbs:
+          type: number
+          x-stoplight:
+            id: moboffloadedgbs123
+          readOnly: true
+          description: The amount of data offloaded in GBs, calculated from DC transfer reward
     mobile-gateway-reward-detail:
       title: Mobile Gateway Reward Detail
       x-stoplight:
@@ -1638,6 +1644,12 @@ components:
           x-stoplight:
             id: mobgateway012
           readOnly: true
+        offloaded_data_gbs:
+          type: number
+          x-stoplight:
+            id: mobgatewayoffloadedgbs123
+          readOnly: true
+          description: The amount of data offloaded in GBs, calculated from DC transfer reward
     mobile-subscriber-reward-detail:
       title: Mobile Subscriber Reward Detail
       x-stoplight:
@@ -1935,6 +1947,12 @@ components:
           minimum: 0
           readOnly: true
           description: Total matched amount across all matching rewards
+        total_offloaded_data_gbs:
+          type: number
+          x-stoplight:
+            id: mobile-totals-offloaded-gbs
+          readOnly: true
+          description: Total amount of data offloaded in GBs across all matching rewards
     maker:
       title: maker
       x-stoplight:
