@@ -15,6 +15,8 @@ info:
 servers:
   - url: "https://api.relaywireless.com/v1"
     description: ""
+  - url: "http://localhost:3000/v1"
+    description: ""
 paths:
   /helium/l2/makers:
     parameters: []
@@ -61,7 +63,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l2/makers/{id}:
     parameters:
       - name: id
@@ -96,7 +97,6 @@ paths:
                     example: "Maker not found"
       operationId: get-maker
       description: Returns a specific maker by ID, UUID, or Solana address.
-    servers: []
   /helium/l2/hotspots:
     parameters: []
     get:
@@ -177,7 +177,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l2/hotspots/{id}:
     parameters:
       - name: id
@@ -213,7 +212,6 @@ paths:
                     example: "Hotspot not found"
       operationId: get-hotspot
       description: Returns a specific hotspot by ID, UUID, asset ID, or ECC key.
-    servers: []
   /helium/l2/iot-reward-shares:
     parameters: []
     get:
@@ -277,7 +275,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l2/iot-reward-shares/totals:
     parameters: []
     get:
@@ -318,7 +315,6 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve reward totals for.
-    servers: []
   /helium/l2/mobile-reward-shares:
     parameters: []
     get:
@@ -382,7 +378,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l2/mobile-reward-shares/totals:
     parameters: []
     get:
@@ -423,7 +418,6 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve reward totals for.
-    servers: []
   /helium/l1/accounts:
     parameters: []
     get:
@@ -474,7 +468,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/accounts/{id}:
     parameters:
       - name: id
@@ -509,7 +502,6 @@ paths:
                     example: "Account not found"
       operationId: get-l1-account
       description: Returns a specific L1 account by ID or address. Requires the HotspotData feature.
-    servers: []
   /helium/l1/transactions:
     parameters: []
     get:
@@ -572,7 +564,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/transactions/{id}:
     parameters:
       - name: id
@@ -607,7 +598,6 @@ paths:
                     example: "Transaction not found"
       operationId: get-l1-transaction
       description: Returns a specific L1 transaction by ID or transaction hash. Requires the HotspotData feature.
-    servers: []
   /helium/l1/transaction-actors:
     parameters: []
     get:
@@ -665,7 +655,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/dc-burns:
     parameters: []
     get:
@@ -733,7 +722,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/gateways:
     parameters: []
     get:
@@ -801,7 +789,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/gateways/{id}:
     parameters:
       - name: id
@@ -836,7 +823,6 @@ paths:
                     example: "Gateway not found"
       operationId: get-l1-gateway
       description: Returns a specific L1 gateway by ID or address. Requires the HotspotData feature.
-    servers: []
   /helium/l1/packets:
     parameters: []
     get:
@@ -899,7 +885,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
   /helium/l1/rewards:
     parameters: []
     get:
@@ -972,7 +957,6 @@ paths:
           in: query
           name: per_page
           description: "Number of items per page (default: 25, max: 100)."
-    servers: []
 components:
   schemas:
     pagination-info:

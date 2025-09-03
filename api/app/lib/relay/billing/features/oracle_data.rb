@@ -6,7 +6,7 @@ module Relay
       class OracleData < Feature
         extend T::Sig
 
-        EARLIEST_DATA_AVAILABLE_FROM = T.let(Date.parse("2023-04-08"), Date)
+        EARLIEST_DATA_AVAILABLE_FROM = T.let(Date.parse("2021-04-08"), Date)
 
         sig { returns(T.nilable(ActiveSupport::Duration)) }
         attr_reader :lookback_window
