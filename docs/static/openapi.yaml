@@ -19,7 +19,9 @@ servers:
     description: ""
 paths:
   /helium/l2/makers:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List makers
       tags:
@@ -52,17 +54,7 @@ paths:
       x-stoplight:
         id: uw4pfm1um5v1v
       description: Returns the list of registered hotspot makers.
-      parameters:
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l2/makers/{id}:
     parameters:
       - name: id
@@ -98,7 +90,9 @@ paths:
       operationId: get-maker
       description: Returns a specific maker by ID, UUID, or Solana address.
   /helium/l2/hotspots:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List hotspots
       tags:
@@ -167,16 +161,7 @@ paths:
           in: query
           name: mobile_location
           description: Filter by Mobile location (provide a decimal H3 cell index).
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l2/hotspots/{id}:
     parameters:
       - name: id
@@ -213,7 +198,9 @@ paths:
       operationId: get-hotspot
       description: Returns a specific hotspot by ID, UUID, asset ID, or ECC key.
   /helium/l2/iot-reward-shares:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List IoT rewards
       tags:
@@ -265,18 +252,9 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve rewards for.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l2/iot-reward-shares/totals:
-    parameters: []
+
     get:
       summary: Get IoT reward totals
       tags:
@@ -316,7 +294,9 @@ paths:
           name: reward_type
           description: The reward type to retrieve reward totals for.
   /helium/l2/mobile-reward-shares:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List Mobile rewards
       tags:
@@ -368,18 +348,9 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve rewards for.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l2/mobile-reward-shares/totals:
-    parameters: []
+
     get:
       summary: Get Mobile reward totals
       tags:
@@ -419,7 +390,9 @@ paths:
           name: reward_type
           description: The reward type to retrieve reward totals for.
   /helium/l1/accounts:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 accounts
       tags:
@@ -458,16 +431,7 @@ paths:
           in: query
           name: address
           description: Filter by account address.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/accounts/{id}:
     parameters:
       - name: id
@@ -503,7 +467,9 @@ paths:
       operationId: get-l1-account
       description: Returns a specific L1 account by ID or address. Requires the HotspotData feature.
   /helium/l1/transactions:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 transactions
       tags:
@@ -554,16 +520,7 @@ paths:
           in: query
           name: to
           description: Maximum unix timestamp for time filter.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/transactions/{id}:
     parameters:
       - name: id
@@ -599,7 +556,9 @@ paths:
       operationId: get-l1-transaction
       description: Returns a specific L1 transaction by ID or transaction hash. Requires the HotspotData feature.
   /helium/l1/transaction-actors:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 transaction actors
       tags:
@@ -645,18 +604,11 @@ paths:
           in: query
           name: block
           description: Filter by block number.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/dc-burns:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 DC burns
       tags:
@@ -712,18 +664,11 @@ paths:
           in: query
           name: to
           description: Maximum unix timestamp for time filter.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/gateways:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 gateways
       tags:
@@ -779,16 +724,7 @@ paths:
           in: query
           name: location_hex
           description: Filter by H3 location hex.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/gateways/{id}:
     parameters:
       - name: id
@@ -824,7 +760,9 @@ paths:
       operationId: get-l1-gateway
       description: Returns a specific L1 gateway by ID or address. Requires the HotspotData feature.
   /helium/l1/packets:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 packets
       tags:
@@ -875,18 +813,11 @@ paths:
           in: query
           name: to
           description: Maximum unix timestamp for time filter.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
   /helium/l1/rewards:
-    parameters: []
+    parameters:
+      - $ref: "#/components/parameters/PageParameter"
+      - $ref: "#/components/parameters/PerPageParameter"
     get:
       summary: List L1 rewards
       tags:
@@ -947,17 +878,21 @@ paths:
           in: query
           name: to
           description: Maximum unix timestamp for time filter.
-        - schema:
-            type: integer
-          in: query
-          name: page
-          description: "Page number for pagination (default: 1)."
-        - schema:
-            type: integer
-          in: query
-          name: per_page
-          description: "Number of items per page (default: 25, max: 100)."
+
 components:
+  parameters:
+    PageParameter:
+      name: page
+      in: query
+      schema:
+        type: integer
+      description: "Page number for pagination (default: 1)."
+    PerPageParameter:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+      description: "Number of items per page (default: 25, max: 100)."
   schemas:
     pagination-info:
       title: Pagination Information
