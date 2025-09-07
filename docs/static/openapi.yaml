@@ -1532,12 +1532,12 @@ components:
           x-stoplight:
             id: mobkomxheqgy9ge
           readOnly: true
-        offloaded_data_gbs:
+        offloaded_bytes:
           type: number
           x-stoplight:
-            id: moboffloadedgbs123
+            id: moboffloadedbytes123
           readOnly: true
-          description: The amount of data offloaded in GBs, calculated from DC transfer reward
+          description: The amount of data offloaded in bytes, calculated from DC transfer reward
     mobile-gateway-reward-detail:
       title: Mobile Gateway Reward Detail
       x-stoplight:
@@ -1563,12 +1563,12 @@ components:
           x-stoplight:
             id: mobgateway012
           readOnly: true
-        offloaded_data_gbs:
+        offloaded_bytes:
           type: number
           x-stoplight:
-            id: mobgatewayoffloadedgbs123
+            id: mobgatewayoffloadedbytes123
           readOnly: true
-          description: The amount of data offloaded in GBs, calculated from DC transfer reward
+          description: The amount of data offloaded in bytes, calculated from DC transfer reward
     mobile-subscriber-reward-detail:
       title: Mobile Subscriber Reward Detail
       x-stoplight:
@@ -1823,6 +1823,7 @@ components:
         - total_discovery_location_amount
         - total_service_provider_amount
         - total_matched_amount
+        - total_offloaded_bytes
       properties:
         total_dc_transfer_reward:
           type: integer
@@ -1866,12 +1867,12 @@ components:
           minimum: 0
           readOnly: true
           description: Total matched amount across all matching rewards
-        total_offloaded_data_gbs:
+        total_offloaded_bytes:
           type: number
           x-stoplight:
-            id: mobile-totals-offloaded-gbs
+            id: mobile-totals-offloaded-bytes
           readOnly: true
-          description: Total amount of data offloaded in GBs across all matching rewards
+          description: Total amount of data offloaded in bytes across all matching rewards
     maker:
       title: maker
       x-stoplight:

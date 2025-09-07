@@ -148,12 +148,12 @@ class Relay::Helium::L2::RewardManifestFile
 
     sig do
       params(
-        args: T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])
+        args: T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]
       ).returns(::Relay::Helium::L2::RewardManifestFile)
     end
     sig do
       params(
-        args: T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]
+        args: T::Array[T::Array[T.any(String, Symbol, ::ActiveSupport::Multibyte::Chars, T::Boolean, BigDecimal, Numeric, ::ActiveRecord::Type::Binary::Data, ::ActiveRecord::Type::Time::Value, Date, Time, ::ActiveSupport::Duration, T::Class[T.anything])]]
       ).returns(T::Enumerable[::Relay::Helium::L2::RewardManifestFile])
     end
     sig do
@@ -649,16 +649,16 @@ class Relay::Helium::L2::RewardManifestFile
     sig { void }
     def file_name_will_change!; end
 
-    sig { returns(T.untyped) }
+    sig { returns([::String, ::String]) }
     def id; end
 
-    sig { params(value: T.untyped).returns(T.untyped) }
+    sig { params(value: [::String, ::String]).returns([::String, ::String]) }
     def id=(value); end
 
     sig { returns(T::Boolean) }
     def id?; end
 
-    sig { returns(T.untyped) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_before_last_save; end
 
     sig { returns(T.untyped) }
@@ -667,28 +667,28 @@ class Relay::Helium::L2::RewardManifestFile
     sig { returns(T::Boolean) }
     def id_came_from_user?; end
 
-    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_change; end
 
-    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_change_to_be_saved; end
 
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    sig { params(from: [::String, ::String], to: [::String, ::String]).returns(T::Boolean) }
     def id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.untyped) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_in_database; end
 
-    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def id_previous_change; end
 
-    sig { params(from: T.untyped, to: T.untyped).returns(T::Boolean) }
+    sig { params(from: [::String, ::String], to: [::String, ::String]).returns(T::Boolean) }
     def id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
-    sig { returns(T.untyped) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_previously_was; end
 
-    sig { returns(T.untyped) }
+    sig { returns(T.nilable([::String, ::String])) }
     def id_was; end
 
     sig { void }
@@ -754,7 +754,7 @@ class Relay::Helium::L2::RewardManifestFile
     sig { returns(T::Boolean) }
     def saved_change_to_file_name?; end
 
-    sig { returns(T.nilable([T.untyped, T.untyped])) }
+    sig { returns(T.nilable([[::String, ::String], [::String, ::String]])) }
     def saved_change_to_id; end
 
     sig { returns(T::Boolean) }
