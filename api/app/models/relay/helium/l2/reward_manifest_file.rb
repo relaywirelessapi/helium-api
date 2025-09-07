@@ -21,7 +21,7 @@ module Relay
 
         sig { void }
         def schedule_mobile_offload_calculations
-          Relay::Helium::L2::ScheduleMobileOffloadCalculationsJob.perform_later(self)
+          Relay::Helium::L2::CalculateMobileOffloadJob.perform_later(self)
         end
       end
     end

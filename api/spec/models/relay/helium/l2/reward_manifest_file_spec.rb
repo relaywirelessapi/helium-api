@@ -6,6 +6,6 @@ RSpec.describe Relay::Helium::L2::RewardManifestFile do
 
     expect {
       reward_manifest_file.save!
-    }.to have_enqueued_job(Relay::Helium::L2::ScheduleMobileOffloadCalculationsJob).with(reward_manifest_file)
+    }.to have_enqueued_job(Relay::Helium::L2::CalculateMobileOffloadJob).with(reward_manifest_file)
   end
 end

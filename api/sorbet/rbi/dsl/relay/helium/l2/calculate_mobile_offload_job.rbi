@@ -9,13 +9,13 @@ class Relay::Helium::L2::CalculateMobileOffloadJob
   class << self
     sig do
       params(
-        mobile_reward_share: ::Relay::Helium::L2::MobileRewardShare,
+        reward_manifest_file: ::Relay::Helium::L2::RewardManifestFile,
         block: T.nilable(T.proc.params(job: Relay::Helium::L2::CalculateMobileOffloadJob).void)
       ).returns(T.any(Relay::Helium::L2::CalculateMobileOffloadJob, FalseClass))
     end
-    def perform_later(mobile_reward_share, &block); end
+    def perform_later(reward_manifest_file, &block); end
 
-    sig { params(mobile_reward_share: ::Relay::Helium::L2::MobileRewardShare).void }
-    def perform_now(mobile_reward_share); end
+    sig { params(reward_manifest_file: ::Relay::Helium::L2::RewardManifestFile).void }
+    def perform_now(reward_manifest_file); end
   end
 end
