@@ -6,7 +6,7 @@ module Relay
       class CalculateMobileOffloadJob < ApplicationJob
         extend T::Sig
 
-        queue_as :default
+        queue_as :low
 
         sig { params(reward_manifest_file: Relay::Helium::L2::RewardManifestFile).void }
         def perform(reward_manifest_file)
