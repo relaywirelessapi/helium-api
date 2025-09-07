@@ -8,7 +8,7 @@ resource "aws_elasticache_replication_group" "redis" {
   description          = "Redis cluster for ${var.app_name}"
   engine               = "redis"
   engine_version       = "7.0"
-  node_type            = "cache.t3.medium"
+  node_type            = "cache.m5.large"
   num_cache_clusters   = 1
   parameter_group_name = "default.redis7"
   port                 = 6379
@@ -19,12 +19,11 @@ resource "aws_elasticache_replication_group" "redis" {
   # Enable encryption at rest
   at_rest_encryption_enabled = true
 
-  # Enable automatic backups
-  snapshot_retention_limit = 7
-  snapshot_window          = "00:00-01:00" # UTC time
-
   # Maintenance window
   maintenance_window = "sun:02:00-sun:03:00" # UTC time
+
+  # Enable automatic minor version upgrades
+  auto_minor_version_upgrade = true
 
   # Preferred availability zone
   preferred_cache_cluster_azs = [data.aws_availability_zones.available.names[0]]
