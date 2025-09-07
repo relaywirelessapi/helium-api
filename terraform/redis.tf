@@ -21,6 +21,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
   # Maintenance window
   maintenance_window = "sun:02:00-sun:03:00" # UTC time
+  apply_immediately  = true
 
   # Enable automatic minor version upgrades
   auto_minor_version_upgrade = true
