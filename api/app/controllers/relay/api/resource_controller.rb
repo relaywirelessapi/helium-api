@@ -117,6 +117,8 @@ module Relay
       end
 
       def capture_posthog_event
+        return if Rails.env.test?
+
         Relay::PostHog::Client.new.capture(
           distinct_id: current_api_user&.id&.to_s || "anonymous",
           event: "api_request",

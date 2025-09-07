@@ -76,6 +76,7 @@ RSpec.describe "/helium/l2/mobile-reward-shares", type: :request do
         discovery_location_amount: 75,
         service_provider_amount: 30,
         matched_amount: 40,
+        offloaded_bytes: 100,
       )
       create(
         :helium_l2_mobile_reward_share,
@@ -87,6 +88,7 @@ RSpec.describe "/helium/l2/mobile-reward-shares", type: :request do
         discovery_location_amount: 125,
         service_provider_amount: 60,
         matched_amount: 80,
+        offloaded_bytes: 200,
       )
 
       User.with_stubbed_plan("enterprise") do
@@ -103,7 +105,7 @@ RSpec.describe "/helium/l2/mobile-reward-shares", type: :request do
         "total_discovery_location_amount" => 200,
         "total_service_provider_amount" => 90,
         "total_matched_amount" => 120,
-        "total_offloaded_data_gbs" => 0.0
+        "total_offloaded_bytes" => 300
       })
     end
   end
