@@ -168,6 +168,9 @@ GEM
     ffi (1.17.2-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    goldiloader (5.4.0)
+      activerecord (>= 6.1, < 8.1)
+      activesupport (>= 6.1, < 8.1)
     google-protobuf (4.32.0-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
@@ -564,6 +567,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  goldiloader
   google-protobuf
   h3
   httparty
