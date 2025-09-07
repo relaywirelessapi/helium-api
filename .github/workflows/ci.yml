@@ -82,8 +82,49 @@ jobs:
           terraform -chdir=terraform init -backend=false
           terraform -chdir=terraform validate
 
+  verify-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd docs
+          npm ci
+
+      - name: Check for uncommitted changes before running gen-api-docs
+        run: |
+          git diff --exit-code
+          git diff --cached --exit-code
+
+      - name: Run gen-api-docs
+        run: |
+          cd docs
+          npm run gen-api-docs
+
+      - name: Check for changes after running gen-api-docs
+        run: |
+          if ! git diff --exit-code; then
+            echo "❌ Files have been modified by 'npm run gen-api-docs'"
+            echo "The following files have changed:"
+            git diff --name-only
+            echo ""
+            echo "Please run 'npm run gen-api-docs' in the docs directory and commit the changes."
+            exit 1
+          else
+            echo "✅ No files were modified by 'npm run gen-api-docs'"
+          fi
+
   deploy:
-    needs: [lint-ruby, lint-js, lint-tf, test-ruby]
+    needs: [lint-ruby, lint-js, lint-tf, test-ruby, verify-docs]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
