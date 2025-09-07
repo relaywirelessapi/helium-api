@@ -6,11 +6,13 @@ module Relay
       class CalculateMobileOffloadJob < ApplicationJob
         extend T::Sig
 
-        queue_as :default
+        queue_as :low
 
-        sig { params(mobile_reward_share: Relay::Helium::L2::MobileRewardShare).void }
-        def perform(mobile_reward_share)
-          mobile_reward_share.refresh_offloaded_bytes!
+        sig { params(reward_manifest_file: Relay::Helium::L2::RewardManifestFile).void }
+        def perform(reward_manifest_file)
+          Relay::Helium::L2::MobileRewardShare.by_file(reward_manifest_file).pending_offload_calculation.find_each do |mobile_reward_share|
+            mobile_reward_share.refresh_offloaded_bytes!
+          end
         end
       end
     end

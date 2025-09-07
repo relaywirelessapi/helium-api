@@ -22,7 +22,6 @@ resource "aws_elasticache_replication_group" "redis" {
   # Node maintenance configuration
   auto_minor_version_upgrade = true
   maintenance_window         = "sun:02:00-sun:03:00"
-  apply_immediately          = true
 
   # Preferred availability zone
   preferred_cache_cluster_azs = [data.aws_availability_zones.available.names[0]]

@@ -13,7 +13,7 @@ module Relay
 
         self.table_name = "helium_l2_mobile_reward_shares"
 
-        after_create_commit :schedule_offload_calculation
+        before_save :refresh_offloaded_bytes
 
         scope :by_file, ->(file) { where(file_name: file.file_name) }
         scope :pending_offload_calculation, -> { where("dc_transfer_reward IS NOT NULL AND offloaded_bytes IS NULL") }
@@ -55,13 +55,6 @@ module Relay
         def refresh_offloaded_bytes!
           refresh_offloaded_bytes
           save!
-        end
-
-        private
-
-        sig { void }
-        def schedule_offload_calculation
-          Relay::Helium::L2::CalculateMobileOffloadJob.perform_later(self)
         end
       end
     end

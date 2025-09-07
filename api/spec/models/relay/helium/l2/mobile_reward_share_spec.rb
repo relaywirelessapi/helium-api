@@ -21,10 +21,4 @@ RSpec.describe Relay::Helium::L2::MobileRewardShare do
       expect(mobile_reward_share.offloaded_bytes).to eq(773561547)
     end
   end
-
-  it "schedules offload calculation after creation" do
-    mobile_reward_share = create(:helium_l2_mobile_reward_share)
-
-    expect(Relay::Helium::L2::CalculateMobileOffloadJob).to have_been_enqueued.with(mobile_reward_share)
-  end
 end
