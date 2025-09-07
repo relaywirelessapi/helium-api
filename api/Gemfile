@@ -66,7 +66,7 @@ gem "sentry-rails"
 gem "stackprof"
 
 # Analytics
-gem "posthog-ruby"
+gem "posthog-ruby", require: "posthog"
 
 # Solana
 gem "solana-ruby-web3js", require: "solana_ruby"

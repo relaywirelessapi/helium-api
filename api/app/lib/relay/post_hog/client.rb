@@ -20,14 +20,14 @@ module Relay
       sig { params(distinct_id: T.nilable(T.any(String, Integer)), event: String, properties: T::Hash[Symbol, T.untyped]).void }
       def capture(distinct_id:, event:, properties: {})
         posthog.capture({
-          distinct_id: distinct_id || SecureRandom.uuid,
+          distinct_id: distinct_id || "anonymous",
           event: event,
           properties: properties.merge(
             "$process_person_profile" => distinct_id.present?,
           )
         })
       rescue StandardError => e
-        raise e if Rails.env.development?
+        raise e unless Rails.env.production?
         Sentry.capture_exception(e)
       end
 
