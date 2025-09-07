@@ -19,12 +19,10 @@ resource "aws_elasticache_replication_group" "redis" {
   # Enable encryption at rest
   at_rest_encryption_enabled = true
 
-  # Maintenance window
-  maintenance_window = "sun:02:00-sun:03:00" # UTC time
-  apply_immediately  = true
-
-  # Enable automatic minor version upgrades
+  # Node maintenance configuration
   auto_minor_version_upgrade = true
+  maintenance_window         = "sun:02:00-sun:03:00"
+  apply_immediately          = true
 
   # Preferred availability zone
   preferred_cache_cluster_azs = [data.aws_availability_zones.available.names[0]]
