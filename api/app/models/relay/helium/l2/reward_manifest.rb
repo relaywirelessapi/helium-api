@@ -22,7 +22,7 @@ module Relay
         def metadata
           {
             price: price,
-            token: reward_data.fetch("token")
+            token: reward_data["token"]
           }
         end
 
