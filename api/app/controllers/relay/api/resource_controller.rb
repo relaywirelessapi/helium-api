@@ -20,6 +20,7 @@ module Relay
       before_action :verify_usage_limit
 
       after_action :increment_api_usage
+      after_action :capture_posthog_event
 
       rate_limit(
         if: -> { current_api_user.present? },
@@ -113,6 +114,21 @@ module Relay
 
       def require_feature!(feature_klass)
         raise Errors::FeatureNotAvailableError unless current_api_user.plan.feature?(feature_klass)
+      end
+
+      def capture_posthog_event
+        Relay::PostHog::Client.new.capture(
+          distinct_id: current_api_user&.id&.to_s || "anonymous",
+          event: "api_request",
+          properties: {
+            path: request.path,
+            controller: params[:controller],
+            action: params[:action],
+            params: params.to_unsafe_h,
+            ip: request.ip,
+            user_agent: request.user_agent
+          }
+        )
       end
     end
   end
