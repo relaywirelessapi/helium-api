@@ -17,7 +17,12 @@ module Relay
 
             sig { returns(Tier) }
             def business
-              new(name: "Business support", description: "Direct support from the Relay team")
+              new(name: "Customer Support", description: "Direct support from the Relay team")
+            end
+
+            sig { returns(Tier) }
+            def enterprise
+              new(name: "Customer Support + SLA", description: "Direct support from the Relay team with Service Level Agreement")
             end
           end
 

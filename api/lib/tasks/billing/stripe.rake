@@ -162,11 +162,26 @@ namespace :billing do
     define_method(:find_or_create_stripe_price) do |plan, product|
       # Check if the product already has a price
       prices = Stripe::Price.list(product: product.id, active: true)
+      expected_amount = (plan.price_per_month * 100).to_i
 
       if prices.data.any?
-        price = prices.data.first
-        puts "  Found existing Stripe price for product: #{price.id}"
-        return price
+        existing_price = prices.data.first
+        puts "  Found existing Stripe price for product: #{existing_price.id}"
+
+        # Check if the price matches the plan's current price
+        if existing_price.unit_amount == expected_amount
+          puts "  Price is correct: $#{plan.price_per_month}/month"
+          return existing_price
+        else
+          puts "  Price mismatch detected:"
+          puts "    Current Stripe price: $#{(existing_price.unit_amount / 100.0).round(2)}/month"
+          puts "    Expected plan price: $#{plan.price_per_month}/month"
+          puts "  Creating new price and deactivating old one..."
+
+          # Deactivate the old price
+          Stripe::Price.update(existing_price.id, { active: false })
+          puts "  Deactivated old price: #{existing_price.id}"
+        end
       else
         puts "  No existing price found for product, creating new one"
       end
@@ -174,7 +189,7 @@ namespace :billing do
       # Create new price
       price = Stripe::Price.create(
         product: product.id,
-        unit_amount: (plan.price_per_month * 100).to_i,
+        unit_amount: expected_amount,
         currency: "usd",
         recurring: {
           interval: "month"
@@ -184,6 +199,7 @@ namespace :billing do
       )
 
       puts "  Created new Stripe price: #{price.id}"
+      puts "  Price: $#{plan.price_per_month}/month"
       price
     end
   end

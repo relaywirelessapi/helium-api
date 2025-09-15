@@ -21,6 +21,13 @@ If you exceed the rate limit, you'll get a `429 Too Many Requests` response with
 
 Your monthly API credit allowance depends on your plan, and each successful API call consumes one credit.
 
+### Available Plans
+
+- **Community**: 1,000 requests/month - Free
+- **Enthusiast**: 10,000 requests/month - $49.99/month
+- **Professional**: 100,000 requests/month - $199.99/month
+- **Enterprise**: Unlimited requests - Custom pricing
+
 If you exceed the credit limit, you'll get a `402 Payment Required` response with a payload similar to the following:
 
 ```json

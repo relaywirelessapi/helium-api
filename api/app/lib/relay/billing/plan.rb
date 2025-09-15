@@ -37,33 +37,20 @@ module Relay
               price_per_month: 0.00,
               visible: true,
               features: [
-                Features::ApiAccess.new(calls_per_month: 10_000),
+                Features::ApiAccess.new(calls_per_month: 1_000),
                 Features::OracleData.new(lookback_window: 30.days, aggregate_endpoints: false),
                 Features::HotspotData.new,
                 Features::CustomerService.new(tier: Features::CustomerService::Tier.community)
               ]
             ),
             new(
-              id: "starter",
-              name: "Starter",
-              description: "Great for small projects and growing startups that need basic data access.",
-              price_per_month: 29.99,
-              visible: true,
-              features: [
-                Features::ApiAccess.new(calls_per_month: 105_000),
-                Features::OracleData.new(lookback_window: 90.days, aggregate_endpoints: true),
-                Features::HotspotData.new,
-                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
-              ]
-            ),
-            new(
               id: "enthusiast",
               name: "Enthusiast",
               description: "Ideal for growing businesses that need better rate limits and lookback windows.",
-              price_per_month: 59.99,
+              price_per_month: 49.99,
               visible: true,
               features: [
-                Features::ApiAccess.new(calls_per_month: 305_000),
+                Features::ApiAccess.new(calls_per_month: 10_000),
                 Features::OracleData.new(lookback_window: 1.year, aggregate_endpoints: true),
                 Features::HotspotData.new,
                 Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
@@ -76,20 +63,7 @@ module Relay
               price_per_month: 199.99,
               visible: true,
               features: [
-                Features::ApiAccess.new(calls_per_month: 1_205_000),
-                Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
-                Features::HotspotData.new,
-                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
-              ]
-            ),
-            new(
-              id: "business",
-              name: "Business",
-              description: "Designed for established businesses that need high-volume access and premium support.",
-              price_per_month: 449.99,
-              visible: true,
-              features: [
-                Features::ApiAccess.new(calls_per_month: 3_005_000),
+                Features::ApiAccess.new(calls_per_month: 100_000),
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
                 Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
@@ -105,7 +79,8 @@ module Relay
                 Features::ApiAccess.new(calls_per_month: nil),
                 Features::OracleData.new(lookback_window: nil, aggregate_endpoints: true),
                 Features::HotspotData.new,
-                Features::CustomerService.new(tier: Features::CustomerService::Tier.business)
+                Features::CustomerService.new(tier: Features::CustomerService::Tier.enterprise),
+                Features::Sla.new
               ]
             )
           ]

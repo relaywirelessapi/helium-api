@@ -10,7 +10,7 @@ info:
     url: "https://www.relaywireless.com/legal/terms-of-service"
   contact:
     name: Relay Team
-    email: team@relaydevice.com
+    email: elijah@relaywireless.com
     url: "https://relaywireless.com"
 servers:
   - url: "https://api.relaywireless.com/v1"
@@ -235,13 +235,13 @@ paths:
           in: query
           name: from
           required: true
-          description: The beginning of the date range to retrieve rewards for.
+          description: The beginning of the date range to retrieve rewards for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
           required: true
-          description: The end of the date range to retrieve rewards for.
+          description: The end of the date range to retrieve rewards for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
@@ -254,7 +254,6 @@ paths:
           description: The reward type to retrieve rewards for.
 
   /helium/l2/iot-reward-shares/totals:
-
     get:
       summary: Get IoT reward totals
       tags:
@@ -276,13 +275,13 @@ paths:
           in: query
           name: from
           required: true
-          description: The beginning of the date range to retrieve reward totals for.
+          description: The beginning of the date range to retrieve reward totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
           required: true
-          description: The end of the date range to retrieve reward totals for.
+          description: The end of the date range to retrieve reward totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
@@ -331,13 +330,13 @@ paths:
           in: query
           name: from
           required: true
-          description: The beginning of the date range to retrieve rewards for.
+          description: The beginning of the date range to retrieve rewards for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
           required: true
-          description: The end of the date range to retrieve rewards for.
+          description: The end of the date range to retrieve rewards for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
@@ -350,7 +349,6 @@ paths:
           description: The reward type to retrieve rewards for.
 
   /helium/l2/mobile-reward-shares/totals:
-
     get:
       summary: Get Mobile reward totals
       tags:
@@ -372,13 +370,13 @@ paths:
           in: query
           name: from
           required: true
-          description: The beginning of the date range to retrieve reward totals for.
+          description: The beginning of the date range to retrieve reward totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
           required: true
-          description: The end of the date range to retrieve reward totals for.
+          description: The end of the date range to retrieve reward totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
@@ -514,12 +512,12 @@ paths:
             type: string
           in: query
           name: from
-          description: Minimum unix timestamp for time filter.
+          description: Minimum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
-          description: Maximum unix timestamp for time filter.
+          description: Maximum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
 
   /helium/l1/transactions/{id}:
     parameters:
@@ -658,12 +656,12 @@ paths:
             type: string
           in: query
           name: from
-          description: Minimum unix timestamp for time filter.
+          description: Minimum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
-          description: Maximum unix timestamp for time filter.
+          description: Maximum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
 
   /helium/l1/gateways:
     parameters:
@@ -807,12 +805,12 @@ paths:
             type: string
           in: query
           name: from
-          description: Minimum unix timestamp for time filter.
+          description: Minimum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
-          description: Maximum unix timestamp for time filter.
+          description: Maximum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
 
   /helium/l1/rewards:
     parameters:
@@ -872,12 +870,12 @@ paths:
             type: string
           in: query
           name: from
-          description: Minimum unix timestamp for time filter.
+          description: Minimum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
         - schema:
             type: string
           in: query
           name: to
-          description: Maximum unix timestamp for time filter.
+          description: Maximum timestamp for time filter. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
 
 components:
   parameters:

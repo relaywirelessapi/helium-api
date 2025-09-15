@@ -41,11 +41,11 @@ RSpec.describe User, type: :model do
       context "when the user is subscribed" do
         it "returns the plan associated with the subscription" do
           allow(Rails.env).to receive(:production?).and_return(false)
-          user = create_user_with_payment_processor(plan_id: "starter")
+          user = create_user_with_payment_processor(plan_id: "enthusiast")
 
           plan = user.plan
 
-          expect(plan.id).to eq("starter")
+          expect(plan.id).to eq("enthusiast")
         end
       end
     end
@@ -53,21 +53,21 @@ RSpec.describe User, type: :model do
 
   describe "#api_usage_limit" do
     it "returns the API usage limit for the user's plan" do
-      user = create_user_with_payment_processor(plan_id: "starter")
+      user = create_user_with_payment_processor(plan_id: "enthusiast")
 
-      expect(user.api_usage_limit).to eq(105_000)
+      expect(user.api_usage_limit).to eq(10_000)
     end
   end
 
   describe "#api_usage_limit_exceeded_with?" do
     it "returns true if the usage limit will be exceeded" do
-      user = user = create_user_with_payment_processor(plan_id: "starter", current_api_usage: 105_000)
+      user = user = create_user_with_payment_processor(plan_id: "enthusiast", current_api_usage: 10_000)
 
       expect(user.api_usage_limit_exceeded_with?(1)).to be_truthy
     end
 
     it "returns false if the usage limit will not be exceeded" do
-      user = create_user_with_payment_processor(plan_id: "starter", current_api_usage: 104_999)
+      user = create_user_with_payment_processor(plan_id: "enthusiast", current_api_usage: 9_999)
 
       expect(user.api_usage_limit_exceeded_with?(1)).to be_falsey
     end
@@ -75,7 +75,7 @@ RSpec.describe User, type: :model do
 
   describe "#increment_api_usage_by" do
     it "increments the usage limit by the given amount" do
-      user = create_user_with_payment_processor(plan_id: "starter", current_api_usage: 0)
+      user = create_user_with_payment_processor(plan_id: "enthusiast", current_api_usage: 0)
 
       user.increment_api_usage_by(1)
 
@@ -84,7 +84,7 @@ RSpec.describe User, type: :model do
 
     it "resets usage when past the reset time" do
       freeze_time do
-        user = create_user_with_payment_processor(plan_id: "starter", current_api_usage: 5000)
+        user = create_user_with_payment_processor(plan_id: "enthusiast", current_api_usage: 5000)
         user.update!(api_usage_reset_at: 31.days.ago)
 
         user.increment_api_usage_by(100)
