@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Ruby on Rails
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 8.0.3"
 
 # Web infrastructure
 gem "puma", ">= 5.0"
