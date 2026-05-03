@@ -47,7 +47,7 @@ module Relay
               id: "enthusiast",
               name: "Enthusiast",
               description: "Ideal for growing businesses that need better rate limits and lookback windows.",
-              price_per_month: 49.99,
+              price_per_month: 59.99,
               visible: true,
               features: [
                 Features::ApiAccess.new(calls_per_month: 10_000),
