@@ -1,0 +1,4 @@
+# Global code owner: every PR will auto-request review from @elijahbilokur.
+# Combined with branch protection's "Require review from Code Owners",
+# this enforces approval from @elijahbilokur on all contributions.
+* @elijahbilokur
