@@ -9,19 +9,13 @@
   <% end %>
 
   <%= render(CardComponent.new(title: "Getting Started")) do %>
-    <p class="text-gray-600 mb-6">Welcome to the Relay GraphQL API for Helium Oracle data! This API allows you to easily query information about any Helium hotspot, including essential details, earnings, and historical data.</p>
+    <p class="text-gray-600 mb-6">Welcome to the Relay API for Helium Oracle data! This API allows you to easily query information about any Helium hotspot, including essential details, earnings, and historical data.</p>
 
     <div class="flex gap-4">
       <%= render(ButtonComponent.new(
         text: "Read Docs",
         style: :secondary,
         href: "https://docs.relaywireless.com",
-        target: "_blank"
-      )) %>
-      <%= render(ButtonComponent.new(
-        text: "Join Relay Discord",
-        style: :secondary,
-        href: "https://discord.com/channels/404106811252408320/1368978610907513042",
         target: "_blank"
       )) %>
     </div>
