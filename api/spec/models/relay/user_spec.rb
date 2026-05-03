@@ -15,38 +15,23 @@ RSpec.describe User, type: :model do
   end
 
   describe "#plan" do
-    context "when in production" do
-      it "always returns the Beta plan" do
-        allow(Rails.env).to receive(:production?).and_return(true)
-        user = create_user_with_payment_processor(plan_id: "professional")
+    context "when the user is not subscribed" do
+      it "returns the Community plan" do
+        user = create_user_with_payment_processor(plan_id: nil)
 
         plan = user.plan
 
-        expect(plan.id).to eq("beta")
+        expect(plan.id).to eq("community")
       end
     end
 
-    context "when in development" do
-      context "when the user is not subscribed" do
-        it "returns the Community plan" do
-          allow(Rails.env).to receive(:production?).and_return(false)
-          user = create_user_with_payment_processor(plan_id: nil)
+    context "when the user is subscribed" do
+      it "returns the plan associated with the subscription" do
+        user = create_user_with_payment_processor(plan_id: "enthusiast")
 
-          plan = user.plan
+        plan = user.plan
 
-          expect(plan.id).to eq("community")
-        end
-      end
-
-      context "when the user is subscribed" do
-        it "returns the plan associated with the subscription" do
-          allow(Rails.env).to receive(:production?).and_return(false)
-          user = create_user_with_payment_processor(plan_id: "enthusiast")
-
-          plan = user.plan
-
-          expect(plan.id).to eq("enthusiast")
-        end
+        expect(plan.id).to eq("enthusiast")
       end
     end
   end

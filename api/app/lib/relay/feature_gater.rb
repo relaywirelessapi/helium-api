@@ -16,11 +16,7 @@ module Relay
     def enabled?(feature_name)
       case feature_name
       when :billing
-        !Rails.env.production? || user.email.split("@").last.in?(%w[
-          relaywireless.com
-          relaydevice.com
-          dewi.org
-        ])
+        true
       else
         raise "Unknown feature: #{feature_name}"
       end
