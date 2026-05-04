@@ -12,7 +12,7 @@ module Relay
 
             sig { returns(Tier) }
             def community
-              new(name: "Community support", description: "Community-based support in our Discord")
+              new(name: "Community support", description: "Community-based support")
             end
 
             sig { returns(Tier) }

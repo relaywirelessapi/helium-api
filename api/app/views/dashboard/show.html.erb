@@ -1,15 +1,8 @@
 <% content_for :title, "Dashboard" %>
 
 <div class="space-y-4">
-  <%= render(CardComponent.new(
-    title: "The Relay API is in beta!",
-    color: :amber
-  )) do %>
-    <p class="text-gray-600">The API might have issues, bugs, and imperfections. We welcome any feedback in our official Helium Discord channel.</p>
-  <% end %>
-
   <%= render(CardComponent.new(title: "Getting Started")) do %>
-    <p class="text-gray-600 mb-6">Welcome to the Relay API for Helium Oracle data! This API allows you to easily query information about any Helium hotspot, including essential details, earnings, and historical data.</p>
+    <p class="text-gray-600 mb-6">Welcome to the Relay API for Helium data! This API allows you to easily query information about any Helium hotspot, including essential details, earnings, and historical data.</p>
 
     <div class="flex gap-4">
       <%= render(ButtonComponent.new(
