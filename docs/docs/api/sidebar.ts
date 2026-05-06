@@ -136,6 +136,18 @@ const sidebar: SidebarsConfig = {
           label: "Get Mobile reward totals",
           className: "api-method get",
         },
+        {
+          type: "doc",
+          id: "api/get-mobile-reward-daily-totals",
+          label: "Get Mobile reward daily totals",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-mobile-reward-totals-by-service-provider",
+          label: "Get Mobile reward totals by service provider",
+          className: "api-method get",
+        },
       ],
     },
   ],

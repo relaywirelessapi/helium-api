@@ -30,6 +30,8 @@ Rails.application.routes.draw do
             resources :mobile_reward_shares, only: [ :index ], path: "mobile-reward-shares" do
               collection do
                 get :totals
+                get :daily_totals, path: "daily-totals"
+                get :totals_by_service_provider, path: "totals-by-service-provider"
               end
             end
             resources :makers, only: [ :index, :show ]

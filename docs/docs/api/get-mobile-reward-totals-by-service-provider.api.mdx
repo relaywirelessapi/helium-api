@@ -1,0 +1,71 @@
+---
+id: get-mobile-reward-totals-by-service-provider
+title: "Get Mobile reward totals by service provider"
+description: "Retrieves Mobile reward totals grouped by `service_provider_id` for a given time range. Only rewards with a populated `service_provider_id` (i.e. `service_provider_reward` and `promotion_reward` reward types) are included. Requires the OracleData feature with aggregate endpoints enabled."
+sidebar_label: "Get Mobile reward totals by service provider"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWE1v3DYQ/SsETw4gaWW3KAqd6jRGGqRBAnt7aANjzZVGEh2JZIYjO8pi/3sxkvZbtrMOEPRQw4B3RfLxvZnhG8oLSarwMvko/4BKN7X480xeBxLBO2s8eJks5Fkc858MfIrakbZGJlIGMrWGwBCPKecqnSoem9x6nrCQPi2hVvyJNFUgE/nOznUF4hLuFWZiaklVXrxsxRXgnU5BfEB7pzNAGcgvoSfrKl2UHb7OZCLrbnlI3bpw3obehcMmy0BS63gPO7+FlGSwR3fYGvutewhRoG0cZGLeCj9QcAOFSHIQPjcaIePoIKQWM8+xcWgdIOk+OKsBltkzUIiqPULCCmHJO6rsvalamRA2EEhNUG9Dr8Udh91Db8QMYmcrsTOdyUB2C2cHY6q2jaH1eK0oLSHbf5ylM0JlfA4464O8HrJ5XlmVQTabtwQjIRyjs9HsCbUpjtCss7FQ7pbDtISDlAudgSGda0BxkipEDfgi6krr0chsqGpDUBxVvgPEMpC1NrpuapnET3JngEP2Q2n3iCK3KKjUXgxCtnTsZfB76A9Qz+E/LP0GviOl9T2cs/Q5dF/9LlYk1pEmQj1vCNhPHiK/X/wb5qap50cRX0OFPdTTRd4xHwJsc5EpUmKNIrQRHdDjQtY/geQz21n8G6ZYAIUDzT4g22z74gzdxtB3qV0CoYY78OIpY74ZcYebrlyUKPQdGEG6BoHKFBAJDsaA5cW9plIo4axrKsXqxrFOdATRyFgPcyOUycSNQ1tbJr9+vGLcOvAvhEIQ2qRVk0EWicvebL2gEsR7VGkFrzj4OShqEAZmRYFQKAIBJnNWG/ICjJpXkEXHlIXjSnAKVQ0EyL18p/fuuOgykJrj/7kB5B5lVM2jOdp6p+E95JlzKLQx2hRcTywuY/5d8Ll2cEjrKo+5xUi8azyJOYdHvLl6/+sv8Sk/rxWJE4iKKBBn8dnPYXwaxqfTOE6633864z1aB9lvUgEm+2/yLy15Z2n2CdqDI8PEh3HxCdqH6MrldSDhC4Hx2pq+Ghgu2SmoQN6pqoEnC4vBaqDSDidecqVRKRM5Kbv74qQ6m+y6gC8Vgp88agb8aFWqDVasnMj5ZDJRTkcIlWrvNUIF3keprSd3pwfh6MK7WZtMJpVNVVVaT8lPcRyPr7nmvdMGNbXd5ucNlRb1V9XP+Hi9PeOKk9d79t68xSphL0EhoDj/8Gb29uJvub6FKqffdjnsslyCYt3LLuu53b4SX7JWXs8pAfQ90dMoPiB/Li4vrqY8dSf11oRpqbTpbMrm+fCt83p2yf5az4ZS6RSMhy32H9A61EAKWxGKKWDt+VwM13EZ7OXm/v5+JDcVFKqaEC8Obb7KNlc4vx+olLY27NVOQbHbQK00w0Olb1X52wHywf6HMziiznqq1XZSXgONt5WRe/5+mBebt5r/m9TTTWood4IvNHGV0obz3mVtMRjFR9kbBRfgmQzkmFmsXhXG7eI6kHyqGWqxmCsPf2G1XPLj3j35HGfad5xkkqvK75v+dlJPBtnZC/GjG9oD4erdeWjBgy339vZsVT+mwT2qp2vFz1Tzra3uUQK7vXTD5Jq/oGYqneEHK3vedMrzNAW31SQP/72x0xdfX0zlcvkvqAkKmw==
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mobile reward totals by service provider"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/mobile-reward-shares/totals-by-service-provider"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves Mobile reward totals grouped by `service_provider_id` for a given time range. Only rewards with a populated `service_provider_id` (i.e. `service_provider_reward` and `promotion_reward` reward types) are included. Requires the OracleData feature with aggregate endpoints enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"from","required":true,"description":"The beginning of the date range to retrieve totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z)."},{"schema":{"type":"string"},"in":"query","name":"to","required":true,"description":"The end of the date range to retrieve totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z)."},{"schema":{"type":"string"},"in":"query","name":"hotspot_key","description":"The hotspot key to retrieve totals for."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"title":"Mobile Reward Totals By Service Provider","x-stoplight":{"id":"mobile-totals-by-sp-schema"},"type":"object","description":"Mobile reward totals grouped by service provider.","required":["records"],"properties":{"records":{"type":"array","x-stoplight":{"id":"mobile-totals-by-sp-records"},"readOnly":true,"items":{"type":"object","x-stoplight":{"id":"mobile-totals-by-sp-record"},"required":["service_provider_id","total_service_provider_amount","total_matched_amount","total_dc_transfer_reward","total_offloaded_bytes"],"properties":{"service_provider_id":{"type":"string","x-stoplight":{"id":"mobile-totals-by-sp-id"},"readOnly":true,"description":"The service provider identifier (carrier)."},"total_service_provider_amount":{"type":"integer","x-stoplight":{"id":"mobile-totals-by-sp-amount"},"minimum":0,"readOnly":true,"description":"Total service provider reward amount for this carrier."},"total_matched_amount":{"type":"integer","x-stoplight":{"id":"mobile-totals-by-sp-matched"},"minimum":0,"readOnly":true,"description":"Total matched amount for this carrier."},"total_dc_transfer_reward":{"type":"integer","x-stoplight":{"id":"mobile-totals-by-sp-dc"},"minimum":0,"readOnly":true,"description":"Total DC transfer reward attributed to this carrier."},"total_offloaded_bytes":{"type":"number","x-stoplight":{"id":"mobile-totals-by-sp-offloaded-bytes"},"readOnly":true,"description":"Total amount of data offloaded in bytes attributed to this carrier."}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

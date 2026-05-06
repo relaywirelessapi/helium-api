@@ -1,0 +1,71 @@
+---
+id: get-mobile-reward-daily-totals
+title: "Get Mobile reward daily totals"
+description: "Retrieves Mobile reward totals bucketed by UTC day (using `end_period`) for a given time range, optionally allowing to filter by hotspot key and reward type. The range between `from` and `to` cannot exceed 366 days. Requires the OracleData feature with aggregate endpoints enabled."
+sidebar_label: "Get Mobile reward daily totals"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWNtu20YQ/ZXBPjkAdbFTBAWf6iZBaqSBA1t5aA1DXpFDcZPlLrM7lMwK+vdiltRdtiMJaPtQw4At7s7MOXOnZoLk2Iv4TvyGWlUF/H4h7iPh0JfWePQinomLfp//pOgTp0pS1ohYiEgk1hAa4jNZllolks96Xz1fmAmf5FhI/o8UaRSx+GRHSiPc4FS6FN5JpWsYWJLai0g8djzZUqtxHjSqVMSiCAKdlG92KNzstGrnkaC6ZK129BUTEtEWwNaYa4w1wjCqkm9ImMKohi+Dt5DKuiuY7vdKOUzZDw4T61LPXiidLdGRatywOGBCjWXpnKwPgL7QMGeLMr02uhYxuQojoQiLddVLUofpblSvyKQBX7gyTJMhOWl8hm7YeGV5VNpk+5GvRuzN0e7lVPnETtDVQ22bkA9lYStDK1l0E5XgsHR2olJ02+eFpCTHdPuxzTJtZYrpcFQT7okAs1m5yJNTZiwikVlXSBKxSCXhAS5jdXtCsZlGgxwXmQKUq0UKgcPSoUdDHs6ubq/h5zf9c2AAEWB33I3gon/xU6d/3umfv+qGbH0qCCtGyhCO0R1CIWHVhTKqqAoR919kw2Lw7i0sQCzqQybOeg9SawjRUWbcHnnIrGuoh2qZ70maUyiU9igOn6/fnoB9N7tPobDSdgyTlfQJhJ4uypPSa6H1GF5LYVhAggbSUQF7oqWcFLbyqHA1SGCB5ARSW33wFC6tqmMItaIn8Nhu3CsipipGB/FYquo0ql7uz4FDi91m3IIlLLWAMhAUHUJr+RMJnj4hda8Y8Bip04JuRDew72wgN0hO4QQ9/OguAmeVZ2APaNJhiU7Z9OFVgCdhrCZogFSB4KQZYwQ2GJJa10zLTlmSLGRKEzrWmlvypSX4hjVIky7t1yV2gQdbUAQjpCmigYfM2eIh3Hwg+wCJNMYS4GOCmMLrN28You/CTbNgeKAc4drJROM79nqGkiqHMFWUgxyPHY4lIaBJS6t4UKKRI41p95B8CDVaSicLJHS8qW5slhurwDwSih3/veKWFQkjCz5lWhtL3lNzfoRjZQy70WaBHM/z1klkwbXxhIBwEcbMui58qjzBCDndrm6vwy7QbCVwtr0NDPr9OPz+GfaCg9mQ/SEuaNJ/isVSjgOvzDJT2H6TU0cRbbN3+A3rndJihuvZ/SyvY4w3pTIMd/cZXyull4zfRwIfCY1X1jT5y4zijRKIxETqCl8sBVZWIOW2bUeCa4NyEYteHt7fevqit9mifC4d+t5Wp+Iptiinyml2N1Hp415PlqrrUMt6qhxq9L6b2KI3Od9xQ3DrSjbu9XjO69x6il/3+/39MvdsO6mcojoYv6wot079JZsbd/frN245aM1A2bo3WwTqV5QOHVx+vhp+fP+HWL4VylJ9DIkTopujTHk7C9HO7PpL6Q1zZXkOAjrfAD3v9nfAX8LN+9sBX90IuTWdJJfKhMZps6z9FAYRt+7mxZqbnlYJGo9r6D87WzqFJF0NHRigK0LV3DY7hoi2YjOdTvfERuNY6h6xcMdmnXZB4czmN3SZ0JrBhu0AJXdELKRi9ajVV5n/sqN5x/7uDfZoaT0Vcj0oH5C2Zt56XWw7drb6JuH/mfnMzGwzm/CReqWWynCIQ4BmbRe4E00X4Fy7EJHY1wnY++u94D4SXLIsPJuNpMcvTs/n/LhpiVykqfIBhYgzqf32vFmP31lLNH0F/85EfcJNTcttN4G21zYd7Ghu/7EJ+yzxsDQcSfuwWfssjM2RfgKeHx+/z+LZnPIrPPf8wSkGFEZStBggq+l9mSRYrg3u3a9AN2b1h/cDMZ//DYsjdf0=
+sidebar_class_name: "get api-method"
+info_path: api/relay-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mobile reward daily totals"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/helium/l2/mobile-reward-shares/daily-totals"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves Mobile reward totals bucketed by UTC day (using `end_period`) for a given time range, optionally allowing to filter by hotspot key and reward type. The range between `from` and `to` cannot exceed 366 days. Requires the OracleData feature with aggregate endpoints enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"schema":{"type":"string"},"in":"query","name":"from","required":true,"description":"The beginning of the date range to retrieve daily totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z)."},{"schema":{"type":"string"},"in":"query","name":"to","required":true,"description":"The end of the date range to retrieve daily totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z). Must be within 366 days of `from`."},{"schema":{"type":"string"},"in":"query","name":"hotspot_key","description":"The hotspot key to retrieve daily totals for."},{"schema":{"type":"string"},"in":"query","name":"reward_type","description":"The reward type to retrieve daily totals for."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"title":"Mobile Reward Daily Totals","x-stoplight":{"id":"mobile-daily-totals-schema"},"type":"object","description":"Mobile reward totals bucketed by UTC day.","required":["records"],"properties":{"records":{"type":"array","x-stoplight":{"id":"mobile-daily-totals-records"},"readOnly":true,"items":{"type":"object","x-stoplight":{"id":"mobile-daily-totals-record"},"required":["day","total_dc_transfer_reward","total_poc_reward","total_subscriber_reward","total_discovery_location_amount","total_service_provider_amount","total_matched_amount","total_offloaded_bytes"],"properties":{"day":{"type":"string","format":"date","x-stoplight":{"id":"mobile-daily-totals-day"},"readOnly":true,"description":"The UTC day this bucket represents (ISO 8601 date, e.g., 2024-01-01)."},"total_dc_transfer_reward":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-dc"},"minimum":0,"readOnly":true,"description":"Total DC transfer reward across all matching rewards for this day."},"total_poc_reward":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-poc"},"minimum":0,"readOnly":true,"description":"Total POC reward across all matching rewards for this day."},"total_subscriber_reward":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-subscriber"},"minimum":0,"readOnly":true,"description":"Total subscriber reward across all matching rewards for this day."},"total_discovery_location_amount":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-discovery"},"minimum":0,"readOnly":true,"description":"Total discovery location amount across all matching rewards for this day."},"total_service_provider_amount":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-sp"},"minimum":0,"readOnly":true,"description":"Total service provider amount across all matching rewards for this day."},"total_matched_amount":{"type":"integer","x-stoplight":{"id":"mobile-daily-totals-matched"},"minimum":0,"readOnly":true,"description":"Total matched amount across all matching rewards for this day."},"total_offloaded_bytes":{"type":"number","x-stoplight":{"id":"mobile-daily-totals-offloaded-bytes"},"readOnly":true,"description":"Total amount of data offloaded in bytes across all matching rewards for this day."}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

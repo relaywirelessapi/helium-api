@@ -387,6 +387,82 @@ paths:
           in: query
           name: reward_type
           description: The reward type to retrieve reward totals for.
+
+  /helium/l2/mobile-reward-shares/daily-totals:
+    get:
+      summary: Get Mobile reward daily totals
+      tags:
+        - Helium L2
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/mobile-reward-daily-totals"
+      operationId: get-mobile-reward-daily-totals
+      description: "Retrieves Mobile reward totals bucketed by UTC day (using `end_period`) for a given time range, optionally allowing to filter by hotspot key and reward type. The range between `from` and `to` cannot exceed 366 days. Requires the OracleData feature with aggregate endpoints enabled."
+      x-stoplight:
+        id: mobile-daily-totals-op
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve daily totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve daily totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z). Must be within 366 days of `from`.
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve daily totals for.
+        - schema:
+            type: string
+          in: query
+          name: reward_type
+          description: The reward type to retrieve daily totals for.
+
+  /helium/l2/mobile-reward-shares/totals-by-service-provider:
+    get:
+      summary: Get Mobile reward totals by service provider
+      tags:
+        - Helium L2
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/mobile-reward-totals-by-service-provider"
+      operationId: get-mobile-reward-totals-by-service-provider
+      description: "Retrieves Mobile reward totals grouped by `service_provider_id` for a given time range. Only rewards with a populated `service_provider_id` (i.e. `service_provider_reward` and `promotion_reward` reward types) are included. Requires the OracleData feature with aggregate endpoints enabled."
+      x-stoplight:
+        id: mobile-totals-by-sp-op
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          required: true
+          description: The beginning of the date range to retrieve totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
+        - schema:
+            type: string
+          in: query
+          name: to
+          required: true
+          description: The end of the date range to retrieve totals for. Must be in ISO8601 format (e.g., 2024-01-01T00:00:00Z).
+        - schema:
+            type: string
+          in: query
+          name: hotspot_key
+          description: The hotspot key to retrieve totals for.
+
   /helium/l1/accounts:
     parameters:
       - $ref: "#/components/parameters/PageParameter"
@@ -1871,6 +1947,147 @@ components:
             id: mobile-totals-offloaded-bytes
           readOnly: true
           description: Total amount of data offloaded in bytes across all matching rewards
+    mobile-reward-daily-totals:
+      title: Mobile Reward Daily Totals
+      x-stoplight:
+        id: mobile-daily-totals-schema
+      type: object
+      description: Mobile reward totals bucketed by UTC day.
+      required:
+        - records
+      properties:
+        records:
+          type: array
+          x-stoplight:
+            id: mobile-daily-totals-records
+          readOnly: true
+          items:
+            type: object
+            x-stoplight:
+              id: mobile-daily-totals-record
+            required:
+              - day
+              - total_dc_transfer_reward
+              - total_poc_reward
+              - total_subscriber_reward
+              - total_discovery_location_amount
+              - total_service_provider_amount
+              - total_matched_amount
+              - total_offloaded_bytes
+            properties:
+              day:
+                type: string
+                format: date
+                x-stoplight:
+                  id: mobile-daily-totals-day
+                readOnly: true
+                description: The UTC day this bucket represents (ISO 8601 date, e.g., 2024-01-01).
+              total_dc_transfer_reward:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-dc
+                minimum: 0
+                readOnly: true
+                description: Total DC transfer reward across all matching rewards for this day.
+              total_poc_reward:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-poc
+                minimum: 0
+                readOnly: true
+                description: Total POC reward across all matching rewards for this day.
+              total_subscriber_reward:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-subscriber
+                minimum: 0
+                readOnly: true
+                description: Total subscriber reward across all matching rewards for this day.
+              total_discovery_location_amount:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-discovery
+                minimum: 0
+                readOnly: true
+                description: Total discovery location amount across all matching rewards for this day.
+              total_service_provider_amount:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-sp
+                minimum: 0
+                readOnly: true
+                description: Total service provider amount across all matching rewards for this day.
+              total_matched_amount:
+                type: integer
+                x-stoplight:
+                  id: mobile-daily-totals-matched
+                minimum: 0
+                readOnly: true
+                description: Total matched amount across all matching rewards for this day.
+              total_offloaded_bytes:
+                type: number
+                x-stoplight:
+                  id: mobile-daily-totals-offloaded-bytes
+                readOnly: true
+                description: Total amount of data offloaded in bytes across all matching rewards for this day.
+    mobile-reward-totals-by-service-provider:
+      title: Mobile Reward Totals By Service Provider
+      x-stoplight:
+        id: mobile-totals-by-sp-schema
+      type: object
+      description: Mobile reward totals grouped by service provider.
+      required:
+        - records
+      properties:
+        records:
+          type: array
+          x-stoplight:
+            id: mobile-totals-by-sp-records
+          readOnly: true
+          items:
+            type: object
+            x-stoplight:
+              id: mobile-totals-by-sp-record
+            required:
+              - service_provider_id
+              - total_service_provider_amount
+              - total_matched_amount
+              - total_dc_transfer_reward
+              - total_offloaded_bytes
+            properties:
+              service_provider_id:
+                type: string
+                x-stoplight:
+                  id: mobile-totals-by-sp-id
+                readOnly: true
+                description: The service provider identifier (carrier).
+              total_service_provider_amount:
+                type: integer
+                x-stoplight:
+                  id: mobile-totals-by-sp-amount
+                minimum: 0
+                readOnly: true
+                description: Total service provider reward amount for this carrier.
+              total_matched_amount:
+                type: integer
+                x-stoplight:
+                  id: mobile-totals-by-sp-matched
+                minimum: 0
+                readOnly: true
+                description: Total matched amount for this carrier.
+              total_dc_transfer_reward:
+                type: integer
+                x-stoplight:
+                  id: mobile-totals-by-sp-dc
+                minimum: 0
+                readOnly: true
+                description: Total DC transfer reward attributed to this carrier.
+              total_offloaded_bytes:
+                type: number
+                x-stoplight:
+                  id: mobile-totals-by-sp-offloaded-bytes
+                readOnly: true
+                description: Total amount of data offloaded in bytes attributed to this carrier.
     maker:
       title: maker
       x-stoplight:
